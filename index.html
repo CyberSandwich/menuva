@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Menuva</title>
+<style>
+    html, body {
+        margin: 0;
+        height: 100%;
+        background: white;
+        font-family: Avenir, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    #title {
+        font-size: 64px;
+        font-weight: 700;
+        color: black;
+        transition: color 0.3s ease;
+    }
+</style>
+</head>
+<body onclick="toggleTheme()">
+    <div id="title">menuva</div>
+
+<script>
+function toggleTheme() {
+    const body = document.body;
+    const text = document.getElementById("title");
+
+    if (body.style.background === "black") {
+        body.style.background = "white";
+        text.style.color = "black";
+    } else {
+        body.style.background = "black";
+        text.style.color = "white";
+    }
+}
+</script>
+</body>
+</html>
