@@ -2,28 +2,40 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Menuva</title>
 <style>
     html, body {
         margin: 0;
+        padding: 0;
         height: 100%;
+        width: 100%;
         background: white;
         font-family: Avenir, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
+
         transition: background 0.3s ease;
+        /* Fixes iPhone safe-area narrow black strip issue */
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
     }
 
     #title {
         font-size: 64px;
-        font-weight: 700;
+        font-weight: 600;  /* thinner than bold */
         color: black;
         transition: color 0.3s ease;
+        padding-left: 24px;  /* comfortable spacing */
+        padding-right: 24px; /* comfortable spacing */
+        text-align: center;
     }
 </style>
 </head>
+
 <body onclick="toggleTheme()">
     <div id="title">menuva</div>
 
@@ -32,10 +44,12 @@ function toggleTheme() {
     const body = document.body;
     const text = document.getElementById("title");
 
-    if (body.style.background === "black") {
+    if (body.classList.contains("dark")) {
+        body.classList.remove("dark");
         body.style.background = "white";
         text.style.color = "black";
     } else {
+        body.classList.add("dark");
         body.style.background = "black";
         text.style.color = "white";
     }
