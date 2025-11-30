@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <title>Redirecting…</title>
-  <meta http-equiv="refresh" content="0; url=https://docs.google.com/forms/d/e/1FAIpQLSeZRJYK2gEEBXD-C-Ub8LzEIjZXNjissO3IXiFIQ6J4z0_-WA/viewform">
+  <meta http-equiv="refresh" content="0;url=https://docs.google.com/forms/d/e/1FAIpQLSeZRJYK2gEEBXD-C-Ub8LzEIjZXNjissO3IXiFIQ6J4z0_-WA/viewform">
   <script>
-    window.location.replace("https://docs.google.com/forms/d/e/1FAIpQLSeZRJYK2gEEBXD-C-Ub8LzEIjZXNjissO3IXiFIQ6J4z0_-WA/viewform");
+    (function () {
+      var target = "https://docs.google.com/forms/d/e/1FAIpQLSeZRJYK2gEEBXD-C-Ub8LzEIjZXNjissO3IXiFIQ6J4z0_-WA/viewform";
+      if (window.location.href !== target) {
+        window.location.replace(target);
+      }
+    })();
   </script>
 </head>
 <body>
-  <p>If you are not redirected, <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZRJYK2gEEBXD-C-Ub8LzEIjZXNjissO3IXiFIQ6J4z0_-WA/viewform">click here</a>.</p>
+  <noscript>
+    <p>
+      If you are not redirected,
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZRJYK2gEEBXD-C-Ub8LzEIjZXNjissO3IXiFIQ6J4z0_-WA/viewform">
+        click here
+      </a>.
+    </p>
+  </noscript>
 </body>
 </html>
