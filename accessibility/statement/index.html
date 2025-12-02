@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Menuva – Voluntary Accessibility Statement (Pilot)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text-main: #111111;
+      --text-muted: #555555;
+      --accent: #12b3a8;
+      --border-subtle: #e0e0e5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Avenir", -apple-system, BlinkMacSystemFont, system-ui,
+        "Segoe UI", sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      max-width: 760px;
+      width: 100%;
+      background-color: var(--card-bg);
+      border-radius: 18px;
+      padding: 32px 40px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+      border: 1px solid var(--border-subtle);
+    }
+
+    header {
+      margin-bottom: 24px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(18, 179, 168, 0.06);
+      color: var(--accent);
+      border: 1px solid rgba(18, 179, 168, 0.18);
+      margin-bottom: 10px;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-weight: 600;
+      font-size: clamp(26px, 4vw, 30px);
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: 15px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    main {
+      margin-top: 10px;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    main p {
+      margin: 0 0 14px;
+    }
+
+    footer {
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(18, 179, 168, 0.35);
+      padding-bottom: 1px;
+    }
+
+    a:hover,
+    a:focus-visible {
+      text-decoration: none;
+      border-bottom-color: var(--accent);
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 16px;
+      }
+
+      .card {
+        padding: 22px 18px 24px;
+        border-radius: 16px;
+      }
+
+      footer {
+        margin-top: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <article class="card" aria-labelledby="menuva-heading">
+      <header>
+        <div class="badge" aria-hidden="true">
+          <span class="badge-dot"></span>
+          <span>Pilot version</span>
+        </div>
+        <h1 id="menuva-heading">Menuva (Pilot Version)</h1>
+        <p class="subtitle">Voluntary Accessibility Statement</p>
+      </header>
+
+      <main>
+        <p>
+          Menuva is a non-commercial, student-led prototype developed as a student project at the University of Warwick. As it is not a public-sector service or commercial product, a formal accessibility statement under the Public Sector Bodies (Websites and Mobile Applications) Accessibility Regulations&nbsp;2018 is not legally required. However, in support of Warwick’s commitment to digital inclusion, the following provides an overview of the app’s accessibility approach.
+        </p>
+
+        <p>
+          Menuva is an iOS-only application designed in accordance with Apple’s Human Interface Guidelines and built to work with iOS' accessibility features. The app supports Dynamic Type (tested at minimum and maximum sizes), system Dark and Light Mode, VoiceOver, and switch/eye-tracking input where enabled. Interfaces are intentionally simple, with clear hierarchy and minimal on-screen complexity to reduce cognitive and visual load when browsing menus, filtering dietary information, or navigating between sections.
+        </p>
+
+        <p>
+          To address language and comprehension barriers, the pilot version of Menuva launches with English and Simplified Chinese support, allowing menu content to be displayed in either language for participating venues. This reduces reliance on staff for ad-hoc translation and supports international students and visitors who may otherwise struggle with English-only menus. Currency comprehension is supported through automatic conversion between GBP and 160+ currencies (currently 163), with rates updated daily via an open-source exchange-rate provider, used in accordance with its licence and terms of use, so diners can understand pricing without manual calculations or external tools.
+        </p>
+
+        <p>
+          The current pilot does not include a public web interface for users. If the project progresses beyond the pilot phase and a browser-based version of Menuva is developed, it will be designed to meet WCAG&nbsp;2.2 Level&nbsp;AA requirements.
+        </p>
+      </main>
+
+      <footer>
+        For any accessibility questions during the pilot, you may contact the developer directly at
+        <a href="mailto:duke@saputra.co.uk">duke@saputra.co.uk</a>
+        or
+        <a href="mailto:hello@menuva.co.uk">hello@menuva.co.uk</a>.
+      </footer>
+    </article>
+  </div>
+</body>
+</html>
