@@ -6,20 +6,20 @@
   <title>Menuva V5 Viewer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #070707;
-      --panel: #0f0f10;
-      --muted: #9ea0a6;
-      --accent: #ffffff;
-      --accent-soft: rgba(255, 255, 255, 0.08);
-      --border: rgba(255, 255, 255, 0.06);
-      --success: #4ade80;
-      --error: #f87171;
-      --warning: #facc15;
-      --chip: rgba(255, 255, 255, 0.12);
-      --shadow: 0 20px 80px rgba(0, 0, 0, 0.35);
+      --bg: #f7f9fb;
+      --panel: #ffffff;
+      --muted: #5f6c80;
+      --accent: #0f172a;
+      --accent-soft: #eef2ff;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --error: #dc2626;
+      --warning: #ca8a04;
+      --chip: #f1f5f9;
+      --shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: var(--bg);
       color: var(--accent);
@@ -29,11 +29,11 @@
 
     body {
       margin: 0;
-      padding: 0 18px 48px;
+      padding: 0 18px 72px;
       max-width: 1400px;
       margin-inline: auto;
-      background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.04), transparent 30%),
-                  radial-gradient(circle at 80% 0%, rgba(255,255,255,0.04), transparent 35%),
+      background: radial-gradient(circle at 15% 20%, rgba(148, 163, 184, 0.16), transparent 30%),
+                  radial-gradient(circle at 85% 5%, rgba(59, 130, 246, 0.16), transparent 35%),
                   var(--bg);
     }
 
@@ -50,8 +50,8 @@
     header p {
       margin: 6px 0 0;
       color: var(--muted);
-      max-width: 920px;
-      line-height: 1.5;
+      max-width: 980px;
+      line-height: 1.6;
     }
 
     .layout {
@@ -77,15 +77,15 @@
       padding: 18px;
       border: 1px dashed var(--border);
       border-radius: 16px;
-      background: linear-gradient(145deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+      background: linear-gradient(145deg, rgba(59,130,246,0.08), rgba(255,255,255,0.9));
       text-align: center;
       transition: all 0.2s ease;
       cursor: pointer;
     }
 
     .upload-card:hover, .upload-card.dragging {
-      border-color: rgba(255,255,255,0.16);
-      background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+      border-color: rgba(59,130,246,0.6);
+      background: linear-gradient(145deg, rgba(59,130,246,0.16), rgba(255,255,255,0.98));
       transform: translateY(-1px);
     }
 
@@ -96,27 +96,29 @@
       display: flex;
       justify-content: center;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     button, .ghost-btn {
       appearance: none;
       border: none;
-      padding: 10px 14px;
+      padding: 12px 16px;
       border-radius: 12px;
-      background: var(--accent);
-      color: #050505;
-      font-weight: 600;
+      background: #2563eb;
+      color: #ffffff;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.2s ease;
       font-size: 14px;
+      letter-spacing: 0.01em;
     }
 
-    button:hover, .ghost-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(255,255,255,0.08); }
+    button:hover, .ghost-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(37,99,235,0.25); }
 
     .ghost-btn {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--accent);
+      background: #fff;
+      border: 1px solid #cbd5e1;
+      color: #0f172a;
       box-shadow: none;
     }
 
@@ -130,7 +132,7 @@
     .status {
       padding: 12px;
       border-radius: 14px;
-      background: var(--accent-soft);
+      background: #f8fafc;
       border: 1px solid var(--border);
       display: flex;
       flex-direction: column;
@@ -142,9 +144,9 @@
     .status .value { font-size: 16px; font-weight: 700; }
 
     .chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
-    .chip { padding: 6px 10px; border-radius: 999px; background: var(--chip); color: var(--accent); font-size: 12px; border: 1px solid var(--border); }
+    .chip { padding: 6px 10px; border-radius: 999px; background: var(--chip); color: var(--accent); font-size: 12px; border: 1px solid var(--border); font-weight: 600; }
 
-    .divider { height: 1px; background: var(--border); margin: 16px 0; }
+    .divider { height: 1px; background: var(--border); margin: 18px 0; }
 
     h2 { margin: 0 0 12px; font-size: 18px; letter-spacing: -0.01em; }
     h3 { margin: 0 0 8px; font-size: 15px; letter-spacing: -0.01em; }
@@ -156,23 +158,26 @@
     }
 
     .card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--border);
+      background: #fff;
+      border: 1px solid #e2e8f0;
       border-radius: 16px;
       padding: 14px;
+      box-shadow: 0 12px 30px rgba(15,23,42,0.06);
     }
 
     .error-list, .lint-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-    .error-item { background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.3); color: #fecdd3; padding: 10px 12px; border-radius: 12px; }
+    .error-item { background: rgba(220,38,38,0.06); border: 1px solid rgba(220,38,38,0.25); color: #7f1d1d; padding: 10px 12px; border-radius: 12px; }
+    .lint-item { background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px 12px; border-radius: 12px; display: flex; gap: 10px; align-items: center; }
+    .lint-item .icon { font-size: 18px; }
 
     details {
-      background: rgba(255,255,255,0.02);
+      background: #f8fafc;
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 10px 12px;
       margin-bottom: 10px;
     }
-    details[open] { background: rgba(255,255,255,0.04); }
+    details[open] { background: #eef2ff; }
     details summary { cursor: pointer; font-weight: 600; list-style: none; }
     details summary::-webkit-details-marker { display: none; }
 
@@ -180,7 +185,7 @@
       padding: 10px 12px;
       border-radius: 12px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03);
+      background: #fff;
       margin-top: 8px;
       display: grid;
       grid-template-columns: 1fr auto;
@@ -189,15 +194,15 @@
     }
 
     .muted { color: var(--muted); font-size: 13px; }
-    code { background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 8px; }
+    code { background: #e2e8f0; padding: 2px 6px; border-radius: 8px; }
     pre {
-      background: #0a0a0b;
-      border: 1px solid var(--border);
+      background: #0b1224;
+      border: 1px solid #111827;
       padding: 14px;
       border-radius: 14px;
       overflow: auto;
-      max-height: 460px;
-      color: #e2e8f0;
+      max-height: 560px;
+      color: #cbd5e1;
     }
 
     .badge {
@@ -210,23 +215,73 @@
       gap: 6px;
     }
 
-    .success { background: rgba(74, 222, 128, 0.12); color: #bbf7d0; border: 1px solid rgba(74,222,128,0.3); }
-    .danger { background: rgba(248, 113, 113, 0.12); color: #fecdd3; border: 1px solid rgba(248,113,113,0.3); }
-    .info { background: rgba(255,255,255,0.08); color: #e2e8f0; border: 1px solid var(--border); }
+    .success { background: rgba(22, 163, 74, 0.1); color: #14532d; border: 1px solid rgba(22,163,74,0.3); }
+    .danger { background: rgba(220, 38, 38, 0.1); color: #7f1d1d; border: 1px solid rgba(220,38,38,0.3); }
+    .info { background: rgba(59,130,246,0.1); color: #1d4ed8; border: 1px solid rgba(59,130,246,0.25); }
 
     .toolbar { display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-bottom: 12px; }
-    .pill { background: var(--chip); border-radius: 999px; padding: 8px 12px; display: inline-flex; align-items: center; gap: 6px; }
+    .pill { background: #fff; border-radius: 999px; padding: 10px 14px; display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(15,23,42,0.06); }
 
     .entity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
-    .entity-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; padding: 10px; }
+    .entity-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px; box-shadow: 0 6px 18px rgba(15,23,42,0.05); }
 
     .small { font-size: 12px; color: var(--muted); }
+
+    .subgrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+    }
+
+    .pill.bad {
+      border-color: rgba(220,38,38,0.35);
+      background: rgba(254, 226, 226, 0.8);
+      color: #7f1d1d;
+      box-shadow: none;
+    }
+
+    .pill.good {
+      border-color: rgba(22, 163, 74, 0.25);
+      background: rgba(220, 252, 231, 0.9);
+      color: #14532d;
+      box-shadow: none;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+    }
+
+    .summary-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: 0 8px 20px rgba(15,23,42,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .summary-card .label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+    .summary-card .value { font-size: 22px; font-weight: 700; }
+
+    .pill-group { display: flex; gap: 8px; flex-wrap: wrap; }
   </style>
 </head>
 <body>
   <header>
-    <h1>Menuva V5 JSON Viewer & Validator</h1>
-    <p>A monochrome, spacious workspace to validate Menuva V5 JSON files and explore every part of the menu hierarchy with human-friendly structure.</p>
+    <h1 style="font-family:'Space Grotesk', 'Inter', sans-serif;">Menuva V5 JSON Explorer</h1>
+    <p>A bright, modern workspace for validating Menuva V5 JSON files, spotting problems quickly, and breaking down menus, sections, and items without friction.</p>
   </header>
 
   <main class="layout">
@@ -266,6 +321,10 @@
       <h3>Issues</h3>
       <ul class="error-list" id="error-list"></ul>
       <ul class="error-list" id="schema-error-list"></ul>
+
+      <div class="divider"></div>
+      <h3>Guidance checks</h3>
+      <ul class="lint-list" id="lint-list"></ul>
     </section>
 
     <section class="panel" aria-live="polite" aria-label="Results">
@@ -273,6 +332,9 @@
         <div class="pill"><strong>Status:</strong> <span id="overall-status">Waiting for upload</span></div>
         <div class="pill" id="count-pill">—</div>
       </div>
+
+      <div class="summary-grid" id="summary-grid"></div>
+      <div class="divider"></div>
 
       <div class="grid" id="overview"></div>
       <div class="divider"></div>
@@ -293,7 +355,7 @@
   <script src="https://cdn.jsdelivr.net/npm/ajv@8/dist/ajv2020.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/ajv-formats@2/dist/ajv-formats.min.js"></script>
   <script>
-    const state = { fileName: null, fileSize: 0, json: null, schemaReady: false, validate: null };
+    const state = { fileName: null, fileSize: 0, json: null, schemaReady: false, validate: null, lints: [] };
     const dropZone = document.getElementById('drop-zone');
     const fileInput = document.getElementById('file-input');
     const browseBtn = document.getElementById('browse');
@@ -307,12 +369,14 @@
     const fileMetaEl = document.getElementById('file-meta');
     const errorList = document.getElementById('error-list');
     const schemaErrorList = document.getElementById('schema-error-list');
+    const lintList = document.getElementById('lint-list');
     const overallStatus = document.getElementById('overall-status');
     const countPill = document.getElementById('count-pill');
     const overviewGrid = document.getElementById('overview');
     const hierarchyEl = document.getElementById('hierarchy');
     const coverageEl = document.getElementById('coverage');
     const rawJson = document.getElementById('raw-json');
+    const summaryGrid = document.getElementById('summary-grid');
 
     const samplePayload = {
       schemaVersion: 5,
@@ -324,7 +388,7 @@
       languages: ["en-GB"],
       fallbackLanguage: "en-GB",
       sections: [{ id: "mains", name: { "en-GB": "Mains" } }],
-      items: [{ id: "A1", name: { "en-GB": "Soup of the Day" }, categoryId: "mains", price: { amountMinor: 695 } }],
+      items: [{ id: "A1", name: { "en-GB": "Soup of the Day" }, categoryId: "mains", price: { amountMinor: 695, currency: "GBP" } }],
       menus: [{ id: "core", name: { "en-GB": "Core" }, sectionIds: ["mains"] }]
     };
 
@@ -360,6 +424,7 @@
     function clearLists() {
       errorList.innerHTML = '';
       schemaErrorList.innerHTML = '';
+      lintList.innerHTML = '';
     }
 
     function renderError(list, errors) {
@@ -370,6 +435,33 @@
         li.className = 'error-item';
         li.textContent = err;
         list.appendChild(li);
+      });
+    }
+
+    function renderLints(lints = []) {
+      lintList.innerHTML = '';
+      if (!lints.length) {
+        const li = document.createElement('li');
+        li.className = 'lint-item';
+        li.innerHTML = '<span class="icon">✅</span><div><strong>No guidance issues</strong><div class="muted">Great job! We could not find any structural problems.</div></div>';
+        lintList.appendChild(li);
+        return;
+      }
+      lints.forEach(lint => {
+        const li = document.createElement('li');
+        li.className = 'lint-item';
+        const icon = document.createElement('span');
+        icon.className = 'icon';
+        icon.textContent = lint.level === 'error' ? '⛔' : lint.level === 'warning' ? '⚠️' : 'ℹ️';
+        const body = document.createElement('div');
+        const title = document.createElement('strong');
+        title.textContent = lint.message;
+        const detail = document.createElement('div');
+        detail.className = 'muted';
+        detail.textContent = lint.hint || '';
+        body.append(title, detail);
+        li.append(icon, body);
+        lintList.appendChild(li);
       });
     }
 
@@ -410,6 +502,35 @@
           div.appendChild(row);
         });
         overviewGrid.appendChild(div);
+      });
+    }
+
+    function renderSummary(data, lints = [], schemaErrors = []) {
+      summaryGrid.innerHTML = '';
+      if (!data) return;
+      const totalEntities = (data.items?.length || 0) + (data.sections?.length || 0) + (data.menus?.length || 0) + (data.customizationTemplates?.length || 0);
+      const problemCount = lints.length + (schemaErrors?.length || 0);
+      const languageCount = data.languages?.length || 0;
+      const cards = [
+        { label: 'Entities', value: totalEntities || '0', hint: 'Items + sections + menus + templates' },
+        { label: 'Problems detected', value: problemCount, hint: 'Schema + guidance checks' },
+        { label: 'Languages', value: languageCount, hint: `Fallback: ${data.fallbackLanguage || '—'}` },
+        { label: 'Files size', value: state.fileSize ? `${(state.fileSize/1024).toFixed(1)} KB` : '—', hint: state.fileName || 'No file' }
+      ];
+      cards.forEach(card => {
+        const div = document.createElement('div');
+        div.className = 'summary-card';
+        const l = document.createElement('div');
+        l.className = 'label';
+        l.textContent = card.label;
+        const v = document.createElement('div');
+        v.className = 'value';
+        v.textContent = card.value;
+        const d = document.createElement('div');
+        d.className = 'muted';
+        d.textContent = card.hint;
+        div.append(l, v, d);
+        summaryGrid.appendChild(div);
       });
     }
 
@@ -631,7 +752,7 @@
       countPill.textContent = counts.map(([k, v]) => `${v} ${k}`).join(' • ');
     }
 
-    function handleParsed(data) {
+    function handleParsed(data, lints = [], schemaErrors = []) {
       state.json = data;
       setStatus(parseStatus, parseDetail, 'Ready', 'Valid JSON file');
       renderOverview(data);
@@ -639,19 +760,25 @@
       renderCoverage(data);
       renderRaw(data);
       updateCountPill(data);
+      renderLints(lints);
+      renderSummary(data, lints, schemaErrors);
     }
 
-    function showOverall(okParse, okSchema) {
+    function showOverall(okParse, okSchema, lintIssues = []) {
+      overallStatus.parentElement.classList.remove('success');
       if (!okParse) {
         overallStatus.textContent = 'Waiting for valid JSON…';
         return;
       }
-      if (okSchema) {
-        overallStatus.textContent = 'Valid Menuva V5 file';
+      const hasLintErrors = lintIssues.some(l => l.level === 'error');
+      const hasLintWarnings = lintIssues.some(l => l.level === 'warning');
+      if (okSchema && !hasLintErrors) {
+        overallStatus.textContent = hasLintWarnings ? 'Valid with warnings' : 'Valid Menuva V5 file';
         overallStatus.parentElement.classList.add('success');
-      } else {
+      } else if (!okSchema) {
         overallStatus.textContent = 'JSON parsed — fix schema issues';
-        overallStatus.parentElement.classList.remove('success');
+      } else {
+        overallStatus.textContent = 'Parsed — fix guidance issues';
       }
     }
 
@@ -666,16 +793,100 @@
       return errors.map(err => `${err.instancePath || '/'} ${err.message || ''}`.trim());
     }
 
+    function getDuplicates(arr = []) {
+      const seen = new Set();
+      const dupes = new Set();
+      arr.forEach(item => {
+        if (seen.has(item)) dupes.add(item);
+        seen.add(item);
+      });
+      return Array.from(dupes);
+    }
+
+    function runGuidanceChecks(data = {}) {
+      const issues = [];
+      if (data.schemaVersion !== 5) {
+        issues.push({ level: 'error', message: 'schemaVersion must equal 5', hint: 'Update the file to use V5.' });
+      }
+
+      const required = ['id', 'country_code', 'slug', 'currency', 'timezone', 'languages', 'fallbackLanguage', 'items'];
+      required.forEach(field => {
+        if (data[field] === undefined) {
+          issues.push({ level: 'error', message: `Missing required field: ${field}`, hint: 'Add the field to the root object.' });
+        }
+      });
+
+      if (Array.isArray(data.languages)) {
+        const dupes = getDuplicates(data.languages);
+        if (dupes.length) issues.push({ level: 'warning', message: 'languages must be unique', hint: `Duplicate codes: ${dupes.join(', ')}` });
+      } else {
+        issues.push({ level: 'error', message: 'languages must be a non-empty array', hint: 'Provide at least one BCP-47 code.' });
+      }
+
+      if (data.fallbackLanguage && Array.isArray(data.languages) && !data.languages.includes(data.fallbackLanguage)) {
+        issues.push({ level: 'error', message: 'fallbackLanguage must be included in languages', hint: `Add "${data.fallbackLanguage}" to languages.` });
+      }
+
+      if (!Array.isArray(data.items) || !data.items.length) {
+        issues.push({ level: 'error', message: 'items must include at least one item', hint: 'Populate items[] with at least one entry.' });
+      }
+
+      const sectionIds = new Set((data.sections || []).map(s => s.id));
+      (data.items || []).forEach(item => {
+        if (item.categoryId && !sectionIds.has(item.categoryId)) {
+          issues.push({ level: 'warning', message: `Item ${item.id} references missing section ${item.categoryId}`, hint: 'Ensure categoryId matches a section id.' });
+        }
+        if (item.price && item.price.amountMinor !== undefined && !item.price.currency && data.currency) {
+          issues.push({ level: 'warning', message: `Item ${item.id} price missing currency`, hint: 'Set price.currency or rely on global currency consistently.' });
+        }
+      });
+
+      const menuSectionMisses = [];
+      const menuItemMisses = [];
+      (data.menus || []).forEach(menu => {
+        (menu.sectionIds || []).forEach(secId => { if (!sectionIds.has(secId)) menuSectionMisses.push(`${menu.id}:${secId}`); });
+        (menu.itemIds || []).forEach(itemId => {
+          if (!(data.items || []).some(i => i.id === itemId)) menuItemMisses.push(`${menu.id}:${itemId}`);
+        });
+      });
+      if (menuSectionMisses.length) {
+        issues.push({ level: 'error', message: 'Menus reference missing sections', hint: menuSectionMisses.slice(0, 5).join(', ') + (menuSectionMisses.length > 5 ? '…' : '') });
+      }
+      if (menuItemMisses.length) {
+        issues.push({ level: 'warning', message: 'Menus reference missing items', hint: menuItemMisses.slice(0, 5).join(', ') + (menuItemMisses.length > 5 ? '…' : '') });
+      }
+
+      if (!(data.menus || []).length) {
+        issues.push({ level: 'warning', message: 'No menus defined', hint: 'Menus help organise sections and items for clients.' });
+      }
+
+      const itemsCoveredByMenus = new Set();
+      (data.menus || []).forEach(menu => {
+        (menu.itemIds || []).forEach(id => itemsCoveredByMenus.add(id));
+        (menu.sectionIds || []).forEach(sec => {
+          (data.items || []).filter(i => i.categoryId === sec).forEach(i => itemsCoveredByMenus.add(i.id));
+        });
+      });
+      const uncovered = (data.items || []).filter(i => !itemsCoveredByMenus.has(i.id)).slice(0, 5);
+      if ((data.menus || []).length && uncovered.length) {
+        issues.push({ level: 'info', message: 'Some items are not included in any menu', hint: uncovered.map(i => i.id).join(', ') + (uncovered.length === 5 ? '…' : '') });
+      }
+
+      return issues;
+    }
+
     async function processText(text, name = 'uploaded.json', size = 0) {
       clearLists();
       try {
         const parsed = JSON.parse(text);
+        const lints = runGuidanceChecks(parsed);
+        state.lints = lints;
         state.fileName = name;
         state.fileSize = size;
         fileNameEl.textContent = name;
         fileMetaEl.textContent = `${(size/1024).toFixed(1)} KB`;
-        handleParsed(parsed);
         const { valid, errors } = await validateSchema(parsed);
+        handleParsed(parsed, lints, errors || []);
         if (valid) {
           setStatus(schemaStatus, schemaDetail, 'Pass', 'Schema validation succeeded');
           renderError(schemaErrorList, []);
@@ -684,16 +895,18 @@
           renderError(schemaErrorList, formatAjvErrors(errors));
         }
         setStatus(parseStatus, parseDetail, 'Ready', 'Valid JSON file');
-        showOverall(true, valid);
+        showOverall(true, valid, lints);
       } catch (err) {
         setStatus(parseStatus, parseDetail, 'Invalid JSON', err.message, true);
         setStatus(schemaStatus, schemaDetail, 'Not validated', 'Fix JSON parsing first');
         renderError(errorList, [err.message]);
+        lintList.innerHTML = '';
         renderRaw(null);
         renderOverview(null);
         renderHierarchy(null);
         renderCoverage(null);
         updateCountPill(null);
+        summaryGrid.innerHTML = '';
         showOverall(false, false);
       }
     }
