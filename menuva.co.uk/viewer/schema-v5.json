@@ -1,0 +1,1877 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://menuva.example/schema/v5.json",
+  "title": "Menuva Menu File v5",
+  "type": "object",
+  "additionalProperties": false,
+  "$comment": "V5 schema aligned to updated V5 guidance (customization templates, conditional modifiers, quantity groups, typed POS routing, scoped overrides, guided bundle slots, option-aware price rules, typed runtime metadata). Important: Some invariants are enforced via lint (not JSON Schema), including referential integrity across collections, fallbackLanguage ∈ languages, sibling order uniqueness, square product images (w==h), defaults validity after appliesTo + requires/excludes filtering, circular dependency prevention for requires/excludes, allergen present vs mayContain correctness, and allergen umbrella-vs-subtype rule (do not use *All when any subtype in the same family is present). Ref-based time windows (locationOpen/locationClose) require resolvable open/close times per location/date at runtime; if not resolvable, treat the window as inactive. Calendar exception dates SHOULD be unique within a calendar (lint).",
+  "required": [
+    "schemaVersion",
+    "id",
+    "country_code",
+    "slug",
+    "currency",
+    "timezone",
+    "languages",
+    "fallbackLanguage",
+    "items"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "integer", "const": 5 },
+
+    "id": { "$ref": "#/$defs/id32" },
+    "country_code": { "type": "string", "pattern": "^[A-Z]{2}$" },
+    "slug": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[a-z0-9]+(?:[\\-_][a-z0-9]+)*$"
+    },
+
+    "name": { "$ref": "#/$defs/langString" },
+    "friendlyName": {
+      "$comment": "Optional short non-localized label",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "description": { "$ref": "#/$defs/langString" },
+    "restaurantCategory": { "type": "string", "minLength": 1 },
+
+    "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+
+    "timezone": {
+      "$comment": "IANA timezone name. Treat as string; validate against IANA database at runtime/lint (pattern intentionally not enforced here).",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+
+    "languages": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/langCode" },
+      "uniqueItems": true
+    },
+    "fallbackLanguage": { "$ref": "#/$defs/langCode" },
+
+    "headerImage": { "$ref": "#/$defs/imageHeader" },
+
+    "foodHygieneRating": { "$ref": "#/$defs/foodHygieneRating" },
+    "paymentMethods": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/paymentMethod" },
+      "uniqueItems": true
+    },
+
+    "validFrom": { "$ref": "#/$defs/dateISO" },
+    "validUntil": { "$ref": "#/$defs/dateISO" },
+
+    "registries": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "allergens": { "type": "string", "pattern": "^urn:.+$" },
+        "dietary": { "type": "string", "pattern": "^urn:.+$" }
+      }
+    },
+
+    "defaultCalendarId": { "$ref": "#/$defs/idAny" },
+
+    "serviceCalendars": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/serviceCalendar" }
+    },
+
+    "locations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/location" }
+    },
+
+    "locationGroups": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/locationGroup" }
+    },
+
+    "components": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/component" }
+    },
+
+    "customizationTemplates": {
+      "$comment": "Canonical shared modifier groups",
+      "type": "array",
+      "items": { "$ref": "#/$defs/customizationTemplate" }
+    },
+
+    "itemSets": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/itemSet" }
+    },
+
+    "sections": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/section" }
+    },
+
+    "fees": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/fee" }
+    },
+
+    "menus": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/menu" }
+    },
+
+    "promotions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/promotion" }
+    },
+
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/item" }
+    },
+
+    "provenance": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/provenance" }
+    },
+
+    "build": { "$ref": "#/$defs/buildMeta" },
+    "vendor": { "$ref": "#/$defs/vendorMeta" },
+    "sourceHashes": {
+      "$comment": "Typed sync metadata for caching/auditing. Content is vendor-defined but must be stable",
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+
+    "extensions": { "$ref": "#/$defs/extensions" },
+
+    "city": {
+      "$comment": "Optional brand-level convenience geo (informational only if locations[] exists).",
+      "type": "string",
+      "minLength": 1
+    },
+    "lat": {
+      "$comment": "Optional brand-level convenience geo (informational only if locations[] exists).",
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "lon": {
+      "$comment": "Optional brand-level convenience geo (informational only if locations[] exists).",
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180
+    },
+    "mapsUrl": {
+      "$comment": "Optional brand-level convenience maps URL (informational only if locations[] exists).",
+      "type": "string",
+      "format": "uri"
+    }
+  },
+
+  "$defs": {
+    "id32": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32,
+      "pattern": "^[A-Za-z0-9_\\-]{1,32}$"
+    },
+    "idAny": { "type": "string", "minLength": 1 },
+
+    "extensions": {
+      "type": "object",
+      "additionalProperties": true
+    },
+
+    "buildMeta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "generatedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+
+    "vendorMeta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "syncVersion": { "type": "string", "minLength": 1, "maxLength": 128 }
+      }
+    },
+
+    "langCode": {
+      "type": "string",
+      "pattern": "^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$"
+    },
+    "langString": {
+      "type": "object",
+      "minProperties": 1,
+      "patternProperties": {
+        "^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "channel": {
+      "type": "string",
+      "enum": ["dineIn", "takeaway", "delivery"]
+    },
+
+    "appliesTo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "locationIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "locationGroupIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "calendarId": { "$ref": "#/$defs/idAny" },
+        "channels": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/channel" },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+
+    "day": {
+      "type": "string",
+      "enum": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    },
+
+    "timeHHMMFrom": {
+      "$comment": "00:00–23:59 only (24:00 disallowed)",
+      "type": "string",
+      "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d$"
+    },
+    "timeHHMMUntil": {
+      "$comment": "00:00–24:00 allowed (24:00 means end-of-day)",
+      "type": "string",
+      "pattern": "^(?:(?:[01]\\d|2[0-3]):[0-5]\\d|24:00)$"
+    },
+
+    "timeRef": { "type": "string", "enum": ["locationOpen", "locationClose"] },
+
+    "dateISO": { "type": "string", "format": "date" },
+
+    "weekPattern": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repeatEveryWeeks", "anchorDate", "activeWeekIndices"],
+      "properties": {
+        "repeatEveryWeeks": { "type": "integer", "minimum": 1 },
+        "anchorDate": { "$ref": "#/$defs/dateISO" },
+        "activeWeekIndices": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+
+    "paymentMethod": {
+      "type": "string",
+      "enum": ["cash", "card", "contactless", "mobileWallet", "online", "voucher", "other"]
+    },
+
+    "foodHygieneRating": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rating"],
+      "properties": {
+        "rating": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "ratingDate": { "$ref": "#/$defs/dateISO" },
+        "authority": { "type": "string" }
+      }
+    },
+
+    "mediaVariant": {
+      "$comment": "Variants MUST be resolvable deterministically; url is required. Optional suffix supports @1x/@2x style variants.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "w", "h"],
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "w": { "type": "integer", "minimum": 1 },
+        "h": { "type": "integer", "minimum": 1 },
+        "format": { "type": "string", "minLength": 1 },
+        "suffix": { "type": "string", "minLength": 1 }
+      }
+    },
+
+    "image": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "alt", "variants"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "alt": { "$ref": "#/$defs/langString" },
+        "variants": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/mediaVariant" }
+        }
+      }
+    },
+
+    "imageHeader": {
+      "$comment": "Header image is allowed non-square; 16:9 recommended.",
+      "allOf": [{ "$ref": "#/$defs/image" }]
+    },
+
+    "mediaType": {
+      "type": "string",
+      "enum": ["hero", "product", "nutrition-label", "allergen-card", "other"]
+    },
+
+    "mediaEntry": {
+      "$comment": "Multi-media representation. If type==product, enforce square via lint (w==h).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "image"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id32" },
+        "type": { "$ref": "#/$defs/mediaType" },
+        "image": { "$ref": "#/$defs/image" }
+      }
+    },
+
+    "moneyMinor": { "type": "integer", "minimum": 0 },
+
+    "price": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["amountMinor"],
+      "properties": {
+        "amountMinor": { "$ref": "#/$defs/moneyMinor" },
+        "includesTax": { "type": "boolean" },
+        "taxCode": { "type": "string" }
+      }
+    },
+
+    "timeWindow": {
+      "$comment": "Supports absolute or ref-based bounds. Requires either from or fromRef, and either until or untilRef. Offset fields are only allowed with corresponding ref bounds.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "days": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/day" },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "exceptDays": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/day" },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+
+        "from": { "$ref": "#/$defs/timeHHMMFrom" },
+        "until": { "$ref": "#/$defs/timeHHMMUntil" },
+
+        "fromRef": { "$ref": "#/$defs/timeRef" },
+        "untilRef": { "$ref": "#/$defs/timeRef" },
+
+        "fromOffsetMinutes": { "type": "integer" },
+        "untilOffsetMinutes": { "type": "integer" }
+      },
+      "allOf": [
+        {
+          "oneOf": [
+            { "required": ["days"] },
+            { "required": ["exceptDays"] },
+            {
+              "not": {
+                "anyOf": [{ "required": ["days"] }, { "required": ["exceptDays"] }]
+              }
+            }
+          ]
+        },
+        { "anyOf": [{ "required": ["from"] }, { "required": ["fromRef"] }] },
+        { "anyOf": [{ "required": ["until"] }, { "required": ["untilRef"] }] },
+        {
+          "$comment": "Do not allow both absolute and ref for the same bound",
+          "not": {
+            "anyOf": [
+              { "required": ["from", "fromRef"] },
+              { "required": ["until", "untilRef"] }
+            ]
+          }
+        },
+        {
+          "$comment": "fromOffsetMinutes requires fromRef and forbids from",
+          "if": { "required": ["fromOffsetMinutes"] },
+          "then": { "required": ["fromRef"], "not": { "required": ["from"] } }
+        },
+        {
+          "$comment": "untilOffsetMinutes requires untilRef and forbids until",
+          "if": { "required": ["untilOffsetMinutes"] },
+          "then": { "required": ["untilRef"], "not": { "required": ["until"] } }
+        }
+      ]
+    },
+
+    "optionConstraint": {
+      "$comment": "Constraint over selected options. groupKey matches customizationGroup.key",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["groupKey"],
+      "properties": {
+        "groupKey": { "type": "string", "minLength": 1 },
+        "optionId": { "$ref": "#/$defs/idAny" },
+        "optionIdsAny": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/idAny" }
+        },
+        "optionIdsAll": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/idAny" }
+        }
+      },
+      "oneOf": [
+        { "required": ["optionId"] },
+        { "required": ["optionIdsAny"] },
+        { "required": ["optionIdsAll"] }
+      ]
+    },
+
+    "priceRuleWhen": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "days": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/day" },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "exceptDays": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/day" },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+
+        "from": { "$ref": "#/$defs/timeHHMMFrom" },
+        "until": { "$ref": "#/$defs/timeHHMMUntil" },
+
+        "fromRef": { "$ref": "#/$defs/timeRef" },
+        "untilRef": { "$ref": "#/$defs/timeRef" },
+        "fromOffsetMinutes": { "type": "integer" },
+        "untilOffsetMinutes": { "type": "integer" },
+
+        "channel": { "$ref": "#/$defs/channel" },
+
+        "locationId": { "$ref": "#/$defs/idAny" },
+        "locationGroupId": { "$ref": "#/$defs/idAny" },
+        "calendarId": { "$ref": "#/$defs/idAny" },
+
+        "minQty": { "type": "integer", "minimum": 1 },
+
+        "optionConstraints": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/optionConstraint" }
+        }
+      },
+      "allOf": [
+        {
+          "oneOf": [
+            { "required": ["days"] },
+            { "required": ["exceptDays"] },
+            {
+              "not": {
+                "anyOf": [{ "required": ["days"] }, { "required": ["exceptDays"] }]
+              }
+            }
+          ]
+        },
+        {
+          "$comment": "Do not allow both absolute and ref for the same bound",
+          "not": {
+            "anyOf": [
+              { "required": ["from", "fromRef"] },
+              { "required": ["until", "untilRef"] }
+            ]
+          }
+        },
+        {
+          "$comment": "fromOffsetMinutes requires fromRef and forbids from",
+          "if": { "required": ["fromOffsetMinutes"] },
+          "then": { "required": ["fromRef"], "not": { "required": ["from"] } }
+        },
+        {
+          "$comment": "untilOffsetMinutes requires untilRef and forbids until",
+          "if": { "required": ["untilOffsetMinutes"] },
+          "then": { "required": ["untilRef"], "not": { "required": ["until"] } }
+        }
+      ]
+    },
+
+    "priceRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["when", "deltaMinor"],
+      "properties": {
+        "when": { "$ref": "#/$defs/priceRuleWhen" },
+        "deltaMinor": { "type": "integer" },
+        "label": { "$ref": "#/$defs/langString" }
+      }
+    },
+
+    "servingSize": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["amount", "unit"],
+      "properties": {
+        "amount": { "type": "number", "exclusiveMinimum": 0 },
+        "unit": { "type": "string", "minLength": 1 }
+      }
+    },
+
+    "nutrition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["basis"],
+      "properties": {
+        "basis": { "type": "string", "enum": ["perServing", "per100g"] },
+        "energyKj": { "type": "number", "minimum": 0 },
+        "energyKcal": { "type": "number", "minimum": 0 },
+        "fat": { "type": "number", "minimum": 0 },
+        "saturates": { "type": "number", "minimum": 0 },
+        "carbohydrate": { "type": "number", "minimum": 0 },
+        "sugars": { "type": "number", "minimum": 0 },
+        "fibre": { "type": "number", "minimum": 0 },
+        "protein": { "type": "number", "minimum": 0 },
+        "salt": { "type": "number", "minimum": 0 },
+        "alcoholPercent": { "type": "number", "minimum": 0 },
+        "refIntakePercent": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kcal": { "type": "number", "minimum": 0 },
+            "fat": { "type": "number", "minimum": 0 },
+            "saturates": { "type": "number", "minimum": 0 },
+            "sugars": { "type": "number", "minimum": 0 },
+            "salt": { "type": "number", "minimum": 0 }
+          }
+        }
+      }
+    },
+
+    "nutritionOverrides": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "basis": { "type": "string", "enum": ["perServing", "per100g"] },
+        "energyKj": { "type": "number", "minimum": 0 },
+        "energyKcal": { "type": "number", "minimum": 0 },
+        "fat": { "type": "number", "minimum": 0 },
+        "saturates": { "type": "number", "minimum": 0 },
+        "carbohydrate": { "type": "number", "minimum": 0 },
+        "sugars": { "type": "number", "minimum": 0 },
+        "fibre": { "type": "number", "minimum": 0 },
+        "protein": { "type": "number", "minimum": 0 },
+        "salt": { "type": "number", "minimum": 0 },
+        "alcoholPercent": { "type": "number", "minimum": 0 },
+        "refIntakePercent": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kcal": { "type": "number", "minimum": 0 },
+            "fat": { "type": "number", "minimum": 0 },
+            "saturates": { "type": "number", "minimum": 0 },
+            "sugars": { "type": "number", "minimum": 0 },
+            "salt": { "type": "number", "minimum": 0 }
+          }
+        }
+      }
+    },
+
+    "nutritionDelta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "energyKj": { "type": "number" },
+        "energyKcal": { "type": "number" },
+        "fat": { "type": "number" },
+        "saturates": { "type": "number" },
+        "carbohydrate": { "type": "number" },
+        "sugars": { "type": "number" },
+        "fibre": { "type": "number" },
+        "protein": { "type": "number" },
+        "salt": { "type": "number" },
+        "alcoholPercent": { "type": "number" }
+      }
+    },
+
+    "allergen": {
+      "type": "string",
+      "enum": [
+        "celery",
+        "cerealsContainingGlutenAll",
+        "cerealsContainingGlutenBarley",
+        "cerealsContainingGlutenKamut",
+        "cerealsContainingGlutenOats",
+        "cerealsContainingGlutenRye",
+        "cerealsContainingGlutenSpelt",
+        "cerealsContainingGlutenWheat",
+        "crustaceans",
+        "eggs",
+        "fish",
+        "lupin",
+        "milk",
+        "mollusks",
+        "mustard",
+        "nutsAll",
+        "nutsAlmond",
+        "nutsBrazil",
+        "nutsCashew",
+        "nutsHazelnut",
+        "nutsMacadamia",
+        "nutsPecan",
+        "nutsPistachio",
+        "nutsWalnut",
+        "peanuts",
+        "sesame",
+        "soy",
+        "sulfurDioxideSulfites",
+        "noInfo"
+      ]
+    },
+
+    "dietary": {
+      "type": "string",
+      "enum": [
+        "dairyFree",
+        "glutenFree",
+        "halal",
+        "noBeef",
+        "noPork",
+        "pescetarian",
+        "soyFree",
+        "vegan",
+        "vegetarian",
+        "noInfo"
+      ]
+    },
+
+    "allergenDelta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "add": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/allergen" },
+          "uniqueItems": true
+        },
+        "remove": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/allergen" },
+          "uniqueItems": true
+        }
+      }
+    },
+
+    "dietaryDelta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "add": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/dietary" },
+          "uniqueItems": true
+        },
+        "remove": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/dietary" },
+          "uniqueItems": true
+        }
+      }
+    },
+
+    "ingredient": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "$ref": "#/$defs/langString" },
+        "order": { "type": "integer", "minimum": 1 }
+      }
+    },
+
+    "statusString": {
+      "type": "string",
+      "enum": ["available", "soldOut", "seasonal", "hidden"]
+    },
+
+    "availabilityOverrides": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "windows": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/timeWindow" }
+        }
+      }
+    },
+
+    "ordering": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "isOrderable": { "type": "boolean" },
+        "minQty": { "type": "integer", "minimum": 1 },
+        "maxQty": { "type": "integer", "minimum": 1 },
+        "notes": { "$ref": "#/$defs/langString" }
+      }
+    },
+
+    "quantityControls": {
+      "$comment": "Quantity controls for quantity-style options. Additional relationships (max>=min, default within range) are linted.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "minQty": { "type": "integer", "minimum": 0 },
+        "maxQty": { "type": "integer", "minimum": 1 },
+        "defaultQty": { "type": "integer", "minimum": 0 },
+        "pricePerUnitDeltaMinor": { "type": "integer" }
+      }
+    },
+
+    "customizationGroupPos": {
+      "$comment": "Typed POS mapping for modifier groups",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "groupId": { "type": "string", "minLength": 1 },
+        "modifierCode": { "type": "string", "minLength": 1 },
+        "plu": { "type": "string", "minLength": 1 },
+        "routingTags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "station": { "type": "string", "minLength": 1 },
+        "screens": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
+      }
+    },
+
+    "customizationOptionPos": {
+      "$comment": "Typed POS mapping for modifier options",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "modifierCode": { "type": "string", "minLength": 1 },
+        "plu": { "type": "string", "minLength": 1 },
+        "routingTags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "station": { "type": "string", "minLength": 1 },
+        "screens": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
+      }
+    },
+
+    "customizationOption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id32" },
+        "label": { "$ref": "#/$defs/langString" },
+
+        "default": { "type": "boolean" },
+
+        "appliesTo": { "$ref": "#/$defs/appliesTo" },
+
+        "requires": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/optionConstraint" }
+        },
+        "excludes": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/optionConstraint" }
+        },
+
+        "priceDeltaMinor": { "type": "integer" },
+
+        "qty": { "$ref": "#/$defs/quantityControls" },
+
+        "itemId": { "$ref": "#/$defs/idAny" },
+        "componentId": { "$ref": "#/$defs/idAny" },
+
+        "nutritionOverrides": { "$ref": "#/$defs/nutritionOverrides" },
+        "nutritionDelta": { "$ref": "#/$defs/nutritionDelta" },
+
+        "allergensPresent": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/allergen" },
+          "uniqueItems": true
+        },
+        "allergensMayContain": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/allergen" },
+          "uniqueItems": true
+        },
+        "dietaryUnsuitable": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/dietary" },
+          "uniqueItems": true
+        },
+        "dietaryMayBeUnsuitable": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/dietary" },
+          "uniqueItems": true
+        },
+
+        "allergensPresentDelta": { "$ref": "#/$defs/allergenDelta" },
+        "allergensMayContainDelta": { "$ref": "#/$defs/allergenDelta" },
+        "dietaryUnsuitableDelta": { "$ref": "#/$defs/dietaryDelta" },
+        "dietaryMayBeUnsuitableDelta": { "$ref": "#/$defs/dietaryDelta" },
+
+        "ingredientStatement": { "$ref": "#/$defs/langString" },
+        "ingredients": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ingredient" }
+        },
+
+        "spicePercentDelta": { "type": "integer" },
+
+        "pos": { "$ref": "#/$defs/customizationOptionPos" },
+
+        "extensions": { "$ref": "#/$defs/extensions" }
+      },
+      "allOf": [
+        {
+          "$comment": "Coherence: allow selecting either a sellable item or a non-sellable component, but not both",
+          "not": { "required": ["itemId", "componentId"] }
+        }
+      ]
+    },
+
+    "customizationGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["order", "key", "title", "type", "required", "options"],
+      "properties": {
+        "order": { "type": "integer", "minimum": 1 },
+        "key": { "type": "string", "minLength": 1 },
+        "title": { "$ref": "#/$defs/langString" },
+
+        "type": { "type": "string", "enum": ["single", "multi", "quantity"] },
+        "required": { "type": "boolean" },
+
+        "minSelections": { "type": "integer", "minimum": 0 },
+        "maxSelections": { "type": "integer", "minimum": 0 },
+
+        "defaultOptionIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/id32" },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+
+        "appliesTo": { "$ref": "#/$defs/appliesTo" },
+
+        "requires": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/optionConstraint" }
+        },
+        "excludes": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/optionConstraint" }
+        },
+
+        "options": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/customizationOption" }
+        },
+
+        "pos": { "$ref": "#/$defs/customizationGroupPos" },
+
+        "extensions": { "$ref": "#/$defs/extensions" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "single" } }, "required": ["type"] },
+          "then": {
+            "$comment": "Schema-level enforcement for single groups. Remaining invariants (defaults after filtering) are linted.",
+            "properties": {
+              "minSelections": { "type": "integer", "minimum": 0, "maximum": 1 },
+              "maxSelections": { "type": "integer", "minimum": 0, "maximum": 1 },
+              "defaultOptionIds": { "type": "array", "maxItems": 1 }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "quantity" } }, "required": ["type"] },
+          "then": {
+            "$comment": "Quantity groups require qty on every option; selection is implied by qty>0 (engine). minSelections/maxSelections/defaultOptionIds are not used for quantity groups.",
+            "not": {
+              "anyOf": [
+                { "required": ["minSelections"] },
+                { "required": ["maxSelections"] },
+                { "required": ["defaultOptionIds"] }
+              ]
+            },
+            "properties": {
+              "options": {
+                "items": {
+                  "required": ["qty"],
+                  "properties": {
+                    "qty": {
+                      "type": "object",
+                      "required": ["minQty", "maxQty"],
+                      "properties": {
+                        "minQty": { "type": "integer", "minimum": 0 },
+                        "maxQty": { "type": "integer", "minimum": 1 },
+                        "defaultQty": { "type": "integer", "minimum": 0 },
+                        "pricePerUnitDeltaMinor": { "type": "integer" }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "$comment": "Non-quantity groups must not use qty on options in this schema version",
+            "properties": {
+              "options": {
+                "items": {
+                  "not": { "required": ["qty"] }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+
+    "customizationTemplate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "groups"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id32" },
+        "name": { "$ref": "#/$defs/langString" },
+        "appliesTo": { "$ref": "#/$defs/appliesTo" },
+        "groups": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/customizationGroup" }
+        },
+        "extensions": { "$ref": "#/$defs/extensions" }
+      }
+    },
+
+    "bundleItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["itemId", "quantity"],
+      "properties": {
+        "itemId": { "$ref": "#/$defs/idAny" },
+        "quantity": { "type": "integer", "minimum": 1 },
+        "notes": { "$ref": "#/$defs/langString" }
+      }
+    },
+
+    "bundleSlot": {
+      "$comment": "Guided bundle builder slot for meal deals",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "title", "minQty", "maxQty"],
+      "properties": {
+        "key": { "type": "string", "minLength": 1 },
+        "title": { "$ref": "#/$defs/langString" },
+        "minQty": { "type": "integer", "minimum": 0 },
+        "maxQty": { "type": "integer", "minimum": 1 },
+
+        "itemIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "sectionIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "itemSetIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+
+        "optionConstraints": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/optionConstraint" }
+        },
+
+        "priceDeltaMinor": { "type": "integer" }
+      },
+      "anyOf": [
+        { "required": ["itemIds"] },
+        { "required": ["sectionIds"] },
+        { "required": ["itemSetIds"] }
+      ]
+    },
+
+    "serviceCalendarWindow": {
+      "$comment": "V5 calendars support absolute and ref-based time bounds via timeWindow",
+      "allOf": [{ "$ref": "#/$defs/timeWindow" }]
+    },
+
+    "serviceCalendarException": {
+      "$comment": "Calendar-level exceptions. If closed=true, windows must be omitted. If closed=false and windows present, windows replace normal calendar windows for that date (special hours).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["date", "closed"],
+      "properties": {
+        "date": { "$ref": "#/$defs/dateISO" },
+        "closed": { "type": "boolean" },
+        "note": { "$ref": "#/$defs/langString" },
+        "windows": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/serviceCalendarWindow" }
+        }
+      },
+      "allOf": [
+        {
+          "$comment": "If closed=true, disallow windows",
+          "if": { "properties": { "closed": { "const": true } }, "required": ["closed"] },
+          "then": { "not": { "required": ["windows"] } }
+        }
+      ]
+    },
+
+    "serviceCalendar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "windows"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id32" },
+        "name": { "$ref": "#/$defs/langString" },
+        "windows": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/serviceCalendarWindow" }
+        },
+        "exceptions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/serviceCalendarException" }
+        },
+        "extensions": { "$ref": "#/$defs/extensions" }
+      }
+    },
+
+    "address": {
+      "$comment": "Address is optional and may be partial. If present, lint SHOULD require at least one non-empty field. postcode is canonical; postalCode is deprecated alias (do not use both).",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "line1": { "type": "string", "minLength": 1 },
+        "line2": { "type": "string", "minLength": 1 },
+        "city": { "type": "string", "minLength": 1 },
+        "region": { "type": "string", "minLength": 1 },
+        "postcode": { "type": "string", "minLength": 1 },
+        "postalCode": { "type": "string", "minLength": 1 },
+        "country_code": { "type": "string", "pattern": "^[A-Z]{2}$" }
+      },
+      "allOf": [
+        {
+          "$comment": "Do not allow both postcode and postalCode",
+          "not": { "required": ["postcode", "postalCode"] }
+        }
+      ]
+    },
+
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id32" },
+        "name": { "$ref": "#/$defs/langString" },
+
+        "address": { "$ref": "#/$defs/address" },
+
+        "lat": { "type": "number", "minimum": -90, "maximum": 90 },
+        "lon": { "type": "number", "minimum": -180, "maximum": 180 },
+
+        "mapsUrl": { "type": "string", "format": "uri" },
+
+        "openingCalendarId": { "$ref": "#/$defs/idAny" },
+
+        "paymentMethods": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/paymentMethod" },
+          "uniqueItems": true
+        },
+
+        "foodHygieneRating": { "$ref": "#/$defs/foodHygieneRating" },
+
+        "extensions": { "$ref": "#/$defs/extensions" }
+      }
+    },
+
+    "locationGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "locationIds"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id32" },
+        "name": { "$ref": "#/$defs/langString" },
+        "locationIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/idAny" }
+        },
+        "extensions": { "$ref": "#/$defs/extensions" }
+      }
+    },
+
+    "component": {
+      "$comment": "Canonical non-sellable component, reusable by customization options via componentId",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id32" },
+        "name": { "$ref": "#/$defs/langString" },
+        "description": { "$ref": "#/$defs/langString" },
+
+        "servingSize": { "$ref": "#/$defs/servingSize" },
+        "nutrition": { "$ref": "#/$defs/nutrition" },
+
+        "dietaryUnsuitable": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/dietary" },
+          "uniqueItems": true
+        },
+        "dietaryMayBeUnsuitable": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/dietary" },
+          "uniqueItems": true
+        },
+
+        "allergensPresent": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/allergen" },
+          "uniqueItems": true
+        },
+        "allergensMayContain": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/allergen" },
+          "uniqueItems": true
+        },
+
+        "ingredientStatement": { "$ref": "#/$defs/langString" },
+        "ingredients": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ingredient" }
+        },
+
+        "appliesTo": { "$ref": "#/$defs/appliesTo" },
+
+        "extensions": { "$ref": "#/$defs/extensions" }
+      }
+    },
+
+    "itemSet": {
+      "$comment": "Reusable eligibility sets for promotions and menus. Must not be empty by construction: require itemIds or includeTags.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id32" },
+        "name": { "$ref": "#/$defs/langString" },
+        "description": { "$ref": "#/$defs/langString" },
+
+        "itemIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true
+        },
+        "includeTags": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "excludeItemIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true
+        },
+        "excludeTags": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+
+        "appliesTo": { "$ref": "#/$defs/appliesTo" },
+        "order": { "type": "integer", "minimum": 1 },
+
+        "extensions": { "$ref": "#/$defs/extensions" }
+      },
+      "anyOf": [
+        { "required": ["itemIds"] },
+        { "required": ["includeTags"] }
+      ]
+    },
+
+    "section": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id32" },
+        "order": { "type": "integer", "minimum": 1 },
+        "name": { "$ref": "#/$defs/langString" },
+        "description": { "$ref": "#/$defs/langString" },
+        "parentId": { "$ref": "#/$defs/idAny" },
+        "icon": { "type": "string" },
+
+        "appliesTo": { "$ref": "#/$defs/appliesTo" },
+
+        "extensions": { "$ref": "#/$defs/extensions" }
+      }
+    },
+
+    "fee": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "amountMinor"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["bottleDeposit", "serviceCharge", "containerDeposit", "other"]
+        },
+        "amountMinor": { "$ref": "#/$defs/moneyMinor" },
+        "taxable": { "type": "boolean" },
+        "appliesTo": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/channel" },
+          "uniqueItems": true
+        },
+        "label": { "$ref": "#/$defs/langString" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "other" } }, "required": ["type"] },
+          "then": { "required": ["label"] }
+        }
+      ]
+    },
+
+    "menu": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id32" },
+        "name": { "$ref": "#/$defs/langString" },
+        "description": { "$ref": "#/$defs/langString" },
+        "order": { "type": "integer", "minimum": 1 },
+
+        "sectionIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true
+        },
+        "itemIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true
+        },
+        "itemSetIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true
+        },
+
+        "appliesTo": { "$ref": "#/$defs/appliesTo" },
+
+        "calendarId": { "$ref": "#/$defs/idAny" },
+        "validFrom": { "$ref": "#/$defs/dateISO" },
+        "validUntil": { "$ref": "#/$defs/dateISO" },
+        "weekPattern": { "$ref": "#/$defs/weekPattern" },
+
+        "extensions": { "$ref": "#/$defs/extensions" }
+      }
+    },
+
+    "promotionTargets": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "itemIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true
+        },
+        "sectionIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true
+        },
+        "itemSetIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true
+        },
+        "menuIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true
+        }
+      }
+    },
+
+    "promotionConditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "qualifyingItemIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true
+        },
+        "qualifyingSectionIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true
+        },
+        "qualifyingItemSetIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true
+        },
+
+        "optionConstraints": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/optionConstraint" }
+        },
+
+        "minQty": { "type": "integer", "minimum": 1 },
+        "minSpendMinor": { "$ref": "#/$defs/moneyMinor" }
+      }
+    },
+
+    "promotionRequirementGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "minQty": { "type": "integer", "minimum": 1 },
+        "maxQty": { "type": "integer", "minimum": 1 },
+
+        "itemIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "sectionIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "itemSetIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+
+        "optionConstraints": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/optionConstraint" }
+        }
+      },
+      "anyOf": [
+        { "required": ["itemIds"] },
+        { "required": ["sectionIds"] },
+        { "required": ["itemSetIds"] }
+      ]
+    },
+
+    "promotionDiscount": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["fixed", "percent", "setBundlePrice", "setItemPrice"]
+        },
+        "amountMinor": { "$ref": "#/$defs/moneyMinor" },
+        "percent": { "type": "number", "minimum": 0, "maximum": 100 },
+        "bundlePriceMinor": { "$ref": "#/$defs/moneyMinor" },
+        "itemPriceMinor": { "$ref": "#/$defs/moneyMinor" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "fixed" } }, "required": ["type"] },
+          "then": { "required": ["amountMinor"] }
+        },
+        {
+          "if": { "properties": { "type": { "const": "percent" } }, "required": ["type"] },
+          "then": { "required": ["percent"] }
+        },
+        {
+          "if": { "properties": { "type": { "const": "setBundlePrice" } }, "required": ["type"] },
+          "then": { "required": ["bundlePriceMinor"] }
+        },
+        {
+          "if": { "properties": { "type": { "const": "setItemPrice" } }, "required": ["type"] },
+          "then": { "required": ["itemPriceMinor"] }
+        }
+      ]
+    },
+
+    "promotionApplication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["appliesTo"],
+      "properties": {
+        "appliesTo": { "type": "string", "enum": ["order", "bundle", "item"] },
+        "targetItemIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "limitPerOrder": { "type": "integer", "minimum": 1 }
+      }
+    },
+
+    "promotionStacking": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "canStackWithOtherPromotions": { "type": "boolean" },
+        "exclusiveGroup": { "type": "string", "minLength": 1 }
+      }
+    },
+
+    "promotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "discount"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id32" },
+        "type": { "type": "string", "minLength": 1 },
+        "name": { "$ref": "#/$defs/langString" },
+        "description": { "$ref": "#/$defs/langString" },
+
+        "order": { "type": "integer", "minimum": 1 },
+
+        "targets": { "$ref": "#/$defs/promotionTargets" },
+        "conditions": { "$ref": "#/$defs/promotionConditions" },
+
+        "requirements": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/promotionRequirementGroup" }
+        },
+
+        "calendarId": { "$ref": "#/$defs/idAny" },
+        "validFrom": { "$ref": "#/$defs/dateISO" },
+        "validUntil": { "$ref": "#/$defs/dateISO" },
+
+        "windows": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/timeWindow" }
+        },
+
+        "appliesTo": { "$ref": "#/$defs/appliesTo" },
+
+        "discount": { "$ref": "#/$defs/promotionDiscount" },
+        "application": { "$ref": "#/$defs/promotionApplication" },
+        "stacking": { "$ref": "#/$defs/promotionStacking" },
+
+        "maxUsesPerOrder": { "type": "integer", "minimum": 1 },
+        "maxGlobalUses": { "type": "integer", "minimum": 1 },
+
+        "extensions": { "$ref": "#/$defs/extensions" }
+      },
+      "allOf": [
+        {
+          "$comment": "Promo schema conditionals: setItemPrice requires application.appliesTo=item and non-empty targetItemIds",
+          "if": {
+            "properties": {
+              "discount": {
+                "properties": { "type": { "const": "setItemPrice" } },
+                "required": ["type"]
+              }
+            },
+            "required": ["discount"]
+          },
+          "then": {
+            "required": ["application"],
+            "properties": {
+              "application": {
+                "required": ["appliesTo", "targetItemIds"],
+                "properties": { "appliesTo": { "const": "item" } }
+              }
+            }
+          }
+        },
+        {
+          "$comment": "Promo schema conditionals: setBundlePrice requires application.appliesTo=bundle",
+          "if": {
+            "properties": {
+              "discount": {
+                "properties": { "type": { "const": "setBundlePrice" } },
+                "required": ["type"]
+              }
+            },
+            "required": ["discount"]
+          },
+          "then": {
+            "required": ["application"],
+            "properties": {
+              "application": {
+                "required": ["appliesTo"],
+                "properties": { "appliesTo": { "const": "bundle" } }
+              }
+            }
+          }
+        }
+      ]
+    },
+
+    "dietaryCertification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "issuer"],
+      "properties": {
+        "type": { "type": "string", "enum": ["halal", "other"] },
+        "issuer": { "type": "string", "minLength": 1 },
+        "certificateId": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "validUntil": { "$ref": "#/$defs/dateISO" }
+      }
+    },
+
+    "rating": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["average", "count"],
+      "properties": {
+        "average": { "type": "number", "minimum": 0, "maximum": 5 },
+        "count": { "type": "integer", "minimum": 0 }
+      }
+    },
+
+    "itemPos": {
+      "$comment": "Structured POS/ops metadata (recommended). Keep deterministic IDs and routing/screen info here, not in extensions.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "recipeId": { "oneOf": [{ "type": "string", "minLength": 1 }, { "type": "integer" }] },
+        "bomNum": { "oneOf": [{ "type": "string", "minLength": 1 }, { "type": "integer" }] },
+        "screens": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "station": { "type": "string", "minLength": 1 },
+        "routingTags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "plu": { "type": "string", "minLength": 1 }
+      }
+    },
+
+    "itemOverridePatch": {
+      "$comment": "Allowed patch fields only. Merge semantics are defined by engine/lint.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": { "$ref": "#/$defs/statusString" },
+        "ordering": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "isOrderable": { "type": "boolean" },
+            "minQty": { "type": "integer", "minimum": 1 },
+            "maxQty": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "price": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["amountMinor"],
+          "properties": {
+            "amountMinor": { "$ref": "#/$defs/moneyMinor" }
+          }
+        },
+        "priceRules": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/priceRule" }
+        },
+        "priceRulesMode": { "type": "string", "enum": ["replace", "append"] },
+
+        "customizationTemplates": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "addIds": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/idAny" },
+              "uniqueItems": true
+            },
+            "removeIds": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/idAny" },
+              "uniqueItems": true
+            }
+          }
+        },
+
+        "customizations": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "addGroups": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/customizationGroup" }
+            },
+            "removeGroupKeys": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 },
+              "uniqueItems": true
+            }
+          }
+        },
+
+        "bundleSlots": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "addSlots": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/bundleSlot" }
+            },
+            "removeSlotKeys": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 },
+              "uniqueItems": true
+            }
+          }
+        }
+      }
+    },
+
+    "itemOverride": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["appliesTo", "patch"],
+      "properties": {
+        "appliesTo": { "$ref": "#/$defs/appliesTo" },
+        "patch": { "$ref": "#/$defs/itemOverridePatch" }
+      }
+    },
+
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id32" },
+
+        "posId": { "type": "string" },
+        "sku": { "type": "string" },
+
+        "pos": { "$ref": "#/$defs/itemPos" },
+
+        "slugs": {
+          "type": "object",
+          "patternProperties": {
+            "^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        },
+
+        "name": { "$ref": "#/$defs/langString" },
+        "friendlyName": {
+          "$comment": "Optional per-item short UI label (non-localized)",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "description": { "$ref": "#/$defs/langString" },
+
+        "order": { "type": "integer", "minimum": 1 },
+
+        "media": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/mediaEntry" }
+        },
+
+        "categoryId": { "$ref": "#/$defs/idAny" },
+
+        "status": { "$ref": "#/$defs/statusString" },
+
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "badges": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+
+        "spicePercent": { "type": "integer", "enum": [0, 20, 40, 60, 80, 100] },
+
+        "ageRestricted": { "type": "boolean" },
+        "alcoholByVolume": { "type": "number", "minimum": 0 },
+
+        "price": { "$ref": "#/$defs/price" },
+        "priceRules": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/priceRule" }
+        },
+
+        "servingSize": { "$ref": "#/$defs/servingSize" },
+        "nutrition": { "$ref": "#/$defs/nutrition" },
+
+        "dietaryUnsuitable": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/dietary" },
+          "uniqueItems": true
+        },
+        "dietaryMayBeUnsuitable": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/dietary" },
+          "uniqueItems": true
+        },
+        "dietaryCertifications": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/dietaryCertification" }
+        },
+
+        "allergensPresent": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/allergen" },
+          "uniqueItems": true
+        },
+        "allergensMayContain": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/allergen" },
+          "uniqueItems": true
+        },
+
+        "ingredientStatement": { "$ref": "#/$defs/langString" },
+        "ingredients": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ingredient" }
+        },
+
+        "calendarId": { "$ref": "#/$defs/idAny" },
+        "availabilityOverrides": { "$ref": "#/$defs/availabilityOverrides" },
+
+        "appliesTo": { "$ref": "#/$defs/appliesTo" },
+
+        "ordering": { "$ref": "#/$defs/ordering" },
+
+        "bundles": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/bundleItem" }
+        },
+
+        "bundleSlots": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/bundleSlot" }
+        },
+
+        "customizationTemplateIds": {
+          "$comment": "Ordered, unique template references",
+          "type": "array",
+          "items": { "$ref": "#/$defs/idAny" },
+          "uniqueItems": true
+        },
+
+        "customizations": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/customizationGroup" }
+        },
+
+        "overrides": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/itemOverride" }
+        },
+
+        "recommended": { "type": "boolean" },
+        "rating": { "$ref": "#/$defs/rating" },
+
+        "extensions": { "$ref": "#/$defs/extensions" }
+      }
+    },
+
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fieldPath", "method", "confidence"],
+      "properties": {
+        "fieldPath": { "type": "string", "minLength": 1 },
+        "method": { "type": "string", "enum": ["human", "ai", "import"] },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

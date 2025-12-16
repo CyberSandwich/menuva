@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menuva V5 Viewer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070707;
+      --panel: #0f0f10;
+      --muted: #9ea0a6;
+      --accent: #ffffff;
+      --accent-soft: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.06);
+      --success: #4ade80;
+      --error: #f87171;
+      --warning: #facc15;
+      --chip: rgba(255, 255, 255, 0.12);
+      --shadow: 0 20px 80px rgba(0, 0, 0, 0.35);
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--accent);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0 18px 48px;
+      max-width: 1400px;
+      margin-inline: auto;
+      background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.04), transparent 30%),
+                  radial-gradient(circle at 80% 0%, rgba(255,255,255,0.04), transparent 35%),
+                  var(--bg);
+    }
+
+    header {
+      padding: 28px 0 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 38px);
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      max-width: 920px;
+      line-height: 1.5;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    @media (max-width: 960px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .upload-card {
+      padding: 18px;
+      border: 1px dashed var(--border);
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+      text-align: center;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .upload-card:hover, .upload-card.dragging {
+      border-color: rgba(255,255,255,0.16);
+      background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+      transform: translateY(-1px);
+    }
+
+    .upload-card input { display: none; }
+
+    .upload-actions {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    button, .ghost-btn {
+      appearance: none;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #050505;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 14px;
+    }
+
+    button:hover, .ghost-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(255,255,255,0.08); }
+
+    .ghost-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      box-shadow: none;
+    }
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .status {
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-height: 78px;
+    }
+
+    .status .label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .status .value { font-size: 16px; font-weight: 700; }
+
+    .chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { padding: 6px 10px; border-radius: 999px; background: var(--chip); color: var(--accent); font-size: 12px; border: 1px solid var(--border); }
+
+    .divider { height: 1px; background: var(--border); margin: 16px 0; }
+
+    h2 { margin: 0 0 12px; font-size: 18px; letter-spacing: -0.01em; }
+    h3 { margin: 0 0 8px; font-size: 15px; letter-spacing: -0.01em; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .error-list, .lint-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+    .error-item { background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.3); color: #fecdd3; padding: 10px 12px; border-radius: 12px; }
+
+    details {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+    }
+    details[open] { background: rgba(255,255,255,0.04); }
+    details summary { cursor: pointer; font-weight: 600; list-style: none; }
+    details summary::-webkit-details-marker { display: none; }
+
+    .item-row {
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      margin-top: 8px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .muted { color: var(--muted); font-size: 13px; }
+    code { background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 8px; }
+    pre {
+      background: #0a0a0b;
+      border: 1px solid var(--border);
+      padding: 14px;
+      border-radius: 14px;
+      overflow: auto;
+      max-height: 460px;
+      color: #e2e8f0;
+    }
+
+    .badge {
+      padding: 4px 8px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .success { background: rgba(74, 222, 128, 0.12); color: #bbf7d0; border: 1px solid rgba(74,222,128,0.3); }
+    .danger { background: rgba(248, 113, 113, 0.12); color: #fecdd3; border: 1px solid rgba(248,113,113,0.3); }
+    .info { background: rgba(255,255,255,0.08); color: #e2e8f0; border: 1px solid var(--border); }
+
+    .toolbar { display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-bottom: 12px; }
+    .pill { background: var(--chip); border-radius: 999px; padding: 8px 12px; display: inline-flex; align-items: center; gap: 6px; }
+
+    .entity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+    .entity-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; padding: 10px; }
+
+    .small { font-size: 12px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Menuva V5 JSON Viewer & Validator</h1>
+    <p>A monochrome, spacious workspace to validate Menuva V5 JSON files and explore every part of the menu hierarchy with human-friendly structure.</p>
+  </header>
+
+  <main class="layout">
+    <section class="panel" aria-label="Upload and validation">
+      <div id="drop-zone" class="upload-card" tabindex="0" role="button" aria-label="Upload Menuva JSON">
+        <div>
+          <div style="font-size:52px;">⬆️</div>
+          <h3 style="margin:6px 0 4px;">Drop your Menuva V5 file</h3>
+          <p class="muted" style="margin:0;">Only .json files are accepted. We validate both JSON syntax and the provided V5 schema.</p>
+        </div>
+        <div class="upload-actions">
+          <button id="browse">Choose file</button>
+          <span class="ghost-btn" id="sample">Load sample</span>
+        </div>
+        <input id="file-input" type="file" accept="application/json,.json" />
+      </div>
+
+      <div class="status-grid">
+        <div class="status">
+          <span class="label">JSON parsing</span>
+          <span class="value" id="parse-status">Waiting for file…</span>
+          <span class="muted" id="parse-detail"></span>
+        </div>
+        <div class="status">
+          <span class="label">Schema validation</span>
+          <span class="value" id="schema-status">Schema loading…</span>
+          <span class="muted" id="schema-detail"></span>
+        </div>
+        <div class="status">
+          <span class="label">File info</span>
+          <span class="value" id="file-name">No file</span>
+          <span class="muted" id="file-meta">—</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <h3>Issues</h3>
+      <ul class="error-list" id="error-list"></ul>
+      <ul class="error-list" id="schema-error-list"></ul>
+    </section>
+
+    <section class="panel" aria-live="polite" aria-label="Results">
+      <div class="toolbar">
+        <div class="pill"><strong>Status:</strong> <span id="overall-status">Waiting for upload</span></div>
+        <div class="pill" id="count-pill">—</div>
+      </div>
+
+      <div class="grid" id="overview"></div>
+      <div class="divider"></div>
+
+      <h2>Menu hierarchy</h2>
+      <div id="hierarchy"></div>
+
+      <div class="divider"></div>
+      <h2>Entity coverage</h2>
+      <div id="coverage"></div>
+
+      <div class="divider"></div>
+      <h2>Raw JSON</h2>
+      <pre id="raw-json">Upload a file to view its contents.</pre>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/ajv@8/dist/ajv2020.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ajv-formats@2/dist/ajv-formats.min.js"></script>
+  <script>
+    const state = { fileName: null, fileSize: 0, json: null, schemaReady: false, validate: null };
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+    const browseBtn = document.getElementById('browse');
+    const sampleBtn = document.getElementById('sample');
+
+    const parseStatus = document.getElementById('parse-status');
+    const parseDetail = document.getElementById('parse-detail');
+    const schemaStatus = document.getElementById('schema-status');
+    const schemaDetail = document.getElementById('schema-detail');
+    const fileNameEl = document.getElementById('file-name');
+    const fileMetaEl = document.getElementById('file-meta');
+    const errorList = document.getElementById('error-list');
+    const schemaErrorList = document.getElementById('schema-error-list');
+    const overallStatus = document.getElementById('overall-status');
+    const countPill = document.getElementById('count-pill');
+    const overviewGrid = document.getElementById('overview');
+    const hierarchyEl = document.getElementById('hierarchy');
+    const coverageEl = document.getElementById('coverage');
+    const rawJson = document.getElementById('raw-json');
+
+    const samplePayload = {
+      schemaVersion: 5,
+      id: "demo_outlet",
+      country_code: "GB",
+      slug: "demo-outlet",
+      currency: "GBP",
+      timezone: "Europe/London",
+      languages: ["en-GB"],
+      fallbackLanguage: "en-GB",
+      sections: [{ id: "mains", name: { "en-GB": "Mains" } }],
+      items: [{ id: "A1", name: { "en-GB": "Soup of the Day" }, categoryId: "mains", price: { amountMinor: 695 } }],
+      menus: [{ id: "core", name: { "en-GB": "Core" }, sectionIds: ["mains"] }]
+    };
+
+    async function initValidator() {
+      try {
+        const schema = await fetch('schema-v5.json').then(res => res.json());
+        const ajv = new Ajv2020({ allErrors: true, strict: false });
+        addFormats(ajv);
+        state.validate = ajv.compile(schema);
+        state.schemaReady = true;
+        schemaStatus.textContent = 'Ready';
+        schemaStatus.parentElement.classList.remove('danger');
+        schemaDetail.textContent = 'V5 schema loaded from schema-v5.json';
+      } catch (err) {
+        schemaStatus.textContent = 'Failed to load schema';
+        schemaDetail.textContent = err.message;
+        schemaStatus.parentElement.classList.add('danger');
+      }
+    }
+
+    function setStatus(el, detailEl, status, detail, isError = false) {
+      const card = el.parentElement;
+      card.classList.remove('danger', 'success');
+      el.textContent = status;
+      detailEl.textContent = detail || '';
+      if (isError) {
+        card.classList.add('danger');
+      } else if (/ready|pass/i.test(status)) {
+        card.classList.add('success');
+      }
+    }
+
+    function clearLists() {
+      errorList.innerHTML = '';
+      schemaErrorList.innerHTML = '';
+    }
+
+    function renderError(list, errors) {
+      list.innerHTML = '';
+      if (!errors || !errors.length) return;
+      errors.forEach(err => {
+        const li = document.createElement('li');
+        li.className = 'error-item';
+        li.textContent = err;
+        list.appendChild(li);
+      });
+    }
+
+    function getLangText(map = {}, fallback = '') {
+      const entries = Object.entries(map);
+      if (!entries.length) return fallback;
+      return entries[0][1];
+    }
+
+    function renderOverview(data) {
+      overviewGrid.innerHTML = '';
+      if (!data) return;
+
+      const cards = [
+        { title: 'Brand', rows: [ ['ID', data.id], ['Slug', data.slug], ['Country', data.country_code], ['Currency', data.currency], ['Timezone', data.timezone] ] },
+        { title: 'Languages', rows: [ ['Languages', (data.languages || []).join(', ')], ['Fallback', data.fallbackLanguage], ['Name', getLangText(data.name, '—')], ['Description', getLangText(data.description, '—')] ] },
+        { title: 'Counts', rows: [ ['Items', (data.items || []).length], ['Sections', (data.sections || []).length], ['Menus', (data.menus || []).length], ['Custom templates', (data.customizationTemplates || []).length] ] },
+        { title: 'Availability', rows: [ ['Service calendars', (data.serviceCalendars || []).length], ['Locations', (data.locations || []).length], ['Location groups', (data.locationGroups || []).length], ['Offers', (data.promotions || []).length] ] }
+      ];
+
+      cards.forEach(card => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        const h = document.createElement('h3');
+        h.textContent = card.title;
+        div.appendChild(h);
+        card.rows.forEach(([label, value]) => {
+          const row = document.createElement('div');
+          row.style.display = 'flex';
+          row.style.justifyContent = 'space-between';
+          row.style.marginBottom = '6px';
+          const l = document.createElement('span');
+          l.className = 'muted';
+          l.textContent = label;
+          const v = document.createElement('span');
+          v.textContent = value === undefined || value === '' ? '—' : value;
+          row.append(l, v);
+          div.appendChild(row);
+        });
+        overviewGrid.appendChild(div);
+      });
+    }
+
+    function createSectionTree(sections = []) {
+      const byParent = new Map();
+      sections.forEach(sec => {
+        const pid = sec.parentId || '__root';
+        if (!byParent.has(pid)) byParent.set(pid, []);
+        byParent.get(pid).push(sec);
+      });
+      return byParent;
+    }
+
+    function renderHierarchy(data) {
+      hierarchyEl.innerHTML = '';
+      if (!data) return;
+
+      const items = data.items || [];
+      const sections = data.sections || [];
+      const byParent = createSectionTree(sections);
+      const sectionLookup = Object.fromEntries(sections.map(s => [s.id, s]));
+
+      const sectionBlock = document.createElement('div');
+      const title = document.createElement('h3');
+      title.textContent = 'Sections & items';
+      sectionBlock.appendChild(title);
+
+      function renderSectionList(parentId, container, depth = 0) {
+        (byParent.get(parentId) || []).sort((a, b) => (a.order || 0) - (b.order || 0)).forEach(sec => {
+          const details = document.createElement('details');
+          if (depth < 2) details.open = true;
+          const summary = document.createElement('summary');
+          summary.textContent = `${getLangText(sec.name, sec.id)} ${sec.order ? `(order ${sec.order})` : ''}`;
+          summary.appendChild(makeChip(sec.id));
+          details.appendChild(summary);
+
+          const itemList = document.createElement('div');
+          const sectionItems = items.filter(i => i.categoryId === sec.id);
+          if (sectionItems.length) {
+            sectionItems.sort((a, b) => (a.order || 0) - (b.order || 0)).forEach(item => itemList.appendChild(renderItem(item)));
+          }
+          const childrenHolder = document.createElement('div');
+          renderSectionList(sec.id, childrenHolder, depth + 1);
+          if (!sectionItems.length && !childrenHolder.childNodes.length) {
+            const empty = document.createElement('div');
+            empty.className = 'muted';
+            empty.textContent = 'No items in this section yet.';
+            itemList.appendChild(empty);
+          }
+
+          details.append(itemList, childrenHolder);
+          container.appendChild(details);
+        });
+      }
+
+      renderSectionList('__root', sectionBlock);
+
+      // Items without a section
+      const orphanItems = items.filter(i => !i.categoryId || !sectionLookup[i.categoryId]);
+      if (orphanItems.length) {
+        const orphanDetails = document.createElement('details');
+        orphanDetails.open = true;
+        const summary = document.createElement('summary');
+        summary.textContent = 'Uncategorised items';
+        orphanDetails.appendChild(summary);
+        orphanItems.forEach(item => orphanDetails.appendChild(renderItem(item)));
+        sectionBlock.appendChild(orphanDetails);
+      }
+
+      hierarchyEl.appendChild(sectionBlock);
+
+      // Menus
+      const menuBlock = document.createElement('div');
+      const menuTitle = document.createElement('h3');
+      menuTitle.textContent = 'Menus';
+      menuBlock.appendChild(menuTitle);
+      (data.menus || []).forEach(menu => {
+        const det = document.createElement('details');
+        det.open = true;
+        const summary = document.createElement('summary');
+        summary.textContent = `${getLangText(menu.name, menu.id)}${menu.order ? ` (order ${menu.order})` : ''}`;
+        summary.appendChild(makeChip(menu.id));
+        det.appendChild(summary);
+
+        const body = document.createElement('div');
+        body.className = 'muted';
+        const lines = [];
+        if (menu.sectionIds) lines.push(`Sections: ${menu.sectionIds.join(', ')}`);
+        if (menu.itemIds) lines.push(`Explicit items: ${menu.itemIds.join(', ')}`);
+        if (menu.itemSetIds) lines.push(`Item sets: ${menu.itemSetIds.join(', ')}`);
+        if (!lines.length) lines.push('Includes all items (no sectionIds/itemIds provided).');
+        body.innerHTML = lines.join('<br>');
+        det.appendChild(body);
+        menuBlock.appendChild(det);
+      });
+      if (!(data.menus || []).length) {
+        const empty = document.createElement('div');
+        empty.className = 'muted';
+        empty.textContent = 'No menus defined. Items will not be grouped into menus.';
+        menuBlock.appendChild(empty);
+      }
+
+      hierarchyEl.appendChild(menuBlock);
+    }
+
+    function renderItem(item) {
+      const row = document.createElement('div');
+      row.className = 'item-row';
+      const left = document.createElement('div');
+      const title = document.createElement('div');
+      title.innerHTML = `<strong>${getLangText(item.name, item.id)}</strong> ${item.order ? `<span class="muted">(order ${item.order})</span>` : ''}`;
+      const meta = document.createElement('div');
+      meta.className = 'muted';
+      const price = item.price?.amountMinor !== undefined ? `${(item.price.amountMinor/100).toFixed(2)} ${item.price.currency || ''}` : 'Price not set';
+      const status = item.status || 'available';
+      meta.textContent = `ID ${item.id} • ${price} • Status: ${status}`;
+      left.append(title, meta);
+
+      const tags = document.createElement('div');
+      tags.className = 'chip-row';
+      (item.tags || []).slice(0, 4).forEach(tag => tags.appendChild(makeChip(tag)));
+      (item.badges || []).slice(0, 2).forEach(tag => tags.appendChild(makeChip(tag)));
+      if ((item.dietaryUnsuitable || []).length) tags.appendChild(makeChip(`Unsuitable: ${(item.dietaryUnsuitable || []).join(', ')}`));
+      if ((item.allergensPresent || []).length) tags.appendChild(makeChip(`Allergens: ${(item.allergensPresent || []).join(', ')}`));
+
+      const right = document.createElement('div');
+      right.style.textAlign = 'right';
+      right.appendChild(tags);
+
+      row.append(left, right);
+      return row;
+    }
+
+    function renderCoverage(data) {
+      coverageEl.innerHTML = '';
+      if (!data) return;
+      const entities = [
+        ['Service calendars', data.serviceCalendars],
+        ['Locations', data.locations],
+        ['Location groups', data.locationGroups],
+        ['Customization templates', data.customizationTemplates],
+        ['Item sets', data.itemSets],
+        ['Promotions', data.promotions],
+        ['Components', data.components],
+        ['Fees', data.fees],
+        ['Overrides per item', flattenOverrides(data.items)]
+      ];
+
+      const grid = document.createElement('div');
+      grid.className = 'entity-grid';
+      entities.forEach(([label, value]) => {
+        const card = document.createElement('div');
+        card.className = 'entity-card';
+        const title = document.createElement('div');
+        title.innerHTML = `<strong>${label}</strong>`;
+        const count = Array.isArray(value) ? value.length : (typeof value === 'object' && value ? Object.keys(value).length : 0);
+        const badge = document.createElement('div');
+        badge.className = 'badge info';
+        badge.textContent = `${count} entr${count === 1 ? 'y' : 'ies'}`;
+        const content = document.createElement('div');
+        content.className = 'small';
+        if (Array.isArray(value) && value.length) {
+          const sample = value.slice(0, 3).map(v => v.id || v.name || '—').join(', ');
+          content.textContent = `Sample: ${sample}`;
+        } else {
+          content.textContent = 'No entries';
+        }
+        card.append(title, badge, content);
+        grid.appendChild(card);
+      });
+      coverageEl.appendChild(grid);
+
+      const explorerTitle = document.createElement('h3');
+      explorerTitle.textContent = 'Top-level explorer';
+      explorerTitle.style.marginTop = '14px';
+      coverageEl.appendChild(explorerTitle);
+
+      Object.entries(data).forEach(([key, value]) => {
+        const det = document.createElement('details');
+        det.open = false;
+        const summary = document.createElement('summary');
+        const descriptor = Array.isArray(value)
+          ? `${value.length} entr${value.length === 1 ? 'y' : 'ies'}`
+          : (value && typeof value === 'object') ? 'object' : typeof value;
+        summary.textContent = `${key} — ${descriptor}`;
+        det.appendChild(summary);
+        const pre = document.createElement('pre');
+        pre.textContent = JSON.stringify(value, null, 2);
+        det.appendChild(pre);
+        coverageEl.appendChild(det);
+      });
+    }
+
+    function flattenOverrides(items = []) {
+      return items.flatMap(i => i.overrides || []);
+    }
+
+    function makeChip(text) {
+      const span = document.createElement('span');
+      span.className = 'chip';
+      span.textContent = text;
+      return span;
+    }
+
+    function renderRaw(data) {
+      rawJson.textContent = data ? JSON.stringify(data, null, 2) : 'Upload a file to view its contents.';
+    }
+
+    function updateCountPill(data) {
+      if (!data) {
+        countPill.textContent = '0 entities';
+        return;
+      }
+      const counts = [
+        ['items', data.items?.length || 0],
+        ['sections', data.sections?.length || 0],
+        ['menus', data.menus?.length || 0]
+      ];
+      countPill.textContent = counts.map(([k, v]) => `${v} ${k}`).join(' • ');
+    }
+
+    function handleParsed(data) {
+      state.json = data;
+      setStatus(parseStatus, parseDetail, 'Ready', 'Valid JSON file');
+      renderOverview(data);
+      renderHierarchy(data);
+      renderCoverage(data);
+      renderRaw(data);
+      updateCountPill(data);
+    }
+
+    function showOverall(okParse, okSchema) {
+      if (!okParse) {
+        overallStatus.textContent = 'Waiting for valid JSON…';
+        return;
+      }
+      if (okSchema) {
+        overallStatus.textContent = 'Valid Menuva V5 file';
+        overallStatus.parentElement.classList.add('success');
+      } else {
+        overallStatus.textContent = 'JSON parsed — fix schema issues';
+        overallStatus.parentElement.classList.remove('success');
+      }
+    }
+
+    async function validateSchema(data) {
+      if (!state.schemaReady || !state.validate) return { valid: false, errors: ['Schema not ready'] };
+      const valid = state.validate(data);
+      return { valid, errors: state.validate.errors };
+    }
+
+    function formatAjvErrors(errors = []) {
+      if (!errors) return [];
+      return errors.map(err => `${err.instancePath || '/'} ${err.message || ''}`.trim());
+    }
+
+    async function processText(text, name = 'uploaded.json', size = 0) {
+      clearLists();
+      try {
+        const parsed = JSON.parse(text);
+        state.fileName = name;
+        state.fileSize = size;
+        fileNameEl.textContent = name;
+        fileMetaEl.textContent = `${(size/1024).toFixed(1)} KB`;
+        handleParsed(parsed);
+        const { valid, errors } = await validateSchema(parsed);
+        if (valid) {
+          setStatus(schemaStatus, schemaDetail, 'Pass', 'Schema validation succeeded');
+          renderError(schemaErrorList, []);
+        } else {
+          setStatus(schemaStatus, schemaDetail, 'Failed', 'See schema issues below', true);
+          renderError(schemaErrorList, formatAjvErrors(errors));
+        }
+        setStatus(parseStatus, parseDetail, 'Ready', 'Valid JSON file');
+        showOverall(true, valid);
+      } catch (err) {
+        setStatus(parseStatus, parseDetail, 'Invalid JSON', err.message, true);
+        setStatus(schemaStatus, schemaDetail, 'Not validated', 'Fix JSON parsing first');
+        renderError(errorList, [err.message]);
+        renderRaw(null);
+        renderOverview(null);
+        renderHierarchy(null);
+        renderCoverage(null);
+        updateCountPill(null);
+        showOverall(false, false);
+      }
+    }
+
+    function handleFiles(files) {
+      if (!files || !files.length) return;
+      const file = files[0];
+      if (!file.name.toLowerCase().endsWith('.json')) {
+        renderError(errorList, ['Only .json files are allowed.']);
+        setStatus(parseStatus, parseDetail, 'Rejected', 'Please upload a JSON file', true);
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = e => processText(e.target.result, file.name, file.size);
+      reader.readAsText(file);
+    }
+
+    dropZone.addEventListener('dragover', e => {
+      e.preventDefault();
+      dropZone.classList.add('dragging');
+    });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragging'));
+    dropZone.addEventListener('drop', e => {
+      e.preventDefault();
+      dropZone.classList.remove('dragging');
+      handleFiles(e.dataTransfer.files);
+    });
+    dropZone.addEventListener('click', () => fileInput.click());
+    dropZone.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') fileInput.click(); });
+
+    fileInput.addEventListener('change', e => handleFiles(e.target.files));
+    browseBtn.addEventListener('click', () => fileInput.click());
+    sampleBtn.addEventListener('click', () => processText(JSON.stringify(samplePayload, null, 2), 'sample.json', 0));
+
+    initValidator();
+  </script>
+</body>
+</html>
