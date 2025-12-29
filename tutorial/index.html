@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Menuva – iOS Tutorial</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text-main: #111111;
+      --text-muted: #555555;
+      --accent: #12b3a8;
+      --border-subtle: #e0e0e5;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Avenir", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      max-width: 760px;
+      width: 100%;
+      background-color: var(--card-bg);
+      border-radius: 18px;
+      padding: 32px 40px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+      border: 1px solid var(--border-subtle);
+    }
+
+    header { margin-bottom: 20px; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(18, 179, 168, 0.06);
+      color: var(--accent);
+      border: 1px solid rgba(18, 179, 168, 0.18);
+      margin-bottom: 10px;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    h1 {
+      margin: 0 0 4px;
+      font-weight: 600;
+      font-size: clamp(26px, 4vw, 30px);
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 0 0 8px;
+      font-size: 15px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .meta {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .meta span + span::before {
+      content: "•";
+      margin: 0 6px;
+      color: var(--border-subtle);
+    }
+
+    main {
+      margin-top: 10px;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    main p { margin: 0 0 14px; }
+
+    .section {
+      padding-top: 18px;
+      margin-top: 18px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .section:first-of-type {
+      border-top: none;
+      padding-top: 4px;
+      margin-top: 4px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .section-number {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--accent);
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+    }
+
+    .clause-list {
+      margin: 0 0 6px 0;
+      padding-left: 1.6em;
+      list-style: none;
+    }
+
+    .clause-list li { margin-bottom: 8px; }
+
+    .clause-list.alpha {
+      list-style-type: lower-alpha;
+      padding-left: 1.5em;
+    }
+
+    .note {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .callout {
+      border: 1px solid rgba(18, 179, 168, 0.18);
+      background: rgba(18, 179, 168, 0.06);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin: 12px 0 14px;
+      color: var(--text-main);
+    }
+
+    footer {
+      margin-top: 22px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(18, 179, 168, 0.35);
+      padding-bottom: 1px;
+    }
+
+    a:hover,
+    a:focus-visible { border-bottom-color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .page { padding: 16px; }
+      .card { padding: 22px 18px 24px; border-radius: 16px; }
+      footer { margin-top: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <article class="card" aria-labelledby="tutorial-heading">
+      <header>
+        <div class="badge" aria-hidden="true">
+          <span class="badge-dot"></span>
+          <span>Tutorial</span>
+        </div>
+        <h1 id="tutorial-heading">Menuva iOS Tutorial</h1>
+        <p class="subtitle">How to personalize, browse menus, and place an order</p>
+        <p class="meta">
+          <span>Last updated: 29 December 2025</span>
+        </p>
+      </header>
+
+      <main>
+        <!-- Getting started -->
+        <section class="section" aria-labelledby="section-1-title">
+          <div class="section-header">
+            <span class="section-number">1.</span>
+            <h2 id="section-1-title" class="section-title">Getting started</h2>
+          </div>
+
+          <ol class="clause-list">
+            <li>
+              <strong>1.1</strong>
+              Menuva does not require a login. You can use the app immediately after onboarding.
+            </li>
+            <li>
+              <strong>1.2</strong>
+              You must accept both the Terms and Conditions and the Privacy Policy to proceed:
+              <ol class="clause-list alpha">
+                <li><a href="https://Menuva.co.uk/terms">Menuva.co.uk/terms</a></li>
+                <li><a href="https://Menuva.co.uk/privacy">Menuva.co.uk/privacy</a></li>
+              </ol>
+            </li>
+            <li>
+              <strong>1.3</strong>
+              You cannot continue until both checkboxes are selected.
+            </li>
+          </ol>
+        </section>
+
+        <!-- Personalization -->
+        <section class="section" aria-labelledby="section-2-title">
+          <div class="section-header">
+            <span class="section-number">2.</span>
+            <h2 id="section-2-title" class="section-title">Personalization</h2>
+          </div>
+
+          <p>
+            During onboarding (and later in Settings), you can tailor Menuva to how you read menus and make choices.
+          </p>
+
+          <ol class="clause-list">
+            <li>
+              <strong>2.1 Language</strong><br>
+              Switch between English and Chinese. For the current five-venue pilot, Menuva supports English and Chinese only.
+            </li>
+
+            <li>
+              <strong>2.2 Display currency</strong><br>
+              Choose from 150+ currencies, with popular currencies pinned at the top. The default is EUR.
+              <div class="callout">
+                <strong>Important:</strong> Avoid selecting GBP. Venue prices are shown in GBP by default, and the currency setting is used for conversion when you tap a price later in the menu
+              </div>
+            </li>
+
+            <li>
+              <strong>2.3 Appearance</strong><br>
+              Select Light mode or Dark mode.
+            </li>
+
+            <li>
+              <strong>2.4 Item attributes</strong><br>
+              Choose which nutrition fields you want displayed (where available), such as calories, fat, carbohydrates, sugars, fiber, protein, and salt.
+            </li>
+
+            <li>
+              <strong>2.5 Content toggles</strong><br>
+              You can choose whether to show item images and whether to show item descriptions.
+              <p class="note">
+                Note: Not all items have images or descriptions. We aim to keep menu data as complete and accurate as possible.
+              </p>
+            </li>
+
+            <li>
+              <strong>2.6 Font size</strong><br>
+              Menuva uses iOS Dynamic Type. To increase or decrease text size, go to iOS Settings and adjust Dynamic Type
+              (either for Menuva specifically, or system-wide). If your device is set to a larger font, Menuva will automatically match it.
+            </li>
+          </ol>
+        </section>
+
+        <!-- Dietary preferences and allergens -->
+        <section class="section" aria-labelledby="section-3-title">
+          <div class="section-header">
+            <span class="section-number">3.</span>
+            <h2 id="section-3-title" class="section-title">Dietary preferences and allergens</h2>
+          </div>
+
+          <ol class="clause-list">
+            <li>
+              <strong>3.1 Dietary preferences</strong><br>
+              Select dietary preferences that matter to you. Some preferences automatically map to allergens.
+              For example, selecting dairy-free will pre-select milk.
+              <p class="note">
+                Some linkages are fixed for safety and consistency. When a dietary preference auto-selects an allergen, you cannot deselect the linked allergen.
+              </p>
+            </li>
+
+            <li>
+              <strong>3.2 Allergens (UK14)</strong><br>
+              Menuva supports the UK14 regulated allergens. Your selections help filter and label items, grouping them as:
+              <ol class="clause-list alpha">
+                <li><strong>Suitable</strong></li>
+                <li><strong>Contains your restrictions</strong></li>
+                <li><strong>May contain your restrictions</strong></li>
+              </ol>
+            </li>
+
+            <li>
+              <strong>3.3 Missing data and safety defaults</strong><br>
+              Some items may not include allergen or dietary data. If you have any restrictions selected, items with missing data are marked as
+              <strong>May contain your restrictions</strong> as a precaution.
+            </li>
+          </ol>
+        </section>
+
+        <!-- Home screen -->
+        <section class="section" aria-labelledby="section-4-title">
+          <div class="section-header">
+            <span class="section-number">4.</span>
+            <h2 id="section-4-title" class="section-title">Home screen</h2>
+          </div>
+
+          <ol class="clause-list">
+            <li>
+              <strong>4.1 Quick actions</strong><br>
+              The home screen includes:
+              <ol class="clause-list alpha">
+                <li>a Feedback button for comments and issues</li>
+                <li>a Tutorial button (top left)</li>
+                <li>a Settings button (top right)</li>
+              </ol>
+            </li>
+
+            <li>
+              <strong>4.2 Map view</strong><br>
+              Tap the map to enter the map view. If you are not on campus, use the Warwick campus button to recenter on campus.
+              Use the rotating arrow button to recenter on your current location.
+            </li>
+
+            <li>
+              <strong>4.3 Venue list and search</strong><br>
+              At the bottom, you will see a search bar and a list of venues sorted by distance.
+              Open venues are prioritized so they appear more prominently when available.
+              You can also access search directly from the home screen.
+            </li>
+          </ol>
+        </section>
+
+        <!-- Venue home -->
+        <section class="section" aria-labelledby="section-5-title">
+          <div class="section-header">
+            <span class="section-number">5.</span>
+            <h2 id="section-5-title" class="section-title">Venue home, hours, and directions</h2>
+          </div>
+
+          <ol class="clause-list">
+            <li>
+              <strong>5.1 Opening status</strong><br>
+              When you select a venue (from the map or venue list), you will see whether it is open or closed and, if open, the time it is open until.
+              You can also view weekly opening and closing times.
+            </li>
+
+            <li>
+              <strong>5.2 Directions</strong><br>
+              Use the Directions button to open Apple Maps for navigation.
+              You can also use the location icon to recenter the map to your current position while exploring nearby areas.
+            </li>
+
+            <li>
+              <strong>5.3 Time Travel</strong><br>
+              Under the “Open until …” status, the Time Travel option lets you view the menu at a specific date and time.
+              This is especially useful for venues like District, where menus change daily on a biweekly rota.
+            </li>
+
+            <li>
+              <strong>5.4 Supported venues</strong><br>
+              Current pilot venues:
+              <ol class="clause-list alpha">
+                <li>Coffee Lab @ Oculus</li>
+                <li>Coffee Lab @ IBRB</li>
+                <li>Coffee Lab @ Social Sciences</li>
+                <li>Coffee Lab @ Library</li>
+                <li>District @ Warwick Business School</li>
+              </ol>
+            </li>
+          </ol>
+        </section>
+
+        <!-- Browsing the menu -->
+        <section class="section" aria-labelledby="section-6-title">
+          <div class="section-header">
+            <span class="section-number">6.</span>
+            <h2 id="section-6-title" class="section-title">Browsing the menu</h2>
+          </div>
+
+          <ol class="clause-list">
+            <li>
+              <strong>6.1 Images</strong><br>
+              When available, tap an item image to view it full screen.
+            </li>
+
+            <li>
+              <strong>6.2 Price conversion</strong><br>
+              Tap a price to convert it into your selected display currency.
+            </li>
+
+            <li>
+              <strong>6.3 Sorting</strong><br>
+              Use the Sort button (bottom right) to change how items are ordered, such as by name, price, or nutrition fields (for example, protein or fat).
+            </li>
+
+            <li>
+              <strong>6.4 Item attributes display</strong><br>
+              If you selected item attributes (like calories) during personalization, those values will appear on items where data is available,
+              typically above the item name.
+            </li>
+
+            <li>
+              <strong>6.5 Collapsible subcategories</strong><br>
+              Some sections include subcategories you can collapse or expand to reduce clutter.
+            </li>
+          </ol>
+        </section>
+
+        <!-- Adding items and editing -->
+        <section class="section" aria-labelledby="section-7-title">
+          <div class="section-header">
+            <span class="section-number">7.</span>
+            <h2 id="section-7-title" class="section-title">Adding items, quantities, and notes</h2>
+          </div>
+
+          <ol class="clause-list">
+            <li>
+              <strong>7.1 Add items quickly</strong><br>
+              Add an item in two ways:
+              <ol class="clause-list alpha">
+                <li>Tap the <strong>+</strong> button to add without opening the edit view</li>
+                <li>Tap the item card (name, description, ingredients) to open the edit view, then tap Add</li>
+              </ol>
+            </li>
+
+            <li>
+              <strong>7.2 Change quantities</strong><br>
+              Without opening the edit view, use <strong>+</strong> and <strong>−</strong> to adjust quantity.
+              In the edit view, you can also add or remove quantity.
+            </li>
+
+            <li>
+              <strong>7.3 Add a custom note</strong><br>
+              In the edit view, use the pencil icon to add a custom note for the till operator (for example, a simple request or clarification).
+            </li>
+
+            <li>
+              <strong>7.4 Duplicate an item</strong><br>
+              Use the duplicate button if you want the same item again, especially helpful when you want two similar items with different notes or options.
+            </li>
+
+            <li>
+              <strong>7.5 Instant sync</strong><br>
+              Changes update immediately. When you add, customize, or adjust quantities, your basket reflects it right away.
+            </li>
+          </ol>
+        </section>
+
+        <!-- Filtering behavior -->
+        <section class="section" aria-labelledby="section-8-title">
+          <div class="section-header">
+            <span class="section-number">8.</span>
+            <h2 id="section-8-title" class="section-title">Filtering behavior for restrictions</h2>
+          </div>
+
+          <ol class="clause-list">
+            <li>
+              <strong>8.1 Hidden items within a category</strong><br>
+              If you selected dietary preferences or allergens, some items may be filtered.
+              Scroll to the bottom of a category and tap:
+              <ol class="clause-list alpha">
+                <li><strong>May contain your restrictions</strong>, or</li>
+                <li><strong>Contains your restrictions</strong></li>
+              </ol>
+              to expand and view filtered items.
+            </li>
+
+            <li>
+              <strong>8.2 Fully filtered categories</strong><br>
+              If a category has no suitable items (everything is filtered into “may contain” or “contains”), the category is hidden.
+              To find hidden categories, scroll the category list all the way to the right until you see a red <strong>i</strong>.
+              Tap it to reveal categories that are fully filtered, then select one to view its hidden items.
+            </li>
+          </ol>
+        </section>
+
+        <!-- Customizations -->
+        <section class="section" aria-labelledby="section-9-title">
+          <div class="section-header">
+            <span class="section-number">9.</span>
+            <h2 id="section-9-title" class="section-title">Item customizations</h2>
+          </div>
+
+          <ol class="clause-list">
+            <li>
+              <strong>9.1 Customizable items</strong><br>
+              Some items include predefined customizations (for example, Americano size, or adding an extra shot).
+              Tap the item to open the edit view and select your options.
+            </li>
+
+            <li>
+              <strong>9.2 Defaults that require confirmation</strong><br>
+              If an item has a default selection that needs confirmation, Menuva may automatically open the edit view.
+              Once you exit, the item is added to your basket automatically.
+            </li>
+          </ol>
+        </section>
+
+        <!-- Basket and ordering -->
+        <section class="section" aria-labelledby="section-10-title">
+          <div class="section-header">
+            <span class="section-number">10.</span>
+            <h2 id="section-10-title" class="section-title">Basket, order summary, and ordering</h2>
+          </div>
+
+          <ol class="clause-list">
+            <li>
+              <strong>10.1 Open your basket</strong><br>
+              Tap the price at the bottom right to open your basket and order summary.
+            </li>
+
+            <li>
+              <strong>10.2 What the basket shows</strong><br>
+              The basket shows your selected items, quantities, prices, and any customizations or notes.
+              You can continue to edit customizations, change quantities, remove items, or clear the basket entirely.
+            </li>
+
+            <li>
+              <strong>10.3 Ordering</strong><br>
+              To place your order, show the order summary to staff.
+              They can input the items into their till/POS system.
+            </li>
+
+            <li>
+              <strong>10.4 Temporary language switch for staff</strong><br>
+              If the menu language does not match your current app language, you may see a button at the top to temporarily switch to the menu’s language
+              (useful when showing staff). This reverts when you leave the summary page or when you change it back.
+            </li>
+          </ol>
+        </section>
+      </main>
+
+      <footer>
+        <p class="note">
+          For questions, contact
+          <a href="mailto:hello@menuva.co.uk">hello@menuva.co.uk</a>.
+        </p>
+      </footer>
+    </article>
+  </div>
+</body>
+</html>
