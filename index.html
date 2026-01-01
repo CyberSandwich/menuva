@@ -10,7 +10,6 @@
 
   <style>
     :root{
-      /* PURE white in light mode */
       --bg:#ffffff;
       --fg:#0b0b0c;
 
@@ -23,7 +22,7 @@
       --pad: clamp(18px, 3.2vw, 40px);
 
       --ease: cubic-bezier(.2,.8,.2,1);
-      --dur: 320ms; /* slightly faster to reduce perceived lag */
+      --dur: 320ms;
 
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
@@ -45,7 +44,6 @@
       --muted2: rgba(244,244,245,.46);
       --hair: rgba(244,244,245,.12);
 
-      /* FIX: make primary CTA truly white in dark mode */
       --primaryBg: #ffffff;
       --primaryFg: #0b0b0c;
       --primarySub: rgba(11,11,12,.58);
@@ -59,8 +57,6 @@
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
     html{ color-scheme: light dark; }
-
-    /* Prevent jank on first paint */
     html.preload *{ transition:none !important; }
 
     body{
@@ -74,7 +70,7 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Performance: dual glow layers, swap via opacity (no gradient re-eval on toggle) */
+    /* Performance: swap glows via opacity */
     .bg{
       position:fixed;
       inset:0;
@@ -82,10 +78,7 @@
       opacity: .82;
       transform: translateZ(0);
     }
-    .glows{
-      position:absolute;
-      inset:0;
-    }
+    .glows{ position:absolute; inset:0; }
     .glow{
       position:absolute;
       inset:-45%;
@@ -137,7 +130,6 @@
       background: var(--bg);
       box-shadow: var(--shadow);
       overflow:hidden;
-      /* PERF: do NOT animate box-shadow (expensive) */
       transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
       cursor:default;
     }
@@ -158,7 +150,7 @@
 
     .logo{
       line-height:1;
-      font-weight: 620;
+      font-weight: 600; /* slightly lighter */
       letter-spacing: -0.02em;
       font-size: clamp(46px, 7.4vw, 100px);
       text-transform: lowercase;
@@ -194,6 +186,7 @@
       gap: 10px;
       align-items:center;
       max-width: 78ch;
+      contain: layout paint; /* small perf win */
     }
 
     .metaPill{
@@ -224,6 +217,7 @@
       height: 100%;
       min-width:0;
       transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+      contain: content; /* isolate panel rendering */
     }
     html[data-theme="dark"] .panel{
       background: rgba(244,244,245,.04);
@@ -327,7 +321,6 @@
       padding: 18px 18px;
       background: var(--bg);
       box-shadow: 0 10px 42px rgba(0,0,0,.06);
-      /* PERF: do NOT animate box-shadow on theme toggle */
       transition: transform 160ms var(--ease), background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
       display:flex;
       justify-content:space-between;
@@ -411,9 +404,7 @@
       border-color: rgba(0,0,0,.10);
       box-shadow: var(--primaryShadow);
     }
-    /* Belt-and-suspenders: ensure dark-mode generic CTA rule never wins */
     html[data-theme="dark"] a.cta.primary{ background: var(--primaryBg); color: var(--primaryFg); }
-
     .cta.primary .ctaSub{ color: var(--primarySub); }
     .cta.primary .ctaIcon{
       border-color: var(--primaryIconBorder);
@@ -459,10 +450,11 @@
       border-color: rgba(244,244,245,.18);
     }
 
+    /* UPDATED CREDIT LAYOUT */
     .credit{
       display:flex;
-      flex-wrap:wrap;
-      gap: 10px;
+      flex-direction:column;
+      gap: 8px;
       justify-content:center;
       align-items:center;
       text-align:center;
@@ -471,6 +463,15 @@
       line-height: 1.35;
     }
     .credit strong{ font-weight: 650; color: var(--fg); }
+
+    .creditRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      align-items:center;
+      justify-content:center;
+    }
+
     .credit a{
       color: var(--muted);
       text-decoration:none;
@@ -601,11 +602,13 @@
         </nav>
 
         <div class="credit" aria-label="credit">
-          <a href="mailto:duke@saputra.co.uk">duke@saputra.co.uk</a>
-          <span class="sep">·</span>
           <strong>A project by Duke Saputra</strong>
-          <span class="sep">·</span>
-          <a href="https://www.linkedin.com/in/dukedj/" rel="noopener">LinkedIn</a>
+
+          <div class="creditRow" aria-label="contact links">
+            <a href="mailto:duke@saputra.co.uk">duke@saputra.co.uk</a>
+            <span class="sep">·</span>
+            <a href="https://www.linkedin.com/in/dukedj/" rel="noopener">LinkedIn</a>
+          </div>
         </div>
       </section>
 
@@ -645,7 +648,17 @@
       bgToggle.addEventListener("click", (e) => {
         if (e.target.closest("a")) return;
         toggleTheme();
-      });
+      }, { passive: true });
+
+      // Keep in sync if OS theme changes (when user hasn't explicitly chosen)
+      const mq = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
+      if (mq && mq.addEventListener) {
+        mq.addEventListener("change", (e) => {
+          const explicit = localStorage.getItem("menuva-theme");
+          if (explicit) return;
+          setTheme(e.matches ? "dark" : "light", false);
+        });
+      }
     })();
   </script>
 </body>
