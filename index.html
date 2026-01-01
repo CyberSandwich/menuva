@@ -1,59 +1,588 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>menuva</title>
-<style>
-    html, body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        width: 100%;
-        background: white;
-        font-family: "Avenir", "Avenir Next", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>menuva</title>
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
+  <meta name="description" content="menuva — dining-in. simplified." />
+  <meta name="theme-color" content="#ffffff" />
 
-        transition: background 0.3s ease;
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
+  <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#0b0b0c;
+      --muted: rgba(11,11,12,.58);
+      --muted2: rgba(11,11,12,.44);
+      --hair: rgba(11,11,12,.10);
+      --soft: rgba(11,11,12,.06);
+      --shadow: 0 18px 70px rgba(0,0,0,.08);
+
+      --r: 32px;
+      --max: 1120px;
+      --pad: clamp(18px, 3.2vw, 40px);
+      --ease: cubic-bezier(.2,.8,.2,1);
+      --dur: 520ms;
+
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+      --primaryBg: var(--fg);
+      --primaryFg: var(--bg);
+      --primarySub: rgba(255,255,255,.82);
+      --primaryIconBg: rgba(255,255,255,.12);
+      --primaryIconBorder: rgba(255,255,255,.22);
+      --primaryShadow: 0 18px 70px rgba(0,0,0,.14);
     }
 
-    #title {
-        font-size: 150px;
-        font-weight: 500;
-        letter-spacing: 1.5px;
-        color: black;
-        transition: color 0.3s ease;
-        padding-left: 24px;
-        padding-right: 24px;
-        text-align: center;
+    html[data-theme="dark"]{
+      --bg:#0b0b0c;
+      --fg:#f4f4f5;
+      --muted: rgba(244,244,245,.62);
+      --muted2: rgba(244,244,245,.46);
+      --hair: rgba(244,244,245,.12);
+      --soft: rgba(244,244,245,.07);
+      --shadow: 0 26px 96px rgba(0,0,0,.50);
+
+      --primaryBg: var(--fg);
+      --primaryFg: var(--bg);
+      --primarySub: rgba(11,11,12,.58);
+      --primaryIconBg: rgba(11,11,12,.07);
+      --primaryIconBorder: rgba(11,11,12,.12);
+      --primaryShadow: 0 22px 90px rgba(0,0,0,.45);
     }
-</style>
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--fg);
+      font-family:"Avenir","Avenir Next",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+      overflow-x:hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .bg{ position:fixed; inset:0; pointer-events:none; opacity:.94; }
+    .glow{
+      position:absolute;
+      inset:-55%;
+      background:
+        radial-gradient(circle at 16% 18%, var(--soft), transparent 46%),
+        radial-gradient(circle at 90% 24%, var(--soft), transparent 48%),
+        radial-gradient(circle at 22% 90%, var(--soft), transparent 50%),
+        radial-gradient(circle at 86% 88%, var(--soft), transparent 52%);
+      filter: blur(40px);
+      transform: translate3d(0,0,0) scale(1.08);
+      animation: drift 13s var(--ease) infinite alternate;
+    }
+    @keyframes drift{
+      from{ transform: translate3d(-1.2%, -1.0%, 0) scale(1.08); }
+      to{   transform: translate3d( 1.2%,  1.0%, 0) scale(1.12); }
+    }
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: clamp(22px, 4.6vw, 70px);
+      position:relative;
+      z-index:1;
+      cursor:pointer;
+    }
+
+    .shell{
+      width:min(var(--max), 100%);
+      display:grid;
+      gap: clamp(12px, 2.1vw, 16px);
+    }
+
+    .surface{
+      border:1px solid var(--hair);
+      border-radius: var(--r);
+      background: color-mix(in srgb, var(--bg) 92%, var(--fg) 8%);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      backdrop-filter: blur(12px);
+      transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+      cursor:default;
+    }
+
+    .hero{
+      padding: var(--pad);
+      display:grid;
+      grid-template-columns: 1.12fr .88fr;
+      gap: clamp(14px, 2.6vw, 28px);
+      align-items:stretch;
+    }
+
+    .logo{
+      line-height:1;
+      font-weight: 620;
+      letter-spacing: -0.02em;
+      font-size: clamp(46px, 7.4vw, 100px);
+      text-transform: lowercase;
+      user-select:none;
+    }
+
+    .tag{
+      margin-top: 10px;
+      line-height:1.12;
+      font-weight: 630;
+      letter-spacing: -0.01em;
+      font-size: clamp(18px, 2.3vw, 26px);
+      text-transform: lowercase;
+      user-select:none;
+      display:flex;
+      gap:.35em;
+      flex-wrap:wrap;
+    }
+    .tag .hi{ color: var(--fg); }
+    .tag .lo{ color: var(--muted); }
+
+    /* divider + spacing between tagline and bubbles */
+    .divider{
+      height:1px;
+      background: var(--hair);
+      margin-top: 18px;               /* space after tagline */
+      margin-bottom: 18px;            /* space before bubbles */
+      border-radius: 999px;
+    }
+
+    .metaLine{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      align-items:center;
+      max-width: 78ch;
+      margin-top: 0;                 /* spacing handled by divider */
+    }
+
+    .metaPill{
+      border:1px solid var(--hair);
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: color-mix(in srgb, var(--bg) 92%, var(--fg) 8%);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 560;
+      user-select:none;
+      white-space:nowrap;
+      pointer-events:none;
+    }
+
+    .panel{
+      border:1px solid var(--hair);
+      border-radius: 26px;
+      padding: 16px 16px;
+      background: color-mix(in srgb, var(--bg) 95%, var(--fg) 5%);
+      transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+      height: 100%;
+      min-width:0;
+    }
+
+    .panelHead{ display:flex; justify-content:space-between; align-items:center; gap: 10px; }
+    .panelTitle{
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 750;
+      user-select:none;
+    }
+    .badge{
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--hair);
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: color-mix(in srgb, var(--bg) 90%, var(--fg) 10%);
+      user-select:none;
+      white-space:nowrap;
+    }
+
+    .venueGrid{ display:grid; grid-template-columns: 1fr; gap: 10px; }
+
+    a.venue{
+      text-decoration:none;
+      border:1px solid var(--hair);
+      border-radius: 18px;
+      padding: 12px 12px;
+      background: transparent;
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), transform 180ms var(--ease);
+      will-change: transform;
+      color: inherit;
+    }
+    a.venue:hover{
+      transform: translateY(-1px);
+      background: color-mix(in srgb, var(--bg) 90%, var(--fg) 10%);
+      border-color: color-mix(in srgb, var(--hair) 45%, var(--fg) 18%);
+    }
+    a.venue:active{ transform: translateY(0px) scale(.995); }
+
+    .vDot{
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      margin-top: 6px;
+      background: color-mix(in srgb, var(--fg) 78%, var(--bg) 22%);
+      flex: 0 0 auto;
+      opacity:.9;
+    }
+    .vText{ display:flex; flex-direction:column; gap: 2px; min-width: 0; }
+    .vName{
+      font-size: 13px;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+      color: var(--fg);
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .vLoc{
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ctaRow{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      cursor:default;
+    }
+
+    a.cta{
+      text-decoration:none;
+      color: var(--fg);
+      border:1px solid var(--hair);
+      border-radius: 26px;
+      padding: 18px 18px;
+      background: color-mix(in srgb, var(--bg) 93%, var(--fg) 7%);
+      box-shadow: 0 10px 42px rgba(0,0,0,.06);
+      transition: transform 180ms var(--ease), background var(--dur) var(--ease), border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 14px;
+      will-change: transform;
+      position:relative;
+      overflow:hidden;
+    }
+
+    a.cta::before{
+      content:"";
+      position:absolute;
+      inset:-60% -30%;
+      background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,.26), transparent 60%);
+      transform: translateX(-34%) rotate(8deg);
+      opacity: 0;
+      transition: opacity var(--dur) var(--ease), transform 900ms var(--ease);
+      pointer-events:none;
+    }
+    html[data-theme="dark"] a.cta::before{
+      background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,.10), transparent 60%);
+    }
+
+    a.cta:hover{
+      transform: translateY(-1px);
+      background: color-mix(in srgb, var(--bg) 88%, var(--fg) 12%);
+      border-color: color-mix(in srgb, var(--hair) 45%, var(--fg) 18%);
+      box-shadow: 0 18px 64px rgba(0,0,0,.10);
+    }
+    a.cta:hover::before{
+      opacity: 1;
+      transform: translateX(26%) rotate(8deg);
+    }
+    a.cta:active{ transform: translateY(0px) scale(.99); }
+
+    .ctaText{ display:flex; flex-direction:column; gap: 4px; min-width: 0; }
+    .ctaTitle{
+      font-weight: 650;
+      letter-spacing: -0.01em;
+      font-size: 15px;
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .ctaSub{
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ctaIcon{
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border:1px solid var(--hair);
+      background: color-mix(in srgb, var(--bg) 88%, var(--fg) 12%);
+      display:grid;
+      place-items:center;
+      transition: transform 180ms var(--ease), background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+      flex: 0 0 auto;
+      font-size: 16px;
+    }
+    a.cta:hover .ctaIcon{ transform: translateX(1px); }
+
+    .cta.primary{
+      background: var(--primaryBg);
+      color: var(--primaryFg);
+      border-color: color-mix(in srgb, var(--hair) 20%, var(--primaryBg) 40%);
+      box-shadow: var(--primaryShadow);
+    }
+    .cta.primary:hover{
+      background: color-mix(in srgb, var(--primaryBg) 92%, #000 8%);
+      box-shadow: var(--primaryShadow);
+    }
+    .cta.primary .ctaSub{ color: var(--primarySub); }
+    .cta.primary .ctaIcon{
+      border-color: var(--primaryIconBorder);
+      background: var(--primaryIconBg);
+      color: var(--primaryFg);
+    }
+
+    .bottom{
+      padding: 14px 16px 16px;
+      display:flex;
+      flex-direction:column;
+      gap: 14px;
+      align-items:center;
+    }
+
+    .links{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      justify-content:center;
+    }
+
+    a.link{
+      text-decoration:none;
+      color: var(--fg);
+      border:1px solid var(--hair);
+      border-radius: 999px;
+      padding: 10px 12px;
+      font-size: 13px;
+      font-weight: 560;
+      background: transparent;
+      transition: transform 160ms var(--ease), background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+      user-select:none;
+      white-space:nowrap;
+    }
+    a.link:hover{
+      transform: translateY(-1px);
+      background: color-mix(in srgb, var(--bg) 90%, var(--fg) 10%);
+      border-color: color-mix(in srgb, var(--hair) 45%, var(--fg) 18%);
+    }
+    a.link:active{ transform: translateY(0px) scale(.99); }
+
+    .credit{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .credit strong{ font-weight: 650; color: var(--fg); }
+    .credit a{
+      color: var(--muted);
+      text-decoration:none;
+      border-bottom: 1px solid transparent;
+      transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+      white-space:nowrap;
+    }
+    .credit a:hover{
+      color: var(--fg);
+      border-color: color-mix(in srgb, var(--muted) 30%, var(--fg) 30%);
+    }
+    .sep{ color: var(--muted2); user-select:none; }
+
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr; }
+      .ctaRow{ grid-template-columns: 1fr; }
+      .metaPill{ white-space: normal; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .glow{ animation:none; }
+      a.cta::before{ transition:none; }
+      *{ transition:none !important; }
+    }
+  </style>
 </head>
 
-<body onclick="toggleTheme()">
-    <div id="title">m</div>
+<body>
+  <div class="bg" aria-hidden="true"><div class="glow"></div></div>
 
-<script>
-function toggleTheme() {
-    const body = document.body;
-    const text = document.getElementById("title");
+  <div class="wrap" id="bgToggle">
+    <div class="shell">
 
-    if (body.classList.contains("dark")) {
-        body.classList.remove("dark");
-        body.style.background = "white";
-        text.style.color = "black";
-    } else {
-        body.classList.add("dark");
-        body.style.background = "black";
-        text.style.color = "white";
-    }
-}
-</script>
+      <section class="surface" aria-label="menuva">
+        <div class="hero">
+
+          <div>
+            <div class="logo">menuva</div>
+            <div class="tag">
+              <span class="hi">dining-in.</span>
+              <span class="lo">simplified.</span>
+            </div>
+
+            <div class="divider" aria-hidden="true"></div>
+
+            <div class="metaLine" aria-label="benefits">
+              <span class="metaPill">No account needed</span>
+              <span class="metaPill">English (UK) · 中文</span>
+              <span class="metaPill">Free to use</span>
+              <span class="metaPill">Preview in advance</span>
+              <span class="metaPill">Filter allergens</span>
+              <span class="metaPill">Convert prices</span>
+              <span class="metaPill">Sort by price and nutrition</span>
+              <span class="metaPill">Show your digital basket to order</span>
+              <span class="metaPill">Map view with open/closed indicators</span>
+              <span class="metaPill">Edit items</span>
+              <span class="metaPill">Search</span>
+              <span class="metaPill">Dark/light mode</span>
+            </div>
+          </div>
+
+          <aside class="panel" aria-label="pilot venues">
+            <div class="panelHead">
+              <div class="panelTitle">Pilot venues</div>
+              <div class="badge">University of Warwick</div>
+            </div>
+
+            <div class="venueGrid" aria-label="venues">
+              <a class="venue" href="https://menuva.co.uk/download" rel="noopener">
+                <div class="vDot"></div>
+                <div class="vText"><div class="vName">District</div><div class="vLoc">Warwick Business School</div></div>
+              </a>
+              <a class="venue" href="https://menuva.co.uk/download" rel="noopener">
+                <div class="vDot"></div>
+                <div class="vText"><div class="vName">Coffee Lab</div><div class="vLoc">Social Sciences</div></div>
+              </a>
+              <a class="venue" href="https://menuva.co.uk/download" rel="noopener">
+                <div class="vDot"></div>
+                <div class="vText"><div class="vName">Coffee Lab</div><div class="vLoc">Oculus</div></div>
+              </a>
+              <a class="venue" href="https://menuva.co.uk/download" rel="noopener">
+                <div class="vDot"></div>
+                <div class="vText"><div class="vName">Coffee Lab</div><div class="vLoc">Library</div></div>
+              </a>
+              <a class="venue" href="https://menuva.co.uk/download" rel="noopener">
+                <div class="vDot"></div>
+                <div class="vText"><div class="vName">Coffee Lab</div><div class="vLoc">IBRB</div></div>
+              </a>
+            </div>
+          </aside>
+
+        </div>
+      </section>
+
+      <section class="ctaRow" aria-label="primary actions">
+        <a class="cta" href="https://menuva.co.uk/support/" rel="noopener">
+          <div class="ctaText">
+            <div class="ctaTitle">Contact support</div>
+            <div class="ctaSub">Get help or report an issue</div>
+          </div>
+          <div class="ctaIcon" aria-hidden="true">↗</div>
+        </a>
+
+        <a class="cta primary" href="https://menuva.co.uk/download" rel="noopener">
+          <div class="ctaText">
+            <div class="ctaTitle">Download on the App Store</div>
+            <div class="ctaSub">Start using menuva</div>
+          </div>
+          <div class="ctaIcon" aria-hidden="true">↗</div>
+        </a>
+      </section>
+
+      <section class="surface bottom" aria-label="links and credit">
+        <nav class="links" aria-label="links">
+          <a class="link" href="https://menuva.co.uk/terms" rel="noopener">Terms &amp; Conditions</a>
+          <a class="link" href="https://menuva.co.uk/privacy" rel="noopener">Privacy Policy</a>
+          <a class="link" href="https://admin.menuva.co.uk" rel="noopener">Admin Portal</a>
+          <a class="link" href="https://menuva.co.uk/promo" rel="noopener">Promotion Terms</a>
+          <a class="link" href="https://menuva.co.uk/feedback" rel="noopener">Feedback</a>
+          <a class="link" href="https://menuva.co.uk/faq" rel="noopener">FAQ</a>
+        </nav>
+
+        <div class="credit" aria-label="credit">
+          <a href="mailto:duke@saputra.co.uk">duke@saputra.co.uk</a>
+          <span class="sep">·</span>
+          <strong>A project by Duke Saputra</strong>
+          <span class="sep">·</span>
+          <a href="https://www.linkedin.com/in/dukedj/" rel="noopener">LinkedIn</a>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const bgToggle = document.getElementById("bgToggle");
+
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const saved = localStorage.getItem("menuva-theme");
+      const initial = saved || (prefersDark ? "dark" : "light");
+      setTheme(initial, false);
+
+      function setTheme(theme, persist = true) {
+        root.setAttribute("data-theme", theme);
+        document
+          .querySelector('meta[name="theme-color"]')
+          .setAttribute("content", theme === "dark" ? "#0b0b0c" : "#ffffff");
+        if (persist) localStorage.setItem("menuva-theme", theme);
+      }
+
+      function toggleTheme() {
+        const current = root.getAttribute("data-theme") || "light";
+        setTheme(current === "dark" ? "light" : "dark", true);
+      }
+
+      bgToggle.addEventListener("click", (e) => {
+        const isInteractive = e.target.closest("a");
+        if (isInteractive) return;
+        toggleTheme();
+      });
+
+      const glow = document.querySelector(".glow");
+      let raf = null;
+      window.addEventListener("pointermove", (e) => {
+        if (!glow) return;
+        const x = (e.clientX / window.innerWidth - 0.5) * 10;
+        const y = (e.clientY / window.innerHeight - 0.5) * 10;
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          glow.style.transform = `translate3d(${x * 0.45}%, ${y * 0.45}%, 0) scale(1.12)`;
+        });
+      }, { passive: true });
+    })();
+  </script>
 </body>
 </html>
