@@ -23,7 +23,7 @@
       --pad: clamp(18px, 3.2vw, 40px);
 
       --ease: cubic-bezier(.2,.8,.2,1);
-      --dur: 420ms;
+      --dur: 320ms; /* slightly faster to reduce perceived lag */
 
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
@@ -45,11 +45,12 @@
       --muted2: rgba(244,244,245,.46);
       --hair: rgba(244,244,245,.12);
 
-      --primaryBg: var(--fg);
-      --primaryFg: var(--bg);
+      /* FIX: make primary CTA truly white in dark mode */
+      --primaryBg: #ffffff;
+      --primaryFg: #0b0b0c;
       --primarySub: rgba(11,11,12,.58);
-      --primaryIconBg: rgba(11,11,12,.07);
-      --primaryIconBorder: rgba(11,11,12,.12);
+      --primaryIconBg: rgba(11,11,12,.06);
+      --primaryIconBorder: rgba(11,11,12,.14);
       --primaryShadow: 0 20px 80px rgba(0,0,0,.45);
 
       --shadow: 0 24px 90px rgba(0,0,0,.50);
@@ -57,18 +58,23 @@
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
+    html{ color-scheme: light dark; }
+
+    /* Prevent jank on first paint */
+    html.preload *{ transition:none !important; }
+
     body{
       margin:0;
       background:var(--bg);
       color:var(--fg);
       font-family:"Avenir","Avenir Next",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
-      transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+      transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
       overflow-x:hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Performance: static, no parallax, low-cost gradients, disabled in reduced-motion */
+    /* Performance: dual glow layers, swap via opacity (no gradient re-eval on toggle) */
     .bg{
       position:fixed;
       inset:0;
@@ -76,26 +82,37 @@
       opacity: .82;
       transform: translateZ(0);
     }
+    .glows{
+      position:absolute;
+      inset:0;
+    }
     .glow{
       position:absolute;
-      inset:-55%;
+      inset:-45%;
+      filter: blur(44px);
+      transform: translate3d(0,0,0) scale(1.05);
+      will-change: opacity;
+      transition: opacity 240ms var(--ease);
+    }
+    .glow--light{
+      opacity: 1;
       background:
         radial-gradient(circle at 16% 18%, rgba(11,11,12,.045), transparent 46%),
         radial-gradient(circle at 90% 24%, rgba(11,11,12,.035), transparent 48%),
         radial-gradient(circle at 22% 90%, rgba(11,11,12,.030), transparent 50%),
         radial-gradient(circle at 86% 88%, rgba(11,11,12,.040), transparent 52%);
-      filter: blur(44px);
-      transform: translate3d(0,0,0) scale(1.06);
     }
-    html[data-theme="dark"] .glow{
+    .glow--dark{
+      opacity: 0;
+      filter: blur(52px);
       background:
         radial-gradient(circle at 16% 18%, rgba(244,244,245,.060), transparent 46%),
         radial-gradient(circle at 90% 24%, rgba(244,244,245,.045), transparent 48%),
         radial-gradient(circle at 22% 90%, rgba(244,244,245,.035), transparent 50%),
         radial-gradient(circle at 86% 88%, rgba(244,244,245,.050), transparent 52%);
-      filter: blur(52px);
-      opacity: .95;
     }
+    html[data-theme="dark"] .glow--light{ opacity: 0; }
+    html[data-theme="dark"] .glow--dark{ opacity: .95; }
 
     .wrap{
       min-height:100%;
@@ -117,15 +134,18 @@
     .surface{
       border:1px solid var(--hair);
       border-radius: var(--r);
-      background: var(--bg); /* keep surfaces pure in light mode */
+      background: var(--bg);
       box-shadow: var(--shadow);
       overflow:hidden;
-      transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+      /* PERF: do NOT animate box-shadow (expensive) */
+      transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
       cursor:default;
     }
     html[data-theme="dark"] .surface{
       background: rgba(11,11,12,.72);
-      backdrop-filter: blur(10px);
+    }
+    @supports (backdrop-filter: blur(10px)) {
+      html[data-theme="dark"] .surface{ backdrop-filter: blur(10px); }
     }
 
     .hero{
@@ -187,6 +207,7 @@
       user-select:none;
       white-space:nowrap;
       pointer-events:none;
+      transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
     }
     html[data-theme="dark"] .metaPill{
       background: rgba(244,244,245,.06);
@@ -202,7 +223,7 @@
       gap: 12px;
       height: 100%;
       min-width:0;
-      transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+      transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
     }
     html[data-theme="dark"] .panel{
       background: rgba(244,244,245,.04);
@@ -230,6 +251,7 @@
       background: var(--bg);
       user-select:none;
       white-space:nowrap;
+      transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
     }
     html[data-theme="dark"] .badge{
       background: rgba(244,244,245,.06);
@@ -246,7 +268,7 @@
       display:flex;
       gap: 10px;
       align-items:flex-start;
-      transition: transform 160ms var(--ease), background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+      transition: transform 160ms var(--ease), background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
       will-change: transform;
       color: inherit;
     }
@@ -305,7 +327,8 @@
       padding: 18px 18px;
       background: var(--bg);
       box-shadow: 0 10px 42px rgba(0,0,0,.06);
-      transition: transform 160ms var(--ease), background var(--dur) var(--ease), border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+      /* PERF: do NOT animate box-shadow on theme toggle */
+      transition: transform 160ms var(--ease), background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
       display:flex;
       justify-content:space-between;
       align-items:center;
@@ -375,7 +398,7 @@
       background: rgba(11,11,12,.04);
       display:grid;
       place-items:center;
-      transition: transform 160ms var(--ease);
+      transition: transform 160ms var(--ease), background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
       flex: 0 0 auto;
       font-size: 16px;
     }
@@ -388,6 +411,9 @@
       border-color: rgba(0,0,0,.10);
       box-shadow: var(--primaryShadow);
     }
+    /* Belt-and-suspenders: ensure dark-mode generic CTA rule never wins */
+    html[data-theme="dark"] a.cta.primary{ background: var(--primaryBg); color: var(--primaryFg); }
+
     .cta.primary .ctaSub{ color: var(--primarySub); }
     .cta.primary .ctaIcon{
       border-color: var(--primaryIconBorder);
@@ -419,7 +445,7 @@
       font-size: 13px;
       font-weight: 560;
       background: transparent;
-      transition: transform 160ms var(--ease), background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+      transition: transform 160ms var(--ease), background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
       user-select:none;
       white-space:nowrap;
     }
@@ -467,15 +493,20 @@
     }
 
     @media (prefers-reduced-motion: reduce){
-      .bg{ display:none; }            /* remove glow entirely */
-      a.cta::before{ display:none; }  /* remove sheen */
+      .bg{ display:none; }
+      a.cta::before{ display:none; }
       *{ transition:none !important; }
     }
   </style>
 </head>
 
 <body>
-  <div class="bg" aria-hidden="true"><div class="glow"></div></div>
+  <div class="bg" aria-hidden="true">
+    <div class="glows">
+      <div class="glow glow--light"></div>
+      <div class="glow glow--dark"></div>
+    </div>
+  </div>
 
   <div class="wrap" id="bgToggle">
     <div class="shell">
@@ -586,10 +617,17 @@
       const root = document.documentElement;
       const bgToggle = document.getElementById("bgToggle");
 
+      // Avoid initial transition jank
+      root.classList.add("preload");
+
       const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
       const saved = localStorage.getItem("menuva-theme");
       const initial = saved || (prefersDark ? "dark" : "light");
       setTheme(initial, false);
+
+      requestAnimationFrame(() => {
+        root.classList.remove("preload");
+      });
 
       function setTheme(theme, persist = true) {
         root.setAttribute("data-theme", theme);
