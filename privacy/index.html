@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <title>Menuva – Privacy Policy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Menuva Privacy Policy (Effective date: 16 December 2025)" />
+  <meta name="description" content="Menuva Privacy Policy (Effective date: 16 December 2025; Last updated: 1 January 2026)" />
 
   <style>
     :root {
@@ -193,7 +193,6 @@
       outline: none;
     }
 
-    /* Table styling (consistent with card aesthetic) */
     .table-wrap {
       margin: 10px 0 6px;
       border: 1px solid var(--border-subtle);
@@ -272,14 +271,18 @@
         <p class="subtitle">Privacy Policy</p>
         <p class="meta">
           <span>Effective date: 16 December 2025</span>
-          <span>Last updated: 16 December 2025</span>
+          <span>Last updated: 1 January 2026</span>
         </p>
 
         <p class="lead">
           This Privacy Policy explains how Menuva handles personal data when you use the Menuva iOS app (the “<strong>App</strong>”)
-          and related web pages we operate (together, the “<strong>Service</strong>”).
-          Menuva is designed to be accountless and data-minimizing. However, some information (especially location data) can still be
-          personal data under UK GDPR.
+          and the Menuva web pages we operate (the “<strong>Website</strong>”) (together, the “<strong>Service</strong>”).
+          Menuva is designed to be accountless and data-minimizing, but some information (especially location data and online identifiers)
+          can still be personal data under UK GDPR.
+        </p>
+
+        <p class="callout">
+          Key points: we do not transmit raw latitude/longitude off-device; the Website is cookie-free as of the “Last updated” date; the App uses Firebase Analytics for usage measurement, with ads features disabled and no typed search queries sent
         </p>
       </header>
 
@@ -297,15 +300,17 @@
             </li>
             <li>
               <strong>1.2</strong>
-              <strong>Contact email.</strong> <a href="mailto:hello@menuva.co.uk">hello@menuva.co.uk</a>
+              <strong>Emails.</strong>
+              <a href="mailto:hello@menuva.co.uk">hello@menuva.co.uk</a> (general) and
+              <a href="mailto:support@menuva.co.uk">support@menuva.co.uk</a> (support).
             </li>
             <li>
               <strong>1.3</strong>
-              <strong>Contact address.</strong> University of Warwick, Scarman Rd, Coventry CV4 7AL, United Kingdom
+              <strong>Address.</strong> University of Warwick, Scarman Rd, Coventry CV4 7AL, United Kingdom.
             </li>
             <li>
               <strong>1.4</strong>
-              If you contact us via email, we will process the information you include to respond.
+              If you contact us by email, we process the information you include to respond.
             </li>
           </ol>
         </section>
@@ -313,13 +318,13 @@
         <section class="section" aria-labelledby="s2">
           <div class="section-header">
             <span class="section-number">2.</span>
-            <h2 id="s2" class="section-title">Intended territory</h2>
+            <h2 id="s2" class="section-title">Intended users and territory</h2>
           </div>
 
           <ol class="clause-list">
             <li>
               <strong>2.1</strong>
-              Menuva is intended for use in the United Kingdom only. If you use the Service outside the UK, you do so at your own risk and are responsible for complying with local laws.
+              Menuva is intended for users in the United Kingdom. If you use the Service elsewhere, this policy still applies, and our service providers may process data internationally (see Section 8).
             </li>
           </ol>
         </section>
@@ -330,23 +335,32 @@
             <h2 id="s3" class="section-title">What data we collect</h2>
           </div>
 
-          <p class="subheading">A. Location data (precise location)</p>
+          <p class="subheading">A. Precise location (on-device, foreground only)</p>
           <ol class="clause-list">
             <li>
               <strong>3.A.1</strong>
-              If you grant iOS location permission, the App collects precise location to:
+              If you grant iOS location permission (“When In Use”), the App collects precise location on your device to:
               <ol class="clause-list alpha">
-                <li>identify nearby venues, and</li>
-                <li>request the correct menus/content for your nearest venue.</li>
+                <li>show nearby venues, and</li>
+                <li>determine which venue’s menus to load.</li>
               </ol>
             </li>
             <li>
               <strong>3.A.2</strong>
-              <strong>How it works.</strong> Location is used on-device and is also sent to our backend to determine which venue/menu content to return.
+              <strong>How it works.</strong>
+              <ol class="clause-list alpha">
+                <li>Location updates may run continuously while the App is in the foreground on relevant screens (for example, home/map).</li>
+                <li>Distance calculations happen locally on your device.</li>
+                <li>The App may cache your last known location and city on-device only (for example, via iOS local storage) for faster loading and fallback behavior.</li>
+              </ol>
             </li>
             <li>
               <strong>3.A.3</strong>
-              We do not intentionally store your precise location in our databases.
+              <strong>What we do not do.</strong>
+              <ol class="clause-list alpha">
+                <li>We do not transmit raw latitude/longitude off-device.</li>
+                <li>We do not intentionally store your precise location in our databases.</li>
+              </ol>
             </li>
             <li>
               <strong>3.A.4</strong>
@@ -354,47 +368,74 @@
             </li>
           </ol>
 
-          <p class="subheading">B. Dietary and allergen preferences</p>
+          <p class="subheading">B. Dietary and allergen preferences (on-device)</p>
           <ol class="clause-list">
             <li>
               <strong>3.B.1</strong>
-              If you set dietary/allergen preferences in the App, they are stored on-device only and are not synced to our servers.
+              If you set dietary or allergen preferences, they are stored on-device only and are not synced to our servers.
             </li>
           </ol>
 
-          <p class="subheading">C. Feedback (optional)</p>
+          <p class="subheading">C. App analytics (Firebase Analytics)</p>
           <ol class="clause-list">
             <li>
               <strong>3.C.1</strong>
-              If you use our feedback form at <a href="https://menuva.co.uk/feedback" rel="noopener noreferrer">menuva.co.uk/feedback</a>, your submission may include:
+              The App uses Firebase Analytics to understand usage and improve the App.
+            </li>
+            <li>
+              <strong>3.C.2</strong>
+              <strong>App interaction events.</strong> Examples include opening a menu, tapping map controls, opening settings, configuring personalization, and adding/removing items in the order summary.
+            </li>
+            <li>
+              <strong>3.C.3</strong>
+              <strong>Event parameters.</strong> Examples include venue identifiers (restaurant slug, location ID), feature flags (for example, has_location true/false), counts (for example, basket count, totals), and configuration choices (language code, currency code). We log allergy and dietary configuration as counts only, not specific selections.
+            </li>
+            <li>
+              <strong>3.C.4</strong>
+              <strong>Device and app information used for measurement.</strong> Firebase Analytics processes device and app information and identifiers used for measurement (for example, an app-instance identifier), plus technical data that may be processed by the analytics provider to deliver the service securely and reliably (such as IP address and request metadata).
+            </li>
+            <li>
+              <strong>3.C.5</strong>
+              <strong>Important clarifications.</strong>
               <ol class="clause-list alpha">
-                <li>your feedback responses, and</li>
+                <li>The App does not log typed search queries (no free-text search strings are sent to analytics).</li>
+                <li>Users do not have accounts, and we do not set a custom user ID in analytics.</li>
+                <li>Ads features are disabled, and we do not use analytics for cross-app tracking.</li>
+              </ol>
+            </li>
+          </ol>
+
+          <p class="subheading">D. Feedback (optional, Website)</p>
+          <ol class="clause-list">
+            <li>
+              <strong>3.D.1</strong>
+              If you submit feedback at
+              <a href="https://menuva.co.uk/feedback" rel="noopener noreferrer">menuva.co.uk/feedback</a>,
+              your submission may include:
+              <ol class="clause-list alpha">
+                <li>your responses, and</li>
                 <li>optional contact details (only if you choose to provide them).</li>
               </ol>
             </li>
             <li>
-              <strong>3.C.2</strong>
+              <strong>3.D.2</strong>
               If you include contact details, they are personal data.
             </li>
           </ol>
 
-          <p class="subheading">D. Technical data (network-level)</p>
-          <ol class="clause-list">
-            <li>
-              <strong>3.D.1</strong>
-              When your device connects to our infrastructure (for example, to fetch menus), network communications necessarily involve technical data such as IP address and request metadata being processed by the service providers that deliver content.
-            </li>
-            <li>
-              <strong>3.D.2</strong>
-              We do not use this to identify you, and we do not build user profiles.
-            </li>
-          </ol>
-
-          <p class="subheading">E. App Store metrics (aggregated)</p>
+          <p class="subheading">E. Technical and network data (Service delivery)</p>
           <ol class="clause-list">
             <li>
               <strong>3.E.1</strong>
-              Apple provides aggregated metrics (e.g., downloads) to developers via App Store tools. We may use these high-level metrics for pilot evaluation.
+              When your device connects to Firebase/Google infrastructure to fetch menus and images, technical data such as IP address and request metadata may be processed by service providers to deliver content, maintain security, and prevent abuse.
+            </li>
+          </ol>
+
+          <p class="subheading">F. Website data (cookie-free)</p>
+          <ol class="clause-list">
+            <li>
+              <strong>3.F.1</strong>
+              As of the “Last updated” date, the Website is cookie-free and does not run analytics. Our hosting provider may still process technical log data (IP address and request metadata) to deliver the Website securely.
             </li>
           </ol>
         </section>
@@ -402,23 +443,19 @@
         <section class="section" aria-labelledby="s4">
           <div class="section-header">
             <span class="section-number">4.</span>
-            <h2 id="s4" class="section-title">What we do not collect (current pilot)</h2>
+            <h2 id="s4" class="section-title">What we do not collect</h2>
           </div>
 
           <ol class="clause-list">
             <li>
               <strong>4.1</strong>
-              For the current pilot App, we do not require accounts and we do not intentionally collect:
+              For the current App:
               <ol class="clause-list alpha">
-                <li>names, emails, or phone numbers (unless you voluntarily submit them in feedback or email us),</li>
-                <li>advertising identifiers or “tracking” across apps and websites,</li>
-                <li>in-app analytics SDK event streams (e.g., Firebase Analytics), or</li>
-                <li>crash reporting SDKs (e.g., Crashlytics).</li>
+                <li>no account registration, and no sign-in,</li>
+                <li>no names, emails, or phone numbers unless you voluntarily provide them via feedback or email,</li>
+                <li>no advertising identifier (IDFA) collection, and no ATT-based tracking, and</li>
+                <li>no cross-app tracking for advertising.</li>
               </ol>
-            </li>
-            <li>
-              <strong>4.2</strong>
-              If this changes, we will update this Privacy Policy and (where appropriate) provide in-app notice. Apple also requires keeping App Privacy disclosures accurate.
             </li>
           </ol>
         </section>
@@ -426,7 +463,7 @@
         <section class="section" aria-labelledby="s5">
           <div class="section-header">
             <span class="section-number">5.</span>
-            <h2 id="s5" class="section-title">How we use your data and our legal bases</h2>
+            <h2 id="s5" class="section-title">How we use data and our legal bases</h2>
           </div>
 
           <p class="muted">
@@ -444,24 +481,24 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Provide location-based nearby venue discovery and load the correct menus</td>
-                  <td>Precise location</td>
-                  <td>Consent (you choose to enable location in iOS)</td>
+                  <td>Provide nearby venue discovery and load correct menus</td>
+                  <td>Precise location (on-device)</td>
+                  <td>Consent (you enable location permission in iOS)</td>
                 </tr>
                 <tr>
-                  <td>Provide the Service reliably and securely (content delivery, abuse prevention, troubleshooting)</td>
-                  <td>Technical/network data processed by service providers</td>
-                  <td>Legitimate interests (operating a secure, reliable service)</td>
+                  <td>Provide the Service reliably and securely</td>
+                  <td>Technical/network data handled by providers</td>
+                  <td>Legitimate interests (operate a secure, reliable service)</td>
+                </tr>
+                <tr>
+                  <td>Understand usage and improve the App</td>
+                  <td>Analytics event data</td>
+                  <td>Legitimate interests (product improvement and pilot evaluation)</td>
                 </tr>
                 <tr>
                   <td>Receive and respond to feedback</td>
                   <td>Feedback content; optional contact details</td>
-                  <td>Consent (you choose what to submit) and/or legitimate interests (improving the pilot)</td>
-                </tr>
-                <tr>
-                  <td>Pilot evaluation reporting (high-level usage and adoption)</td>
-                  <td>Aggregated App Store metrics; aggregated venue-level counts (if produced)</td>
-                  <td>Legitimate interests (evaluating and improving the pilot)</td>
+                  <td>Consent (you choose what to submit) and/or legitimate interests (improving the Service)</td>
                 </tr>
               </tbody>
             </table>
@@ -481,15 +518,25 @@
           <ol class="clause-list">
             <li>
               <strong>6.1</strong>
-              We share data only as needed to run the Service:
+              We share data only as needed to run the Service.
             </li>
           </ol>
 
-          <p class="subheading">A. Google Firebase / Google Cloud (menus and images)</p>
+          <p class="subheading">A. Google Firebase / Google Cloud</p>
           <ol class="clause-list">
             <li>
               <strong>6.A.1</strong>
-              Menu and venue content is hosted using Google Firebase services on Google Cloud infrastructure. This means Google processes technical data necessary to deliver content and operate the platform.
+              We use Firebase services:
+              <ol class="clause-list alpha">
+                <li><strong>Firebase Storage</strong> (menus and images delivery),</li>
+                <li><strong>Firebase Firestore</strong> (read-only menu metadata used by the App),</li>
+                <li><strong>Firebase Analytics</strong> (usage analytics), and</li>
+                <li><strong>Firebase App Check</strong> (abuse prevention, for example validating requests using Apple’s device attestation mechanisms).</li>
+              </ol>
+            </li>
+            <li>
+              <strong>6.A.2</strong>
+              Google processes data as needed to provide and secure these services.
             </li>
           </ol>
 
@@ -497,7 +544,7 @@
           <ol class="clause-list">
             <li>
               <strong>6.B.1</strong>
-              If you submit feedback via our Google Form, Google processes that submission as the form provider.
+              If you submit feedback via Google Forms, Google processes that submission as the form provider.
             </li>
           </ol>
 
@@ -505,18 +552,22 @@
           <ol class="clause-list">
             <li>
               <strong>6.C.1</strong>
-              Apple processes App Store distribution and provides developers with aggregated metrics.
+              Apple processes App Store distribution and provides developers with aggregated App Store metrics.
             </li>
           </ol>
 
-          <p class="subheading">D. Restaurants/venues (aggregated only, on request)</p>
+          <p class="subheading">D. Participating venues (aggregated only)</p>
           <ol class="clause-list">
             <li>
               <strong>6.D.1</strong>
-              We may share aggregated information with participating venues (for example, download numbers and active user counts where available). We do not share precise location data with venues.
+              We may share aggregated pilot reporting with participating venues. We do not share precise location data or per-device analytics.
             </li>
             <li>
               <strong>6.D.2</strong>
+              As of the “Last updated” date, venue partners do not have access to our Firebase Analytics dashboards. If we enable partner access in the future, we will update this policy first (see Section 12).
+            </li>
+            <li>
+              <strong>6.D.3</strong>
               We do not sell personal data.
             </li>
           </ol>
@@ -525,13 +576,20 @@
         <section class="section" aria-labelledby="s7">
           <div class="section-header">
             <span class="section-number">7.</span>
-            <h2 id="s7" class="section-title">International transfers</h2>
+            <h2 id="s7" class="section-title">Data retention</h2>
           </div>
 
           <ol class="clause-list">
             <li>
               <strong>7.1</strong>
-              Our service providers may process data outside the UK. Where required, transfers are protected using appropriate safeguards (such as contractual protections) consistent with UK data protection requirements.
+              We keep data only as long as needed:
+              <ol class="clause-list alpha">
+                <li><strong>Precise location:</strong> used on-device; not stored in our databases; last known location/city may be cached locally until you delete the App or reset preferences</li>
+                <li><strong>On-device preferences and caches:</strong> stored locally until you delete the App or reset preferences</li>
+                <li><strong>Analytics (Firebase/GA4):</strong> retained for 14 months (per our current analytics retention configuration)</li>
+                <li><strong>Feedback submissions (Google Forms):</strong> we periodically review feedback and delete or anonymize it when no longer needed, typically within 24 months, unless we need to keep it longer to resolve issues or for legitimate record-keeping</li>
+                <li><strong>Service-provider logs:</strong> may exist within third-party infrastructure for security and operational reasons and are retained per provider configuration</li>
+              </ol>
             </li>
           </ol>
         </section>
@@ -539,19 +597,13 @@
         <section class="section" aria-labelledby="s8">
           <div class="section-header">
             <span class="section-number">8.</span>
-            <h2 id="s8" class="section-title">Data retention</h2>
+            <h2 id="s8" class="section-title">International transfers</h2>
           </div>
 
           <ol class="clause-list">
             <li>
               <strong>8.1</strong>
-              We keep data only as long as needed:
-              <ol class="clause-list alpha">
-                <li><strong>Precise location:</strong> not intentionally stored in our databases; used transiently to return the nearest venue/menu content</li>
-                <li><strong>On-device preferences:</strong> stored locally until you delete the App or reset preferences</li>
-                <li><strong>Feedback submissions:</strong> retained for pilot evaluation and reporting, then deleted or anonymized when no longer needed (typically within 24 months)</li>
-                <li><strong>Service-provider logs:</strong> may exist within third-party infrastructure for security and operational reasons and are retained per provider configuration</li>
-              </ol>
+              Our service providers may process data outside the UK. Where required, transfers are protected using appropriate safeguards (such as contractual protections) consistent with UK data protection requirements.
             </li>
           </ol>
         </section>
@@ -565,7 +617,7 @@
           <ol class="clause-list">
             <li>
               <strong>9.1</strong>
-              We use reasonable technical and organizational measures to protect data, including encryption in transit and at rest where supported by our infrastructure, and restricted administrative access.
+              We use reasonable technical and organizational measures to protect data, including encryption in transit and at rest where supported, and restricted administrative access.
             </li>
           </ol>
         </section>
@@ -573,17 +625,13 @@
         <section class="section" aria-labelledby="s10">
           <div class="section-header">
             <span class="section-number">10.</span>
-            <h2 id="s10" class="section-title">Children and location</h2>
+            <h2 id="s10" class="section-title">Children</h2>
           </div>
 
           <ol class="clause-list">
             <li>
               <strong>10.1</strong>
-              The Service is intended for users 13+. We do not knowingly collect personal data from children under 13.
-            </li>
-            <li>
-              <strong>10.2</strong>
-              Because the App can use geolocation, we keep geolocation use limited to what is needed for nearby venue discovery and menu loading.
+              The Service is intended for users aged 13+. We do not knowingly collect personal data from children under 13. The App does not currently implement age verification.
             </li>
           </ol>
         </section>
@@ -591,25 +639,25 @@
         <section class="section" aria-labelledby="s11">
           <div class="section-header">
             <span class="section-number">11.</span>
-            <h2 id="s11" class="section-title">Your rights</h2>
+            <h2 id="s11" class="section-title">Your rights and how they work in an accountless app</h2>
           </div>
 
           <ol class="clause-list">
             <li>
               <strong>11.1</strong>
-              Depending on your circumstances, you may have rights including access, deletion, correction, restriction, portability, and objection. We may need enough information to identify the data you’re asking about.
+              Depending on your circumstances, you may have rights including access, deletion, correction, restriction, portability, and objection. You also have the right to complain to the UK supervisory authority (the Information Commissioner’s Office).
             </li>
             <li>
               <strong>11.2</strong>
-              Because the App is accountless and stores preferences on-device, Menuva may not be able to identify or retrieve App-related data about you beyond:
+              <strong>Accountless limitation.</strong> Because the App does not use accounts and does not collect direct identifiers, we may not be able to identify or retrieve App-related data about you beyond:
               <ol class="clause-list alpha">
-                <li>anything you submit via feedback, and</li>
-                <li>any correspondence you send us by email.</li>
+                <li>feedback you submitted (if you provided contact details or sufficient context to locate it), and</li>
+                <li>correspondence you send us by email.</li>
               </ol>
             </li>
             <li>
               <strong>11.3</strong>
-              You also have the right to complain to the UK supervisory authority (the Information Commissioner’s Office).
+              <strong>Objecting to analytics.</strong> You can object to analytics processing by contacting us. Because analytics is not tied to an account identity, we generally cannot reliably locate or delete past analytics records associated with a specific person. If you delete the App, it stops further analytics events from being sent from that device.
             </li>
           </ol>
         </section>
@@ -623,7 +671,7 @@
           <ol class="clause-list">
             <li>
               <strong>12.1</strong>
-              If we change how we process data (for example, adding analytics or crash reporting), we will update this policy and, where appropriate, provide an in-app notice.
+              If we change how we process data (for example, enabling Website analytics, adding new SDKs, changing analytics settings, or expanding who can access analytics dashboards), we will update this policy and, where appropriate, provide in-app or Website notice. Apple also requires keeping App Privacy disclosures accurate.
             </li>
           </ol>
         </section>
@@ -641,7 +689,12 @@
             </li>
             <li>
               <strong>13.2</strong>
-              Privacy Policy page: <a href="https://menuva.co.uk/privacy" rel="noopener noreferrer">menuva.co.uk/privacy</a>
+              Support: <a href="mailto:support@menuva.co.uk">support@menuva.co.uk</a>
+            </li>
+            <li>
+              <strong>13.3</strong>
+              Privacy Policy page:
+              <a href="https://menuva.co.uk/privacy" rel="noopener noreferrer">menuva.co.uk/privacy</a>
             </li>
           </ol>
         </section>
@@ -649,11 +702,10 @@
 
       <footer>
         <p class="note">
-          Questions: <a href="mailto:hello@menuva.co.uk">hello@menuva.co.uk</a>
+          Questions: <a href="mailto:hello@menuva.co.uk">hello@menuva.co.uk</a> • Support: <a href="mailto:support@menuva.co.uk">support@menuva.co.uk</a>
         </p>
       </footer>
     </article>
   </div>
 </body>
 </html>
-
