@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menuva – FAQ</title>
+  <meta name="description" content="Menuva FAQ for the iOS pilot and the January 2026 promotional period (Last updated: 1 January 2026)" />
+
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text-main: #111111;
+      --text-muted: #555555;
+      --accent: #12b3a8;
+      --border-subtle: #e0e0e5;
+
+      --warn-bg: rgba(255, 59, 48, 0.06);
+      --warn-border: rgba(255, 59, 48, 0.20);
+      --warn-text: #b42318;
+
+      --pill-bg: rgba(17, 17, 17, 0.02);
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Avenir", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 28px;
+    }
+
+    .card {
+      max-width: 900px;
+      width: 100%;
+      background-color: var(--card-bg);
+      border-radius: 18px;
+      padding: 34px 42px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-subtle);
+    }
+
+    header { margin-bottom: 14px; }
+
+    /* Top indicators */
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(18, 179, 168, 0.06);
+      color: var(--accent);
+      border: 1px solid rgba(18, 179, 168, 0.18);
+      user-select: none;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-weight: 650;
+      font-size: clamp(26px, 4vw, 34px);
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 0 0 10px;
+      font-size: 15px;
+      color: var(--text-muted);
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    .meta {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .meta span + span::before {
+      content: "•";
+      margin: 0 8px;
+      color: var(--border-subtle);
+    }
+
+    main {
+      margin-top: 10px;
+      font-size: 15px;
+      line-height: 1.72;
+    }
+
+    main p { margin: 0 0 14px; }
+
+    .section {
+      padding-top: 18px;
+      margin-top: 18px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .section:first-of-type {
+      border-top: none;
+      padding-top: 6px;
+      margin-top: 6px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .section-number {
+      font-weight: 650;
+      font-size: 15px;
+      color: var(--accent);
+      min-width: 1.6em;
+    }
+
+    .section-title {
+      font-weight: 650;
+      font-size: 16px;
+      letter-spacing: 0.01em;
+      margin: 0;
+    }
+
+    .kicker {
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 0 0 8px;
+    }
+
+    /* Better TOC */
+    .toc-wrap {
+      margin-top: 14px;
+    }
+
+    .toc {
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      background: rgba(17, 17, 17, 0.02);
+      padding: 14px 14px 12px;
+    }
+
+    .toc-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .toc-title {
+      margin: 0;
+      font-weight: 650;
+      font-size: 14px;
+      letter-spacing: 0.01em;
+    }
+
+    .toc-hint {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .toc-grid a {
+      display: block;
+      border: 1px solid var(--border-subtle);
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 10px 12px;
+      text-decoration: none;
+      color: var(--text-main);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+      transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+    }
+
+    .toc-grid a:hover,
+    .toc-grid a:focus-visible {
+      border-color: rgba(18, 179, 168, 0.35);
+      box-shadow: 0 10px 18px rgba(0,0,0,0.06);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .toc-item-title {
+      font-weight: 650;
+      font-size: 13.5px;
+      letter-spacing: 0.01em;
+      margin: 0 0 2px;
+    }
+
+    .toc-item-sub {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    /* Lists + pills */
+    .clause-list {
+      margin: 0 0 6px 0;
+      padding-left: 1.25em;
+    }
+
+    .clause-list li { margin-bottom: 8px; }
+
+    .clause-list.compact li { margin-bottom: 6px; }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 6px 0 2px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: var(--pill-bg);
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    /* Callouts */
+    .callout {
+      border: 1px solid rgba(18, 179, 168, 0.18);
+      background: rgba(18, 179, 168, 0.06);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin: 12px 0 14px;
+      color: var(--text-main);
+    }
+
+    .warning {
+      border: 1px solid var(--warn-border);
+      background: var(--warn-bg);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin: 12px 0 14px;
+      color: var(--warn-text);
+    }
+
+    /* Facts */
+    .facts {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .fact {
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 12px 14px;
+      background: rgba(17, 17, 17, 0.02);
+    }
+
+    .fact strong { display: block; margin-bottom: 4px; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(18, 179, 168, 0.35);
+      padding-bottom: 1px;
+    }
+
+    a:hover,
+    a:focus-visible { border-bottom-color: var(--accent); }
+
+    footer {
+      margin-top: 22px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 980px) {
+      .toc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 760px) {
+      .two-col { grid-template-columns: 1fr; }
+      .toc-head { flex-direction: column; align-items: flex-start; }
+      .toc-hint { white-space: normal; }
+    }
+
+    @media (max-width: 640px) {
+      .page { padding: 16px; }
+      .card { padding: 22px 18px 24px; border-radius: 16px; }
+      .toc-grid { grid-template-columns: 1fr; }
+      footer { margin-top: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <article class="card" aria-labelledby="faq-heading">
+      <header>
+        <div class="badge-row" aria-hidden="true">
+          <div class="badge"><span class="badge-dot"></span><span>Pilot</span></div>
+          <div class="badge"><span class="badge-dot"></span><span>Promotion</span></div>
+        </div>
+
+        <h1 id="faq-heading">Menuva FAQ</h1>
+        <p class="subtitle">
+          Frequently asked questions about the iOS app and the January 2026 promotional period
+        </p>
+        <p class="meta">
+          <span>Last updated: 1 January 2026</span>
+          <span>Applies to: Menuva iOS app (pilot), and menuva.co.uk</span>
+        </p>
+
+        <!-- TOC earlier -->
+        <div class="toc-wrap" aria-label="On-page navigation">
+          <div class="toc">
+            <div class="toc-head">
+              <h2 class="toc-title">Contents</h2>
+              <p class="toc-hint">Jump to a section</p>
+            </div>
+
+            <nav aria-label="Table of contents">
+              <ul class="toc-grid">
+                <li><a href="#what-is-menuva"><p class="toc-item-title">What is Menuva</p><p class="toc-item-sub">Overview and value</p></a></li>
+                <li><a href="#quick-facts"><p class="toc-item-title">Quick facts</p><p class="toc-item-sub">Platform, venues, languages</p></a></li>
+                <li><a href="#getting-started"><p class="toc-item-title">Getting started</p><p class="toc-item-sub">Terms and privacy</p></a></li>
+                <li><a href="#device-and-availability"><p class="toc-item-title">Device and availability</p><p class="toc-item-sub">iPhone, iOS 18+</p></a></li>
+                <li><a href="#why-ios-only"><p class="toc-item-title">Why iOS only</p><p class="toc-item-sub">Pilot rationale</p></a></li>
+                <li><a href="#tutorial"><p class="toc-item-title">Tutorial</p><p class="toc-item-sub">How to use Menuva</p></a></li>
+                <li><a href="#location-permission"><p class="toc-item-title">Location permission</p><p class="toc-item-sub">Optional, recommended</p></a></li>
+                <li><a href="#maps-and-directions"><p class="toc-item-title">Maps and directions</p><p class="toc-item-sub">Apple Maps</p></a></li>
+                <li><a href="#offline-caching-updates"><p class="toc-item-title">Offline, caching, updates</p><p class="toc-item-sub">After initial load</p></a></li>
+                <li><a href="#venue-discovery"><p class="toc-item-title">Venue discovery</p><p class="toc-item-sub">Home and Map</p></a></li>
+                <li><a href="#browsing-menus"><p class="toc-item-title">Browsing menus</p><p class="toc-item-sub">Categories, subcategories</p></a></li>
+                <li><a href="#searching"><p class="toc-item-title">Searching</p><p class="toc-item-sub">Venue and in-menu</p></a></li>
+                <li><a href="#dietary-allergens"><p class="toc-item-title">Dietary and allergens</p><p class="toc-item-sub">UK14 + preferences</p></a></li>
+                <li><a href="#restricted-sections"><p class="toc-item-title">Restricted sections</p><p class="toc-item-sub">Safety defaults</p></a></li>
+                <li><a href="#basket-notes-customizations"><p class="toc-item-title">Basket and notes</p><p class="toc-item-sub">Mock basket</p></a></li>
+                <li><a href="#content-completeness"><p class="toc-item-title">Content completeness</p><p class="toc-item-sub">Missing fields</p></a></li>
+                <li><a href="#nutrition-sorting"><p class="toc-item-title">Nutrition and sorting</p><p class="toc-item-sub">Per serving</p></a></li>
+                <li><a href="#language-currency"><p class="toc-item-title">Language and currency</p><p class="toc-item-sub">Translation, FX</p></a></li>
+                <li><a href="#time-travel"><p class="toc-item-title">Time Travel</p><p class="toc-item-sub">Preview menus</p></a></li>
+                <li><a href="#promotion-10"><p class="toc-item-title">10% promotion</p><p class="toc-item-sub">Dates and redemption</p></a></li>
+                <li><a href="#privacy-analytics"><p class="toc-item-title">Privacy and analytics</p><p class="toc-item-sub">Accountless</p></a></li>
+                <li><a href="#data-accuracy-safety"><p class="toc-item-title">Data accuracy</p><p class="toc-item-sub">Allergen caution</p></a></li>
+                <li><a href="#feedback-support-security"><p class="toc-item-title">Support and security</p><p class="toc-item-sub">Feedback, reporting</p></a></li>
+                <li><a href="#reset-uninstall"><p class="toc-item-title">Reset and uninstall</p><p class="toc-item-sub">On-device data</p></a></li>
+                <li><a href="#contacts"><p class="toc-item-title">Contacts</p><p class="toc-item-sub">Email addresses</p></a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <!-- What is Menuva -->
+        <section id="what-is-menuva" class="section" aria-labelledby="s1-title">
+          <div class="section-header">
+            <span class="section-number">1.</span>
+            <h2 id="s1-title" class="section-title">What is Menuva</h2>
+          </div>
+
+          <p>
+            Menuva is a digital menu platform that makes dining-in simple and accessible for diners, while giving restaurants
+            an easy way to increase visibility, customer satisfaction, and average order value.
+          </p>
+
+          <p class="kicker">What problems does Menuva address</p>
+          <ul class="clause-list">
+            <li><strong>Discovery</strong>: many venues don’t have online menus, or exclude key information (e.g., prices, allergens, customizations), despite many diners researching menus in advance.</li>
+            <li><strong>Clarity</strong>: physical menus often have small fonts (especially in dim lighting), language barriers, and complexity for dietary needs.</li>
+            <li><strong>Confidence</strong>: ordering anxiety is rising, especially among younger diners, who may worry about ordering incorrectly, holding up the queue, or mispronouncing dishes.</li>
+          </ul>
+
+          <div class="two-col" role="group" aria-label="Diner and venue capabilities">
+            <div class="fact">
+              <strong>What Menuva lets diners do</strong>
+              <ul class="clause-list compact">
+                <li>Preview complete menus in advance.</li>
+                <li>Translate menus (English and Chinese for the pilot).</li>
+                <li>Convert prices into a preferred currency (approximate).</li>
+                <li>Filter and label items using dietary preferences and allergens.</li>
+                <li>Customize what information is shown (images, descriptions, nutrition fields).</li>
+                <li>Build a mock basket and show the order summary to staff at checkout.</li>
+              </ul>
+            </div>
+
+            <div class="fact">
+              <strong>What Menuva lets venues do</strong>
+              <ul class="clause-list compact">
+                <li>Maintain a central menu that can be updated without new hardware or major operational change.</li>
+                <li>Provide clearer allergen and dietary information (where available).</li>
+                <li>Improve menu accessibility and readability for a wider range of diners.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Quick facts -->
+        <section id="quick-facts" class="section" aria-labelledby="s2-title">
+          <div class="section-header">
+            <span class="section-number">2.</span>
+            <h2 id="s2-title" class="section-title">Quick facts</h2>
+          </div>
+
+          <div class="facts" role="list">
+            <div class="fact" role="listitem"><strong>Platform</strong>iPhone only, iOS 18+</div>
+            <div class="fact" role="listitem"><strong>Availability</strong>Downloadable from every iOS App Store region, intended for UK use</div>
+            <div class="fact" role="listitem"><strong>Accounts</strong>None (no sign-in)</div>
+            <div class="fact" role="listitem"><strong>Ordering</strong>No in-app ordering, payments, or reservations</div>
+            <div class="fact" role="listitem">
+              <strong>Pilot venues (5)</strong>
+              <ul class="clause-list compact">
+                <li>District (Warwick Business School)</li>
+                <li>Coffee Lab (Social Sciences)</li>
+                <li>Coffee Lab (Oculus)</li>
+                <li>Coffee Lab (Library)</li>
+                <li>Coffee Lab (IBRB)</li>
+              </ul>
+            </div>
+            <div class="fact" role="listitem"><strong>Languages</strong>English (UK), Chinese</div>
+          </div>
+        </section>
+
+        <!-- Getting started -->
+        <section id="getting-started" class="section" aria-labelledby="s4-title">
+          <div class="section-header">
+            <span class="section-number">3.</span>
+            <h2 id="s4-title" class="section-title">Getting started</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li><strong>Is an account required</strong><br>No.</li>
+            <li>
+              <strong>Are Terms and Privacy Policy required</strong><br>
+              Yes. The app requires acceptance of both to proceed:
+              <ul class="clause-list compact">
+                <li><a href="https://menuva.co.uk/terms">menuva.co.uk/terms</a></li>
+                <li><a href="https://menuva.co.uk/privacy">menuva.co.uk/privacy</a></li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Device and availability -->
+        <section id="device-and-availability" class="section" aria-labelledby="s5-title">
+          <div class="section-header">
+            <span class="section-number">4.</span>
+            <h2 id="s5-title" class="section-title">Device and availability</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li><strong>What devices are supported</strong><br>iPhone only, iOS 18 or later.</li>
+            <li><strong>Where is Menuva available</strong><br>Menuva is downloadable from every iOS App Store region and is intended for use in the United Kingdom.</li>
+          </ul>
+        </section>
+
+        <!-- Why iOS only -->
+        <section id="why-ios-only" class="section" aria-labelledby="s6-title">
+          <div class="section-header">
+            <span class="section-number">5.</span>
+            <h2 id="s6-title" class="section-title">Why iOS only</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li><strong>Why is Menuva iOS-only</strong><br>Menuva is currently an iOS-only pilot and proof of concept. The goal is to validate whether Menuva provides genuine value in a real dining environment before expanding further.</li>
+            <li><strong>Will there be a web app or Android app</strong><br>A web app may be prioritized after the iOS pilot. Android may follow depending on pilot outcomes and feedback.</li>
+            <li>
+              <strong>How can I influence what gets built next</strong><br>
+              Submit feedback via:
+              <ul class="clause-list compact">
+                <li><a href="https://menuva.co.uk/feedback">menuva.co.uk/feedback</a></li>
+                <li>the in-app Feedback button (Home screen)</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Tutorial -->
+        <section id="tutorial" class="section" aria-labelledby="s7-title">
+          <div class="section-header">
+            <span class="section-number">6.</span>
+            <h2 id="s7-title" class="section-title">Tutorial</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li>
+              <strong>Is there a guide on how to use Menuva</strong><br>
+              Yes:
+              <ul class="clause-list compact">
+                <li>In-app Tutorial button (Home screen, top left)</li>
+                <li><a href="https://menuva.co.uk/tutorial">menuva.co.uk/tutorial</a></li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Location permission -->
+        <section id="location-permission" class="section" aria-labelledby="s8-title">
+          <div class="section-header">
+            <span class="section-number">7.</span>
+            <h2 id="s8-title" class="section-title">Location permission</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li><strong>Is location permission required</strong><br>No. It is recommended.</li>
+            <li>
+              <strong>What location is used for</strong><br>
+              When “When In Use” location is granted, the app uses on-device location to:
+              <ul class="clause-list compact">
+                <li>show the nearest venue on the Home screen</li>
+                <li>sort venues by distance (Home and Map)</li>
+              </ul>
+            </li>
+            <li>
+              <strong>What happens if location is denied</strong><br>
+              <ul class="clause-list compact">
+                <li>the nearest-venue experience is unavailable</li>
+                <li>you can still use the app via venue search and Map view</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Maps and directions -->
+        <section id="maps-and-directions" class="section" aria-labelledby="s9-title">
+          <div class="section-header">
+            <span class="section-number">8.</span>
+            <h2 id="s9-title" class="section-title">Maps and directions</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li><strong>Can I use the map without location permission</strong><br>Yes. Map view remains available, and defaults to Warwick Campus.</li>
+            <li><strong>Where do directions open</strong><br>Directions open in Apple Maps.</li>
+          </ul>
+        </section>
+
+        <!-- Offline use, caching, and updates -->
+        <section id="offline-caching-updates" class="section" aria-labelledby="s10-title">
+          <div class="section-header">
+            <span class="section-number">9.</span>
+            <h2 id="s10-title" class="section-title">Offline use, caching, and updates</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li><strong>Does the app work offline</strong><br>Yes, after initial load.</li>
+            <li>
+              <strong>What gets cached (pilot)</strong><br>
+              <ul class="clause-list compact">
+                <li>menus for all 5 pilot venues are cached on first use</li>
+                <li>images load progressively (only when needed) and cache after loading</li>
+              </ul>
+            </li>
+            <li>
+              <strong>How menu updates are checked</strong><br>
+              When the app is open:
+              <ul class="clause-list compact">
+                <li>checks when the app becomes active again</li>
+                <li>checks every 10 minutes while active</li>
+              </ul>
+              If an update is available, it downloads in the background for later use.
+            </li>
+          </ul>
+        </section>
+
+        <!-- Venue discovery and navigation -->
+        <section id="venue-discovery" class="section" aria-labelledby="s11-title">
+          <div class="section-header">
+            <span class="section-number">10.</span>
+            <h2 id="s11-title" class="section-title">Venue discovery and navigation</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li>
+              <strong>How venues are found</strong><br>
+              <ul class="clause-list compact">
+                <li>Home screen: list and search (venue name only)</li>
+                <li>Map view: venue markers with open/closed indicators</li>
+              </ul>
+            </li>
+            <li><strong>Multi-location venue naming</strong><br>Locations are shown as venue variants (e.g., Coffee Lab (Oculus)).</li>
+            <li><strong>Opening status</strong><br>Venues show open/closed status in the Home and Map experiences.</li>
+          </ul>
+        </section>
+
+        <!-- Browsing menus -->
+        <section id="browsing-menus" class="section" aria-labelledby="s12-title">
+          <div class="section-header">
+            <span class="section-number">11.</span>
+            <h2 id="s12-title" class="section-title">Browsing menus</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li>
+              <strong>Menu structure</strong><br>
+              <ul class="clause-list compact">
+                <li>categories are shown at the bottom (horizontal scroll)</li>
+                <li>some categories include subcategories (expanded by default, collapsible)</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Searching -->
+        <section id="searching" class="section" aria-labelledby="s13-title">
+          <div class="section-header">
+            <span class="section-number">12.</span>
+            <h2 id="s13-title" class="section-title">Searching</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li><strong>Can I search venues</strong><br>Yes, by venue name only (Home search).</li>
+            <li><strong>Can I search within a menu</strong><br>Yes, by dish name only (in-menu search).</li>
+            <li><strong>What happens to categories when I search in-menu</strong><br>Searching disables category grouping and searches across the full menu.</li>
+          </ul>
+        </section>
+
+        <!-- Dietary preferences and allergens -->
+        <section id="dietary-allergens" class="section" aria-labelledby="s14-title">
+          <div class="section-header">
+            <span class="section-number">13.</span>
+            <h2 id="s14-title" class="section-title">Dietary preferences and allergens</h2>
+          </div>
+
+          <p class="kicker">Dietary preferences supported</p>
+          <div class="pill-row" aria-label="Dietary preferences list">
+            <span class="pill">Dairy free</span>
+            <span class="pill">Gluten free</span>
+            <span class="pill">No beef</span>
+            <span class="pill">No pork</span>
+            <span class="pill">Pescatarian</span>
+            <span class="pill">Vegan</span>
+            <span class="pill">Vegetarian</span>
+          </div>
+
+          <p class="kicker" style="margin-top: 14px;">Allergens supported (UK 14)</p>
+          <div class="pill-row" aria-label="Allergens list">
+            <span class="pill">Celery</span>
+            <span class="pill">Cereals containing gluten</span>
+            <span class="pill">Crustaceans</span>
+            <span class="pill">Eggs</span>
+            <span class="pill">Fish</span>
+            <span class="pill">Lupin</span>
+            <span class="pill">Milk</span>
+            <span class="pill">Mollusks</span>
+            <span class="pill">Mustard</span>
+            <span class="pill">Nuts</span>
+            <span class="pill">Peanuts</span>
+            <span class="pill">Sesame</span>
+            <span class="pill">Soya</span>
+            <span class="pill">Sulfur dioxide / sulfites</span>
+          </div>
+
+          <ul class="clause-list" style="margin-top: 12px;">
+            <li>
+              <strong>Allergen “children” breakdowns</strong><br>
+              <ul class="clause-list compact">
+                <li><strong>Nuts</strong>: almonds, Brazil nuts, cashews, hazelnuts, macadamia nuts, pecans, pistachios, walnuts</li>
+                <li><strong>Cereals containing gluten</strong>: barley, kamut, oats, rice, spelt, wheat</li>
+              </ul>
+            </li>
+
+            <li>
+              <strong>Locked allergens from dietary preferences</strong><br>
+              Two dietary preferences auto-select and lock related allergens for safety and consistency:
+              <ul class="clause-list compact">
+                <li><strong>Gluten free</strong> locks cereals containing gluten</li>
+                <li><strong>Dairy free</strong> locks milk</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Restricted sections and safety defaults -->
+        <section id="restricted-sections" class="section" aria-labelledby="s15-title">
+          <div class="section-header">
+            <span class="section-number">14.</span>
+            <h2 id="s15-title" class="section-title">Restricted sections and safety defaults</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li>
+              <strong>What “Contains” vs “May contain” means</strong><br>
+              <ul class="clause-list compact">
+                <li><strong>Contains</strong> (red): explicitly contains the allergen, or is explicitly not suitable for a selected dietary preference</li>
+                <li><strong>May contain</strong> (orange/yellow): potential cross-contamination risk, or insufficient data to confirm safety</li>
+              </ul>
+            </li>
+
+            <li>
+              <strong>Where restricted items appear</strong><br>
+              If restrictions are selected, items may be moved into expandable sections at the bottom of each category:
+              <ul class="clause-list compact">
+                <li>May contain your restrictions</li>
+                <li>Contains your restrictions</li>
+              </ul>
+            </li>
+
+            <li>
+              <strong>Safety default for missing tagging</strong><br>
+              If any restrictions are selected and an item lacks sufficient dietary/allergen tagging, it is automatically placed in
+              <strong>May contain your restrictions</strong> as a precaution.
+            </li>
+
+            <li>
+              <strong>Why did a category disappear</strong><br>
+              If a category has no suitable items (everything is in “may contain” or “contains”), that category may be hidden.
+              <div class="callout">
+                <strong>Reveal fully filtered categories</strong><br>
+                Scroll the category strip all the way to the right, tap the red “i”, then select the hidden category to view its items.
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Basket, notes, and customizations -->
+        <section id="basket-notes-customizations" class="section" aria-labelledby="s16-title">
+          <div class="section-header">
+            <span class="section-number">15.</span>
+            <h2 id="s16-title" class="section-title">Basket, notes, and customizations</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li><strong>What the basket is</strong><br>A mock basket to support in-person ordering. It does not submit orders.</li>
+
+            <li>
+              <strong>Basket persistence</strong><br>
+              <ul class="clause-list compact">
+                <li>per venue</li>
+                <li>stored on-device</li>
+                <li>persists after closing the app until reset/uninstall</li>
+              </ul>
+            </li>
+
+            <li>
+              <strong>Editing items</strong><br>
+              Item edit view is accessible by:
+              <ul class="clause-list compact">
+                <li>tapping the item name, description, or ingredients</li>
+                <li>tapping the pencil icon after adding an item</li>
+              </ul>
+            </li>
+
+            <li><strong>Notes</strong><br>Notes are added in the item edit view, and appear in the Order Summary screen.</li>
+
+            <li><strong>Duplicating items</strong><br>Duplicates an item with the same customizations and notes.</li>
+
+            <li>
+              <strong>Customizations</strong><br>
+              <ul class="clause-list compact">
+                <li>single-select and multi-select options exist</li>
+                <li>defaults may be preselected</li>
+                <li>mandatory selections prompt the edit view and must be completed before adding</li>
+                <li>option price deltas are reflected in the edit view and order summary</li>
+                <li>restriction conflicts are visually indicated:
+                  <ul class="clause-list compact">
+                    <li>orange outline: may contain</li>
+                    <li>red outline: contains</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Content completeness -->
+        <section id="content-completeness" class="section" aria-labelledby="s17-title">
+          <div class="section-header">
+            <span class="section-number">16.</span>
+            <h2 id="s17-title" class="section-title">Content completeness</h2>
+          </div>
+
+          <p>
+            Menuva aims to show complete menus, but some items may be missing images, descriptions, ingredients, nutrition values,
+            or complete dietary/allergen tagging.
+          </p>
+
+          <ul class="clause-list">
+            <li>
+              <strong>What happens when descriptions are missing</strong><br>
+              If a description is missing and an ingredient list is available, the ingredient list may be shown instead:
+              <ul class="clause-list compact">
+                <li>truncated in list view</li>
+                <li>fully visible in the item edit view</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Nutrition and sorting -->
+        <section id="nutrition-sorting" class="section" aria-labelledby="s18-title">
+          <div class="section-header">
+            <span class="section-number">17.</span>
+            <h2 id="s18-title" class="section-title">Nutrition and sorting</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li><strong>Nutrition availability</strong><br>Nutrition attributes exist but are not available for all items.</li>
+
+            <li>
+              <strong>Nutrition unit for the pilot</strong><br>
+              Nutrition values are per serving for the pilot. If future venues provide per 100g values, the app will indicate that accordingly.
+            </li>
+
+            <li>
+              <strong>Sorting options</strong><br>
+              <ul class="clause-list compact">
+                <li>alphabetical</li>
+                <li>price (low→high, high→low)</li>
+                <li>nutrition (low→high, high→low) for supported attributes, including calories, fat, saturates, carbs, sugars, fibre, protein, and salt</li>
+              </ul>
+              Items missing the chosen attribute are placed after items with available data.
+            </li>
+          </ul>
+        </section>
+
+        <!-- Language and currency conversion -->
+        <section id="language-currency" class="section" aria-labelledby="s19-title">
+          <div class="section-header">
+            <span class="section-number">18.</span>
+            <h2 id="s19-title" class="section-title">Language and currency conversion</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li><strong>Languages supported</strong><br>English (UK), and Chinese.</li>
+
+            <li><strong>Translation scope</strong><br>Menu item names, descriptions (where available), ingredients, allergens, and sections.</li>
+
+            <li><strong>Translation method</strong><br>Hybrid machine + human spot checks. Translations may still contain errors; confirm with venue staff where needed.</li>
+
+            <li>
+              <strong>Currency conversion</strong><br>
+              <ul class="clause-list compact">
+                <li>menu base currency is GBP</li>
+                <li>150+ currencies supported; popular currencies pinned in selection</li>
+                <li>tapping a price shows an approximate converted value</li>
+                <li>rounding: up to 2 decimals</li>
+                <li>exchange rates: Fawaz Ahmed exchange-rate API (updated daily; no in-app “last updated” display)</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Time Travel -->
+        <section id="time-travel" class="section" aria-labelledby="s20-title">
+          <div class="section-header">
+            <span class="section-number">19.</span>
+            <h2 id="s20-title" class="section-title">Time Travel</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li><strong>What it is</strong><br>Time Travel previews menus at a chosen date and time, useful for rotating menus and planning ahead.</li>
+
+            <li>
+              <strong>Reliability window for pilot information</strong><br>
+              Time Travel information is expected to be reliable through the end of Warwick Term 2 2026:
+              <ul class="clause-list compact">
+                <li>Monday, 12 January 2026 to Saturday, 21 March 2026</li>
+              </ul>
+              <div class="warning" style="margin-top: 10px;">
+                <strong>Warning</strong><br>
+                Beyond this window, information may be out of date. Confirm opening hours and menu availability with venue staff.
+              </div>
+            </li>
+
+            <li><strong>Effect on basket and pricing</strong><br>Time Travel affects menu availability and can affect basket validity, pricing, and promotions.</li>
+          </ul>
+        </section>
+
+        <!-- Promotion -->
+        <section id="promotion-10" class="section" aria-labelledby="s21-title">
+          <div class="section-header">
+            <span class="section-number">20.</span>
+            <h2 id="s21-title" class="section-title">Promotion: 10% off (January 2026)</h2>
+          </div>
+
+          <div class="callout">
+            <strong>Summary</strong>
+            <ul class="clause-list compact" style="margin-top: 8px;">
+              <li><strong>Discount</strong>: 10%</li>
+              <li><strong>Dates</strong>: 12 January 2026 to 23 January 2026 (inclusive), during normal opening hours</li>
+              <li><strong>Venues</strong>: the 5 pilot venues listed above</li>
+              <li>
+                <strong>Redemption</strong>: present Menuva at checkout by showing either:
+                <ul class="clause-list compact">
+                  <li>the Order Summary screen for the items being purchased, or</li>
+                  <li>a screen showing the relevant venue and item(s) being purchased</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Scope notes</strong>:
+                <ul class="clause-list compact">
+                  <li>applies to items shown and selected in Menuva at time of ordering</li>
+                  <li>does not apply to service charges, tips, or items not selected within Menuva</li>
+                  <li>unlimited redemptions during the period, subject to venue operations</li>
+                  <li>subject to change (participation and feasibility may vary by venue)</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Privacy and analytics -->
+        <section id="privacy-analytics" class="section" aria-labelledby="s22-title">
+          <div class="section-header">
+            <span class="section-number">21.</span>
+            <h2 id="s22-title" class="section-title">Privacy and analytics</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li><strong>High-level approach</strong><br>Menuva is accountless and data-minimizing.</li>
+
+            <li>
+              <strong>Location privacy</strong><br>
+              <ul class="clause-list compact">
+                <li>precise location is processed on-device for nearby venue discovery and sorting</li>
+                <li>raw latitude/longitude is not transmitted off-device</li>
+                <li>last known location/city may be cached on-device only</li>
+              </ul>
+            </li>
+
+            <li>
+              <strong>Analytics</strong><br>
+              Menuva uses Firebase Analytics for aggregated usage measurement and product improvement:
+              <ul class="clause-list compact">
+                <li>no accounts, and no custom user ID is set</li>
+                <li>ads features are disabled; no cross-app advertising tracking</li>
+                <li>typed search queries are not logged to analytics</li>
+                <li>no in-app opt-out; deleting the app stops further collection from that device</li>
+              </ul>
+              Specifics are in the Privacy Policy: <a href="https://menuva.co.uk/privacy">menuva.co.uk/privacy</a>.
+            </li>
+
+            <li><strong>Retention</strong><br>14 months (current configuration).</li>
+          </ul>
+        </section>
+
+        <!-- Data accuracy and safety -->
+        <section id="data-accuracy-safety" class="section" aria-labelledby="s23-title">
+          <div class="section-header">
+            <span class="section-number">22.</span>
+            <h2 id="s23-title" class="section-title">Data accuracy and safety</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li><strong>Authoritative source</strong><br>In-venue menus and staff guidance are authoritative.</li>
+          </ul>
+
+          <div class="warning">
+            <strong>Allergen and dietary guidance</strong><br>
+            Menuva’s allergen indicators, dietary labels, warnings, and filters are not guarantees. Menuva should not be the sole basis
+            for determining whether food meets dietary or allergen requirements. Confirmation with the venue is required, especially for
+            severe allergies, intolerances, or coeliac disease.
+          </div>
+
+          <ul class="clause-list">
+            <li>
+              <strong>Reporting incorrect information</strong><br>
+              Report issues to <a href="mailto:support@menuva.co.uk">support@menuva.co.uk</a> and include as much relevant detail as possible,
+              such as venue, item name, screenshot, what you were doing, device model, iOS version, and whether Time Travel was used.
+            </li>
+          </ul>
+        </section>
+
+        <!-- Feedback, support, and security -->
+        <section id="feedback-support-security" class="section" aria-labelledby="s24-title">
+          <div class="section-header">
+            <span class="section-number">23.</span>
+            <h2 id="s24-title" class="section-title">Feedback, support, and security</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li>
+              <strong>How to submit feedback</strong><br>
+              <ul class="clause-list compact">
+                <li>in-app Feedback button (Home screen)</li>
+                <li><a href="https://menuva.co.uk/feedback">menuva.co.uk/feedback</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <strong>Reporting security issues</strong><br>
+              Email <a href="mailto:support@menuva.co.uk">support@menuva.co.uk</a> with as much detail as possible.
+            </li>
+          </ul>
+        </section>
+
+        <!-- Reset and uninstall -->
+        <section id="reset-uninstall" class="section" aria-labelledby="s25-title">
+          <div class="section-header">
+            <span class="section-number">24.</span>
+            <h2 id="s25-title" class="section-title">Reset and uninstall</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li><strong>What “Reset app” does</strong><br>Reset deletes all on-device app data, including basket, preferences, and cached content.</li>
+            <li><strong>What uninstalling the app does</strong><br>Uninstalling clears on-device data and stops further analytics events from being sent from that device.</li>
+          </ul>
+        </section>
+
+        <!-- Contacts -->
+        <section id="contacts" class="section" aria-labelledby="s26-title">
+          <div class="section-header">
+            <span class="section-number">25.</span>
+            <h2 id="s26-title" class="section-title">Contacts</h2>
+          </div>
+
+          <ul class="clause-list">
+            <li><strong>General</strong>: <a href="mailto:hello@menuva.co.uk">hello@menuva.co.uk</a></li>
+            <li><strong>Support</strong>: <a href="mailto:support@menuva.co.uk">support@menuva.co.uk</a></li>
+            <li><strong>Venue operations</strong>: <a href="mailto:ops@menuva.co.uk">ops@menuva.co.uk</a></li>
+            <li><strong>FAQ</strong>: <a href="https://menuva.co.uk/faq">menuva.co.uk/faq</a></li>
+          </ul>
+        </section>
+      </main>
+
+      <footer>
+        <p style="margin: 0;">
+          For questions, contact <a href="mailto:hello@menuva.co.uk">hello@menuva.co.uk</a>.
+        </p>
+      </footer>
+    </article>
+  </div>
+</body>
+</html>
