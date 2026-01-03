@@ -3,51 +3,80 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Redirecting…</title>
+  <title>Opening the App Store…</title>
   <meta name="robots" content="noindex" />
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLFDHVYBWL"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag("js", new Date());
-    gtag("config", "G-LLFDHVYBWL", {
-      anonymize_ip: true,
-      transport_type: "beacon",
-      send_page_view: false
-    });
+    (function () {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){ dataLayer.push(arguments); };
+
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-LLFDHVYBWL";
+      s.onload = () => { window.__gaLoaded = true; };
+      s.onerror = () => { window.__gaLoaded = false; };
+      document.head.appendChild(s);
+
+      gtag("js", new Date());
+      gtag("config", "G-LLFDHVYBWL", {
+        transport_type: "beacon"
+      });
+    })();
   </script>
 </head>
+
 <body>
   <noscript>
-    <p>If you are not redirected, <a href="https://menuva.co.uk/download/?qr_source=aboard" rel="noopener">click here</a>.</p>
+    <p>If you are not redirected, <a href="https://apps.apple.com/app/menuva/id6756895068" rel="noopener">click here</a>.</p>
   </noscript>
-  <script>
-    const SOURCE = "aboard";
-    const TARGET = "https://menuva.co.uk/download/?qr_source=" + encodeURIComponent(SOURCE);
-    let redirected = false;
 
-    const go = () => {
+  <script>
+    const APPSTORE_URL = "https://apps.apple.com/app/menuva/id6756895068";
+
+    const params = new URLSearchParams(window.location.search);
+    const utm_source   = params.get("utm_source")   || "unknown";
+    const utm_medium   = params.get("utm_medium")   || "unknown";
+    const utm_campaign = params.get("utm_campaign") || "unknown";
+
+    let redirected = false;
+    function go() {
       if (redirected) return;
       redirected = true;
-      window.location.replace(TARGET);
-    };
-
-    const fallback = setTimeout(go, 650);
-
-    try {
-      gtag("event", "source_redirect", {
-        qr_source: SOURCE,
-        event_callback: () => {
-          clearTimeout(fallback);
-          go();
-        },
-        event_timeout: 600
-      });
-    } catch (e) {
-      clearTimeout(fallback);
-      go();
+      window.location.replace(APPSTORE_URL);
     }
+
+    const HARD_FALLBACK_MS = 3000;
+    const hardFallback = setTimeout(go, HARD_FALLBACK_MS);
+
+    function fireAndGo() {
+      try {
+        gtag("event", "appstore_outbound_click", {
+          utm_source,
+          utm_medium,
+          utm_campaign,
+          event_callback: () => {
+            clearTimeout(hardFallback);
+            go();
+          },
+          event_timeout: 2200
+        });
+      } catch (e) {
+        clearTimeout(hardFallback);
+        go();
+      }
+    }
+
+    (function waitForGA(){
+      const start = Date.now();
+      const MAX_WAIT_MS = 900;
+
+      (function tick(){
+        if (window.__gaLoaded === true) return fireAndGo();
+        if (window.__gaLoaded === false) { clearTimeout(hardFallback); return go(); }
+        if (Date.now() - start >= MAX_WAIT_MS) return fireAndGo(); // queue anyway
+        setTimeout(tick, 50);
+      })();
+    })();
   </script>
 </body>
 </html>
