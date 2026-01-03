@@ -3,51 +3,89 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Redirecting…</title>
+  <title>menuva — wbs</title>
+
+  <meta name="description" content="Redirecting to download…" />
   <meta name="robots" content="noindex" />
+
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLFDHVYBWL"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag("js", new Date());
-    gtag("config", "G-LLFDHVYBWL", {
-      anonymize_ip: true,
-      transport_type: "beacon",
-      send_page_view: false
-    });
+    (function () {
+      const MEASUREMENT_ID = "G-LLFDHVYBWL";
+      const FROM_SLUG = "wbs";
+      const BASE_DELAY_MS = 1200;
+
+      const params = new URLSearchParams(window.location.search);
+      if (!params.has("qr_source")) params.set("qr_source", FROM_SLUG);
+      if (!params.has("from")) params.set("from", FROM_SLUG);
+
+      const toUrl = new URL("/download/", window.location.origin);
+      toUrl.search = params.toString();
+
+      const debugMode = params.get("debug_mode") === "true";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+
+      gtag("js", new Date());
+      gtag("config", MEASUREMENT_ID, {
+        send_page_view: false,
+        anonymize_ip: true,
+        debug_mode: debugMode
+      });
+
+      function doRedirect() {
+        window.location.replace(toUrl.toString());
+      }
+
+      function setFallbackHref() {
+        const a = document.getElementById("fallbackLink");
+        if (a) a.href = toUrl.toString();
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", setFallbackHref, { once: true });
+      } else {
+        setFallbackHref();
+      }
+
+      gtag("event", "page_view", {
+        page_title: "menuva — wbs",
+        page_location: window.location.href,
+        page_path: "/wbs"
+      });
+
+      gtag("event", "redirect_hit", {
+        transport_type: "beacon",
+        event_callback: doRedirect,
+        event_timeout: BASE_DELAY_MS,
+
+        from_path: "/wbs",
+        to_path: "/download",
+        to_url: toUrl.toString(),
+
+        qr_source: params.get("qr_source") || FROM_SLUG,
+        qr_id: params.get("qr_id") || "",
+        utm_source: params.get("utm_source") || "",
+        utm_medium: params.get("utm_medium") || "",
+        utm_campaign: params.get("utm_campaign") || "",
+        referrer: document.referrer || ""
+      });
+
+      setTimeout(doRedirect, BASE_DELAY_MS);
+    })();
   </script>
+
+  <style>
+    body{margin:0;padding:24px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    .muted{opacity:.7}
+  </style>
 </head>
 <body>
-  <noscript>
-    <p>If you are not redirected, <a href="https://menuva.co.uk/download/?qr_source=wbs" rel="noopener">click here</a>.</p>
-  </noscript>
-  <script>
-    const SOURCE = "wbs";
-    const TARGET = "https://menuva.co.uk/download/?qr_source=" + encodeURIComponent(SOURCE);
-    let redirected = false;
-
-    const go = () => {
-      if (redirected) return;
-      redirected = true;
-      window.location.replace(TARGET);
-    };
-
-    const fallback = setTimeout(go, 650);
-
-    try {
-      gtag("event", "source_redirect", {
-        qr_source: SOURCE,
-        event_callback: () => {
-          clearTimeout(fallback);
-          go();
-        },
-        event_timeout: 600
-      });
-    } catch (e) {
-      clearTimeout(fallback);
-      go();
-    }
-  </script>
+  <div>Opening download…</div>
+  <div class="muted">If you are not redirected, <a id="fallbackLink" href="/download/">tap here</a></div>
 </body>
 </html>
