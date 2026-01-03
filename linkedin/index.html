@@ -37,7 +37,7 @@
 
     try {
       gtag("event", "source_redirect", {
-        source: SOURCE,
+        qr_source: SOURCE,
         event_callback: () => {
           clearTimeout(fallback);
           go();
