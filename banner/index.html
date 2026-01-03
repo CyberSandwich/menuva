@@ -1,26 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Redirecting…</title>
-  <meta http-equiv="refresh" content="0;url=https://menuva.co.uk/download/">
+  <meta name="robots" content="noindex" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KZRXXL563"></script>
   <script>
-    (function () {
-      var target = "https://menuva.co.uk/download/";
-      if (window.location.href !== target) {
-        window.location.replace(target);
-      }
-    })();
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "G-7KZRXXL563", {
+      anonymize_ip: true,
+      transport_type: "beacon",
+      send_page_view: false
+    });
   </script>
 </head>
 <body>
   <noscript>
-    <p>
-      If you are not redirected,
-      <a href="https://menuva.co.uk/download/">
-        click here
-      </a>.
-    </p>
+    <p>If you are not redirected, <a href="https://menuva.co.uk/download/" rel="noopener">click here</a>.</p>
   </noscript>
+  <script>
+    const SOURCE = "banner";
+    const TARGET = "https://menuva.co.uk/download/";
+    let redirected = false;
+
+    const go = () => {
+      if (redirected) return;
+      redirected = true;
+      window.location.replace(TARGET);
+    };
+
+    const fallback = setTimeout(go, 650);
+
+    try {
+      gtag("event", "source_redirect", {
+        source: SOURCE,
+        event_callback: () => {
+          clearTimeout(fallback);
+          go();
+        },
+        event_timeout: 600
+      });
+    } catch (e) {
+      clearTimeout(fallback);
+      go();
+    }
+  </script>
 </body>
 </html>
