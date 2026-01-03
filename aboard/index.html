@@ -3,80 +3,73 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Opening the App Store…</title>
+  <title>menuva — aboard</title>
+
+  <meta name="description" content="Redirecting to download…" />
   <meta name="robots" content="noindex" />
+  <meta http-equiv="refresh" content="2;url=/download/" />
+
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLFDHVYBWL"></script>
   <script>
     (function () {
-      window.dataLayer = window.dataLayer || [];
-      window.gtag = function(){ dataLayer.push(arguments); };
+      const MEASUREMENT_ID = "G-LLFDHVYBWL";
+      const FROM_SLUG = "aboard";
+      const params = new URLSearchParams(window.location.search);
+      if (!params.has("qr_source")) params.set("qr_source", FROM_SLUG);
+      if (!params.has("from")) params.set("from", FROM_SLUG);
 
-      const s = document.createElement("script");
-      s.async = true;
-      s.src = "https://www.googletagmanager.com/gtag/js?id=G-LLFDHVYBWL";
-      s.onload = () => { window.__gaLoaded = true; };
-      s.onerror = () => { window.__gaLoaded = false; };
-      document.head.appendChild(s);
+      const toUrl = new URL("/download/", window.location.origin);
+      toUrl.search = params.toString();
+
+      const debugMode = params.get("debug_mode") === "true";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
 
       gtag("js", new Date());
-      gtag("config", "G-LLFDHVYBWL", {
-        transport_type: "beacon"
+      gtag("config", MEASUREMENT_ID, {
+        send_page_view: false,
+        anonymize_ip: true,
+        debug_mode: debugMode
       });
-    })();
-  </script>
-</head>
 
-<body>
-  <noscript>
-    <p>If you are not redirected, <a href="https://apps.apple.com/app/menuva/id6756895068" rel="noopener">click here</a>.</p>
-  </noscript>
-
-  <script>
-    const APPSTORE_URL = "https://apps.apple.com/app/menuva/id6756895068";
-
-    const params = new URLSearchParams(window.location.search);
-    const utm_source   = params.get("utm_source")   || "unknown";
-    const utm_medium   = params.get("utm_medium")   || "unknown";
-    const utm_campaign = params.get("utm_campaign") || "unknown";
-
-    let redirected = false;
-    function go() {
-      if (redirected) return;
-      redirected = true;
-      window.location.replace(APPSTORE_URL);
-    }
-
-    const HARD_FALLBACK_MS = 3000;
-    const hardFallback = setTimeout(go, HARD_FALLBACK_MS);
-
-    function fireAndGo() {
-      try {
-        gtag("event", "appstore_outbound_click", {
-          utm_source,
-          utm_medium,
-          utm_campaign,
-          event_callback: () => {
-            clearTimeout(hardFallback);
-            go();
-          },
-          event_timeout: 2200
-        });
-      } catch (e) {
-        clearTimeout(hardFallback);
-        go();
+      function doRedirect() {
+        window.location.replace(toUrl.toString());
       }
-    }
+      gtag("event", "page_view", {
+        page_title: "menuva — aboard",
+        page_location: window.location.href,
+        page_path: "/aboard"
+      });
+      gtag("event", "redirect_hit", {
+        transport_type: "beacon",
+        event_callback: doRedirect,
+        event_timeout: 1200,
 
-    (function waitForGA(){
-      const start = Date.now();
-      const MAX_WAIT_MS = 900;
+        from_path: "/aboard",
+        to_path: "/download",
+        to_url: toUrl.toString(),
 
-      (function tick(){
-        if (window.__gaLoaded === true) return fireAndGo();
-        if (window.__gaLoaded === false) { clearTimeout(hardFallback); return go(); }
-        if (Date.now() - start >= MAX_WAIT_MS) return fireAndGo(); // queue anyway
-        setTimeout(tick, 50);
-      })();
+        qr_source: params.get("qr_source") || FROM_SLUG,
+        qr_id: params.get("qr_id") || "",
+        utm_source: params.get("utm_source") || "",
+        utm_medium: params.get("utm_medium") || "",
+        utm_campaign: params.get("utm_campaign") || "",
+        referrer: document.referrer || ""
+      });
+      setTimeout(doRedirect, 1200);
     })();
   </script>
+
+  <style>
+    body{margin:0;padding:24px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    .muted{opacity:.7}
+  </style>
+</head>
+<body>
+  <div>Opening download…</div>
+  <div class="muted">If you are not redirected, <a href="/download/">tap here</a></div>
 </body>
 </html>
