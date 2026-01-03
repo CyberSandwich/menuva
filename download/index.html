@@ -7,7 +7,6 @@
 
   <meta name="description" content="Opening the App Store…" />
   <meta name="robots" content="noindex" />
-  <meta http-equiv="refresh" content="2;url=https://apps.apple.com/us/app/menuva/id6756895068" />
 
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
   <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
@@ -17,6 +16,7 @@
     (function () {
       const MEASUREMENT_ID = "G-LLFDHVYBWL";
       const DEST = "https://apps.apple.com/us/app/menuva/id6756895068";
+      const BASE_DELAY_MS = 1200;
 
       const params = new URLSearchParams(window.location.search);
       const debugMode = params.get("debug_mode") === "true";
@@ -35,6 +35,17 @@
         window.location.replace(DEST);
       }
 
+      function setFallbackHref() {
+        const a = document.getElementById("fallbackLink");
+        if (a) a.href = DEST;
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", setFallbackHref, { once: true });
+      } else {
+        setFallbackHref();
+      }
+
       gtag("event", "page_view", {
         page_title: "menuva — download",
         page_location: window.location.href,
@@ -44,9 +55,11 @@
       gtag("event", "redirect_hit", {
         transport_type: "beacon",
         event_callback: doRedirect,
-        event_timeout: 1200,
+        event_timeout: BASE_DELAY_MS,
+
         from_path: params.get("from") ? ("/" + String(params.get("from")).replace(/^\/+/, "")) : "",
         to_url: DEST,
+
         qr_source: params.get("qr_source") || "",
         qr_id: params.get("qr_id") || "",
         utm_source: params.get("utm_source") || "",
@@ -55,7 +68,7 @@
         referrer: document.referrer || ""
       });
 
-      setTimeout(doRedirect, 1200);
+      setTimeout(doRedirect, BASE_DELAY_MS);
     })();
   </script>
 
@@ -66,6 +79,6 @@
 </head>
 <body>
   <div>Opening the App Store…</div>
-  <div class="muted">If you are not redirected, <a href="https://apps.apple.com/us/app/menuva/id6756895068">tap here</a></div>
+  <div class="muted">If you are not redirected, <a id="fallbackLink" href="https://apps.apple.com/us/app/menuva/id6756895068">tap here</a></div>
 </body>
 </html>
