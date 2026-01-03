@@ -29,8 +29,12 @@
 
   <script>
     const TARGET = "https://apps.apple.com/app/menuva/id6756895068";
-    let redirected = false;
 
+    // Pull qr_source from the query string: /download?qr_source=banner
+    const params = new URLSearchParams(window.location.search);
+    const QR_SOURCE = params.get("qr_source") || "unknown";
+
+    let redirected = false;
     const go = () => {
       if (redirected) return;
       redirected = true;
@@ -41,6 +45,7 @@
 
     try {
       gtag("event", "appstore_outbound_click", {
+        qr_source: QR_SOURCE,
         event_callback: () => {
           clearTimeout(fallback);
           go();
