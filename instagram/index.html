@@ -20,11 +20,11 @@
 </head>
 <body>
   <noscript>
-    <p>If you are not redirected, <a href="https://menuva.co.uk/download/" rel="noopener">click here</a>.</p>
+    <p>If you are not redirected, <a href="https://menuva.co.uk/download/?qr_source=aboard" rel="noopener">click here</a>.</p>
   </noscript>
   <script>
     const SOURCE = "instagram";
-    const TARGET = "https://menuva.co.uk/download/";
+    const TARGET = "https://menuva.co.uk/download/?qr_source=" + encodeURIComponent(SOURCE);
     let redirected = false;
 
     const go = () => {
