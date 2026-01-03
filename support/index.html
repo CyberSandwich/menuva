@@ -5,6 +5,46 @@
   <title>Menuva – Contact</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LLFDHVYBWL"></script>
+<script>
+  (function () {
+    const MEASUREMENT_ID = "G-LLFDHVYBWL";
+    const PAGE_KIND = "content";
+    const CONTENT_SLUG = "support";
+
+    const params = new URLSearchParams(location.search);
+    const debugMode = params.get("debug_mode") === "true";
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+
+    gtag("js", new Date());
+    gtag("config", MEASUREMENT_ID, {
+      send_page_view: false,
+      anonymize_ip: true,
+      debug_mode: debugMode
+    });
+
+    gtag("event", "page_view", {
+      page_title: document.title || "",
+      page_location: location.href,
+      page_path: location.pathname
+    });
+
+    gtag("event", "content_view", {
+      transport_type: "beacon",
+      page_kind: PAGE_KIND,
+      content_slug: CONTENT_SLUG,
+      page_path: location.pathname,
+      page_location: location.href,
+      referrer: document.referrer || ""
+    });
+  })();
+</script>
+  
   <style>
     :root {
       --bg: #f5f5f7;
