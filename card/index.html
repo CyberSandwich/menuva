@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>menuva — card</title>
 
-  <meta name="description" content="Redirecting to download…" />
+  <meta name="description" content="Redirecting to menuva.co.uk…" />
   <meta name="robots" content="noindex" />
 
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
@@ -22,7 +22,7 @@
       if (!params.has("qr_source")) params.set("qr_source", FROM_SLUG);
       if (!params.has("from")) params.set("from", FROM_SLUG);
 
-      const toUrl = new URL("/download/", window.location.origin);
+      const toUrl = new URL("/", window.location.origin);
       toUrl.search = params.toString();
 
       const debugMode = params.get("debug_mode") === "true";
@@ -64,7 +64,7 @@
         event_timeout: BASE_DELAY_MS,
 
         from_path: "/card",
-        to_path: "/download",
+        to_path: "/",
         to_url: toUrl.toString(),
 
         qr_source: params.get("qr_source") || FROM_SLUG,
@@ -85,7 +85,7 @@
   </style>
 </head>
 <body>
-  <div>Opening download…</div>
-  <div class="muted">If you are not redirected, <a id="fallbackLink" href="/download/">tap here</a></div>
+  <div>Opening menuva.co.uk…</div>
+  <div class="muted">If you are not redirected, <a id="fallbackLink" href="/">tap here</a></div>
 </body>
 </html>
