@@ -79,7 +79,8 @@
     .page {
       min-height: 100vh;
       display: flex;
-      align-items: flex-start;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
       padding: 28px;
     }
@@ -360,6 +361,43 @@
     a:hover,
     a:focus-visible { border-bottom-color: var(--accent); }
 
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      border: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      border-radius: 999px;
+      padding: 6px 14px 6px 10px;
+      margin-bottom: 10px;
+      background: var(--card-bg);
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .back:hover,
+    .back:focus-visible {
+      color: var(--text-main);
+      border-color: #ccc;
+      border-bottom-color: #ccc;
+    }
+
+    .back svg {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      transition: transform 0.2s ease;
+    }
+
+    .back:hover svg {
+      transform: translateX(-2px);
+    }
+
     footer {
       margin-top: 22px;
       padding-top: 14px;
@@ -389,6 +427,10 @@
 
 <body>
   <div class="page">
+    <a href="/" class="back" aria-label="Back to homepage">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      menuva
+    </a>
     <article class="card" aria-labelledby="faq-heading">
       <header>
         <div class="badge-row" aria-hidden="true">
