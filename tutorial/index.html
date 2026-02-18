@@ -218,6 +218,43 @@
     a:hover,
     a:focus-visible { border-bottom-color: var(--accent); }
 
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      border: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      border-radius: 999px;
+      padding: 6px 14px 6px 10px;
+      margin-bottom: 10px;
+      background: var(--card-bg);
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .back:hover,
+    .back:focus-visible {
+      color: var(--text-main);
+      border-color: #ccc;
+      border-bottom-color: #ccc;
+    }
+
+    .back svg {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      transition: transform 0.2s ease;
+    }
+
+    .back:hover svg {
+      transform: translateX(-2px);
+    }
+
     @media (max-width: 640px) {
       .page { padding: 16px; }
       .card { padding: 22px 18px 24px; border-radius: 16px; }
@@ -228,6 +265,10 @@
 
 <body>
   <div class="page">
+    <a href="/" class="back" aria-label="Back to homepage">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      menuva
+    </a>
     <article class="card" aria-labelledby="tutorial-heading">
       <header>
         <div class="badge" aria-hidden="true">
@@ -283,7 +324,7 @@
           <ol class="clause-list">
             <li>
               <strong>2.1 Language</strong><br>
-              Switch between English and Chinese. For the current five-venue pilot, Menuva supports English and Chinese only.
+              Switch between English and Chinese. For the current seven-venue pilot, Menuva supports English and Chinese only.
             </li>
 
             <li>
@@ -418,11 +459,13 @@
               <strong>5.4 Supported venues</strong><br>
               Current pilot venues:
               <ol class="clause-list alpha">
-                <li>Coffee Lab @ Oculus</li>
-                <li>Coffee Lab @ IBRB</li>
-                <li>Coffee Lab @ Social Sciences</li>
-                <li>Coffee Lab @ Library</li>
                 <li>District @ Warwick Business School</li>
+                <li>Coffee Lab @ Social Sciences</li>
+                <li>Coffee Lab @ Oculus</li>
+                <li>Coffee Lab @ Library</li>
+                <li>Coffee Lab @ IBRB</li>
+                <li>Red Rocket @ Computer Science Department</li>
+                <li>Spud @ Piazza</li>
               </ol>
             </li>
           </ol>
@@ -550,6 +593,12 @@
               <strong>9.2 Defaults that require confirmation</strong><br>
               If an item has a default selection that needs confirmation, Menuva may automatically open the edit view.
               Once you exit, the item is added to your basket automatically.
+            </li>
+
+            <li>
+              <strong>9.3 Viewing nutritional info for an option</strong><br>
+              Options marked with an <strong>(i)</strong> at the end of the option name can be held (long-press) to reveal nutritional information for that option,
+              including the ingredient statement, allergens, and macronutrient information.
             </li>
           </ol>
         </section>
