@@ -98,23 +98,9 @@ Menuva is the only platform that combines all of the following: in-person dining
 
 ## 7. Business model
 
-Menuva's core product is free for both diners and restaurants, and will remain so. Revenue comes from an optional in-app payments layer launching from H2 2026.
+Menuva's core product is free for both diners and restaurants, and will remain so. Our commercial model, unit economics, and revenue projections are shared directly with prospective investors.
 
-**Pricing:** 0.10 pounds + 2.5% per in-app order (only when a venue opts into payments)
-
-| Metric | Value |
-| --- | --- |
-| Average order value (assumed) | 20 pounds |
-| Revenue per order | ~0.60 pounds |
-| COGS per order | ~0.05 pounds |
-| Gross margin | ~90% |
-| Break-even | ~8 venues |
-| Monthly burn (projected) | ~9,000 pounds |
-| Annual burn (projected) | ~109,000 pounds |
-
-### Single-city revenue scenario
-
-Using Coventry as a reference: 624 restaurants, 96% single-site independents, 30% Year 1 penetration, 70 orders per venue per day, 330 operating days per year. This yields approximately **2.49 million pounds in annual recurring revenue from a single city**.
+To request this information, please contact [ventures@saputra.co.uk](mailto:ventures@saputra.co.uk).
 
 ## 8. Traction and milestones
 
@@ -122,17 +108,17 @@ Using Coventry as a reference: 624 restaurants, 96% single-site independents, 30
 
 - Live on the iOS App Store since 12 January 2026
 - 500+ users at the University of Warwick within weeks of launch
-- 7 pilot venues onboarded and actively serving menus
+- 20+ venues onboarded and growing rapidly
 - Web menu browsing live at menuva.co.uk
 - Featured by the University of Warwick and Warwick Business School
-- Recipient of the Lord Rootes Fund for social impact at Warwick
+- Lord Rootes Fund recipient
 - Admin dashboard live for restaurant operators at admin.menuva.co.uk
 
 ### Roadmap
 
 | Period | Milestone |
 | --- | --- |
-| H1 2026 | Continued pilot, user validation (target NPS >60), scale to 20 restaurants |
+| H1 2026 | User validation (target NPS >60), continued venue growth beyond 20 restaurants |
 | H2 2026 | Company registration (~Sep 2026), begin monetisation testing, start Android development, optional POS and payments integration |
 | H1 2027 | Multi-city expansion, 50 restaurants live, 5,000+ monthly diners, Android parity, WCAG AA accessibility compliance |
 | Mid-2027 | Target ARR 250,000+ pounds, seed-ready |
@@ -147,9 +133,9 @@ Making dining accessible is not just the right thing to do. It is the commercial
 
 Menuva is founded by Duke Saputra, a final-year student at Warwick Business School. Duke designed, built, and shipped the entire product end-to-end: native iOS app (Swift), backend infrastructure (Firebase), web platform, admin dashboard, restaurant onboarding, and go-to-market.
 
-- **Microsoft Entrepreneurship in Computing Award**
+- **Microsoft Early in Career Award**
 - **WBS Top Year Mark (x2)**
-- **Lord Rootes Fund** recipient for social impact at Warwick
+- **Lord Rootes Fund** recipient
 - Featured across university and business school media
 
 ## 11. Current investment status
@@ -172,4 +158,4 @@ This is not incremental improvement. It is the creation of an entirely new categ
 
 If you are interested in learning more about Menuva's trajectory, or would like to explore how we might work together in the future, we would be delighted to hear from you.
 
-**Contact:** [hello@menuva.co.uk](mailto:hello@menuva.co.uk)
+**Contact:** [ventures@saputra.co.uk](mailto:ventures@saputra.co.uk)
