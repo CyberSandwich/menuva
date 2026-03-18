@@ -39,19 +39,233 @@ export function swrFetch(key,url,onData){
   }).catch(function(err){if(!cached)throw err});
 }
 
+// ── Search scoring engine ──
+// Tiers: exact(10) > prefix(8-9) > word-boundary(6-7) > substring(4-5)
+//        > edit-distance-1(3-4) > edit-distance-2(1.5-2.5)
+//        > fuzzy-subsequence(0.3-1.5) > no-match(0)
+
+var _nCache={};
+function _norm(s){
+  if(_nCache[s]!==undefined)return _nCache[s];
+  var r=s;
+  // Strip diacritics: café → cafe, über → uber
+  if(/[\u00C0-\u024F\u1E00-\u1EFF]/.test(r))r=r.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  _nCache[s]=r;return r;
+}
+
+// Bounded Damerau-Levenshtein with early exit
+// Returns edit distance or Infinity if > maxDist
+function _editDist(a,b,maxDist){
+  var la=a.length,lb=b.length;
+  if(Math.abs(la-lb)>maxDist)return maxDist+1;
+  // Use two-row approach for memory efficiency
+  var prev=new Array(lb+1),curr=new Array(lb+1),pprev;
+  for(var j=0;j<=lb;j++)prev[j]=j;
+  for(var i=1;i<=la;i++){
+    curr[0]=i;
+    var rowMin=i;
+    for(var j=1;j<=lb;j++){
+      var cost=a[i-1]===b[j-1]?0:1;
+      curr[j]=prev[j]+1;                         // deletion
+      if(curr[j-1]+1<curr[j])curr[j]=curr[j-1]+1; // insertion
+      if(prev[j-1]+cost<curr[j])curr[j]=prev[j-1]+cost; // substitution
+      // Transposition (Damerau)
+      if(i>1&&j>1&&a[i-1]===b[j-2]&&a[i-2]===b[j-1]){
+        var trans=pprev[j-2]+cost;
+        if(trans<curr[j])curr[j]=trans;
+      }
+      if(curr[j]<rowMin)rowMin=curr[j];
+    }
+    // Early exit: if minimum in this row exceeds maxDist, no point continuing
+    if(rowMin>maxDist)return maxDist+1;
+    pprev=prev;prev=curr;curr=new Array(lb+1);
+  }
+  return prev[lb];
+}
+
+// Best fuzzy subsequence score with consecutive-char bonuses and gap penalties
+function _fuzzyScore(w,t){
+  var wl=w.length,tl=t.length;
+  if(wl===0)return 0;
+  if(wl>tl)return 0;
+
+  // Find best alignment using recursive search with memoization
+  // Score components: +2 per matched char, +1.5 bonus per consecutive, -0.5 per gap
+  var best=0;
+  var stack=[[0,0,0,false]]; // [qi, ti, score, prevMatched]
+
+  // Iterative DFS with pruning
+  while(stack.length){
+    var frame=stack.pop();
+    var qi=frame[0],ti=frame[1],sc=frame[2],consec=frame[3];
+
+    if(qi===wl){if(sc>best)best=sc;continue}
+    if(ti>=tl)continue;
+
+    // Remaining chars to match vs remaining positions
+    if(wl-qi>tl-ti)continue;
+
+    // Upper bound pruning: even if all remaining chars match consecutively
+    var remaining=wl-qi;
+    var maxPossible=sc+remaining*2+((remaining-1)*1.5)+(consec?1.5:0);
+    if(maxPossible<=best)continue;
+
+    // Try matching w[qi] at each position from ti onward
+    for(var k=ti;k<=tl-(wl-qi);k++){
+      if(t[k]===w[qi]){
+        var bonus=2; // base match score
+        var isConsec=(k===ti&&consec);
+        if(isConsec)bonus+=1.5; // consecutive bonus
+        else if(qi===0&&(k===0||t[k-1]===' '))bonus+=1; // word-boundary bonus
+        else if(k>ti)bonus-=Math.min((k-ti)*0.3,1.5); // gap penalty (capped)
+        stack.push([qi+1,k+1,sc+bonus,true]);
+      }
+    }
+  }
+
+  if(best<=0)return 0;
+  // Normalize: perfect consecutive match = wl*2 + (wl-1)*1.5 + possible boundary bonus
+  var maxScore=wl*2+(wl-1)*1.5;
+  return 0.3+(best/maxScore)*1.2; // Map to 0.3-1.5 range
+}
+
 export function scoreWord(w,t){
-  var i=t.indexOf(w);
-  if(i!==-1){
-    if(i===0&&t.length===w.length)return 5;
-    if(i===0)return 4;
-    if(t[i-1]===' ')return 3;
-    return 2;
+  if(!w||!t)return 0;
+  var wn=_norm(w),tn=_norm(t);
+  var wl=wn.length,tl=tn.length;
+
+  // ── Tier 1: Exact match ──
+  if(tn===wn)return 10;
+
+  // ── Tier 2: Prefix match ──
+  if(tn.indexOf(wn)===0)return 8+Math.min(wl/tl,1);
+
+  // ── Tier 3: Word-boundary prefix ──
+  // Check if any word in target starts with query
+  var words=tn.split(/[\s\-_\/\.]+/);
+  for(var wi=0;wi<words.length;wi++){
+    if(words[wi].indexOf(wn)===0)return 6+Math.min(wl/words[wi].length,1);
   }
-  for(var qi=0,ti=0,first=-1,last=0;ti<t.length&&qi<w.length;ti++){
-    if(t[ti]===w[qi]){if(first<0)first=ti;last=ti;qi++}
+
+  // ── Tier 4: Substring match ──
+  var si=tn.indexOf(wn);
+  if(si!==-1){
+    var posBonus=1-Math.min(si/tl,0.8); // Earlier position = better
+    return 4+posBonus;
   }
-  if(qi<w.length)return 0;
-  return 0.5+w.length/(last-first+1)*0.5;
+
+  // ── CJK shortcut: skip edit distance for CJK queries (char-level semantics) ──
+  if(/[\u4e00-\u9fff\u3400-\u4dbf]/.test(wn))return 0;
+
+  // ── Tier 5: Edit distance 1 (typo tolerance) ──
+  // Try against each word in target and against full target (for short targets)
+  if(wl>=2){
+    for(var wi=0;wi<words.length;wi++){
+      if(Math.abs(words[wi].length-wl)<=1){
+        var d=_editDist(wn,words[wi],1);
+        if(d<=1)return 3.5+0.5*(1-d);
+      }
+    }
+    // Also try prefix edit distance: first wl chars of target words
+    for(var wi=0;wi<words.length;wi++){
+      if(words[wi].length>=wl-1){
+        var sub=words[wi].substring(0,wl+1);
+        var d=_editDist(wn,sub,1);
+        if(d<=1)return 3+0.5*(1-d);
+      }
+    }
+  }
+
+  // ── Tier 6: Edit distance 2 (only for longer queries) ──
+  if(wl>=4){
+    for(var wi=0;wi<words.length;wi++){
+      if(Math.abs(words[wi].length-wl)<=2){
+        var d=_editDist(wn,words[wi],2);
+        if(d<=2)return 1.5+1*(1-d/2);
+      }
+    }
+  }
+
+  // ── Tier 7: Fuzzy subsequence ──
+  return _fuzzyScore(wn,tn);
+}
+
+// ── Global search item sources ──
+// Reads localStorage caches written by other pages (zero-cost if cached).
+// Lazy-fetches links.json on first open if not cached.
+
+var _globalLinksReady=false;
+var _globalLinksFetching=false;
+
+function _readGlobalLinks(){
+  try{var c=localStorage.getItem('swr_links');return c?JSON.parse(c).links:null}catch(_){return null}
+}
+
+function _readGlobalMenus(){
+  try{
+    var r=localStorage.getItem('mlist_raw');
+    if(!r)return null;
+    var docs=JSON.parse(r);
+    return docs.filter(function(d){return d.slug}).map(function(d){
+      var name=d.name;
+      var en=(name&&(name['en-GB']||name['en']))||d.friendlyName||d.slug||'';
+      var zh=(name&&(name['zh-Hans']||name['zh']))||'';
+      var locs=d.locations||[];
+      var locId=locs.length?locs[0].locId:'';
+      return{slug:d.slug,locId:locId,en:en,zh:zh};
+    });
+  }catch(_){return null}
+}
+
+function _globalItems(lng){
+  var items=[];
+  var seen={};
+  function add(title,sub,type,act){
+    var k=title.toLowerCase();
+    if(seen[k])return;seen[k]=1;
+    items.push({q:(title+' '+(sub||'')).toLowerCase(),tl:k,title:title,type:type,act:act});
+  }
+
+  // Links from More page
+  var links=_readGlobalLinks();
+  if(links){
+    links.forEach(function(x){
+      var t=lng==='zh'&&x.titleZh?x.titleZh:x.title;
+      add(t,x.url,'Link',function(){if(x.url.indexOf('http')===0)window.open(x.url,'_blank','noopener');else location.href=x.url});
+    });
+  }
+
+  // Restaurants from Menus page
+  var menus=_readGlobalMenus();
+  if(menus){
+    menus.forEach(function(m){
+      var t=lng==='zh'&&m.zh?m.zh:m.en;
+      if(!t)return;
+      add(t,'','Menu',function(){location.href='/menus/'+m.slug+(m.locId?'/'+m.locId:'')});
+    });
+  }
+
+  return{items:items,seen:seen};
+}
+
+function _ensureGlobalLinks(cb){
+  if(_globalLinksReady||_readGlobalLinks())return;
+  if(_globalLinksFetching)return;
+  _globalLinksFetching=true;
+  fetch('/more/links.json').then(function(r){return r.text()}).then(function(text){
+    try{localStorage.setItem('swr_links',text)}catch(_){}
+    _globalLinksReady=true;_globalLinksFetching=false;
+    if(cb)cb();
+  }).catch(function(){_globalLinksFetching=false});
+}
+
+function _mergeGlobal(pageItems,lng){
+  var seen={};
+  pageItems.forEach(function(p){seen[p.tl]=1});
+  var g=_globalItems(lng);
+  var merged=pageItems.slice();
+  g.items.forEach(function(gi){if(!seen[gi.tl])merged.push(gi)});
+  return merged;
 }
 
 export function initCommandPalette(config){
@@ -82,7 +296,17 @@ export function initCommandPalette(config){
     cmdX.style.display='none';
     cmdResults.textContent='';
     cmdIdx=-1;
-    cmdItems=config.buildItems();
+
+    // Merge page-specific items with global items (deduped by title)
+    var pageItems=config.buildItems();
+    var lng=curLang();
+    cmdItems=_mergeGlobal(pageItems,lng);
+
+    // Lazy-fetch links.json if not cached, then refresh items if palette still open
+    _ensureGlobalLinks(function(){
+      if(cmdOpen)cmdItems=_mergeGlobal(config.buildItems(),curLang());
+    });
+
     document.body.style.overflow='hidden';
     cmdOverlay.removeAttribute('aria-hidden');
     cmdOverlay.classList.add('open');
