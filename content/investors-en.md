@@ -79,12 +79,18 @@ Four secular trends are converging to create this opportunity:
 
 No existing platform solves in-person dining comprehensively. Delivery apps optimise for takeaway. Booking platforms focus on reservations. Static QR menus offer no intelligence. Menuva occupies a white space: rich, structured menus built specifically for on-premise dining, with accessibility and inclusion at the core.
 
+### The QR problem
+
+Most digital menu solutions today are QR-dependent: the diner must already be seated at the table before they can see the menu. This fundamentally prevents pre-discovery. It means no browsing before you arrive, no filtering for allergens before you commit to a venue, no translating the menu at home before deciding where to eat. QR menus serve only the moment of ordering, not the full dining journey.
+
+Menuva is available from anywhere, at any time, without a QR code. A diner can discover a restaurant's full menu from their accommodation, compare venues on the way, filter by dietary needs before walking through the door, and arrive already knowing what to order. This is a structural advantage that QR-based competitors cannot replicate without rebuilding their entire model.
+
 | Category | Examples | Gap |
 | --- | --- | --- |
 | Delivery platforms | Uber Eats, Deliveroo | Takeaway-focused, 6-30% commissions, not designed for dine-in |
 | Booking and discovery | OpenTable, TripAdvisor, Google Maps | Limited or no structured menu data |
-| In-venue ordering | me&u, OrderPay | Per-transaction fees, no mock ordering, inconsistent allergen tagging |
-| Static QR menus | Individual venue PDFs | No features, often image-only, completely fragmented |
+| In-venue ordering | me&u, OrderPay | QR-dependent (no pre-discovery), per-transaction fees, no mock ordering, inconsistent allergen tagging |
+| Static QR menus | Individual venue PDFs | QR-dependent, no features, often image-only, completely fragmented |
 
 ### Menuva's unique position
 
