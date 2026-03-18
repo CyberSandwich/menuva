@@ -3,3 +3,4 @@ CLAUDE.md
 tasks/
 firebase-debug.log
 .env*
+.DS_Store
