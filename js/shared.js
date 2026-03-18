@@ -239,8 +239,10 @@ export function initKeyboard(config){
   var cardSelector=config.cardSelector||null;
   var modalGuards=config.modalGuards||function(){return false};
   var onKey=config.onKey||function(){return false};
+  var onBack=config.onBack||null;
 
   var kbIdx=-1,kbCards=[],kbPrev=-1;
+  var pendingG=false,gTimer;
 
   function resolveSearchInputId(){
     var sid=config.searchInputId;
@@ -310,6 +312,21 @@ export function initKeyboard(config){
     if(e.metaKey||e.ctrlKey||e.altKey)return;
 
     var key=e.key;
+
+    if(key==='g'&&!pendingG){
+      pendingG=true;clearTimeout(gTimer);
+      gTimer=setTimeout(function(){pendingG=false},500);
+      return;
+    }
+    if(pendingG){
+      pendingG=false;clearTimeout(gTimer);
+      if(key==='h'){location.href='/';return}
+      if(key==='m'){location.href='/menus/';return}
+      if(key==='o'){location.href='/more/';return}
+    }
+
+    if(key==='?'){location.href='/shortcuts/';return}
+    if(key==='Backspace'&&onBack){onBack();return}
 
     if(key>='1'&&key<='3'){
       var idx=+key-1;

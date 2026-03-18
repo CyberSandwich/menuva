@@ -3784,6 +3784,9 @@ initLanguage({
   analytics:function(next,prev){_ga('language_switched',{new_language:next,previous_language:prev})}
 });
 
+var menuTitle=document.querySelector('.stitle');
+if(menuTitle){menuTitle.style.cursor='pointer';menuTitle.addEventListener('click',function(){if(cmd)cmd.open()})}
+
 initKeyboard({
   CUR_TAB:1,
   searchInputId:function(){return isViewer?'vsearch':'msearch'},

@@ -312,7 +312,7 @@ qrOverlay.addEventListener('click',function(e){
 qrOverlay.addEventListener('keydown',function(e){if(e.key==='Escape')closeQR()});
 qrCard.addEventListener('click',function(){
   closeQR();
-  window.open('https://apps.apple.com/us/app/menuva/id6756895068','_blank');
+  if(cmd)cmd.open();
 });
 
 // ==================== SHARED MODULE INIT ====================

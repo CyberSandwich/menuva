@@ -1,0 +1,45 @@
+<!-- GENERATED — edit _config/pages.json, not this file -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>menuva — Beta</title>
+  <meta name="description" content="Opening TestFlight…"/>
+  <meta name="robots" content="noindex"/>
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLFDHVYBWL"></script>
+  <script>
+    (function(){
+      var MID='G-LLFDHVYBWL';
+      var DEST='https://testflight.apple.com/join/y6cwz9Qm';
+      var DELAY=1200;
+      var params=new URLSearchParams(location.search);
+      var debug=params.get('debug_mode')==='true';
+      window.dataLayer=window.dataLayer||[];
+      function gtag(){dataLayer.push(arguments)}
+      gtag('js',new Date());
+      gtag('config',MID,{send_page_view:false,anonymize_ip:true,debug_mode:debug});
+      function go(){location.replace(DEST)}
+      function setLink(){var a=document.getElementById('fallbackLink');if(a)a.href=DEST}
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setLink,{once:true});else setLink();
+      gtag('event','page_view',{page_title:'menuva — Beta',page_location:location.href,page_path:'/beta'});
+      gtag('event','redirect_hit',{
+        transport_type:'beacon',event_callback:go,event_timeout:DELAY,
+        from_path:params.get('from')?('/'+String(params.get('from')).replace(/^\/+/,'')):'/beta',
+        to_url:DEST,
+        qr_source:params.get('qr_source')||'',qr_id:params.get('qr_id')||'',
+        utm_source:params.get('utm_source')||'',utm_medium:params.get('utm_medium')||'',
+        utm_campaign:params.get('utm_campaign')||'',referrer:document.referrer||''
+      });
+      setTimeout(go,DELAY);
+    })();
+  </script>
+  <style>body{margin:0;padding:24px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.muted{opacity:.7}</style>
+</head>
+<body>
+  <div>Opening TestFlight…</div>
+  <div class="muted">If you are not redirected, <a id="fallbackLink" href="https://testflight.apple.com/join/y6cwz9Qm">tap here</a></div>
+</body>
+</html>

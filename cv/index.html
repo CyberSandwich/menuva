@@ -1,0 +1,55 @@
+<!-- GENERATED — edit _config/pages.json, not this file -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>menuva — benefactors & cryfield</title>
+  <meta name="description" content="Redirecting…"/>
+  <meta name="robots" content="noindex"/>
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLFDHVYBWL"></script>
+  <script>
+    (function(){
+      var MID='G-LLFDHVYBWL';
+      var FROM_SLUG='cv';
+      var DEST_PATH='/';
+      var DELAY=1200;
+      var params=new URLSearchParams(location.search);
+      if(!params.has('qr_source'))params.set('qr_source',FROM_SLUG);
+      if(!params.has('from'))params.set('from',FROM_SLUG);
+      var toUrl=new URL(DEST_PATH,location.origin);
+      toUrl.search=params.toString();
+      var debug=params.get('debug_mode')==='true';
+      window.dataLayer=window.dataLayer||[];
+      function gtag(){dataLayer.push(arguments)}
+      gtag('js',new Date());
+      gtag('config',MID,{send_page_view:false,anonymize_ip:true,debug_mode:debug});
+      function go(){location.replace(toUrl.toString())}
+      function setLink(){var a=document.getElementById('fallbackLink');if(a)a.href=toUrl.toString()}
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setLink,{once:true});else setLink();
+      gtag('event','page_view',{page_title:'menuva — benefactors & cryfield',page_location:location.href,page_path:'/cv'});
+      gtag('event','redirect_hit',{
+        transport_type:'beacon',event_callback:go,event_timeout:DELAY,
+        from_path:'/cv',to_path:'/',to_url:toUrl.toString(),
+        qr_source:params.get('qr_source')||FROM_SLUG,qr_id:params.get('qr_id')||'',
+        utm_source:params.get('utm_source')||'',utm_medium:params.get('utm_medium')||'',
+        utm_campaign:params.get('utm_campaign')||'',referrer:document.referrer||''
+      });
+      setTimeout(go,DELAY);
+    })();
+  </script>
+  <style>body{margin:0;padding:24px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.muted{opacity:.7}</style>
+</head>
+<body>
+  <!--
+  Redirect: /cv
+  Hub: benefactors & cryfield
+  Blocks covered: Benefactors, Cryfield
+  Kitchens: 111
+-->
+  <div>Redirecting…</div>
+  <div class="muted">If you are not redirected, <a id="fallbackLink" href="/">tap here</a></div>
+</body>
+</html>

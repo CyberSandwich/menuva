@@ -191,6 +191,7 @@ export function initContentPage(cfg){
     searchInputId:null,
     cardSelector:null,
     modalGuards:function(){return false},
-    onKey:function(){return false}
+    onKey:function(){return false},
+    onBack:function(){location.href='/more/'}
   });
 }
