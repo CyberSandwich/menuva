@@ -145,31 +145,6 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
 @keyframes copyPop{0%{transform:scale(1)}40%{transform:scale(1.12)}100%{transform:scale(1)}}
 @keyframes checkDraw{to{stroke-dashoffset:0}}
 
-.pills-card{
-  max-width:400px;
-  margin:0 auto 14px;
-  background:var(--card);
-  border-radius:20px;
-  box-shadow:var(--shadow);
-  padding:20px
-}
-.pills-card .pills-label{
-  font-size:.75rem;
-  font-weight:600;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:var(--t3);
-  margin-bottom:12px
-}
-.pills{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
-.pill{
-  padding:10px 20px;
-  background:var(--bg2);
-  border-radius:var(--rr);
-  font-size:.8125rem;
-  color:var(--t2)
-}
-
 .qr-overlay{
   position:fixed;inset:0;z-index:100;
   background:rgba(0,0,0,.25);
@@ -237,24 +212,6 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
     </div>
   </div>
 
-  <div class="pills-card">
-    <div class="pills-label">digital menus. revolutionized.</div>
-    <ul class="pills" role="list">
-      <li class="pill">Free to use</li>
-      <li class="pill">No account needed</li>
-      <li class="pill">Filter allergens</li>
-      <li class="pill">Preview in advance</li>
-      <li class="pill">Show your digital basket to order</li>
-      <li class="pill">Sort by price and nutrition</li>
-      <li class="pill">Map view with open/closed indicators</li>
-      <li class="pill">Convert prices</li>
-      <li class="pill">Search</li>
-      <li class="pill">Edit items</li>
-      <li class="pill">English (UK) · 中文</li>
-      <li class="pill">Dark/light mode</li>
-    </ul>
-  </div>
-
   <footer class="site-footer"><a href="https://saputra.co.uk" target="_blank" rel="noopener noreferrer">&copy; 2026 Duke Saputra</a></footer>
 </main>
 
@@ -273,8 +230,8 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
 import { initCommandPalette, initKeyboard, initLanguage, registerStrings, chrome } from '/js/shared.js?v=9';
 
 registerStrings({
-  en:{dlBtn:'Download on the App Store',dlTitle:'Download menuva on the App Store',giveFeedback:'Give Feedback',copyLabel:'Copy',copyEmail:'Copy Email Address',copyFeedback:'Copy Feedback Link',sendEmail:'Send email',feedbackTitle:'Give feedback',tagline:'digital menus. revolutionized.',heroTextAlt:'menuva - your digital menu platform',heroPhoneAlt:'menuva app showing map view of nearby restaurants',pills:['Free to use','No account needed','Filter allergens','Preview in advance','Show your digital basket to order','Sort by price and nutrition','Map view with open/closed indicators','Convert prices','Search','Edit items','English (UK) · 中文','Dark/light mode']},
-  zh:{dlBtn:'在 App Store 下载',dlTitle:'在 App Store 下载 menuva',giveFeedback:'意见反馈',copyLabel:'复制',copyEmail:'复制邮箱地址',copyFeedback:'复制反馈链接',sendEmail:'发送邮件',feedbackTitle:'意见反馈',tagline:'数字菜单 全新定义',heroTextAlt:'menuva - 您的智能点餐平台',heroPhoneAlt:'menuva 应用展示附近餐厅地图',pills:['免费使用','无需注册','过敏原筛选','提前预览','展示数字购物篮以点餐','按价格和营养排序','地图显示营业状态','货币转换','搜索','编辑菜品','English (UK) · 中文','深色/浅色模式']}
+  en:{dlBtn:'Download on the App Store',dlTitle:'Download menuva on the App Store',giveFeedback:'Give Feedback',copyLabel:'Copy',copyEmail:'Copy Email Address',copyFeedback:'Copy Feedback Link',sendEmail:'Send email',feedbackTitle:'Give feedback',heroTextAlt:'menuva - your digital menu platform',heroPhoneAlt:'menuva app showing map view of nearby restaurants'},
+  zh:{dlBtn:'在 App Store 下载',dlTitle:'在 App Store 下载 menuva',giveFeedback:'意见反馈',copyLabel:'复制',copyEmail:'复制邮箱地址',copyFeedback:'复制反馈链接',sendEmail:'发送邮件',feedbackTitle:'意见反馈',heroTextAlt:'menuva - 您的智能点餐平台',heroPhoneAlt:'menuva 应用展示附近餐厅地图'}
 });
 
 // ==================== COPY ====================
@@ -404,15 +361,6 @@ initLanguage({
         a1.title=chrome('feedbackTitle');
       }
       var b1=rows[1].querySelector('.copy-btn');if(b1&&!b1.classList.contains('copied')){b1.textContent=chrome('copyLabel');b1.setAttribute('aria-label',chrome('copyFeedback'))}
-    }
-
-    var pillsLabel=document.querySelector('.pills-label');
-    if(pillsLabel)pillsLabel.textContent=chrome('tagline');
-    var pills=chrome('pills');
-    var pillsList=document.querySelector('.pills');
-    if(pillsList&&Array.isArray(pills)){
-      while(pillsList.firstChild)pillsList.removeChild(pillsList.firstChild);
-      pills.forEach(function(p){var li=document.createElement('li');li.className='pill';li.textContent=p;pillsList.appendChild(li)});
     }
   }
 });
