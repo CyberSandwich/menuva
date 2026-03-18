@@ -1,0 +1,22 @@
+{
+  "categories": ["General", "Diners", "Restaurants", "Investors", "Careers", "Press", "Legal", "Miscellaneous", "Archive"],
+  "links": [
+    {"title": "Contact", "titleZh": "联系我们", "url": "/contact/", "cat": "General", "icon": "mail"},
+    {"title": "FAQ", "titleZh": "常见问题", "url": "/faq/", "cat": "General", "icon": "help-circle"},
+    {"title": "App Store", "titleZh": "App Store", "url": "https://apps.apple.com/us/app/menuva/id6756895068", "cat": "Diners", "icon": "smartphone"},
+    {"title": "Feedback", "titleZh": "意见反馈", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeZRJYK2gEEBXD-C-Ub8LzEIjZXNjissO3IXiFIQ6J4z0_-WA/viewform", "cat": "Diners", "icon": "message-square"},
+    {"title": "Tutorial", "titleZh": "使用教程", "url": "/tutorial/", "cat": "Diners", "icon": "book-open"},
+    {"title": "Add Your Restaurant", "titleZh": "添加您的餐厅", "url": "/join/", "cat": "Restaurants", "icon": "plus-circle"},
+    {"title": "Admin Portal", "titleZh": "管理后台", "url": "https://admin.menuva.co.uk", "cat": "Restaurants", "icon": "sliders"},
+    {"title": "Investors", "titleZh": "投资者", "url": "/investors/", "cat": "Investors", "icon": "trending-up"},
+    {"title": "menuva my.wbs Feature", "titleZh": "menuva my.wbs 专题", "url": "https://my.wbs.ac.uk/-/academic/20778/item/id/1927732/#", "cat": "Press", "icon": "globe"},
+    {"title": "menuva University of Warwick Feature", "titleZh": "menuva 华威大学专题", "url": "https://warwick.ac.uk/services/foodgroup/news/menuva-app", "cat": "Press", "icon": "award"},
+    {"title": "menuva WBS Feature", "titleZh": "menuva WBS 专题", "url": "https://wbs.ac.uk/blogs/student/undergraduate/creating-real-impact-menuvas-launch-at-warwick", "cat": "Press", "icon": "edit"},
+    {"title": "Join Our Team!", "titleZh": "加入我们!", "url": "/careers/", "cat": "Careers", "icon": "users"},
+    {"title": "Privacy Policy", "titleZh": "隐私政策", "url": "/privacy/", "cat": "Legal", "icon": "shield"},
+    {"title": "Terms & Conditions", "titleZh": "使用条款", "url": "/terms/", "cat": "Legal", "icon": "file-text"},
+    {"title": "Accessibility Statement", "titleZh": "无障碍声明", "url": "/accessibility/", "cat": "Legal", "icon": "eye"},
+    {"title": "Menuva Beta", "titleZh": "Menuva 测试版", "url": "https://testflight.apple.com/join/y6cwz9Qm", "cat": "Miscellaneous", "icon": "flask"},
+    {"title": "January 2026 Promotion", "titleZh": "2026年1月促销活动", "url": "/promo/", "cat": "Archive", "icon": "archive"}
+  ]
+}

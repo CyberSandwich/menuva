@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://menuva.co.uk/sitemap.xml

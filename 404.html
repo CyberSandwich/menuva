@@ -1,80 +1,209 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>menuva</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Redirecting</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+<style>body{margin:0;padding:24px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.muted{opacity:.7}</style>
+<script>
+(function(){
+  var p=location.pathname.replace(/\/+$/,'');
 
-  <meta name="robots" content="noindex" />
+  /* --- Tier 1: Known pages (instant, no GA4) --- */
+  if(p==='/promo'||p.indexOf('/promo/')===0){location.replace('/promo/');return}
+  if(p==='/accessibility'||p.indexOf('/accessibility/')===0){location.replace('/accessibility/');return}
+  if(p==='/join'||p.indexOf('/join/')===0){location.replace('/join/');return}
+  if(p==='/partners'||p.indexOf('/partners/')===0){location.replace('/join/');return}
+  if(p==='/tutorial'||p.indexOf('/tutorial/')===0){location.replace('/tutorial/');return}
+  if(p==='/contact'||p.indexOf('/contact/')===0){location.replace('/contact/');return}
+  if(p==='/faq'||p.indexOf('/faq/')===0){location.replace('/faq/');return}
+  if(p==='/privacy'||p.indexOf('/privacy/')===0){location.replace('/privacy/');return}
+  if(p==='/terms'||p.indexOf('/terms/')===0){location.replace('/terms/');return}
+  if(p==='/support'||p.indexOf('/support/')===0){location.replace('/contact/');return}
+  if(p==='/links'||p.indexOf('/links/')===0){location.replace('/more/');return}
+  if(p==='/more'||p.indexOf('/more/')===0){location.replace('/more/');return}
+  if(p.indexOf('/menus/')===0||p==='/menus'){
+    var parts=p.replace('/menus','').replace(/^\//,'').split('/').filter(Boolean);
+    if(parts.length>=1){
+      var url='/menus/?slug='+encodeURIComponent(parts[0]);
+      if(parts[1])url+='&loc='+encodeURIComponent(parts[1]);
+      location.replace(url)
+    }else{location.replace('/menus/')}
+    return
+  }
 
-  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+  var slug=p.replace(/^\//,'');
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLFDHVYBWL"></script>
-  <script>
-    (function () {
-      const MEASUREMENT_ID = "G-LLFDHVYBWL";
-      const BASE_DELAY_MS = 1200;
+  /* --- Redirect config: slug -> destination --- */
+  var R={
+    ar:"/",bb:"/",cc:"/",cv:"/",jm:"/",ls:"/",rt:"/",sb:"/",
+    card:"/",sport:"/",students:"/",
+    instagram:"/download/",linkedin:"/download/",piazza:"/download/",
+    society:"/download/",wbs:"/download/",aboard:"/download/",
+    sign:"/download/",banner:"/download/",flyer:"/download/",lecture:"/download/",
+    download:"https://apps.apple.com/us/app/menuva/id6756895068",
+    beta:"https://testflight.apple.com/join/y6cwz9Qm",
+    feedback:"https://docs.google.com/forms/d/e/1FAIpQLSeZRJYK2gEEBXD-C-Ub8LzEIjZXNjissO3IXiFIQ6J4z0_-WA/viewform"
+  };
+  /* Title overrides (where GA4 title != slug) */
+  var T={
+    ar:"westwood",bb:"bluebell",cc:"claycroft & tocil",
+    cv:"benefactors & cryfield",jm:"arthur vick & jack martin",
+    ls:"heronbank & lakeside",rt:"rootes",sb:"sherbourne"
+  };
 
-      const fromPath = window.location.pathname;
-      const params = new URLSearchParams(window.location.search);
-      const toUrl = new URL("/", window.location.origin);
-      const debugMode = params.get("debug_mode") === "true";
+  var MID='G-LLFDHVYBWL';
 
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){ dataLayer.push(arguments); }
+  function loadGA(debug){
+    var s=document.createElement('script');
+    s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id='+MID;
+    document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=function(){dataLayer.push(arguments)};
+    gtag('js',new Date());
+    gtag('config',MID,{send_page_view:false,anonymize_ip:true,debug_mode:debug});
+  }
 
-      gtag("js", new Date());
-      gtag("config", MEASUREMENT_ID, {
-        send_page_view: false,
-        anonymize_ip: true,
-        debug_mode: debugMode
+  function render(text,href){
+    function go(){
+      var d=document.createElement('div');
+      d.textContent=text;
+      var m=document.createElement('div');
+      m.className='muted';
+      m.appendChild(document.createTextNode('If you are not redirected, '));
+      var a=document.createElement('a');
+      a.href=href;
+      a.textContent='tap here';
+      m.appendChild(a);
+      document.body.appendChild(d);
+      document.body.appendChild(m);
+    }
+    if(document.body)go();
+    else document.addEventListener('DOMContentLoaded',go,{once:true});
+  }
+
+  var dest=R[slug];
+
+  if(dest!==undefined){
+    /* --- Tier 2: Redirect slug --- */
+    var ext=dest.indexOf('https://')===0;
+    var params=new URLSearchParams(location.search);
+    var debug=params.get('debug_mode')==='true';
+    var title=T[slug]||slug;
+    var toUrl;
+
+    if(ext){
+      /* External (download, beta): second-hop pattern */
+      toUrl=dest;
+    }else{
+      /* Internal: inject qr_source and from, forward all params */
+      if(!params.has('qr_source'))params.set('qr_source',slug);
+      if(!params.has('from'))params.set('from',slug);
+      var u=new URL(dest,location.origin);
+      u.search=params.toString();
+      toUrl=u.toString();
+    }
+
+    document.title='menuva | '+title;
+
+    var bodyText;
+    if(ext&&dest.indexOf('testflight')!==-1){
+      bodyText='Opening TestFlight...';
+    }else if(ext&&dest.indexOf('apps.apple.com')!==-1){
+      bodyText='Opening the App Store...';
+    }else if(dest==='/download/'){
+      bodyText='Opening download...';
+    }else{
+      bodyText='Redirecting...';
+    }
+
+    render(bodyText,ext?dest:toUrl);
+
+    function doRedirect(){window.location.replace(toUrl)}
+
+    loadGA(debug);
+
+    gtag('event','page_view',{
+      page_title:'menuva | '+title,
+      page_location:location.href,
+      page_path:'/'+slug
+    });
+
+    if(ext){
+      gtag('event','redirect_hit',{
+        transport_type:'beacon',
+        event_callback:doRedirect,
+        event_timeout:1200,
+        from_path:params.get('from')?('/'+String(params.get('from')).replace(/^\/+/,'')):(''),
+        to_url:toUrl,
+        qr_source:params.get('qr_source')||'',
+        qr_id:params.get('qr_id')||'',
+        utm_source:params.get('utm_source')||'',
+        utm_medium:params.get('utm_medium')||'',
+        utm_campaign:params.get('utm_campaign')||'',
+        referrer:document.referrer||''
       });
-
-      function doRedirect() {
-        window.location.replace(toUrl.toString());
-      }
-
-      function setFallbackHref() {
-        const a = document.getElementById("fallbackLink");
-        if (a) a.href = toUrl.toString();
-      }
-
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", setFallbackHref, { once: true });
-      } else {
-        setFallbackHref();
-      }
-
-      gtag("event", "page_view", {
-        page_title: "menuva — 404",
-        page_location: window.location.href,
-        page_path: fromPath
+    }else{
+      gtag('event','redirect_hit',{
+        transport_type:'beacon',
+        event_callback:doRedirect,
+        event_timeout:1200,
+        from_path:'/'+slug,
+        to_path:dest,
+        to_url:toUrl,
+        qr_source:params.get('qr_source')||slug,
+        qr_id:params.get('qr_id')||'',
+        utm_source:params.get('utm_source')||'',
+        utm_medium:params.get('utm_medium')||'',
+        utm_campaign:params.get('utm_campaign')||'',
+        referrer:document.referrer||''
       });
+    }
 
-      gtag("event", "not_found", {
-        transport_type: "beacon",
-        event_callback: doRedirect,
-        event_timeout: BASE_DELAY_MS,
+    setTimeout(doRedirect,1200);
+    return
+  }
 
-        from_path: fromPath,
-        to_path: "/",
-        to_url: toUrl.toString(),
+  /* --- Tier 3: Menu slug fallback (single path segment, no dots) --- */
+  if(slug&&slug.indexOf('/')===-1&&slug.indexOf('.')===-1){
+    location.replace('/menus/?slug='+encodeURIComponent(slug));
+    return
+  }
 
-        referrer: document.referrer || ""
-      });
+  /* --- Tier 4: True 404 --- */
+  var params4=new URLSearchParams(location.search);
+  var debug4=params4.get('debug_mode')==='true';
 
-      setTimeout(doRedirect, BASE_DELAY_MS);
-    })();
-  </script>
+  document.title='menuva | 404';
+  render('Redirecting...','/');
 
-  <style>
-    body{margin:0;padding:24px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    .muted{opacity:.7}
-  </style>
+  function doRedirect4(){window.location.replace('/')}
+
+  loadGA(debug4);
+
+  gtag('event','page_view',{
+    page_title:'menuva | 404',
+    page_location:location.href,
+    page_path:p||'/'
+  });
+
+  gtag('event','not_found',{
+    transport_type:'beacon',
+    event_callback:doRedirect4,
+    event_timeout:1200,
+    from_path:p||location.pathname,
+    to_path:'/',
+    to_url:location.origin+'/',
+    referrer:document.referrer||''
+  });
+
+  setTimeout(doRedirect4,1200);
+})();
+</script>
 </head>
-<body>
-  <div>Redirecting…</div>
-  <div class="muted">If you are not redirected, <a id="fallbackLink" href="/">tap here</a></div>
-</body>
+<body></body>
 </html>

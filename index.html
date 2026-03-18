@@ -1,713 +1,432 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>menuva</title>
-
-  <meta name="description" content="menuva — dining-in. simplified." />
-  <meta name="theme-color" content="#ffffff" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="menuva | digital menus. revolutionized.">
+<meta name="theme-color" content="#FAFAFA">
+<meta name="color-scheme" content="light">
+<meta property="og:title" content="menuva">
+<meta property="og:description" content="menuva | digital menus. revolutionized.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://menuva.co.uk">
+<meta property="og:site_name" content="menuva">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="menuva">
+<meta name="twitter:description" content="menuva | digital menus. revolutionized.">
+<meta property="og:image" content="https://menuva.co.uk/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="menuva | your digital menu platform">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:image" content="https://menuva.co.uk/og-image.png">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<title>menuva</title>
+<link rel="canonical" href="https://menuva.co.uk">
+<link rel="icon" type="image/png" href="/favicon.png?v=9">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=9">
+<link rel="manifest" href="/manifest.json?v=9">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 
 <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
 <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
 
+<link rel="stylesheet" href="/css/shared.css?v=9">
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLFDHVYBWL"></script>
 <script>
-  (function () {
-    const MEASUREMENT_ID = "G-LLFDHVYBWL";
-    const PAGE_KIND = "content";
-    const CONTENT_SLUG = "homepage";
-
-    const params = new URLSearchParams(location.search);
-    const debugMode = params.get("debug_mode") === "true";
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-
-    gtag("js", new Date());
-    gtag("config", MEASUREMENT_ID, {
-      send_page_view: false,
-      anonymize_ip: true,
-      debug_mode: debugMode
-    });
-
-    gtag("event", "page_view", {
-      page_title: document.title || "",
-      page_location: location.href,
-      page_path: location.pathname
-    });
-
-    gtag("event", "content_view", {
-      transport_type: "beacon",
-      page_kind: PAGE_KIND,
-      content_slug: CONTENT_SLUG,
-      page_path: location.pathname,
-      page_location: location.href,
-      referrer: document.referrer || ""
-    });
-  })();
+(function(){
+  var MID='G-LLFDHVYBWL';
+  var params=new URLSearchParams(location.search);
+  var debug=params.get('debug_mode')==='true';
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments)}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config',MID,{send_page_view:false,anonymize_ip:true,debug_mode:debug});
+  gtag('event','page_view',{page_title:document.title,page_location:location.href,page_path:location.pathname});
+  gtag('event','content_view',{transport_type:'beacon',page_kind:'content',content_slug:'homepage',page_path:location.pathname,page_location:location.href,referrer:document.referrer||''});
+})();
 </script>
-  
-  <style>
-    :root{
-      --bg:#ffffff;
-      --fg:#0b0b0c;
 
-      --muted: rgba(11,11,12,.58);
-      --muted2: rgba(11,11,12,.44);
-      --hair: rgba(11,11,12,.10);
+<style>
+html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-      --r: 32px;
-      --max: 1120px;
-      --pad: clamp(18px, 3.2vw, 40px);
+/* index.html: opaque nav override (shared.css uses frosted glass) */
+.tabs{background:rgba(245,245,245,.96)}
+@supports(backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)){
+  .tabs{background:rgba(245,245,245,.96);backdrop-filter:none;-webkit-backdrop-filter:none}
+}
 
-      --ease: cubic-bezier(.2,.8,.2,1);
-      --dur: 320ms;
+.wrap{
+  max-width:720px;
+  margin:0 auto;
+  padding:20px 20px 120px;
+  min-height:100vh;
+  min-height:100dvh
+}
+@media(min-width:640px){.wrap{padding:32px 32px 120px}}
 
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+@keyframes heroIn{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:none}
+}
+.hero-text{
+  display:block;
+  max-width:280px;
+  width:70%;
+  height:auto;
+  margin:40px auto 64px;
+  user-select:none;
+  -webkit-user-drag:none;
+  cursor:pointer;
+  animation:heroIn .5s cubic-bezier(.25,.46,.45,.94) .1s both
+}
+.hero-phone{
+  display:block;
+  max-width:400px;
+  width:100%;
+  height:auto;
+  margin:0 auto 24px;
+  user-select:none;
+  -webkit-user-drag:none;
+  cursor:pointer;
+  animation:heroIn .5s cubic-bezier(.25,.46,.45,.94) .25s both
+}
 
-      --primaryBg: var(--fg);
-      --primaryFg: var(--bg);
-      --primarySub: rgba(255,255,255,.82);
-      --primaryIconBg: rgba(255,255,255,.12);
-      --primaryIconBorder: rgba(255,255,255,.22);
-      --primaryShadow: 0 16px 60px rgba(0,0,0,.14);
+.links{
+  max-width:400px;
+  margin:0 auto 14px;
+  background:var(--card);
+  border-radius:20px;
+  box-shadow:var(--shadow);
+  overflow:hidden
+}
+.links a{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 20px;
+  font-size:.9375rem;
+  font-weight:500;
+  color:var(--t2);
+  text-decoration:none;
+  transition:background .15s,color .15s;
+  border-bottom:1px solid var(--bdr2)
+}
+.links a:last-child{border-bottom:none}
+@media(hover:hover){.links a:hover{background:var(--bg2);color:var(--t1)}}
+.links svg{width:18px;height:18px;flex-shrink:0;color:var(--t4)}
+.copy-row{display:flex;align-items:center;border-bottom:1px solid var(--bdr2);transition:background .15s}
+@media(hover:hover){.copy-row:hover{background:var(--bg2)}.copy-row:hover a{color:var(--t1)}}
+.copy-row a{flex:1;min-width:0;border-bottom:none}
+@media(hover:hover){.copy-row a:hover{background:none}}
+.links>.copy-row:last-child{border-bottom:none}
+.copy-btn{
+  padding:8px 16px;
+  margin-right:14px;
+  border:1.5px solid var(--bdr);
+  border-radius:var(--rr);
+  background:none;
+  font:500 .75rem/1 var(--font);
+  color:var(--t3);
+  cursor:pointer;
+  flex-shrink:0;
+  min-width:58px;
+  text-align:center;
+  transition:background .2s ease,color .2s ease,border-color .2s ease,opacity .2s ease
+}
+@media(hover:hover){.copy-btn:hover{background:var(--bg2);color:var(--t2);border-color:var(--t4)}}
+.copy-btn.copied{background:#DCFCE7;color:#34D399;border-color:#A7F3D0;animation:copyPop .35s ease}
+.copy-btn.copied svg{width:14px;height:14px;display:block;margin:0 auto}
+.copy-btn.copied polyline{stroke-dasharray:24;stroke-dashoffset:24;animation:checkDraw .35s ease .08s forwards}
+@keyframes copyPop{0%{transform:scale(1)}40%{transform:scale(1.12)}100%{transform:scale(1)}}
+@keyframes checkDraw{to{stroke-dashoffset:0}}
 
-      --shadow: 0 14px 56px rgba(0,0,0,.08);
-    }
+.pills-card{
+  max-width:400px;
+  margin:0 auto 14px;
+  background:var(--card);
+  border-radius:20px;
+  box-shadow:var(--shadow);
+  padding:20px
+}
+.pills-card .pills-label{
+  font-size:.75rem;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--t3);
+  margin-bottom:12px
+}
+.pills{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.pill{
+  padding:10px 20px;
+  background:var(--bg2);
+  border-radius:var(--rr);
+  font-size:.8125rem;
+  color:var(--t2)
+}
 
-    html[data-theme="dark"]{
-      --bg:#0b0b0c;
-      --fg:#f4f4f5;
+.qr-overlay{
+  position:fixed;inset:0;z-index:100;
+  background:rgba(0,0,0,.25);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;
+  transition:opacity .2s,visibility .2s;
+  outline:none
+}
+@supports(backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)){
+  .qr-overlay{backdrop-filter:blur(12px) saturate(1.4);-webkit-backdrop-filter:blur(12px) saturate(1.4);background:rgba(0,0,0,.18)}
+}
+.qr-overlay.open{opacity:1;visibility:visible}
+.qr-card{
+  background:#fff;
+  border-radius:20px;
+  padding:24px;overflow:hidden;
+  width:min(340px,80vmin);aspect-ratio:1;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 40px rgba(0,0,0,.16),0 2px 12px rgba(0,0,0,.08);
+  transform:scale(.92);opacity:0;
+  transition:transform .2s cubic-bezier(.2,.9,.3,1),opacity .2s;
+  cursor:pointer
+}
+.qr-overlay.open .qr-card{transform:scale(1);opacity:1}
+.qr-card img{width:100%;height:auto;display:block;image-rendering:crisp-edges;image-rendering:pixelated}
 
-      --muted: rgba(244,244,245,.62);
-      --muted2: rgba(244,244,245,.46);
-      --hair: rgba(244,244,245,.12);
+@media print{
+  nav{display:none}
+  .wrap{padding-bottom:0;max-width:100%}
+}
 
-      --primaryBg: #ffffff;
-      --primaryFg: #0b0b0c;
-      --primarySub: rgba(11,11,12,.58);
-      --primaryIconBg: rgba(11,11,12,.06);
-      --primaryIconBorder: rgba(11,11,12,.14);
-      --primaryShadow: 0 20px 80px rgba(0,0,0,.45);
-
-      --shadow: 0 24px 90px rgba(0,0,0,.50);
-    }
-
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    html{ color-scheme: light dark; }
-    html.preload *{ transition:none !important; }
-
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--fg);
-      font-family:"Avenir","Avenir Next",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
-      transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
-      overflow-x:hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* Performance: swap glows via opacity */
-    .bg{
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      opacity: .82;
-      transform: translateZ(0);
-    }
-    .glows{ position:absolute; inset:0; }
-    .glow{
-      position:absolute;
-      inset:-45%;
-      filter: blur(44px);
-      transform: translate3d(0,0,0) scale(1.05);
-      will-change: opacity;
-      transition: opacity 240ms var(--ease);
-    }
-    .glow--light{
-      opacity: 1;
-      background:
-        radial-gradient(circle at 16% 18%, rgba(11,11,12,.045), transparent 46%),
-        radial-gradient(circle at 90% 24%, rgba(11,11,12,.035), transparent 48%),
-        radial-gradient(circle at 22% 90%, rgba(11,11,12,.030), transparent 50%),
-        radial-gradient(circle at 86% 88%, rgba(11,11,12,.040), transparent 52%);
-    }
-    .glow--dark{
-      opacity: 0;
-      filter: blur(52px);
-      background:
-        radial-gradient(circle at 16% 18%, rgba(244,244,245,.060), transparent 46%),
-        radial-gradient(circle at 90% 24%, rgba(244,244,245,.045), transparent 48%),
-        radial-gradient(circle at 22% 90%, rgba(244,244,245,.035), transparent 50%),
-        radial-gradient(circle at 86% 88%, rgba(244,244,245,.050), transparent 52%);
-    }
-    html[data-theme="dark"] .glow--light{ opacity: 0; }
-    html[data-theme="dark"] .glow--dark{ opacity: .95; }
-
-    .wrap{
-      min-height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: clamp(22px, 4.6vw, 70px);
-      position:relative;
-      z-index:1;
-      cursor:pointer;
-    }
-
-    .shell{
-      width:min(var(--max), 100%);
-      display:grid;
-      gap: clamp(12px, 2.1vw, 16px);
-    }
-
-    .surface{
-      border:1px solid var(--hair);
-      border-radius: var(--r);
-      background: var(--bg);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
-      cursor:default;
-    }
-    html[data-theme="dark"] .surface{
-      background: rgba(11,11,12,.72);
-    }
-    @supports (backdrop-filter: blur(10px)) {
-      html[data-theme="dark"] .surface{ backdrop-filter: blur(10px); }
-    }
-
-    .hero{
-      padding: var(--pad);
-      display:grid;
-      grid-template-columns: 1.12fr .88fr;
-      gap: clamp(14px, 2.6vw, 28px);
-      align-items:stretch;
-    }
-
-    .logo{
-      line-height:1;
-      font-weight: 600; /* slightly lighter */
-      letter-spacing: -0.02em;
-      font-size: clamp(46px, 7.4vw, 100px);
-      text-transform: lowercase;
-      user-select:none;
-    }
-
-    .tag{
-      margin-top: 10px;
-      line-height:1.12;
-      font-weight: 630;
-      letter-spacing: -0.01em;
-      font-size: clamp(18px, 2.3vw, 26px);
-      text-transform: lowercase;
-      user-select:none;
-      display:flex;
-      gap:.35em;
-      flex-wrap:wrap;
-    }
-    .tag .hi{ color: var(--fg); }
-    .tag .lo{ color: var(--muted); }
-
-    .divider{
-      height:1px;
-      background: var(--hair);
-      margin-top: 18px;
-      margin-bottom: 18px;
-      border-radius: 999px;
-    }
-
-    .metaLine{
-      display:flex;
-      flex-wrap:wrap;
-      gap: 10px;
-      align-items:center;
-      max-width: 78ch;
-      contain: layout paint; /* small perf win */
-    }
-
-    .metaPill{
-      border:1px solid var(--hair);
-      border-radius: 999px;
-      padding: 7px 10px;
-      background: var(--bg);
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 560;
-      user-select:none;
-      white-space:nowrap;
-      pointer-events:none;
-      transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
-    }
-    html[data-theme="dark"] .metaPill{
-      background: rgba(244,244,245,.06);
-    }
-
-    .panel{
-      border:1px solid var(--hair);
-      border-radius: 26px;
-      padding: 16px 16px;
-      background: var(--bg);
-      display:flex;
-      flex-direction:column;
-      gap: 12px;
-      height: 100%;
-      min-width:0;
-      transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
-      contain: content; /* isolate panel rendering */
-    }
-    html[data-theme="dark"] .panel{
-      background: rgba(244,244,245,.04);
-    }
-
-    .panelHead{ display:flex; justify-content:space-between; align-items:center; gap: 10px; }
-    .panelTitle{
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 750;
-      user-select:none;
-    }
-    .badge{
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      border: 1px solid var(--hair);
-      border-radius: 999px;
-      padding: 6px 10px;
-      background: var(--bg);
-      user-select:none;
-      white-space:nowrap;
-      transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
-    }
-    html[data-theme="dark"] .badge{
-      background: rgba(244,244,245,.06);
-    }
-
-    .venueGrid{ display:grid; grid-template-columns: 1fr; gap: 10px; }
-
-    a.venue{
-      text-decoration:none;
-      border:1px solid var(--hair);
-      border-radius: 18px;
-      padding: 12px 12px;
-      background: transparent;
-      display:flex;
-      gap: 10px;
-      align-items:flex-start;
-      transition: transform 160ms var(--ease), background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
-      will-change: transform;
-      color: inherit;
-    }
-    a.venue:hover{
-      transform: translateY(-1px);
-      background: rgba(11,11,12,.03);
-      border-color: rgba(11,11,12,.16);
-    }
-    html[data-theme="dark"] a.venue:hover{
-      background: rgba(244,244,245,.06);
-      border-color: rgba(244,244,245,.18);
-    }
-    a.venue:active{ transform: translateY(0px) scale(.995); }
-
-    .vDot{
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      margin-top: 6px;
-      background: rgba(11,11,12,.75);
-      flex: 0 0 auto;
-      opacity:.9;
-    }
-    html[data-theme="dark"] .vDot{ background: rgba(244,244,245,.80); }
-
-    .vText{ display:flex; flex-direction:column; gap: 2px; min-width: 0; }
-    .vName{
-      font-size: 13px;
-      font-weight: 650;
-      letter-spacing: -0.01em;
-      color: var(--fg);
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
-    }
-    .vLoc{
-      font-size: 12px;
-      color: var(--muted);
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
-    }
-
-    .ctaRow{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      cursor:default;
-    }
-
-    a.cta{
-      text-decoration:none;
-      color: var(--fg);
-      border:1px solid var(--hair);
-      border-radius: 26px;
-      padding: 18px 18px;
-      background: var(--bg);
-      box-shadow: 0 10px 42px rgba(0,0,0,.06);
-      transition: transform 160ms var(--ease), background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap: 14px;
-      will-change: transform;
-      position:relative;
-      overflow:hidden;
-    }
-    html[data-theme="dark"] a.cta{
-      background: rgba(244,244,245,.04);
-      box-shadow: 0 16px 70px rgba(0,0,0,.40);
-    }
-
-    a.cta::before{
-      content:"";
-      position:absolute;
-      inset:-60% -30%;
-      background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,.18), transparent 60%);
-      transform: translateX(-34%) rotate(8deg);
-      opacity: 0;
-      transition: opacity var(--dur) var(--ease), transform 900ms var(--ease);
-      pointer-events:none;
-    }
-    html[data-theme="dark"] a.cta::before{
-      background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,.08), transparent 60%);
-    }
-
-    a.cta:hover{
-      transform: translateY(-1px);
-      border-color: rgba(11,11,12,.16);
-      box-shadow: 0 18px 64px rgba(0,0,0,.10);
-    }
-    html[data-theme="dark"] a.cta:hover{
-      border-color: rgba(244,244,245,.18);
-      box-shadow: 0 22px 84px rgba(0,0,0,.52);
-    }
-    a.cta:hover::before{
-      opacity: 1;
-      transform: translateX(26%) rotate(8deg);
-    }
-
-    .ctaText{ display:flex; flex-direction:column; gap: 4px; min-width: 0; }
-    .ctaTitle{
-      font-weight: 650;
-      letter-spacing: -0.01em;
-      font-size: 15px;
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
-    }
-    .ctaSub{
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--muted2);
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
-    }
-
-    .ctaIcon{
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
-      border:1px solid var(--hair);
-      background: rgba(11,11,12,.04);
-      display:grid;
-      place-items:center;
-      transition: transform 160ms var(--ease), background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
-      flex: 0 0 auto;
-      font-size: 16px;
-    }
-    html[data-theme="dark"] .ctaIcon{ background: rgba(244,244,245,.06); }
-    a.cta:hover .ctaIcon{ transform: translateX(1px); }
-
-    .cta.primary{
-      background: var(--primaryBg);
-      color: var(--primaryFg);
-      border-color: rgba(0,0,0,.10);
-      box-shadow: var(--primaryShadow);
-    }
-    html[data-theme="dark"] a.cta.primary{ background: var(--primaryBg); color: var(--primaryFg); }
-    .cta.primary .ctaSub{ color: var(--primarySub); }
-    .cta.primary .ctaIcon{
-      border-color: var(--primaryIconBorder);
-      background: var(--primaryIconBg);
-      color: var(--primaryFg);
-    }
-
-    .bottom{
-      padding: 14px 16px 16px;
-      display:flex;
-      flex-direction:column;
-      gap: 14px;
-      align-items:center;
-    }
-
-    .links{
-      display:flex;
-      flex-wrap:wrap;
-      gap: 10px;
-      justify-content:center;
-    }
-
-    a.link{
-      text-decoration:none;
-      color: var(--fg);
-      border:1px solid var(--hair);
-      border-radius: 999px;
-      padding: 10px 12px;
-      font-size: 13px;
-      font-weight: 560;
-      background: transparent;
-      transition: transform 160ms var(--ease), background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
-      user-select:none;
-      white-space:nowrap;
-    }
-    a.link:hover{
-      transform: translateY(-1px);
-      background: rgba(11,11,12,.03);
-      border-color: rgba(11,11,12,.16);
-    }
-    html[data-theme="dark"] a.link:hover{
-      background: rgba(244,244,245,.06);
-      border-color: rgba(244,244,245,.18);
-    }
-
-    /* UPDATED CREDIT LAYOUT */
-    .credit{
-      display:flex;
-      flex-direction:column;
-      gap: 8px;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.35;
-    }
-    .credit strong{ font-weight: 650; color: var(--fg); }
-
-    .creditRow{
-      display:flex;
-      flex-wrap:wrap;
-      gap: 10px;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .credit a{
-      color: var(--muted);
-      text-decoration:none;
-      border-bottom: 1px solid transparent;
-      transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
-      white-space:nowrap;
-    }
-    .credit a:hover{
-      color: var(--fg);
-      border-color: rgba(11,11,12,.22);
-    }
-    html[data-theme="dark"] .credit a:hover{ border-color: rgba(244,244,245,.22); }
-
-    .sep{ color: var(--muted2); user-select:none; }
-
-    @media (max-width: 980px){
-      .hero{ grid-template-columns: 1fr; }
-      .ctaRow{ grid-template-columns: 1fr; }
-      .metaPill{ white-space: normal; }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      .bg{ display:none; }
-      a.cta::before{ display:none; }
-      *{ transition:none !important; }
-    }
-  </style>
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
+</style>
+<noscript><p style="text-align:center;padding:20px;color:#6B6B6B;font-family:-apple-system,system-ui,sans-serif">This site requires JavaScript to display full content.</p></noscript>
 </head>
-
 <body>
-  <div class="bg" aria-hidden="true">
-    <div class="glows">
-      <div class="glow glow--light"></div>
-      <div class="glow glow--dark"></div>
+<a href="#main" class="skip-link">Skip to Content</a>
+
+<main id="main" class="wrap">
+  <h1 class="sr-only">menuva</h1>
+  <img class="hero-text" src="/hero-text-en.png?v=9" alt="menuva - your digital menu platform" width="833" height="236" decoding="async">
+  <img class="hero-phone" src="/hero-phone-en.png?v=9" alt="menuva app showing map view of nearby restaurants" width="1237" height="2560" decoding="async" loading="lazy">
+
+  <div class="dl-link">
+    <a href="https://apps.apple.com/us/app/menuva/id6756895068" target="_blank" rel="noopener noreferrer" title="Download menuva on the App Store"><svg aria-hidden="true" width="14" height="18" viewBox="0 0 384 512" fill="currentColor" style="flex-shrink:0;margin-top:-2px"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>Download on the App Store</a>
+  </div>
+
+  <div class="links">
+    <div class="copy-row">
+      <a href="mailto:hello@menuva.co.uk" title="Send email">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        hello@menuva.co.uk
+      </a>
+      <button class="copy-btn" data-copy="hello@menuva.co.uk" aria-label="Copy Email Address">Copy</button>
+    </div>
+    <div class="copy-row">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZRJYK2gEEBXD-C-Ub8LzEIjZXNjissO3IXiFIQ6J4z0_-WA/viewform" target="_blank" rel="noopener" title="Give feedback">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Give Feedback
+      </a>
+      <button class="copy-btn" data-copy="https://docs.google.com/forms/d/e/1FAIpQLSeZRJYK2gEEBXD-C-Ub8LzEIjZXNjissO3IXiFIQ6J4z0_-WA/viewform" aria-label="Copy Feedback Link">Copy</button>
     </div>
   </div>
 
-  <div class="wrap" id="bgToggle">
-    <div class="shell">
-
-      <section class="surface" aria-label="menuva">
-        <div class="hero">
-
-          <div>
-            <div class="logo">menuva</div>
-            <div class="tag">
-              <span class="lo">digital menus.</span>
-              <span class="hi">revolutionized.</span>
-            </div>
-
-            <div class="divider" aria-hidden="true"></div>
-
-            <div class="metaLine" aria-label="benefits">
-              <span class="metaPill">No account needed</span>
-              <span class="metaPill">English (UK) · 中文</span>
-              <span class="metaPill">Free to use</span>
-              <span class="metaPill">Preview in advance</span>
-              <span class="metaPill">Filter allergens</span>
-              <span class="metaPill">Convert prices</span>
-              <span class="metaPill">Sort by price and nutrition</span>
-              <span class="metaPill">Show your digital basket to order</span>
-              <span class="metaPill">Map view with open/closed indicators</span>
-              <span class="metaPill">Edit items</span>
-              <span class="metaPill">Search</span>
-              <span class="metaPill">Dark/light mode</span>
-            </div>
-          </div>
-
-          <aside class="panel" aria-label="pilot venues">
-            <div class="panelHead">
-              <div class="panelTitle">Pilot venues</div>
-              <div class="badge">University of Warwick</div>
-            </div>
-
-            <div class="venueGrid" aria-label="venues">
-              <a class="venue" href="https://menuva.co.uk/download" rel="noopener">
-                <div class="vDot"></div>
-                <div class="vText"><div class="vName">District</div><div class="vLoc">Warwick Business School</div></div>
-              </a>
-              <a class="venue" href="https://menuva.co.uk/download" rel="noopener">
-                <div class="vDot"></div>
-                <div class="vText"><div class="vName">Coffee Lab</div><div class="vLoc">Social Sciences</div></div>
-              </a>
-              <a class="venue" href="https://menuva.co.uk/download" rel="noopener">
-                <div class="vDot"></div>
-                <div class="vText"><div class="vName">Coffee Lab</div><div class="vLoc">Oculus</div></div>
-              </a>
-              <a class="venue" href="https://menuva.co.uk/download" rel="noopener">
-                <div class="vDot"></div>
-                <div class="vText"><div class="vName">Coffee Lab</div><div class="vLoc">Library</div></div>
-              </a>
-              <a class="venue" href="https://menuva.co.uk/download" rel="noopener">
-                <div class="vDot"></div>
-                <div class="vText"><div class="vName">Coffee Lab</div><div class="vLoc">IBRB</div></div>
-              </a>
-              <a class="venue" href="https://menuva.co.uk/download" rel="noopener">
-                <div class="vDot"></div>
-                <div class="vText"><div class="vName">Red Rocket</div><div class="vLoc">Computer Science Department</div></div>
-              </a>
-              <a class="venue" href="https://menuva.co.uk/download" rel="noopener">
-                <div class="vDot"></div>
-                <div class="vText"><div class="vName">Spud</div><div class="vLoc">Piazza</div></div>
-              </a>
-            </div>
-          </aside>
-
-        </div>
-      </section>
-
-      <section class="ctaRow" aria-label="primary actions">
-        <a class="cta" href="https://menuva.co.uk/support/" rel="noopener">
-          <div class="ctaText">
-            <div class="ctaTitle">Contact support</div>
-            <div class="ctaSub">Get help or report an issue</div>
-          </div>
-          <div class="ctaIcon" aria-hidden="true">↗</div>
-        </a>
-
-        <a class="cta primary" href="https://menuva.co.uk/download" rel="noopener">
-          <div class="ctaText">
-            <div class="ctaTitle">Download on the App Store</div>
-            <div class="ctaSub">Start using menuva</div>
-          </div>
-          <div class="ctaIcon" aria-hidden="true">↗</div>
-        </a>
-      </section>
-
-      <section class="surface bottom" aria-label="links and credit">
-        <nav class="links" aria-label="links">
-          <a class="link" href="https://menuva.co.uk/terms" rel="noopener">Terms &amp; Conditions</a>
-          <a class="link" href="https://menuva.co.uk/privacy" rel="noopener">Privacy Policy</a>
-          <a class="link" href="https://admin.menuva.co.uk" rel="noopener">Admin Portal</a>
-          <a class="link" href="https://menuva.co.uk/feedback" rel="noopener">Feedback</a>
-          <a class="link" href="https://menuva.co.uk/tutorial" rel="noopener">Tutorial</a>
-          <a class="link" href="https://menuva.co.uk/faq" rel="noopener">FAQ</a>
-        </nav>
-
-        <div class="credit" aria-label="credit">
-          <strong>A project by Duke Saputra</strong>
-
-          <div class="creditRow" aria-label="contact links">
-            <a href="mailto:duke@saputra.co.uk">duke@saputra.co.uk</a>
-            <span class="sep">·</span>
-            <a href="https://www.linkedin.com/in/dukedj/" rel="noopener">LinkedIn</a>
-          </div>
-        </div>
-      </section>
-
-    </div>
+  <div class="pills-card">
+    <div class="pills-label">digital menus. revolutionized.</div>
+    <ul class="pills" role="list">
+      <li class="pill">Free to use</li>
+      <li class="pill">No account needed</li>
+      <li class="pill">Filter allergens</li>
+      <li class="pill">Preview in advance</li>
+      <li class="pill">Show your digital basket to order</li>
+      <li class="pill">Sort by price and nutrition</li>
+      <li class="pill">Map view with open/closed indicators</li>
+      <li class="pill">Convert prices</li>
+      <li class="pill">Search</li>
+      <li class="pill">Edit items</li>
+      <li class="pill">English (UK) · 中文</li>
+      <li class="pill">Dark/light mode</li>
+    </ul>
   </div>
 
-  <script>
-    (function () {
-      const root = document.documentElement;
-      const bgToggle = document.getElementById("bgToggle");
+  <footer class="site-footer"><a href="https://saputra.co.uk" target="_blank" rel="noopener noreferrer">&copy; 2026 Duke Saputra</a></footer>
+</main>
 
-      // Avoid initial transition jank
-      root.classList.add("preload");
+<nav aria-label="Main navigation">
+  <div class="tabs">
+    <a href="/" class="active" aria-current="page">Home</a>
+    <a href="/menus/">Menus</a>
+    <a href="/more/">More</a>
+  </div>
+  <div class="tabs">
+    <button id="lang-btn" class="lang-toggle" aria-label="Toggle Language">中文</button>
+  </div>
+</nav>
 
-      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const saved = localStorage.getItem("menuva-theme");
-      const initial = saved || (prefersDark ? "dark" : "light");
-      setTheme(initial, false);
+<script type="module">
+import { initCommandPalette, initKeyboard, initLanguage, registerStrings, chrome } from '/js/shared.js?v=9';
 
-      requestAnimationFrame(() => {
-        root.classList.remove("preload");
-      });
+registerStrings({
+  en:{dlBtn:'Download on the App Store',dlTitle:'Download menuva on the App Store',giveFeedback:'Give Feedback',copyLabel:'Copy',copyEmail:'Copy Email Address',copyFeedback:'Copy Feedback Link',sendEmail:'Send email',feedbackTitle:'Give feedback',tagline:'digital menus. revolutionized.',heroTextAlt:'menuva - your digital menu platform',heroPhoneAlt:'menuva app showing map view of nearby restaurants',pills:['Free to use','No account needed','Filter allergens','Preview in advance','Show your digital basket to order','Sort by price and nutrition','Map view with open/closed indicators','Convert prices','Search','Edit items','English (UK) · 中文','Dark/light mode']},
+  zh:{dlBtn:'在 App Store 下载',dlTitle:'在 App Store 下载 menuva',giveFeedback:'意见反馈',copyLabel:'复制',copyEmail:'复制邮箱地址',copyFeedback:'复制反馈链接',sendEmail:'发送邮件',feedbackTitle:'意见反馈',tagline:'数字菜单 全新定义',heroTextAlt:'menuva - 您的智能点餐平台',heroPhoneAlt:'menuva 应用展示附近餐厅地图',pills:['免费使用','无需注册','过敏原筛选','提前预览','展示数字购物篮以点餐','按价格和营养排序','地图显示营业状态','货币转换','搜索','编辑菜品','English (UK) · 中文','深色/浅色模式']}
+});
 
-      function setTheme(theme, persist = true) {
-        root.setAttribute("data-theme", theme);
-        const meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.setAttribute("content", theme === "dark" ? "#0b0b0c" : "#ffffff");
-        if (persist) localStorage.setItem("menuva-theme", theme);
+// ==================== COPY ====================
+
+var CHECK_SVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 9 17 20 6"/></svg>';
+
+function makeCheck(){
+  var parser=new DOMParser();
+  var doc=parser.parseFromString(CHECK_SVG,'text/html');
+  return doc.body.firstChild;
+}
+
+document.addEventListener('click',function(e){
+  var btn=e.target.closest('.copy-btn');
+  if(!btn)return;
+  var text=btn.getAttribute('data-copy');
+  if(!text)return;
+  e.preventDefault();
+  function done(){
+    clearTimeout(btn._t1);clearTimeout(btn._t2);
+    btn.classList.add('copied');
+    btn.textContent='';
+    var svg=makeCheck();
+    if(svg)btn.appendChild(svg);
+    btn._t1=setTimeout(function(){
+      btn.style.opacity='0';
+      btn._t2=setTimeout(function(){
+        btn.classList.remove('copied');
+        btn.textContent=chrome('copyLabel');
+        btn.style.opacity='';
+      },200);
+    },1500);
+  }
+  function legacy(){
+    var ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;opacity:0';
+    document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done();
+  }
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done).catch(function(){try{legacy()}catch(e){}});
+  }else{try{legacy()}catch(e){}}
+});
+
+// ==================== QR OVERLAY ====================
+
+var qrOverlay=document.createElement('div');qrOverlay.className='qr-overlay';
+qrOverlay.setAttribute('role','dialog');qrOverlay.setAttribute('aria-modal','true');qrOverlay.setAttribute('aria-label','QR Code');
+qrOverlay.tabIndex=-1;
+var qrCard=document.createElement('div');qrCard.className='qr-card';
+var qrImg=document.createElement('img');qrImg.alt='QR code to menuva.co.uk';qrImg.width=23;qrImg.height=23;
+qrCard.appendChild(qrImg);qrOverlay.appendChild(qrCard);document.body.appendChild(qrOverlay);
+
+var qrOpen=false;
+function openQR(){
+  if(qrOpen)return;
+  if(cmd&&cmd.isOpen())cmd.close();
+  if(!qrImg.src)qrImg.src='/qr.png?v=9';
+  qrOpen=true;
+  document.body.style.overflow='hidden';
+  qrOverlay.classList.add('open');
+  qrOverlay.focus();
+}
+function closeQR(){
+  if(!qrOpen)return;
+  qrOpen=false;
+  document.body.style.overflow='';
+  qrOverlay.classList.remove('open');
+}
+
+var heroLogo=document.querySelector('.hero-text');
+if(heroLogo)heroLogo.addEventListener('click',function(){openQR()});
+
+var heroPhone=document.querySelector('.hero-phone');
+if(heroPhone)heroPhone.addEventListener('click',function(){window.open('https://apps.apple.com/us/app/menuva/id6756895068','_blank')});
+
+qrOverlay.addEventListener('click',function(e){
+  if(e.target===qrOverlay)closeQR();
+});
+qrOverlay.addEventListener('keydown',function(e){if(e.key==='Escape')closeQR()});
+qrCard.addEventListener('click',function(){
+  closeQR();
+  window.open('https://apps.apple.com/us/app/menuva/id6756895068','_blank');
+});
+
+// ==================== SHARED MODULE INIT ====================
+
+var cmd=initCommandPalette({
+  buildItems:function(){
+    return [
+      {q:'home',tl:'home',title:chrome('home'),type:'Page',act:function(){window.scrollTo(0,0)}},
+      {q:'menus',tl:'menus',title:chrome('menus'),type:'Page',act:function(){location.href='/menus/'}},
+      {q:'more',tl:'more',title:chrome('more'),type:'Page',act:function(){location.href='/more/'}}
+    ];
+  },
+  typePri:{Page:4},
+  maxResults:8,
+  onBeforeOpen:function(){if(qrOpen)closeQR()}
+});
+
+initLanguage({
+  onApply:function(lng){
+    var suffix=lng==='zh'?'zh':'en';
+
+    var heroText=document.querySelector('.hero-text');
+    if(heroText){heroText.src='/hero-text-'+suffix+'.png?v=9';heroText.alt=chrome('heroTextAlt')}
+    var heroPhone=document.querySelector('.hero-phone');
+    if(heroPhone){heroPhone.src='/hero-phone-'+suffix+'.png?v=9';heroPhone.alt=chrome('heroPhoneAlt')}
+
+    var dlLink=document.querySelector('.dl-link a');
+    if(dlLink){
+      var svg=dlLink.querySelector('svg');
+      dlLink.textContent=chrome('dlBtn');
+      if(svg)dlLink.prepend(svg);
+      dlLink.title=chrome('dlTitle');
+    }
+
+    var rows=document.querySelectorAll('.copy-row');
+    if(rows[0]){
+      var a0=rows[0].querySelector('a');if(a0)a0.title=chrome('sendEmail');
+      var b0=rows[0].querySelector('.copy-btn');if(b0&&!b0.classList.contains('copied')){b0.textContent=chrome('copyLabel');b0.setAttribute('aria-label',chrome('copyEmail'))}
+    }
+    if(rows[1]){
+      var a1=rows[1].querySelector('a');
+      if(a1){
+        var svg1=a1.querySelector('svg');
+        a1.textContent=chrome('giveFeedback');
+        if(svg1)a1.prepend(svg1);
+        a1.title=chrome('feedbackTitle');
       }
+      var b1=rows[1].querySelector('.copy-btn');if(b1&&!b1.classList.contains('copied')){b1.textContent=chrome('copyLabel');b1.setAttribute('aria-label',chrome('copyFeedback'))}
+    }
 
-      function toggleTheme() {
-        const current = root.getAttribute("data-theme") || "light";
-        setTheme(current === "dark" ? "light" : "dark", true);
-      }
+    var pillsLabel=document.querySelector('.pills-label');
+    if(pillsLabel)pillsLabel.textContent=chrome('tagline');
+    var pills=chrome('pills');
+    var pillsList=document.querySelector('.pills');
+    if(pillsList&&Array.isArray(pills)){
+      while(pillsList.firstChild)pillsList.removeChild(pillsList.firstChild);
+      pills.forEach(function(p){var li=document.createElement('li');li.className='pill';li.textContent=p;pillsList.appendChild(li)});
+    }
+  }
+});
 
-      // Toggle only when tapping background (not links)
-      bgToggle.addEventListener("click", (e) => {
-        if (e.target.closest("a")) return;
-        toggleTheme();
-      }, { passive: true });
-
-      // Keep in sync if OS theme changes (when user hasn't explicitly chosen)
-      const mq = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
-      if (mq && mq.addEventListener) {
-        mq.addEventListener("change", (e) => {
-          const explicit = localStorage.getItem("menuva-theme");
-          if (explicit) return;
-          setTheme(e.matches ? "dark" : "light", false);
-        });
-      }
-    })();
-  </script>
+initKeyboard({
+  CUR_TAB:0,
+  searchInputId:null,
+  cardSelector:null,
+  modalGuards:function(){
+    if(qrOpen)return true;
+    return false;
+  },
+  onKey:function(key,e){return false}
+});
+</script>
 </body>
 </html>
