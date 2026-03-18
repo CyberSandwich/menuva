@@ -14,7 +14,29 @@
     { "slug": "accessibility", "title": "Accessibility Statement" },
     { "slug": "promo", "title": "January 2026 Promotion" },
     { "slug": "contact", "title": "Contact" },
-    { "slug": "join", "title": "Add Your Restaurant" }
+    { "slug": "join", "title": "Add Your Restaurant" },
+    { "slug": "shortcuts", "title": "Keyboard Shortcuts" }
   ],
-  "sitemap_extra": ["/", "/menus/", "/more/"]
+  "sitemap_extra": ["/", "/menus/", "/more/"],
+  "redirects_menus": [
+    "sign", "aboard", "banner", "flyer", "instagram",
+    "linkedin", "lecture", "wbs", "society", "piazza"
+  ],
+  "redirects_home": [
+    "card", "students", "sport"
+  ],
+  "redirects_accommodation": [
+    { "slug": "ar", "name": "westwood", "blocks": "Westwood", "kitchens": 2 },
+    { "slug": "bb", "name": "bluebell", "blocks": "Bluebell", "kitchens": 66 },
+    { "slug": "cc", "name": "claycroft & tocil", "blocks": "Claycroft, Tocil", "kitchens": 124 },
+    { "slug": "cv", "name": "benefactors & cryfield", "blocks": "Benefactors, Cryfield", "kitchens": 111 },
+    { "slug": "jm", "name": "arthur vick & jack martin", "blocks": "Arthur Vick, Jack Martin", "kitchens": 69 },
+    { "slug": "ls", "name": "heronbank & lakeside", "blocks": "Heronbank, Lakeside", "kitchens": 163 },
+    { "slug": "rt", "name": "rootes", "blocks": "Rootes", "kitchens": 64 },
+    { "slug": "sb", "name": "sherbourne", "blocks": "Sherbourne", "kitchens": 71 }
+  ],
+  "redirects_external": [
+    { "slug": "download", "dest": "https://apps.apple.com/us/app/menuva/id6756895068", "title": "Download menuva", "body": "Opening the App Store\u2026" },
+    { "slug": "beta", "dest": "https://testflight.apple.com/join/y6cwz9Qm", "title": "Beta", "body": "Opening TestFlight\u2026" }
+  ]
 }
