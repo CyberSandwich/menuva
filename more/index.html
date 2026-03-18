@@ -35,6 +35,7 @@
 <link rel="dns-prefetch" href="https://wbs.ac.uk">
 <link rel="dns-prefetch" href="https://warwick.ac.uk">
 <link rel="dns-prefetch" href="https://my.wbs.ac.uk">
+<link rel="dns-prefetch" href="https://saputra.co.uk">
 <link rel="dns-prefetch" href="https://testflight.apple.com">
 <link rel="dns-prefetch" href="https://apps.apple.com">
 
@@ -196,7 +197,7 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
 
 <script type="module">
 import { initCommandPalette, initKeyboard, initLanguage, registerStrings, chrome, scoreWord, curLang, swrFetch } from '/js/shared.js?v=9';
-import { mkIcon } from '/js/icons.js?v=9';
+import { mkIcon, matchLinkIcon } from '/js/icons.js?v=9';
 
 var $=function(s){return document.querySelector(s)};
 
@@ -255,7 +256,7 @@ function showLinks(){
       var displayUrl=x.url.startsWith('http')?x.url.replace(/^https?:\/\//,'').replace(/\/$/,''):'menuva.co.uk'+x.url.replace(/\/$/,'');
       var pd=document.createElement('div');pd.className='pd';pd.textContent=displayUrl;
       inf.appendChild(pt);inf.appendChild(pd);
-      a.appendChild(mkIcon(x.icon));a.appendChild(inf);a.appendChild(makeArrow());sec.appendChild(a);
+      a.appendChild(mkIcon(matchLinkIcon(x.title)));a.appendChild(inf);a.appendChild(makeArrow());sec.appendChild(a);
     });
     el.appendChild(sec);
   });
@@ -363,6 +364,9 @@ initLanguage({
     if(el){el.textContent='';el._saved=null;showLinks();if(si&&si.value)filterList(si,el)}
   }
 });
+
+var moreTitle=document.querySelector('.stitle');
+if(moreTitle){moreTitle.style.cursor='pointer';moreTitle.addEventListener('click',function(){if(cmd)cmd.open()})}
 
 initKeyboard({
   CUR_TAB:2,

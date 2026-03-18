@@ -1,5 +1,5 @@
 // Centralized SVG icon paths (stroke-based, 24x24 viewBox)
-// Import: import { ICONS, mkIcon, matchMenuIcon } from '/js/icons.js?v=7';
+// Import: import { ICONS, mkIcon, matchMenuIcon, matchLinkIcon } from '/js/icons.js?v=7';
 
 export var ICONS={
 
@@ -21,6 +21,8 @@ export var ICONS={
   list:'<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>',
   flask:'<path d="M9 3h6"/><path d="M10 3v6.5L3.3 19.4a1.5 1.5 0 001.3 2.1h14.8a1.5 1.5 0 001.3-2.1L14 9.5V3"/>',
   archive:'<polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/>',
+  user:'<path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+  keyboard:'<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01"/><line x1="8" y1="14" x2="16" y2="14"/>',
 
   // ── Menu / food icons ──
   cutlery:'<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3"/><path d="M18 15v7"/>',
@@ -78,6 +80,41 @@ export function matchMenuIcon(name){
     }
   }
   return'cutlery';
+}
+
+// ── Link keyword matching ──
+
+var LINK_KEYWORDS=[
+  {i:'mail',w:['contact','email','mail']},
+  {i:'help-circle',w:['faq','help','question']},
+  {i:'smartphone',w:['app store','download','phone']},
+  {i:'message-square',w:['feedback','message']},
+  {i:'book-open',w:['tutorial','guide','book']},
+  {i:'plus-circle',w:['add your']},
+  {i:'sliders',w:['admin','portal','settings','dashboard']},
+  {i:'trending-up',w:['investor']},
+  {i:'user',w:['founder','meet the']},
+  {i:'globe',w:['my.wbs']},
+  {i:'award',w:['university','warwick']},
+  {i:'edit',w:['wbs']},
+  {i:'users',w:['team','career','join our']},
+  {i:'shield',w:['privacy']},
+  {i:'file-text',w:['terms','condition']},
+  {i:'list',w:['feature']},
+  {i:'keyboard',w:['shortcut','keyboard']},
+  {i:'flask',w:['beta','test']},
+  {i:'archive',w:['promotion','promo','archive','january']}
+];
+
+export function matchLinkIcon(title){
+  var n=title.toLowerCase();
+  for(var k=0;k<LINK_KEYWORDS.length;k++){
+    var kw=LINK_KEYWORDS[k];
+    for(var j=0;j<kw.w.length;j++){
+      if(n.indexOf(kw.w[j])!==-1)return kw.i;
+    }
+  }
+  return null;
 }
 
 // ── Renderer ──
