@@ -1,0 +1,20 @@
+{
+  "version": 9,
+  "year": 2026,
+  "ga_id": "G-LLFDHVYBWL",
+  "domain": "https://menuva.co.uk",
+  "content": [
+    { "slug": "privacy", "title": "Privacy Policy" },
+    { "slug": "faq", "title": "FAQ" },
+    { "slug": "terms", "title": "Terms & Conditions" },
+    { "slug": "careers", "title": "Join Our Team" },
+    { "slug": "features", "title": "Features" },
+    { "slug": "investors", "title": "Investors" },
+    { "slug": "tutorial", "title": "Tutorial" },
+    { "slug": "accessibility", "title": "Accessibility Statement" },
+    { "slug": "promo", "title": "January 2026 Promotion" },
+    { "slug": "contact", "title": "Contact" },
+    { "slug": "join", "title": "Add Your Restaurant" }
+  ],
+  "sitemap_extra": ["/", "/menus/", "/more/"]
+}
