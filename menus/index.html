@@ -3123,12 +3123,16 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
     }
   });
 
-  // Preview input change handlers (debounced)
-  function _onPreviewChange(){
+  // Preview input change handlers
+  // On iOS, date/time pickers fire 'change' on every wheel spin.
+  // _refreshForPreview rebuilds the DOM which destroys the input and
+  // dismisses the picker. Fix: capture values on change but only
+  // refresh once the user finishes (blur).
+  function _commitPreview(){
     clearTimeout(_previewTimer);
+    _previewDate=dateInput.value||null;
+    _previewTime=timeInput.value||null;
     _previewTimer=setTimeout(function(){
-      _previewDate=dateInput.value||null;
-      _previewTime=timeInput.value||null;
       _refreshForPreview();
       _ga('preview_applied',{
         has_date:!!_previewDate,has_time:!!_previewTime,
@@ -3136,8 +3140,16 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
       });
     },300);
   }
+  function _onPreviewChange(){
+    _previewDate=dateInput.value||null;
+    _previewTime=timeInput.value||null;
+    if(document.activeElement===dateInput||document.activeElement===timeInput)return;
+    _commitPreview();
+  }
   dateInput.addEventListener('change',_onPreviewChange);
   timeInput.addEventListener('change',_onPreviewChange);
+  dateInput.addEventListener('blur',_commitPreview);
+  timeInput.addEventListener('blur',_commitPreview);
 
   // Reset button
   resetBtn.addEventListener('click',function(){
