@@ -7,6 +7,9 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
 <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+<link rel="preconnect" href="https://firestore.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://firebasestorage.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://www.gstatic.com" crossorigin>
 <style>body{margin:0;padding:24px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.muted{opacity:.7}</style>
 <script>
 (function(){
@@ -28,6 +31,8 @@
   if(p.indexOf('/menus/')===0||p==='/menus'){
     var parts=p.replace('/menus','').replace(/^\//,'').split('/').filter(Boolean);
     if(parts.length>=1){
+      // Stash slug in sessionStorage so menus page can start fetching during SDK load
+      try{sessionStorage.setItem('_menuPrefetch',parts[0])}catch(_){}
       var url='/menus/?slug='+encodeURIComponent(parts[0]);
       if(parts[1])url+='&loc='+encodeURIComponent(parts[1]);
       location.replace(url)
@@ -41,9 +46,9 @@
   var R={
     ar:"/",bb:"/",cc:"/",cv:"/",jm:"/",ls:"/",rt:"/",sb:"/",
     card:"/",sport:"/",students:"/",
-    instagram:"/download/",linkedin:"/download/",piazza:"/download/",
-    society:"/download/",wbs:"/download/",aboard:"/download/",
-    sign:"/download/",banner:"/download/",flyer:"/download/",lecture:"/download/",
+    instagram:"/menus/",linkedin:"/menus/",piazza:"/menus/",
+    society:"/menus/",wbs:"/menus/",aboard:"/menus/",
+    sign:"/menus/",banner:"/menus/",flyer:"/menus/",lecture:"/menus/",
     download:"https://apps.apple.com/us/app/menuva/id6756895068",
     beta:"https://testflight.apple.com/join/y6cwz9Qm",
     feedback:"https://docs.google.com/forms/d/e/1FAIpQLSeZRJYK2gEEBXD-C-Ub8LzEIjZXNjissO3IXiFIQ6J4z0_-WA/viewform"

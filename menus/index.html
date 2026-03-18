@@ -584,6 +584,16 @@ window._acReady=new Promise(function(_fbResolve){
     else{_fbResolve()}
   });
 });
+// Early speculative JSON prefetch — fires during SDK load, before App Check
+(function(){
+  var params=new URLSearchParams(location.search);
+  var slug=params.get('slug');
+  if(!slug)return;
+  try{var ps=sessionStorage.getItem('_menuPrefetch');if(ps)sessionStorage.removeItem('_menuPrefetch')}catch(_){}
+  var path='menus/v5/'+slug+'.json';
+  var url='https://firebasestorage.googleapis.com/v0/b/menuva-firebase.firebasestorage.app/o/'+encodeURIComponent(path)+'?alt=media';
+  window._earlyJsonFetch=fetch(url).then(function(r){if(!r.ok)return null;return r.text()}).catch(function(){return null});
+})();
 </script>
 
 <script type="module">
@@ -901,29 +911,45 @@ function fetchMenuWithCache(slug){
   var cached=_readCache(slug);
   if(cached){_touchCache(slug);return Promise.resolve({menu:cached.menu,doc:cached.doc,_revalidate:_revalidate(slug,cached.sha)})}
   var stdPath='menus/v5/'+slug+'.json';
-  var stdUrl='https://firebasestorage.googleapis.com/v0/b/menuva-firebase.firebasestorage.app/o/'+encodeURIComponent(stdPath)+'?alt=media';
-  var speculativeJson=fetch(stdUrl);
-  return _fetchDoc(slug).catch(function(){
-    return new Promise(function(r){setTimeout(r,1500)}).then(function(){return _fetchDoc(slug)});
-  }).then(function(doc){
-    if(!doc.exists)return Promise.reject({code:404});
-    var data=doc.data();
-    var isStdPath=!data.storagePath||data.storagePath===stdPath;
-    var textP=isStdPath
-      ? speculativeJson.then(function(r){if(!r.ok)return Promise.reject({code:r.status});return r.text()})
-      : _fetchJson(data,slug);
-    return textP.catch(function(){
-      return new Promise(function(r){setTimeout(r,1500)}).then(function(){return _fetchJson(data,slug)});
-    }).then(function(text){
-      var parsed=JSON.parse(text);
-      _writeCache(slug,text,data.sha256,data);
-      return{menu:parsed,doc:data};
+  // Use early prefetch if available (fired during SDK load), otherwise fetch after App Check
+  var earlyJson=window._earlyJsonFetch||null;
+  window._earlyJsonFetch=null;
+  // Parallel fetch: Firestore doc + Storage JSON both start after App Check
+  return window._acReady.then(function(){
+    var docP=window._db.collection('menus').doc(slug).get();
+    // Prefer early prefetch, fallback to authenticated fetch
+    var jsonP=earlyJson?earlyJson.then(function(t){return t||_fetchJson({storagePath:stdPath},slug)}):_fetchJson({storagePath:stdPath},slug);
+    return docP.then(function(doc){
+      if(!doc.exists)return Promise.reject({code:404});
+      var data=doc.data();
+      var isStdPath=!data.storagePath||data.storagePath===stdPath;
+      // If non-standard path, discard parallel fetch and use correct path
+      var textP=isStdPath?jsonP:_fetchJson(data,slug);
+      return textP.then(function(text){
+        var parsed=JSON.parse(text);
+        _writeCache(slug,text,data.sha256,data);
+        return{menu:parsed,doc:data};
+      });
     });
   }).catch(function(err){
     if(err&&err.code===404)return Promise.reject(err);
-    var fallback=_readCache(slug);
-    if(fallback)return{menu:fallback.menu,doc:fallback.doc,_offline:true};
-    return Promise.reject(err);
+    // Retry once on transient failure (short delay, not 1500ms)
+    return new Promise(function(r){setTimeout(r,200)}).then(function(){
+      return _fetchDoc(slug).then(function(doc){
+        if(!doc.exists)return Promise.reject({code:404});
+        var data=doc.data();
+        return _fetchJson(data,slug).then(function(text){
+          var parsed=JSON.parse(text);
+          _writeCache(slug,text,data.sha256,data);
+          return{menu:parsed,doc:data};
+        });
+      });
+    }).catch(function(retryErr){
+      if(retryErr&&retryErr.code===404)return Promise.reject(retryErr);
+      var fallback=_readCache(slug);
+      if(fallback)return{menu:fallback.menu,doc:fallback.doc,_offline:true};
+      return Promise.reject(retryErr);
+    });
   });
 }
 
