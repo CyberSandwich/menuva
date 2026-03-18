@@ -2401,15 +2401,16 @@ function _cpBuildDOM(item,currency){
     var isRequired=minSel>0;
     var isSingle=group.type==='single';
 
-    // Init selections for this group
-    _cpSelections[group.id]=new Set();
+    // Init selections for this group (groups use 'key' not 'id' in MenuV5)
+    var gid=group.id||group.key;
+    _cpSelections[gid]=new Set();
     // Pre-select defaults
     for(var oi=0;oi<visOpts.length;oi++){
-      if(visOpts[oi].isDefault)_cpSelections[group.id].add(visOpts[oi].id);
+      if(visOpts[oi].isDefault)_cpSelections[gid].add(visOpts[oi].id);
     }
 
     var grpEl=document.createElement('div');grpEl.className='cpanel-group';
-    grpEl.setAttribute('data-group-id',group.id);
+    grpEl.setAttribute('data-group-id',gid);
     grpEl.setAttribute('data-type',isSingle?'single':'multiple');
     grpEl.setAttribute('data-min',minSel);
     grpEl.setAttribute('data-max',maxSel);
@@ -2436,7 +2437,7 @@ function _cpBuildDOM(item,currency){
       pill.setAttribute('role',isSingle?'radio':'checkbox');
       pill.setAttribute('data-opt-id',opt.id);
       pill.setAttribute('data-delta',opt.priceDeltaMinor||0);
-      if(_cpSelections[group.id].has(opt.id)){
+      if(_cpSelections[gid].has(opt.id)){
         pill.classList.add('active');
         pill.setAttribute('aria-checked','true');
       }else{
@@ -2495,18 +2496,23 @@ function _cpBuildDOM(item,currency){
         pill.classList.remove('active');
         pill.setAttribute('aria-checked','false');
       }else{
-        if(sel.size>=max)return;// at max
+        // At max: evict first active option to make room
+        if(sel.size>=max){
+          var actives=grpEl.querySelectorAll('.cpanel-opt.active');
+          if(actives.length){
+            var evId=actives[0].getAttribute('data-opt-id');
+            sel.delete(evId);
+            actives[0].classList.remove('active');
+            actives[0].setAttribute('aria-checked','false');
+          }
+        }
         sel.add(optId);
         pill.classList.add('active');
         pill.setAttribute('aria-checked','true');
       }
-      // Enable/disable remaining options if at max
+      // Clear disabled state; eviction handles max enforcement
       var pills=grpEl.querySelectorAll('.cpanel-opt');
-      for(var k=0;k<pills.length;k++){
-        if(!pills[k].classList.contains('active')){
-          pills[k].classList.toggle('disabled',sel.size>=max);
-        }
-      }
+      for(var k=0;k<pills.length;k++){pills[k].classList.remove('disabled')}
     }
 
     _cpUpdateTotal();
@@ -2522,7 +2528,7 @@ function _cpComputeTotal(){
   for(var gi=0;gi<custs.length;gi++){
     var group=custs[gi];
     if(!group||!group.options)continue;
-    var sel=_cpSelections[group.id];
+    var sel=_cpSelections[group.id||group.key];
     if(!sel)continue;
     for(var oi=0;oi<group.options.length;oi++){
       var opt=group.options[oi];
@@ -3358,12 +3364,13 @@ function _bskAddFromPanel(){
   for(var gi=0;gi<custs.length;gi++){
     var group=custs[gi];
     if(!group||!group.options)continue;
-    var sel=_cpSelections[group.id];
+    var gid=group.id||group.key;
+    var sel=_cpSelections[gid];
     if(!sel||!sel.size)continue;
     for(var oi=0;oi<group.options.length;oi++){
       var opt=group.options[oi];
       if(sel.has(opt.id)){
-        selOpts.push({groupId:group.id,optionId:opt.id,label:resolveLang(opt.label)||'',labelObj:opt.label,delta:opt.priceDeltaMinor||0});
+        selOpts.push({groupId:gid,optionId:opt.id,label:resolveLang(opt.label)||'',labelObj:opt.label,delta:opt.priceDeltaMinor||0});
       }
     }
   }
