@@ -16,7 +16,7 @@
     {"title": "Privacy Policy", "titleZh": "隐私政策", "url": "/privacy/", "cat": "Legal", "icon": "shield"},
     {"title": "Terms & Conditions", "titleZh": "使用条款", "url": "/terms/", "cat": "Legal", "icon": "file-text"},
     {"title": "Accessibility Statement", "titleZh": "无障碍声明", "url": "/accessibility/", "cat": "Legal", "icon": "eye"},
-    {"title": "Features", "titleZh": "功能", "url": "/more/features/", "cat": "Miscellaneous", "icon": "list"},
+    {"title": "Features", "titleZh": "功能", "url": "/features/", "cat": "Miscellaneous", "icon": "list"},
     {"title": "Menuva Beta", "titleZh": "Menuva 测试版", "url": "https://testflight.apple.com/join/y6cwz9Qm", "cat": "Miscellaneous", "icon": "flask"},
     {"title": "January 2026 Promotion", "titleZh": "2026年1月促销活动", "url": "/promo/", "cat": "Archive", "icon": "archive"}
   ]
