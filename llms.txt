@@ -1,0 +1,42 @@
+# menuva
+
+> Digital restaurant menu platform. Browse menus, view allergens, dietary info, and prices.
+
+menuva is a digital dining menu platform that lets diners browse restaurant menus on the web and on iOS. Restaurants upload their menus with full dish details including prices, allergen declarations, dietary suitability, ingredient statements, nutrition data, and customisation options. Diners can filter and search menus by dietary needs.
+
+## Website: https://menuva.co.uk
+
+## Key pages
+
+- [Homepage](https://menuva.co.uk/) — Main landing page
+- [Menus](https://menuva.co.uk/menus/) — Browse restaurant menus
+- [Features](https://menuva.co.uk/features/) — Platform feature list
+- [Add Your Restaurant](https://menuva.co.uk/join/) — Restaurant onboarding
+- [FAQ](https://menuva.co.uk/faq/) — Frequently asked questions
+- [Tutorial](https://menuva.co.uk/tutorial/) — How to use menuva
+- [Contact](https://menuva.co.uk/contact/) — Get in touch
+- [Careers](https://menuva.co.uk/careers/) — Job openings
+- [Investors](https://menuva.co.uk/investors/) — Investor information
+- [Privacy Policy](https://menuva.co.uk/privacy/) — Data handling practices
+- [Terms & Conditions](https://menuva.co.uk/terms/) — Usage terms
+- [Accessibility](https://menuva.co.uk/accessibility/) — Accessibility statement
+
+## App
+
+- App Store: https://apps.apple.com/us/app/menuva/id6756895068
+- TestFlight (beta): https://testflight.apple.com/join/y6cwz9Qm
+
+## Core capabilities
+
+- Browse restaurant menus digitally with full dish details
+- View 14 major allergen declarations per dish (EU/UK standard)
+- Filter menus by dietary suitability (vegan, vegetarian, halal, gluten-free, etc.)
+- View ingredient statements and nutrition information
+- Customise dishes with modifier options and see price adjustments
+- Bilingual support (English and Simplified Chinese)
+- Search across all restaurants and menu items
+
+## Company
+
+- Based in the United Kingdom
+- Founded at Warwick Business School

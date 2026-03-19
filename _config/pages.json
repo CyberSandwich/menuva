@@ -4,20 +4,84 @@
   "ga_id": "G-LLFDHVYBWL",
   "domain": "https://menuva.co.uk",
   "content": [
-    { "slug": "privacy", "title": "Privacy Policy" },
-    { "slug": "faq", "title": "FAQ" },
-    { "slug": "terms", "title": "Terms & Conditions" },
-    { "slug": "careers", "title": "Join Our Team" },
-    { "slug": "features", "title": "Features" },
-    { "slug": "investors", "title": "Investors" },
-    { "slug": "tutorial", "title": "Tutorial" },
-    { "slug": "accessibility", "title": "Accessibility Statement" },
-    { "slug": "promo", "title": "January 2026 Promotion" },
-    { "slug": "contact", "title": "Contact" },
-    { "slug": "join", "title": "Add Your Restaurant" },
-    { "slug": "shortcuts", "title": "Keyboard Shortcuts" }
+    {
+      "slug": "privacy",
+      "title": "Privacy Policy",
+      "description": "Read menuva's privacy policy. Learn how we handle your data when using our digital restaurant menu platform.",
+      "priority": 0.3
+    },
+    {
+      "slug": "faq",
+      "title": "FAQ",
+      "description": "Frequently asked questions about menuva, the digital restaurant menu platform. Answers about features, pricing, and getting started.",
+      "priority": 0.6
+    },
+    {
+      "slug": "terms",
+      "title": "Terms & Conditions",
+      "description": "Terms and conditions for using menuva, the digital restaurant menu platform.",
+      "priority": 0.3
+    },
+    {
+      "slug": "careers",
+      "title": "Join Our Team",
+      "description": "Join the menuva team. View current openings and learn about working at the digital restaurant menu startup.",
+      "priority": 0.5
+    },
+    {
+      "slug": "features",
+      "title": "Features",
+      "description": "Explore menuva's features: browse restaurant menus digitally, filter by dietary needs, view allergen info, and customise your dining experience.",
+      "priority": 0.8
+    },
+    {
+      "slug": "investors",
+      "title": "Investors",
+      "description": "Investor information for menuva, the digital restaurant menu platform. Learn about our vision, traction, and growth.",
+      "priority": 0.5
+    },
+    {
+      "slug": "tutorial",
+      "title": "Tutorial",
+      "description": "Step-by-step tutorial for using menuva. Learn how to browse menus, filter dishes, and customise your dining experience.",
+      "priority": 0.6
+    },
+    {
+      "slug": "accessibility",
+      "title": "Accessibility Statement",
+      "description": "menuva's accessibility statement. Our commitment to making digital restaurant menus accessible to everyone.",
+      "priority": 0.3
+    },
+    {
+      "slug": "promo",
+      "title": "January 2026 Promotion",
+      "description": "Terms and conditions for menuva's January 2026 promotional offer for restaurants.",
+      "priority": 0.3
+    },
+    {
+      "slug": "contact",
+      "title": "Contact",
+      "description": "Get in touch with the menuva team. Contact us for support, partnerships, press enquiries, or feedback.",
+      "priority": 0.6
+    },
+    {
+      "slug": "join",
+      "title": "Add Your Restaurant",
+      "description": "Add your restaurant to menuva. Reach more diners with a beautiful, interactive digital menu.",
+      "priority": 0.8
+    },
+    {
+      "slug": "shortcuts",
+      "title": "Keyboard Shortcuts",
+      "description": "Keyboard shortcuts for navigating the menuva website. Quick access to menus, search, language toggle, and more.",
+      "priority": 0.3
+    }
   ],
-  "sitemap_extra": ["/", "/menus/", "/more/"],
+  "sitemap_extra": [
+    { "path": "/", "priority": 1.0 },
+    { "path": "/menus/", "priority": 0.7 },
+    { "path": "/more/", "priority": 0.4 }
+  ],
   "redirects_menus": [
     "sign", "aboard", "banner", "flyer", "instagram",
     "linkedin", "lecture", "wbs", "society", "piazza"

@@ -1,3 +1,29 @@
 User-agent: *
 Allow: /
+
+# Redirect-only pages (noindex, no content)
+Disallow: /sign/
+Disallow: /aboard/
+Disallow: /banner/
+Disallow: /flyer/
+Disallow: /instagram/
+Disallow: /linkedin/
+Disallow: /lecture/
+Disallow: /wbs/
+Disallow: /society/
+Disallow: /piazza/
+Disallow: /card/
+Disallow: /students/
+Disallow: /sport/
+Disallow: /ar/
+Disallow: /bb/
+Disallow: /cc/
+Disallow: /cv/
+Disallow: /jm/
+Disallow: /ls/
+Disallow: /rt/
+Disallow: /sb/
+Disallow: /download/
+Disallow: /beta/
+
 Sitemap: https://menuva.co.uk/sitemap.xml

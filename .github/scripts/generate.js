@@ -61,6 +61,12 @@ if (!Array.isArray(config.content) || config.content.length === 0) {
     if (typeof entry.title !== 'string' || entry.title.length === 0) {
       errors.push(`content[${i}].title: must be a non-empty string`);
     }
+    if (typeof entry.description !== 'string' || entry.description.length === 0) {
+      errors.push(`content[${i}].description: must be a non-empty string`);
+    }
+    if (entry.priority != null && (typeof entry.priority !== 'number' || entry.priority < 0 || entry.priority > 1)) {
+      errors.push(`content[${i}].priority: must be a number between 0.0 and 1.0`);
+    }
   });
 }
 
@@ -68,8 +74,10 @@ if (!Array.isArray(config.sitemap_extra)) {
   errors.push('sitemap_extra: must be an array');
 } else {
   config.sitemap_extra.forEach((p, i) => {
-    if (typeof p !== 'string' || !p.startsWith('/')) {
-      errors.push(`sitemap_extra[${i}]: must be a string starting with "/"`);
+    if (typeof p === 'string') {
+      errors.push(`sitemap_extra[${i}]: must be an object with "path" (use {"path":"${p}"} instead)`);
+    } else if (typeof p !== 'object' || typeof p.path !== 'string' || !p.path.startsWith('/')) {
+      errors.push(`sitemap_extra[${i}]: must be an object with "path" starting with "/"`);
     }
   });
 }
@@ -97,6 +105,7 @@ let warnings = 0;
 for (const entry of config.content) {
   let html = template;
   html = html.replace(/\{\{TITLE\}\}/g, entry.title);
+  html = html.replace(/\{\{DESCRIPTION\}\}/g, entry.description);
   html = html.replace(/\{\{SLUG\}\}/g, entry.slug);
   html = html.replace(/\{\{DOMAIN\}\}/g, config.domain);
   html = html.replace(/\{\{V\}\}/g, String(config.version));
@@ -188,14 +197,25 @@ if (redirectExtTpl && Array.isArray(config.redirects_external)) {
 
 // ── 5. Generate sitemap.xml ─────────────────────────────────────────────────
 
+const today = new Date().toISOString().slice(0, 10);
 const sitemapLines = ['<?xml version="1.0" encoding="UTF-8"?>',
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'];
 
 for (const extra of config.sitemap_extra) {
-  sitemapLines.push('  <url><loc>' + config.domain + extra + '</loc></url>');
+  const pri = extra.priority != null ? extra.priority : 0.5;
+  sitemapLines.push('  <url>',
+    '    <loc>' + config.domain + extra.path + '</loc>',
+    '    <lastmod>' + today + '</lastmod>',
+    '    <priority>' + pri.toFixed(1) + '</priority>',
+    '  </url>');
 }
 for (const entry of config.content) {
-  sitemapLines.push('  <url><loc>' + config.domain + '/' + entry.slug + '/</loc></url>');
+  const pri = entry.priority != null ? entry.priority : 0.5;
+  sitemapLines.push('  <url>',
+    '    <loc>' + config.domain + '/' + entry.slug + '/</loc>',
+    '    <lastmod>' + today + '</lastmod>',
+    '    <priority>' + pri.toFixed(1) + '</priority>',
+    '  </url>');
 }
 sitemapLines.push('</urlset>');
 
