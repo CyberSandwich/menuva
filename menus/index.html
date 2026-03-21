@@ -191,14 +191,14 @@ body{overflow-x:hidden}
   transform:translateX(-50%);
   max-width:calc(100% - 40px);
   z-index:9;
-  background:rgba(245,245,245,.92);
+  background:rgb(255 255 255/.55);
   border-radius:var(--rr);
   padding:5px;
   box-shadow:0 2px 6px rgba(0,0,0,.04),0 8px 20px rgba(0,0,0,.06);
-  border:1px solid rgba(255,255,255,.45)
+  border:1px solid rgb(255 255 255/.42)
 }
 @supports(backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)){
-  .cat-pills{background:rgba(255,255,255,.35);backdrop-filter:blur(28px) saturate(1.6);-webkit-backdrop-filter:blur(28px) saturate(1.6)}
+  .cat-pills{background:rgb(255 255 255/.04);backdrop-filter:blur(6px) saturate(180%);-webkit-backdrop-filter:blur(6px) saturate(180%)}
 }
 .cat-pills::before,.cat-pills::after{content:'';flex-shrink:0;width:3px}
 .cat-pills::-webkit-scrollbar{display:none}
@@ -215,7 +215,7 @@ body{overflow-x:hidden}
   transition:color .15s,background .15s,box-shadow .15s;
   flex-shrink:0
 }
-.cat-pill.active{background:rgba(50,50,52,.85);color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.cat-pill.active{background:rgba(50,50,52,.72);color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.12),inset 0 1px 0 rgb(255 255 255/.12)}
 .cat-pill:active{opacity:.7}
 @media(hover:hover){.cat-pill:hover:not(.active){color:var(--t2)}}
 
