@@ -146,10 +146,6 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 - decisions you make based on Restaurant Content, translations, labels, or filters, and
 - indirect or consequential losses (e.g., loss of profit, loss of opportunity, business interruption).
 
-### C. Liability cap (free pilot)
-
-**11.C.1** To the fullest extent permitted by law, Menuva's total liability to you for claims arising out of or relating to the Service is limited to £100. This does not apply where the law prevents a limitation.
-
 ## 12. Suspension and termination
 
 **12.1** We may suspend or restrict access to the Service if we reasonably believe:
