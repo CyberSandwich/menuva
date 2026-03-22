@@ -75,6 +75,12 @@
       "title": "Keyboard Shortcuts",
       "description": "Keyboard shortcuts for navigating the menuva website. Quick access to menus, search, language toggle, and more.",
       "priority": 0.3
+    },
+    {
+      "slug": "cookies",
+      "title": "Cookie Policy",
+      "description": "menuva's cookie policy. Learn about the cookies, local storage, and similar technologies used on our website.",
+      "priority": 0.3
     }
   ],
   "sitemap_extra": [
