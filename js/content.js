@@ -95,7 +95,7 @@ function parseFrontmatter(raw){
   return{meta:meta,body:m[2]};
 }
 
-var CV=10;
+var CV=11;
 var _fetched={};
 function fetchMd(key,url,onData){
   var ck='md'+CV+'_'+key;
