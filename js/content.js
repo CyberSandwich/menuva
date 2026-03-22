@@ -1,9 +1,9 @@
 /**
  * Shared content page renderer for legal/policy/FAQ pages.
- * Each page calls initContentPage({slug}) — this module handles
+ * Each page calls initContentPage({slug}). This module handles
  * Markdown fetch, parsing, DOM rendering, command palette, language, and keyboard.
  *
- * innerHTML usage: Safe — content is first-party .md files committed to the repo,
+ * innerHTML usage: Safe - content is first-party .md files committed to the repo,
  * not user-generated. Same pattern as saputra.co.uk. All dynamic text is escaped
  * via esc() before insertion.
  */

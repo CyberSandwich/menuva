@@ -11,9 +11,9 @@ We take complaints seriously and want to resolve them quickly. This page explain
 
 Email [support@menuva.co.uk](mailto:support@menuva.co.uk?subject=Complaint&body=What%20happened%3A%0A%0ARelevant%20dates%3A%0A%0AOutcome%20I%20am%20looking%20for%3A) with the following information:
 
-- **What happened** — describe your concern clearly
-- **Relevant dates** — when the issue occurred
-- **What outcome you are looking for** — how you would like us to resolve it
+- **What happened:** describe your concern clearly
+- **Relevant dates:** when the issue occurred
+- **What outcome you are looking for:** how you would like us to resolve it
 
 If your complaint relates to how we handle personal data, please also state which right under the [UK GDPR](https://www.legislation.gov.uk/eur/2016/679/contents) you believe has been affected (for example, the right to erasure under Article 17, or the right to object under Article 21). Our [Privacy Policy](/privacy/) explains how we process data and your rights in full.
 
@@ -43,10 +43,10 @@ The ICO is the UK's independent supervisory authority for data protection and in
 
 ## 4. Related pages
 
-- [Privacy Policy](/privacy/) — how we collect and use your data
-- [Cookie Policy](/cookies/) — cookies and similar technologies we use
-- [Regulatory Compliance](/compliance/) — the regulations we have assessed and how we address them
-- [Contact](/contact/) — general enquiries and support
+- [Privacy Policy](/privacy/): how we collect and use your data
+- [Cookie Policy](/cookies/): cookies and similar technologies we use
+- [Regulatory Compliance](/compliance/): the regulations we have assessed and how we address them
+- [Contact](/contact/): general enquiries and support
 
 ## 5. Contact
 

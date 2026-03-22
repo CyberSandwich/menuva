@@ -75,12 +75,12 @@ Menuva takes legal compliance seriously. Although Menuva is a free, student-led 
 
 ## 7. Related pages
 
-- [Privacy Policy](/privacy/) — full details on data collection, use, and your rights
-- [Cookie Policy](/cookies/) — cookies, local storage, and similar technologies
-- [Terms & Conditions](/terms/) — terms of use for the Menuva service
-- [Complaints Procedure](/complaints/) — how to raise a complaint, including escalation to the ICO
-- [Accessibility Statement](/accessibility/) — our commitment to accessible design
-- [Contact](/contact/) — general enquiries and support
+- [Privacy Policy](/privacy/): full details on data collection, use, and your rights
+- [Cookie Policy](/cookies/): cookies, local storage, and similar technologies
+- [Terms & Conditions](/terms/): terms of use for the Menuva service
+- [Complaints Procedure](/complaints/): how to raise a complaint, including escalation to the ICO
+- [Accessibility Statement](/accessibility/): our commitment to accessible design
+- [Contact](/contact/): general enquiries and support
 
 ## 8. Contact
 

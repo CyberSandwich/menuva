@@ -1,4 +1,4 @@
-/* ── Shared JS — menuva.co.uk ── */
+/* ── Shared JS - menuva.co.uk ── */
 
 var $=function(s){return document.querySelector(s)};
 var LANGS=['en','zh'];
@@ -446,7 +446,7 @@ export function initLanguage(config){
   return handle;
 }
 
-/* Outbound link click tracking — fires GA4 event for external link clicks */
+/* Outbound link click tracking - fires GA4 event for external link clicks */
 document.addEventListener('click',function(e){
   var a=e.target.closest('a');
   if(!a||!a.href||a.href.indexOf('http')!==0||a.hostname===location.hostname)return;

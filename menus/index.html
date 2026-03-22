@@ -593,7 +593,7 @@ window._acReady=new Promise(function(_fbResolve){
     else{_fbResolve()}
   });
 });
-// Early speculative JSON prefetch — fires during SDK load, before App Check
+// Early speculative JSON prefetch - fires during SDK load, before App Check
 (function(){
   var params=new URLSearchParams(location.search);
   var slug=params.get('slug');

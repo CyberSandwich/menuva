@@ -178,11 +178,11 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 
 ## 16. Related pages
 
-- [Privacy Policy](/privacy/) — how we collect and use your data (UK GDPR, DPA 2018)
-- [Cookie Policy](/cookies/) — cookies and similar technologies (PECR, DUAA 2025)
-- [Complaints Procedure](/complaints/) — how to raise a complaint, including ICO escalation
-- [Regulatory Compliance](/compliance/) — the regulations we have assessed and how we address them
-- [Accessibility Statement](/accessibility/) — our commitment to accessible design
+- [Privacy Policy](/privacy/): how we collect and use your data (UK GDPR, DPA 2018)
+- [Cookie Policy](/cookies/): cookies and similar technologies (PECR, DUAA 2025)
+- [Complaints Procedure](/complaints/): how to raise a complaint, including ICO escalation
+- [Regulatory Compliance](/compliance/): the regulations we have assessed and how we address them
+- [Accessibility Statement](/accessibility/): our commitment to accessible design
 
 ## 17. Miscellaneous
 

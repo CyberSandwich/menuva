@@ -178,11 +178,11 @@ contact_questions: hello@menuva.co.uk
 
 ## 16. 相关页面
 
-- [隐私政策](/privacy/) — 我们如何收集和使用您的数据（UK GDPR、DPA 2018）
-- [Cookie 政策](/cookies/) — Cookie 和类似技术（PECR、DUAA 2025）
-- [投诉程序](/complaints/) — 如何提出投诉，包括向 ICO 申诉
-- [法规合规](/compliance/) — 我们已评估的法规及合规方式
-- [无障碍声明](/accessibility/) — 我们对无障碍设计的承诺
+- [隐私政策](/privacy/)：我们如何收集和使用您的数据（UK GDPR、DPA 2018）
+- [Cookie 政策](/cookies/)：Cookie 和类似技术（PECR、DUAA 2025）
+- [投诉程序](/complaints/)：如何提出投诉，包括向 ICO 申诉
+- [法规合规](/compliance/)：我们已评估的法规及合规方式
+- [无障碍声明](/accessibility/)：我们对无障碍设计的承诺
 
 ## 17. 其他
 

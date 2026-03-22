@@ -129,7 +129,7 @@ This Privacy Policy is provided in accordance with the UK General Data Protectio
 - **Google reCAPTCHA cookie** (`_GRECAPTCHA`): set by Google reCAPTCHA v3 on the menus page for bot detection and security. We treat this as strictly necessary for protecting our backend services from abuse.
 - **Local storage:** We store language preference, analytics opt-out choice, cached menu data, and cached page content in your browser's localStorage for performance and functionality. These do not track you and are strictly necessary for the Service to function.
 
-**3.G.2** The legal basis for storing analytics cookies on your device is the statistical analysis exception under the Privacy and Electronic Communications (EC Directive) Regulations 2003 (PECR) Regulation 6(2A), as amended by the Data (Use and Access) Act 2025. The legal basis for processing the resulting analytics data under the UK GDPR is legitimate interests (Article 6(1)(f)) — see Section 5 below.
+**3.G.2** The legal basis for storing analytics cookies on your device is the statistical analysis exception under the Privacy and Electronic Communications (EC Directive) Regulations 2003 (PECR) Regulation 6(2A), as amended by the Data (Use and Access) Act 2025. The legal basis for processing the resulting analytics data under the UK GDPR is legitimate interests (Article 6(1)(f)). See Section 5 below.
 
 **3.G.3** For a full list of technologies used, see our [Cookie Policy](/cookies/).
 
@@ -234,7 +234,7 @@ To opt out of analytics on the website, use the analytics toggle in the footer o
 
 **11.1** Depending on your circumstances, you may have the following rights under the UK GDPR: access (Art. 15), rectification (Art. 16), erasure (Art. 17), restriction of processing (Art. 18), data portability (Art. 20), and objection (Art. 21). You also have the right to lodge a complaint with the Information Commissioner's Office (ICO): website ico.org.uk, phone 0303 123 1113, address Wycliffe House, Water Lane, Wilmslow, Cheshire SK9 5AF.
 
-**11.2** **Article 11 — identification not required.** Because the Service does not require identification of data subjects, we may be unable to identify your personal data in our analytics systems. Under UK GDPR Article 11, we are not required to process additional information solely to identify you. If you contact us to exercise your rights, please provide any information that could help us locate your data (for example, the email address you used to submit feedback or the approximate date of your correspondence). Where we cannot identify your data, we will explain why and what steps you can take.
+**11.2** **Article 11: identification not required.** Because the Service does not require identification of data subjects, we may be unable to identify your personal data in our analytics systems. Under UK GDPR Article 11, we are not required to process additional information solely to identify you. If you contact us to exercise your rights, please provide any information that could help us locate your data (for example, the email address you used to submit feedback or the approximate date of your correspondence). Where we cannot identify your data, we will explain why and what steps you can take.
 
 **11.3** **Exercising your rights.** To exercise any right, email hello@menuva.co.uk with the subject line "Data Request." We will respond within one calendar month.
 
@@ -252,11 +252,11 @@ To opt out of analytics on the website, use the analytics toggle in the footer o
 
 ## 13. Related pages
 
-- [Terms & Conditions](/terms/) — terms of use for the Menuva service
-- [Cookie Policy](/cookies/) — cookies, local storage, and similar technologies used on the Website
-- [Complaints Procedure](/complaints/) — how to raise a complaint, including escalation to the ICO under UK GDPR Article 77
-- [Regulatory Compliance](/compliance/) — summary of the regulations we have assessed and how we address them
-- [Accessibility Statement](/accessibility/) — our commitment to accessible design
+- [Terms & Conditions](/terms/): terms of use for the Menuva service
+- [Cookie Policy](/cookies/): cookies, local storage, and similar technologies used on the Website
+- [Complaints Procedure](/complaints/): how to raise a complaint, including escalation to the ICO under UK GDPR Article 77
+- [Regulatory Compliance](/compliance/): summary of the regulations we have assessed and how we address them
+- [Accessibility Statement](/accessibility/): our commitment to accessible design
 
 ## 14. Contact
 
@@ -264,6 +264,6 @@ To opt out of analytics on the website, use the analytics toggle in the footer o
 
 **14.2** Support: support@menuva.co.uk
 
-**14.3** Complaints: support@menuva.co.uk — see our [Complaints Procedure](/complaints/) for full details, including how to escalate to the ICO.
+**14.3** Complaints: support@menuva.co.uk. See our [Complaints Procedure](/complaints/) for full details, including how to escalate to the ICO.
 
 **14.4** Privacy Policy page: menuva.co.uk/privacy
