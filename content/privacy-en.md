@@ -115,6 +115,8 @@ This Privacy Policy is provided in accordance with the [UK General Data Protecti
 
 **3.E.1** When your device or browser connects to Firebase/Google infrastructure to fetch menus and images, technical data such as IP address and request metadata may be processed by service providers to deliver content, maintain security, and prevent abuse.
 
+**3.E.2** The App connects to our servers to check for service announcements (such as maintenance notices or new feature alerts). No personal data beyond the technical data described in Section 3.E.1 is sent in these requests.
+
 ### F. Website analytics (Google Analytics)
 
 **3.F.1** The Website runs Google Analytics (GA4) to measure page views and menu interactions. The Website collects a subset of the analytics events described in Section 3.C above. Features that are specific to the App (such as location, onboarding, map interactions, and on-device preferences) are not collected on the Website.

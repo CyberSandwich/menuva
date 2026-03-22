@@ -81,6 +81,10 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 
 **5.C.2** If anything is unclear, confirm with venue staff.
 
+### D. Reporting inaccurate content
+
+**5.D.1** If you believe any Restaurant Content is inaccurate, misleading, or objectionable, please report it to support@menuva.co.uk. We will investigate and, where appropriate, correct or remove the content.
+
 ## 6. Licence and permitted use
 
 ### A. Licence
@@ -152,6 +156,8 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 
 **11.2** Nothing in these Terms limits rights that cannot be limited under applicable law.
 
+**11.3** We will provide the Service with reasonable care and skill. Nothing in these Terms excludes our liability for damage to your device or digital content caused by our negligence, to the extent required by the [Consumer Rights Act 2015](https://www.legislation.gov.uk/ukpga/2015/15/contents).
+
 ## 12. Liability
 
 **12.1** Nothing in these Terms excludes or limits liability where it would be unlawful to do so, including liability for death or personal injury caused by negligence ([Unfair Contract Terms Act 1977](https://www.legislation.gov.uk/ukpga/1977/50/contents), s. 2(1); [Consumer Rights Act 2015](https://www.legislation.gov.uk/ukpga/2015/15/contents), s. 65), fraud, or fraudulent misrepresentation.
@@ -188,7 +194,9 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 
 ## 15. Changes to these Terms
 
-**15.1** We may update these Terms from time to time. If changes are material, we will take reasonable steps to notify you (e.g., in-app or on-site notice). Continued use of the Service after the effective date of updated Terms means you accept the updated Terms.
+**15.1** We may update these Terms from time to time. If changes are material, we will take reasonable steps to notify you (e.g., in-app or on-site notice).
+
+**15.2** If you do not agree to updated Terms, you may stop using the Service and delete the App at any time. Continued use of the Service after the effective date of updated Terms constitutes acceptance of the changes.
 
 ## 16. Governing law and jurisdiction
 
@@ -209,3 +217,5 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 **18.2** **No waiver.** Delay in enforcement is not a waiver.
 
 **18.3** **Entire agreement.** These Terms and any referenced policies form the entire agreement about your use of the Service.
+
+**18.4** Nothing in Section 18.3 limits or excludes any liability for representations made by us before you agreed to these Terms.
