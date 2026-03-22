@@ -1,7 +1,7 @@
 ---
 title: Tutorial
 heading: Menuva iOS Tutorial
-updated: 29 December 2025
+updated: 22 March 2026
 contact_questions: hello@menuva.co.uk
 ---
 
@@ -59,15 +59,7 @@ During onboarding (and later in Settings), you can tailor Menuva to how you read
 
 **5.3 Time Travel.** Under the "Open until ..." status, the Time Travel option lets you view the menu at a specific date and time. This is especially useful for venues like District, where menus change daily on a biweekly rota.
 
-**5.4 Supported venues.**
-
-- District @ Warwick Business School
-- Coffee Lab @ Social Sciences
-- Coffee Lab @ Oculus
-- Coffee Lab @ Library
-- Coffee Lab @ IBRB
-- Red Rocket @ Computer Science Department
-- Spud @ Piazza
+**5.4 Supported venues.** For the latest list of supported venues and food trucks, open the app or visit [menuva.co.uk/menus/](/menus/).
 
 ## 6. Browsing the menu
 

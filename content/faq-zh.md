@@ -2,7 +2,7 @@
 title: 常见问题
 heading: Menuva 常见问题
 effective: 2026年3月17日
-updated: 2026年3月17日
+updated: 2026年3月22日
 contact_questions: hello@menuva.co.uk
 contact_support: support@menuva.co.uk
 ---
@@ -42,7 +42,7 @@ Menuva 是一个数字菜单平台，让用餐变得简单便捷，同时帮助�
 - **可用性:** 可从所有 iOS App Store 地区下载，面向英国使用
 - **账户:** 无（无需登录）
 - **点餐:** 无应用内点餐、支付或预订功能
-- **试点餐厅（7家）:** District (Warwick Business School), Coffee Lab (Social Sciences), Coffee Lab (Oculus), Coffee Lab (Library), Coffee Lab (IBRB), Red Rocket (Computer Science Department), Spud (Piazza)
+- **餐饮场所:** 截至 2025/2026 春季学期，已上线 11 个餐饮场所和 19 辆餐车，并持续增长。请查看应用或访问 [menuva.co.uk/menus/](/menus/) 获取最新列表。
 - **语言:** 英语（英国）、中文
 
 ## 3. 入门
@@ -92,7 +92,7 @@ Menuva 是一个数字菜单平台，让用餐变得简单便捷，同时帮助�
 
 **缓存了什么（试点）？**
 
-- 所有 7 个试点餐厅的菜单在首次使用时被缓存。
+- 所有餐厅的菜单在首次使用时被缓存。
 - 图片按需渐进加载，加载后缓存。
 
 **如何检查菜单更新？** 应用打开时：

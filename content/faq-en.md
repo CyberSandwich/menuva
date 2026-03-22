@@ -2,7 +2,7 @@
 title: FAQ
 heading: Menuva FAQ
 effective: 17 March 2026
-updated: 17 March 2026
+updated: 22 March 2026
 contact_questions: hello@menuva.co.uk
 contact_support: support@menuva.co.uk
 ---
@@ -42,7 +42,7 @@ Menuva is a digital menu platform that makes dining-in simple and accessible for
 - **Availability:** Downloadable from every iOS App Store region, intended for UK use
 - **Accounts:** None (no sign-in)
 - **Ordering:** No in-app ordering, payments, or reservations
-- **Pilot venues (7):** District (Warwick Business School), Coffee Lab (Social Sciences), Coffee Lab (Oculus), Coffee Lab (Library), Coffee Lab (IBRB), Red Rocket (Computer Science Department), Spud (Piazza)
+- **Venues:** 11 venues and 19 food trucks as of Spring Term 2025/2026, and growing. See the app or [menuva.co.uk/menus/](/menus/) for the latest list.
 - **Languages:** English (UK), Chinese
 
 ## 3. Getting started
@@ -92,7 +92,7 @@ Menuva is a digital menu platform that makes dining-in simple and accessible for
 
 **What gets cached (pilot)?**
 
-- Menus for all 7 pilot venues are cached on first use.
+- Menus for all venues are cached on first use.
 - Images load progressively (only when needed) and cache after loading.
 
 **How are menu updates checked?** When the app is open:

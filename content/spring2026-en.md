@@ -1,12 +1,12 @@
 ---
 title: Spring Break 2026
 heading: Menuva Spring Break 2026
-effective: 22 March 2026
+effective: 21 March 2026
 updated: 22 March 2026
 contact_questions: hello@menuva.co.uk
 ---
 
-Menuva's Term 2 (Spring Term 2025/2026) pilot was focused exclusively on venues at the University of Warwick campus. During the spring break (22 March to 27 April 2026), many campus venues will operate on reduced hours or close entirely. As a result, the number of venues available in the app will be significantly lower than during term time.
+Menuva's Term 2 (Spring Term 2025/2026) pilot was focused exclusively on venues at the University of Warwick campus. During the spring break (21 March to 27 April 2026), many campus venues will operate on reduced hours or close entirely. As a result, the number of venues available in the app will be significantly lower than during term time.
 
 We are using the break to expand Menuva beyond campus, so expect to see new venues when Summer Term begins.
 
@@ -17,14 +17,14 @@ All campus venues will return to normal operating hours on **Monday 27 April 202
 Before we look ahead, a quick look back. In a single term, Menuva has:
 
 - surpassed **500 active iOS users**
-- averaged **11 venues** and **19 food trucks** available on the platform
+- reached **11 venues** and **19 food trucks** on the platform, and growing
 - launched on the [App Store](https://apps.apple.com/us/app/menuva/id6756895068) and expanded the [web experience](https://menuva.co.uk/menus/)
 
 Thank you for your continual support as we work to make campus dining simpler, clearer, and more accessible. We are using the spring break to prepare for an even stronger Summer Term.
 
 ## 2. Venue changes during spring break
 
-The following changes take effect from **Saturday 22 March 2026** and remain in place until venues are updated ahead of Summer Term.
+The following changes take effect from **Saturday 21 March 2026** and remain in place until venues are updated ahead of Summer Term.
 
 ### Closed for the duration of spring break
 

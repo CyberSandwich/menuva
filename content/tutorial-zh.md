@@ -1,7 +1,7 @@
 ---
 title: 使用教程
 heading: Menuva iOS 使用教程
-updated: 2025年12月29日
+updated: 2026年3月22日
 contact_questions: hello@menuva.co.uk
 ---
 
@@ -59,15 +59,7 @@ contact_questions: hello@menuva.co.uk
 
 **5.3 时间旅行。** 在"营业至 ..."状态下方，时间旅行选项允许您查看特定日期和时间的菜单。这对于像 District 这样每日更换菜单（两周轮换）的餐厅尤其有用。
 
-**5.4 支持的餐厅。**
-
-- District @ Warwick Business School
-- Coffee Lab @ Social Sciences
-- Coffee Lab @ Oculus
-- Coffee Lab @ Library
-- Coffee Lab @ IBRB
-- Red Rocket @ Computer Science Department
-- Spud @ Piazza
+**5.4 支持的餐厅。** 如需查看最新的餐饮场所和餐车列表，请打开应用或访问 [menuva.co.uk/menus/](/menus/)。
 
 ## 6. 浏览菜单
 
