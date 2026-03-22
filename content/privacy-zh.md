@@ -1,13 +1,13 @@
 ---
 title: 隐私政策
 heading: Menuva 隐私政策
-effective: 2026年3月17日
-updated: 2026年3月17日
+effective: 2026年3月22日
+updated: 2026年3月22日
 contact_questions: hello@menuva.co.uk
 contact_support: support@menuva.co.uk
 ---
 
-本隐私政策说明当您使用 Menuva iOS 应用程序（以下简称“应用”）和我们运营的 Menuva 网页（以下简称“网站”）（统称“服务”）时，Menuva 如何处理个人数据。Menuva 的设计理念是无需账户且尽量减少数据收集，但某些信息（尤其是位置数据、分析事件数据和在线标识符）仍可能构成英国 GDPR 定义下的个人数据。
+本隐私政策根据英国通用数据保护条例（UK GDPR）和《2018 年数据保护法》(DPA 2018) 制定。本政策说明当您使用 Menuva iOS 应用程序（以下简称”应用”）和我们运营的 Menuva 网页（以下简称”网站”）（统称”服务”）时，Menuva 如何处理个人数据。Menuva 的设计理念是无需账户且尽量减少数据收集，但某些信息（尤其是位置数据、分析事件数据和在线标识符）仍可能构成 UK GDPR 定义下的个人数据。本政策应与我们的[条款与细则](/terms/)、[Cookie 政策](/cookies/)和[投诉程序](/complaints/)一并阅读。
 
 > **要点：**
 > - 我们不会将原始经纬度数据传出设备（仅限应用；网站不使用位置功能）
@@ -22,7 +22,7 @@ contact_support: support@menuva.co.uk
 
 **1.2** **电子邮件。** hello@menuva.co.uk（常规咨询）和 support@menuva.co.uk（技术支持）。
 
-**1.3** **地址。** University of Warwick, Scarman Rd, Coventry CV4 7AL, United Kingdom.
+**1.3** **地址。** Warwick Business School, University of Warwick, Scarman Rd, Coventry CV4 7AL, United Kingdom.
 
 **1.4** 如果您通过电子邮件联系我们，我们会处理您提供的信息以进行回复。
 
@@ -129,7 +129,9 @@ contact_support: support@menuva.co.uk
 - **Google reCAPTCHA cookie**（`_GRECAPTCHA`）：由 Google reCAPTCHA v3 在菜单页面上设置，用于机器人检测和安全防护。我们将其视为保护后端服务免受滥用所严格必要的 cookie。
 - **本地存储：** 我们在您浏览器的 localStorage 中存储语言偏好、分析退出选择、缓存的菜单数据和缓存的页面内容，以提升性能和功能。这些数据不会跟踪您，且为服务正常运行所严格必要。
 
-**3.G.2** 如需查看所用技术的完整列表，请参阅我们的 [Cookie 政策](/cookies/)。
+**3.G.2** 在您的设备上存储分析 Cookie 的法律依据是经《2025 年数据（使用与访问）法案》修订的《2003 年隐私与电子通信（欧盟指令）条例》(PECR) 第 6(2A) 条规定的统计分析例外条款。根据 UK GDPR 处理所得分析数据的法律依据是合法利益（第 6(1)(f) 条）— 详见下文第 5 节。
+
+**3.G.3** 如需查看所用技术的完整列表，请参阅我们的 [Cookie 政策](/cookies/)。
 
 ### H. 设备端浏览器存储
 
@@ -242,18 +244,26 @@ contact_support: support@menuva.co.uk
 
 **11.6** **数据提供。** 提供个人数据并非法定或合同要求。本服务在没有分析的情况下仍可完整运行。您可以随时选择退出。
 
-**11.7** **数据泄露通知。** 如发生个人数据泄露事件，我们将在法律要求的情况下于 72 小时内通知信息专员办公室 (ICO)，并在对数据主体的权利和自由存在高风险时及时通知受影响的个人。
+**11.7** **数据泄露通知。** 如发生个人数据泄露事件，我们将根据 UK GDPR 第 33 条在法律要求的情况下于 72 小时内通知信息专员办公室 (ICO)，并根据第 34 条在对数据主体的权利和自由存在高风险时及时通知受影响的个人。如果泄露涉及受《2003 年隐私与电子通信条例》(PECR) 管辖的数据，我们还将遵守 PECR 的泄露通知要求。
 
 ## 12. 本隐私政策的变更
 
 **12.1** 如果我们更改数据处理方式（例如添加新的分析事件或 SDK、引入用户账户、更改分析保留设置，或扩大分析仪表板的访问范围），我们将更新本政策，并在适当时通过应用内或网站通知提供告知。Apple 还要求保持 App Privacy 披露信息的准确性。
 
-## 13. 联系方式
+## 13. 相关页面
 
-**13.1** 问题或请求：hello@menuva.co.uk
+- [条款与细则](/terms/) — Menuva 服务的使用条款
+- [Cookie 政策](/cookies/) — 网站上使用的 Cookie、本地存储和类似技术
+- [投诉程序](/complaints/) — 如何提出投诉，包括根据 UK GDPR 第 77 条向 ICO 申诉
+- [法规合规](/compliance/) — 我们已评估的法规及合规方式
+- [无障碍声明](/accessibility/) — 我们对无障碍设计的承诺
 
-**13.2** 技术支持：support@menuva.co.uk
+## 14. 联系方式
 
-**13.3** 投诉：support@menuva.co.uk — 详情请参阅我们的[投诉程序](/complaints/)，包括如何向 ICO 提出申诉。
+**14.1** 问题或请求：hello@menuva.co.uk
 
-**13.4** 隐私政策页面：menuva.co.uk/privacy
+**14.2** 技术支持：support@menuva.co.uk
+
+**14.3** 投诉：support@menuva.co.uk — 详情请参阅我们的[投诉程序](/complaints/)，包括如何向 ICO 提出申诉。
+
+**14.4** 隐私政策页面：menuva.co.uk/privacy

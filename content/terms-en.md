@@ -1,12 +1,12 @@
 ---
 title: Terms & Conditions
 heading: Menuva Terms & Conditions
-effective: 17 March 2026
-updated: 17 March 2026
+effective: 22 March 2026
+updated: 22 March 2026
 contact_questions: hello@menuva.co.uk
 ---
 
-These Terms & Conditions ("Terms") govern your access to and use of the Menuva mobile application, the Menuva website (menuva.co.uk), and any related services we provide (together, the "Service"). By downloading, installing, accessing, or using the Service, you agree to these Terms. If you do not agree, do not use the Service.
+These Terms & Conditions ("Terms") govern your access to and use of the Menuva mobile application, the Menuva website (menuva.co.uk), and any related services we provide (together, the "Service"). By downloading, installing, accessing, or using the Service, you agree to these Terms. If you do not agree, do not use the Service. These Terms should be read alongside our [Privacy Policy](/privacy/), [Cookie Policy](/cookies/), and [Complaints Procedure](/complaints/).
 
 ## 1. Who operates Menuva and how to contact us
 
@@ -14,7 +14,7 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 
 **1.2** **Contact email.** hello@menuva.co.uk
 
-**1.3** **Contact address.** University of Warwick, Scarman Rd, Coventry CV4 7AL, United Kingdom.
+**1.3** **Contact address.** Warwick Business School, University of Warwick, Scarman Rd, Coventry CV4 7AL, United Kingdom.
 
 ## 2. Intended territory
 
@@ -132,7 +132,7 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 
 ## 11. Liability
 
-**11.1** Nothing in these Terms excludes or limits liability where it would be unlawful to do so, including liability for death or personal injury caused by negligence, fraud, or fraudulent misrepresentation.
+**11.1** Nothing in these Terms excludes or limits liability where it would be unlawful to do so, including liability for death or personal injury caused by negligence (Unfair Contract Terms Act 1977, s. 2(1); Consumer Rights Act 2015, s. 65), fraud, or fraudulent misrepresentation.
 
 ### A. Consumers
 
@@ -160,9 +160,13 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 
 **12.2** You may stop using the Service at any time by uninstalling the app and/or ceasing to use the website.
 
-## 13. Privacy
+## 13. Privacy and data protection
 
-**13.1** Our handling of personal data (if any) is described in our Privacy Policy at menuva.co.uk/privacy. If there is any conflict between these Terms and the Privacy Policy on privacy matters, the Privacy Policy controls.
+**13.1** Our handling of personal data is described in our [Privacy Policy](/privacy/), which is provided in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018. If there is any conflict between these Terms and the Privacy Policy on privacy matters, the Privacy Policy controls.
+
+**13.2** Our use of cookies and similar technologies is described in our [Cookie Policy](/cookies/), in accordance with the Privacy and Electronic Communications (EC Directive) Regulations 2003 (PECR) as amended by the Data (Use and Access) Act 2025.
+
+**13.3** If you have a complaint about how we handle your data, see our [Complaints Procedure](/complaints/). You also have the right under UK GDPR Article 77 to lodge a complaint with the Information Commissioner's Office (ICO).
 
 ## 14. Changes to these Terms
 
@@ -172,10 +176,18 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 
 **15.1** These Terms are governed by the laws of England and Wales. The courts of England and Wales have jurisdiction, except where consumer protection laws require otherwise.
 
-## 16. Miscellaneous
+## 16. Related pages
 
-**16.1** **Severability.** If any part of these Terms is unenforceable, the rest remains effective.
+- [Privacy Policy](/privacy/) — how we collect and use your data (UK GDPR, DPA 2018)
+- [Cookie Policy](/cookies/) — cookies and similar technologies (PECR, DUAA 2025)
+- [Complaints Procedure](/complaints/) — how to raise a complaint, including ICO escalation
+- [Regulatory Compliance](/compliance/) — the regulations we have assessed and how we address them
+- [Accessibility Statement](/accessibility/) — our commitment to accessible design
 
-**16.2** **No waiver.** Delay in enforcement is not a waiver.
+## 17. Miscellaneous
 
-**16.3** **Entire agreement.** These Terms and any referenced policies form the entire agreement about your use of the Service.
+**17.1** **Severability.** If any part of these Terms is unenforceable, the rest remains effective.
+
+**17.2** **No waiver.** Delay in enforcement is not a waiver.
+
+**17.3** **Entire agreement.** These Terms and any referenced policies form the entire agreement about your use of the Service.

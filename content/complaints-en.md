@@ -2,6 +2,7 @@
 title: Complaints
 heading: Complaints Procedure
 effective: 22 March 2026
+updated: 22 March 2026
 ---
 
 We take complaints seriously and want to resolve them quickly. This page explains how to raise a complaint about data protection, privacy, or any aspect of the Menuva service. This procedure is provided in accordance with Section 103 of the Data (Use and Access) Act 2025.

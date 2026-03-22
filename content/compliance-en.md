@@ -2,6 +2,7 @@
 title: Compliance
 heading: Regulatory Compliance
 effective: 22 March 2026
+updated: 22 March 2026
 ---
 
 Menuva takes legal compliance seriously. Although Menuva is a free, student-led pilot project, we have assessed and addressed the regulatory frameworks that apply to a UK-based digital service handling personal data and food information. This page summarises our approach.

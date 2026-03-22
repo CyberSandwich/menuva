@@ -1,13 +1,13 @@
 ---
 title: Privacy Policy
 heading: Menuva Privacy Policy
-effective: 17 March 2026
-updated: 17 March 2026
+effective: 22 March 2026
+updated: 22 March 2026
 contact_questions: hello@menuva.co.uk
 contact_support: support@menuva.co.uk
 ---
 
-This Privacy Policy explains how Menuva handles personal data when you use the Menuva iOS app (the "App") and the Menuva web pages we operate (the "Website") (together, the "Service"). Menuva is designed to be accountless and data-minimizing, but some information (especially location data, analytics event data, and online identifiers) can still be personal data under UK GDPR.
+This Privacy Policy is provided in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018 (DPA 2018). It explains how Menuva handles personal data when you use the Menuva iOS app (the "App") and the Menuva web pages we operate (the "Website") (together, the "Service"). Menuva is designed to be accountless and data-minimising, but some information (especially location data, analytics event data, and online identifiers) can still be personal data under UK GDPR. This policy should be read alongside our [Terms & Conditions](/terms/), [Cookie Policy](/cookies/), and [Complaints Procedure](/complaints/).
 
 > **Key points:**
 > - we do not transmit raw latitude/longitude off-device (App only; the Website does not use location)
@@ -22,7 +22,7 @@ This Privacy Policy explains how Menuva handles personal data when you use the M
 
 **1.2** **Emails.** hello@menuva.co.uk (general) and support@menuva.co.uk (support).
 
-**1.3** **Address.** University of Warwick, Scarman Rd, Coventry CV4 7AL, United Kingdom.
+**1.3** **Address.** Warwick Business School, University of Warwick, Scarman Rd, Coventry CV4 7AL, United Kingdom.
 
 **1.4** If you contact us by email, we process the information you include to respond.
 
@@ -129,7 +129,9 @@ This Privacy Policy explains how Menuva handles personal data when you use the M
 - **Google reCAPTCHA cookie** (`_GRECAPTCHA`): set by Google reCAPTCHA v3 on the menus page for bot detection and security. We treat this as strictly necessary for protecting our backend services from abuse.
 - **Local storage:** We store language preference, analytics opt-out choice, cached menu data, and cached page content in your browser's localStorage for performance and functionality. These do not track you and are strictly necessary for the Service to function.
 
-**3.G.2** For a full list of technologies used, see our [Cookie Policy](/cookies/).
+**3.G.2** The legal basis for storing analytics cookies on your device is the statistical analysis exception under the Privacy and Electronic Communications (EC Directive) Regulations 2003 (PECR) Regulation 6(2A), as amended by the Data (Use and Access) Act 2025. The legal basis for processing the resulting analytics data under the UK GDPR is legitimate interests (Article 6(1)(f)) — see Section 5 below.
+
+**3.G.3** For a full list of technologies used, see our [Cookie Policy](/cookies/).
 
 ### H. On-device browser storage
 
@@ -242,18 +244,26 @@ To opt out of analytics on the website, use the analytics toggle in the footer o
 
 **11.6** **Provision of data.** Providing personal data is not a statutory or contractual requirement. The Service functions fully without analytics. You may opt out at any time.
 
-**11.7** **Data breach notification.** In the event of a personal data breach, we will notify the ICO within 72 hours where required and inform affected individuals without undue delay where there is a high risk to their rights and freedoms.
+**11.7** **Data breach notification.** In the event of a personal data breach, we will notify the ICO within 72 hours where required under UK GDPR Article 33 and inform affected individuals without undue delay where there is a high risk to their rights and freedoms (Article 34). Where a breach involves data subject to the Privacy and Electronic Communications Regulations 2003 (PECR), we will also comply with the PECR breach notification requirements.
 
 ## 12. Changes to this Privacy Policy
 
 **12.1** If we change how we process data (for example, adding new analytics events or SDKs, introducing user accounts, changing analytics retention settings, or expanding who can access analytics dashboards), we will update this policy and, where appropriate, provide in-app or Website notice. Apple also requires keeping App Privacy disclosures accurate.
 
-## 13. Contact
+## 13. Related pages
 
-**13.1** Questions or requests: hello@menuva.co.uk
+- [Terms & Conditions](/terms/) — terms of use for the Menuva service
+- [Cookie Policy](/cookies/) — cookies, local storage, and similar technologies used on the Website
+- [Complaints Procedure](/complaints/) — how to raise a complaint, including escalation to the ICO under UK GDPR Article 77
+- [Regulatory Compliance](/compliance/) — summary of the regulations we have assessed and how we address them
+- [Accessibility Statement](/accessibility/) — our commitment to accessible design
 
-**13.2** Support: support@menuva.co.uk
+## 14. Contact
 
-**13.3** Complaints: support@menuva.co.uk — see our [Complaints Procedure](/complaints/) for full details, including how to escalate to the ICO.
+**14.1** Questions or requests: hello@menuva.co.uk
 
-**13.4** Privacy Policy page: menuva.co.uk/privacy
+**14.2** Support: support@menuva.co.uk
+
+**14.3** Complaints: support@menuva.co.uk — see our [Complaints Procedure](/complaints/) for full details, including how to escalate to the ICO.
+
+**14.4** Privacy Policy page: menuva.co.uk/privacy
