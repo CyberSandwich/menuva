@@ -1,6 +1,7 @@
 CLAUDE.md
 .claude/
 tasks/
+internal-governance/
 firebase-debug.log
 .env*
 .DS_Store

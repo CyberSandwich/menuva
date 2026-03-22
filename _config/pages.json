@@ -1,5 +1,5 @@
 {
-  "version": 12,
+  "version": 13,
   "year": 2026,
   "ga_id": "G-LLFDHVYBWL",
   "domain": "https://menuva.co.uk",
@@ -80,6 +80,18 @@
       "slug": "cookies",
       "title": "Cookie Policy",
       "description": "menuva's cookie policy. Learn about the cookies, local storage, and similar technologies used on our website.",
+      "priority": 0.3
+    },
+    {
+      "slug": "complaints",
+      "title": "Complaints Procedure",
+      "description": "How to raise a complaint about menuva. Our complaints process, response timelines, and escalation to the ICO.",
+      "priority": 0.3
+    },
+    {
+      "slug": "compliance",
+      "title": "Regulatory Compliance",
+      "description": "How menuva addresses UK data protection, cookie regulations, children's privacy, and food safety standards.",
       "priority": 0.3
     }
   ],
