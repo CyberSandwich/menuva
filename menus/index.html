@@ -2986,15 +2986,11 @@ function classifyItem(item,activeAllergens,activeDietary){
 
   var worst='safe';
   var count=0;
-  var hasAllergenData=false;
-  var hasDietaryData=false;
 
   // --- Allergen classification ---
   if(activeAllergens.size){
     var present=_expandAllergens(item.allergensPresent);
     var mayArr=_expandAllergens(item.allergensMayContain);
-
-    if(present.length||mayArr.length)hasAllergenData=true;
 
     for(var i=0;i<present.length;i++){
       if(activeAllergens.has(present[i])){worst='contains';count++}
@@ -3007,16 +3003,12 @@ function classifyItem(item,activeAllergens,activeDietary){
 
     // noInfo in allergen arrays: treat as mayContain (matches iOS behavior)
     if(worst!=='contains'&&((item.allergensPresent||[]).indexOf('noInfo')>=0||(item.allergensMayContain||[]).indexOf('noInfo')>=0)){worst='mayContain';count=count||1}
-
-    if(!hasAllergenData){worst=worst==='contains'?worst:'mayContain';count=count||activeAllergens.size}
   }
 
   // --- Dietary classification ---
   if(activeDietary.size){
     var unsuitable=item.dietaryUnsuitable||[];
     var mayUnsuitable=item.dietaryMayBeUnsuitable||[];
-
-    if(unsuitable.length||mayUnsuitable.length)hasDietaryData=true;
 
     for(var i=0;i<unsuitable.length;i++){
       if(activeDietary.has(unsuitable[i])){worst='contains';count++}
@@ -3029,8 +3021,6 @@ function classifyItem(item,activeAllergens,activeDietary){
 
     // noInfo in dietary arrays: treat as mayContain (matches iOS behavior)
     if(worst!=='contains'&&(unsuitable.indexOf('noInfo')>=0||mayUnsuitable.indexOf('noInfo')>=0)){worst='mayContain';count=count||1}
-
-    if(!hasDietaryData){worst=worst==='contains'?worst:'mayContain';count=count||activeDietary.size}
   }
 
   return{level:worst,count:count||1};
