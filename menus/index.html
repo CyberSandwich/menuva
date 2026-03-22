@@ -2266,39 +2266,46 @@ var _annData=null;
 
 function renderAnnouncement(){
   var slot=$('#ann-slot');
-  if(!slot)return;
+  if(!slot){console.log('[ANN] no slot');return}
 
   // SWR phase 1: show from cache instantly (like menu cards)
   var cached=_readAnnCache();
   var showing=false;
+  console.log('[ANN] phase1 cached:',cached?'yes':'no','shouldDisplay:',cached?_annShouldDisplay(cached):'n/a');
   if(cached&&_annShouldDisplay(cached)){
     _annData=cached;
     _annMount(cached,slot,false);
     showing=true;
+    console.log('[ANN] phase1 mounted from cache');
   }
 
   // SWR phase 2: revalidate from Firestore
   window._acReady.then(function(){
+    console.log('[ANN] phase2 acReady resolved, fetching...');
     return window._db.collection('appConfig').doc('announcement').get();
   }).then(function(snap){
+    console.log('[ANN] phase2 snap.exists:',snap.exists);
     // Document deleted
     if(!snap.exists){
+      console.log('[ANN] phase2 BRANCH: doc deleted, showing=',showing);
       _writeAnnCache(null);_annData=null;
       if(showing)_annRemove(slot);
       return;
     }
 
     var fresh=_annNormalise(snap.data());
+    console.log('[ANN] phase2 fresh:',JSON.stringify(fresh));
 
     // Explicitly deactivated or expired: remove
     if(!fresh||!fresh.active||(fresh.expiresAt*1000)<=Date.now()){
+      console.log('[ANN] phase2 BRANCH: deactivated/expired, showing=',showing,'fresh:',!!fresh,'active:',fresh&&fresh.active,'expired:',fresh&&(fresh.expiresAt*1000)<=Date.now());
       _writeAnnCache(null);_annData=null;
       if(showing)_annRemove(slot);
       return;
     }
 
     // Valid but missing message: keep cached banner if showing, don't update cache
-    if(!fresh.message){return}
+    if(!fresh.message){console.log('[ANN] phase2 BRANCH: no message');return}
 
     // Update cache and in-memory ref
     _writeAnnCache(fresh);
@@ -2306,14 +2313,17 @@ function renderAnnouncement(){
 
     // If data unchanged from what's showing, just refresh the expiry timer
     if(showing&&_annKey(fresh)===_annKey(cached)){
+      console.log('[ANN] phase2 BRANCH: unchanged, refresh timer');
       _annScheduleExpiry(fresh,slot);
       return;
     }
 
     // Data changed or first mount: swap instantly (like menu cards SWR)
+    console.log('[ANN] phase2 BRANCH: mounting fresh, fade=',!showing);
     _annMount(fresh,slot,!showing);
-  }).catch(function(){
+  }).catch(function(e){
     // Network/App Check error: keep cached banner if showing
+    console.log('[ANN] phase2 ERROR:',e&&e.message,e&&e.code);
   });
 }
 
