@@ -234,6 +234,8 @@ You can withdraw consent for location processing at any time by disabling locati
 
 **11.4** **Objecting to analytics.** You can object to analytics processing at any time. On the Website, use the analytics toggle in the footer or visit our [Cookie Policy](/cookies/). On the App, deleting it stops further analytics events from that device. Because analytics is not tied to an account identity, we generally cannot locate or delete past analytics records associated with a specific person.
 
+**11.5** **Automated decision-making.** We do not use your data for automated decision-making or profiling that produces legal or similarly significant effects.
+
 ## 12. Changes to this Privacy Policy
 
 **12.1** If we change how we process data (for example, adding new analytics events or SDKs, introducing user accounts, changing analytics retention settings, or expanding who can access analytics dashboards), we will update this policy and, where appropriate, provide in-app or Website notice. Apple also requires keeping App Privacy disclosures accurate.
