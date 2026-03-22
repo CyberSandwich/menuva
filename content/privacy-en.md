@@ -34,6 +34,8 @@ This Privacy Policy is provided in accordance with the [UK General Data Protecti
 
 ## 3. What data we collect
 
+**3.0.1** Where a feature is specific to one platform, it is marked "(App only)" or "(Website only)." The main differences are: the App uses device location for venue discovery; the App stores dietary preferences on-device; the Website offers an analytics opt-out toggle in the footer; and the App and Website use different technologies for abuse prevention (see Section 6.A.3).
+
 ### A. Precise location (App only, foreground)
 
 **3.A.1** If you grant iOS location permission ("When In Use"), the App collects precise location on your device to:
@@ -151,7 +153,7 @@ This Privacy Policy is provided in accordance with the [UK General Data Protecti
 
 ### J. Currency conversion (App only)
 
-**3.J.1** The App fetches current exchange rates from ExchangeRate-API and Open Exchange Rates (both operated by AYR Tech Pty Ltd) to display prices in your preferred currency. Only the requested base currency code is sent. Your IP address is transmitted as part of the network request. Responses are cached on your device for up to 7 days to minimise external requests.
+**3.J.1** The App fetches current exchange rates from ExchangeRate-API (exchangerate-api.com) to display prices in your preferred currency. Only the requested base currency code is sent. Your IP address is transmitted as part of the network request. Responses are cached on your device for up to 7 days to minimise external requests.
 
 ## 4. What we do not collect
 
@@ -222,7 +224,7 @@ To opt out of analytics on the website, use the analytics toggle in the footer o
 
 **6.D.3** We do not sell personal data.
 
-**6.2** **Sub-processors.** Google LLC (Google Analytics / GA4, Firebase Firestore, Firebase Storage, Firebase App Check, Google reCAPTCHA v3, Google Forms), Apple Inc. (App Store Connect analytics), GitHub, Inc. (Microsoft Corporation) (Website hosting via GitHub Pages), AYR Tech Pty Ltd (ExchangeRate-API / Open Exchange Rates - currency conversion rates). We will update this list if we add or change sub-processors.
+**6.2** **Sub-processors.** Google LLC (Google Analytics / GA4, Firebase Firestore, Firebase Storage, Firebase App Check, Google reCAPTCHA v3, Google Forms), Apple Inc. (App Store Connect analytics), GitHub, Inc. (Microsoft Corporation) (Website hosting via GitHub Pages), ExchangeRate-API (exchangerate-api.com - currency conversion rates). We will update this list if we add or change sub-processors.
 
 ## 7. Data retention
 
@@ -241,7 +243,7 @@ To opt out of analytics on the website, use the analytics toggle in the footer o
 - **Google LLC** (Analytics, Firebase, reCAPTCHA, Google Forms): Google is certified under the UK Extension to the EU-US Data Privacy Framework. Google's Data Processing Terms also include UK Standard Contractual Clauses as a fallback mechanism.
 - **Apple Inc.** (App Store distribution, aggregated metrics): transfers are protected by Standard Contractual Clauses.
 - **GitHub, Inc. (Microsoft Corporation)** (Website hosting via GitHub Pages): GitHub participates in the UK Extension to the EU-US Data Privacy Framework. GitHub's Data Protection Agreement also includes Standard Contractual Clauses.
-- **AYR Tech Pty Ltd** (ExchangeRate-API / Open Exchange Rates): currency conversion rates. Servers located in Ireland, South Africa, and Germany.
+- **ExchangeRate-API** (exchangerate-api.com): currency conversion rates.
 
 ## 9. Security
 
@@ -272,6 +274,13 @@ To opt out of analytics on the website, use the analytics toggle in the footer o
 ## 12. Changes to this Privacy Policy
 
 **12.1** If we change how we process data (for example, adding new analytics events or SDKs, introducing user accounts, changing analytics retention settings, or expanding who can access analytics dashboards), we will update this policy and, where appropriate, provide in-app or Website notice. Apple also requires keeping App Privacy disclosures accurate.
+
+**12.2** **Version history.**
+
+| Date | Summary |
+|------|---------|
+| 22 March 2026 | Added cookie/tracking disclosures, sub-processor list, international transfer details, DUAA statistical exception conditions, expanded children's section, data breach notification, automated decision-making statement, data subject rights reframed under Art. 11, analytics opt-out mechanism, PECR breach notification reference, platform differences summary. |
+| 12 January 2026 | Initial version. |
 
 ## 13. Related pages
 

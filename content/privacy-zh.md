@@ -34,6 +34,8 @@ contact_support: support@menuva.co.uk
 
 ## 3. 我们收集哪些数据
 
+**3.0.1** 如果某项功能仅适用于特定平台，我们会标注"（仅限应用）"或"（仅限网站）"。主要区别如下：应用使用设备位置进行餐厅发现；应用在设备本地存储饮食偏好；网站在页脚提供分析功能退出开关；应用和网站使用不同的技术来防止滥用（见第 6.A.3 条）。
+
 ### A. 精确位置（仅限应用，前台运行时）
 
 **3.A.1** 如果您授予 iOS 位置权限（“使用期间”），应用会在您的设备上收集精确位置，用于：
@@ -151,7 +153,7 @@ contact_support: support@menuva.co.uk
 
 ### J. 货币换算（仅限应用）
 
-**3.J.1** 应用从 ExchangeRate-API 和 Open Exchange Rates（均由 AYR Tech Pty Ltd 运营）获取当前汇率，以便以您偏好的货币显示价格。仅发送所请求的基础货币代码。您的 IP 地址会作为网络请求的一部分被传输。响应在您的设备上缓存最多 7 天，以减少外部请求。
+**3.J.1** 应用从 ExchangeRate-API (exchangerate-api.com) 获取当前汇率，以便以您偏好的货币显示价格。仅发送所请求的基础货币代码。您的 IP 地址会作为网络请求的一部分被传输。响应在您的设备上缓存最多 7 天，以减少外部请求。
 
 ## 4. 我们不收集的数据
 
@@ -222,7 +224,7 @@ contact_support: support@menuva.co.uk
 
 **6.D.3** 我们不出售个人数据。
 
-**6.2** **数据子处理者。** Google LLC（Google Analytics / GA4、Firebase Firestore、Firebase Storage、Firebase App Check、Google reCAPTCHA v3、Google Forms），Apple Inc.（App Store Connect 分析），GitHub, Inc.（Microsoft Corporation）（通过 GitHub Pages 提供网站托管），AYR Tech Pty Ltd（ExchangeRate-API / Open Exchange Rates - 货币换算汇率）。如果我们增加或更换子处理者，我们将更新此列表。
+**6.2** **数据子处理者。** Google LLC（Google Analytics / GA4、Firebase Firestore、Firebase Storage、Firebase App Check、Google reCAPTCHA v3、Google Forms），Apple Inc.（App Store Connect 分析），GitHub, Inc.（Microsoft Corporation）（通过 GitHub Pages 提供网站托管），ExchangeRate-API (exchangerate-api.com - 货币换算汇率)。如果我们增加或更换子处理者，我们将更新此列表。
 
 ## 7. 数据保留
 
@@ -241,7 +243,7 @@ contact_support: support@menuva.co.uk
 - **Google LLC**（Analytics、Firebase、reCAPTCHA、Google Forms）：Google 已获得《欧盟-美国数据隐私框架》英国扩展认证。Google 的数据处理条款还包含英国标准合同条款作为后备机制。
 - **Apple Inc.**（App Store 分发、汇总指标）：数据传输受标准合同条款保护。
 - **GitHub, Inc.（Microsoft Corporation）**（通过 GitHub Pages 提供网站托管）：GitHub 参与了《欧盟-美国数据隐私框架》英国扩展计划。GitHub 的数据保护协议还包含标准合同条款。
-- **AYR Tech Pty Ltd**（ExchangeRate-API / Open Exchange Rates）：货币换算汇率。服务器位于爱尔兰、南非和德国。
+- **ExchangeRate-API** (exchangerate-api.com)：货币换算汇率。
 
 ## 9. 安全
 
@@ -272,6 +274,13 @@ contact_support: support@menuva.co.uk
 ## 12. 本隐私政策的变更
 
 **12.1** 如果我们更改数据处理方式（例如添加新的分析事件或 SDK、引入用户账户、更改分析保留设置，或扩大分析仪表板的访问范围），我们将更新本政策，并在适当时通过应用内或网站通知提供告知。Apple 还要求保持 App Privacy 披露信息的准确性。
+
+**12.2** **版本历史。**
+
+| 日期 | 摘要 |
+|------|------|
+| 2026年3月22日 | 新增 Cookie/跟踪披露、子处理者列表、国际传输详情、DUAA 统计例外条件、扩展儿童章节、数据泄露通知、自动化决策声明、依据第 11 条重构数据主体权利、分析退出机制、PECR 泄露通知参考、平台差异概述。 |
+| 2026年1月12日 | 初始版本。 |
 
 ## 13. 相关页面
 

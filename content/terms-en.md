@@ -131,6 +131,8 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 
 **8.2** Restaurant Content is typically owned by the relevant restaurant/venue (or its licensors). You may view Restaurant Content through the Service for personal use only. You must not reuse or republish Restaurant Content without permission from the rights holder.
 
+**8.3** The Service includes open source software components subject to their own licence terms. A list of open source components and their licences is available within the App's settings.
+
 ## 9. Service availability, pilot nature, and changes
 
 **9.1** Menuva is provided as a pilot and may change over time. We may:
@@ -202,6 +204,8 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 
 **16.1** These Terms are governed by the laws of England and Wales. The courts of England and Wales have jurisdiction, except where consumer protection laws require otherwise.
 
+**16.2** If you have a dispute about the Service, please first raise it through our [Complaints Procedure](/complaints/). If your complaint is not resolved to your satisfaction, you may pursue the matter through the courts of England and Wales. We are not currently required to participate in alternative dispute resolution (ADR).
+
 ## 17. Related pages
 
 - [Privacy Policy](/privacy/): how we collect and use your data (UK GDPR, DPA 2018)
@@ -219,3 +223,5 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 **18.3** **Entire agreement.** These Terms and any referenced policies form the entire agreement about your use of the Service.
 
 **18.4** Nothing in Section 18.3 limits or excludes any liability for representations made by us before you agreed to these Terms.
+
+**18.5** We may transfer or assign our rights and obligations under these Terms to another organisation, provided your rights under these Terms are not reduced. We will notify you of any such transfer.
