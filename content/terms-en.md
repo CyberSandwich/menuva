@@ -59,6 +59,8 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 
 **4.B.3** The basket feature does not submit orders to the restaurant. It is a visual aid for communicating your selections to venue staff in person.
 
+**4.B.4** The App requires an iPhone running iOS 17 or later. The Website is accessible from any modern web browser. Both require an internet connection for initial use; cached content may be available offline.
+
 ## 5. Restaurant content, allergens, nutrition, translations (critical)
 
 ### A. Restaurant content is third-party information
@@ -66,6 +68,8 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 **5.A.1** Menus, prices, item descriptions, images, ingredients, allergens, nutrition information, and other venue data shown in Menuva ("Restaurant Content") are provided and maintained by the relevant restaurant/venue (or their authorized representatives).
 
 **5.A.2** Restaurant Content may be incomplete, out of date, or inaccurate. Restaurants can change menus and prices at any time, and the in-venue menu and staff guidance should be treated as authoritative.
+
+**5.A.3** Where available, we display the date when Restaurant Content was last updated. This does not guarantee that the information is current.
 
 ### B. Allergens and dietary filters are not guarantees
 
@@ -144,6 +148,8 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 
 **9.2** We do not guarantee that the Service will be uninterrupted, secure, error-free, or always available.
 
+**9.3** Menuva is currently in a pilot phase. Features, availability, and supported venues may change without notice. We may discontinue the Service or any feature at any time during the pilot period.
+
 ## 10. Third-party services and links
 
 **10.1** The Service may include links to third-party services (e.g., maps) or use third-party infrastructure. Third parties have their own terms and policies. Menuva is not responsible for third-party services, content, availability, or practices.
@@ -200,6 +206,8 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 
 **15.2** If you do not agree to updated Terms, you may stop using the Service and delete the App at any time. Continued use of the Service after the effective date of updated Terms constitutes acceptance of the changes.
 
+**15.3** We may notify you of changes to these Terms or the Service via in-app announcements, website notices, or email where you have provided one. For general enquiries, contact hello@menuva.co.uk. For technical support, contact support@menuva.co.uk.
+
 ## 16. Governing law and jurisdiction
 
 **16.1** These Terms are governed by the laws of England and Wales. The courts of England and Wales have jurisdiction, except where consumer protection laws require otherwise.
@@ -225,3 +233,5 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 **18.4** Nothing in Section 18.3 limits or excludes any liability for representations made by us before you agreed to these Terms.
 
 **18.5** We may transfer or assign our rights and obligations under these Terms to another organisation, provided your rights under these Terms are not reduced. We will notify you of any such transfer.
+
+**18.6** **Events outside our control.** We are not liable for any failure or delay in performing our obligations where such failure or delay results from events beyond our reasonable control, including but not limited to natural disasters, internet outages, government actions, or third-party service failures.
