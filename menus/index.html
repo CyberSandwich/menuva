@@ -40,10 +40,11 @@
 <script defer src="https://www.gstatic.com/firebasejs/12.7.0/firebase-app-check-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/12.7.0/firebase-storage-compat.js"></script>
 <script id="fb-cfg" type="application/json">{"k":"AIzaSyCVHmOl_Q9kAR_4jk_KrK-lpDJzHKBiNts","p":"menuva-firebase","a":"1:196500389246:web:331c05bf0639e7dd5a472f","b":"menuva-firebase.firebasestorage.app","d":"menuva-firebase.firebaseapp.com","m":"196500389246","r":"6LfALYssAAAAAD5J_aLl9bo1eAojasBvThwYz5f6"}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LLFDHVYBWL"></script>
 <script>
 (function(){
   var MID='G-LLFDHVYBWL';
+  try{if(localStorage.getItem('analytics_consent')==='denied')return}catch(_){}
+  var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+MID;document.head.appendChild(s);
   var params=new URLSearchParams(location.search);
   var debug=params.get('debug_mode')==='true';
   window.dataLayer=window.dataLayer||[];
@@ -558,7 +559,7 @@ body{overflow-x:hidden}
   <div class="search-wrap"><input type="text" id="msearch" class="search" placeholder="Search Menus" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-label="Search Menus" aria-controls="mlist" maxlength="100"><button class="search-x" aria-label="Clear search"></button><span id="msearch-live" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap"></span></div>
   <div id="mlist"></div>
   <div id="menu-view" style="display:none"></div>
-  <footer class="site-footer"><a href="https://saputra.co.uk" target="_blank" rel="noopener noreferrer">&copy; 2026 Duke Saputra</a></footer>
+  <footer class="site-footer"><a href="https://saputra.co.uk" target="_blank" rel="noopener noreferrer">&copy; 2026 Duke Saputra</a><span class="footer-sep">&middot;</span><button id="analytics-opt" class="footer-link">Manage Analytics</button></footer>
 </main>
 
 <nav aria-label="Main navigation">

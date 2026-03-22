@@ -37,10 +37,11 @@
 
 <link rel="stylesheet" href="/css/shared.css?v=11">
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LLFDHVYBWL"></script>
 <script>
 (function(){
   var MID='G-LLFDHVYBWL';
+  try{if(localStorage.getItem('analytics_consent')==='denied')return}catch(_){}
+  var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+MID;document.head.appendChild(s);
   var params=new URLSearchParams(location.search);
   var debug=params.get('debug_mode')==='true';
   window.dataLayer=window.dataLayer||[];
@@ -215,7 +216,7 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
     </div>
   </div>
 
-  <footer class="site-footer"><a href="https://saputra.co.uk" target="_blank" rel="noopener noreferrer">&copy; 2026 Duke Saputra</a></footer>
+  <footer class="site-footer"><a href="https://saputra.co.uk" target="_blank" rel="noopener noreferrer">&copy; 2026 Duke Saputra</a><span class="footer-sep">&middot;</span><button id="analytics-opt" class="footer-link">Manage Analytics</button></footer>
 </main>
 
 <nav aria-label="Main navigation">

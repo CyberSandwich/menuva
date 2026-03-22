@@ -9,21 +9,22 @@
   <meta name="robots" content="noindex"/>
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
   <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{GA_ID}}"></script>
   <script>
     (function(){
       var MID='{{GA_ID}}';
       var DEST='{{DEST_URL}}';
       var DELAY=1200;
       var params=new URLSearchParams(location.search);
+      function go(){location.replace(DEST)}
+      function setLink(){var a=document.getElementById('fallbackLink');if(a)a.href=DEST}
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setLink,{once:true});else setLink();
+      try{if(localStorage.getItem('analytics_consent')==='denied'){go();return}}catch(_){}
       var debug=params.get('debug_mode')==='true';
+      var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+MID;document.head.appendChild(s);
       window.dataLayer=window.dataLayer||[];
       function gtag(){dataLayer.push(arguments)}
       gtag('js',new Date());
       gtag('config',MID,{send_page_view:false,anonymize_ip:true,debug_mode:debug});
-      function go(){location.replace(DEST)}
-      function setLink(){var a=document.getElementById('fallbackLink');if(a)a.href=DEST}
-      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setLink,{once:true});else setLink();
       gtag('event','page_view',{page_title:'menuva — {{TITLE}}',page_location:location.href,page_path:'/{{SLUG}}'});
       gtag('event','redirect_hit',{
         transport_type:'beacon',event_callback:go,event_timeout:DELAY,

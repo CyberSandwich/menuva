@@ -62,7 +62,11 @@
 
   var MID='G-LLFDHVYBWL';
 
+  var _denied=false;
+  try{_denied=localStorage.getItem('analytics_consent')==='denied'}catch(_){}
+
   function loadGA(debug){
+    if(_denied)return;
     var s=document.createElement('script');
     s.async=true;
     s.src='https://www.googletagmanager.com/gtag/js?id='+MID;
@@ -130,6 +134,8 @@
 
     function doRedirect(){window.location.replace(toUrl)}
 
+    if(_denied){doRedirect();return}
+
     loadGA(debug);
 
     gtag('event','page_view',{
@@ -187,6 +193,8 @@
   render('Redirecting...','/');
 
   function doRedirect4(){window.location.replace('/')}
+
+  if(_denied){doRedirect4();return}
 
   loadGA(debug4);
 

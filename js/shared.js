@@ -457,6 +457,117 @@ document.addEventListener('click',function(e){
   });
 });
 
+/* ── Analytics preferences dialog ── */
+(function initAnalyticsOpt(){
+  var btn=$('#analytics-opt');
+  if(!btn)return;
+
+  var overlay=document.createElement('div');
+  overlay.className='analytics-dialog-overlay';
+  overlay.setAttribute('role','dialog');
+  overlay.setAttribute('aria-modal','true');
+  overlay.setAttribute('aria-label','Analytics Preferences');
+  overlay.tabIndex=-1;
+
+  var dialog=document.createElement('div');
+  dialog.className='analytics-dialog';
+
+  var h2=document.createElement('h2');
+  h2.id='adlg-title';
+  var desc=document.createElement('p');
+  desc.id='adlg-desc';
+  var toggle=document.createElement('button');
+  toggle.className='analytics-toggle';
+  var dot=document.createElement('span');dot.className='atog-dot';
+  var tLabel=document.createElement('span');tLabel.className='atog-label';
+  toggle.appendChild(dot);toggle.appendChild(tLabel);
+  var closeBtn=document.createElement('button');
+  closeBtn.className='analytics-dialog-close';
+
+  overlay.setAttribute('aria-labelledby','adlg-title');
+  overlay.setAttribute('aria-describedby','adlg-desc');
+
+  dialog.appendChild(h2);dialog.appendChild(desc);dialog.appendChild(toggle);dialog.appendChild(closeBtn);
+  overlay.appendChild(dialog);document.body.appendChild(overlay);
+
+  var isOpen=false;
+  var prevFocus=null;
+
+  function getState(){
+    try{return localStorage.getItem('analytics_consent')==='denied'?'off':'on'}catch(_){return 'on'}
+  }
+
+  function applyText(){
+    var lng=curLang();
+    h2.textContent=chrome('analyticsTitle');
+    desc.textContent=chrome('analyticsDesc');
+    var state=getState();
+    toggle.setAttribute('data-state',state);
+    tLabel.textContent=chrome(state==='on'?'analyticsOn':'analyticsOff');
+    closeBtn.textContent=chrome('analyticsClose');
+    btn.textContent=chrome('manageAnalytics');
+  }
+
+  function openDialog(){
+    if(isOpen)return;
+    if(_cmdHandle&&_cmdHandle.isOpen())_cmdHandle.close();
+    isOpen=true;
+    prevFocus=document.activeElement;
+    applyText();
+    document.body.style.overflow='hidden';
+    overlay.classList.add('open');
+    toggle.focus();
+  }
+
+  function closeDialog(){
+    if(!isOpen)return;
+    isOpen=false;
+    document.body.style.overflow='';
+    overlay.classList.remove('open');
+    if(prevFocus)prevFocus.focus();
+  }
+
+  btn.addEventListener('click',openDialog);
+
+  overlay.addEventListener('click',function(e){
+    if(e.target===overlay)closeDialog();
+  });
+
+  overlay.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){e.preventDefault();closeDialog();return}
+    // Focus trap
+    if(e.key==='Tab'){
+      var focusable=[toggle,closeBtn];
+      var first=focusable[0],last=focusable[focusable.length-1];
+      if(e.shiftKey){
+        if(document.activeElement===first){e.preventDefault();last.focus()}
+      }else{
+        if(document.activeElement===last){e.preventDefault();first.focus()}
+      }
+    }
+  });
+
+  toggle.addEventListener('click',function(){
+    var cur=getState();
+    try{localStorage.setItem('analytics_consent',cur==='on'?'denied':'granted')}catch(_){}
+    location.reload();
+  });
+
+  closeBtn.addEventListener('click',closeDialog);
+
+  // Register strings for the dialog
+  registerStrings({
+    en:{analyticsTitle:'Analytics Preferences',analyticsDesc:'We use Google Analytics to understand how menuva is used and improve the service. No personal data is collected. You can opt out at any time.',analyticsOn:'Analytics: On',analyticsOff:'Analytics: Off',analyticsClose:'Close',manageAnalytics:'Manage Analytics'},
+    zh:{analyticsTitle:'\u5206\u6790\u8bbe\u7f6e',analyticsDesc:'\u6211\u4eec\u4f7f\u7528 Google Analytics \u4e86\u89e3 menuva \u7684\u4f7f\u7528\u60c5\u51b5\u5e76\u6539\u8fdb\u670d\u52a1\u3002\u4e0d\u4f1a\u6536\u96c6\u4e2a\u4eba\u6570\u636e\u3002\u60a8\u53ef\u4ee5\u968f\u65f6\u9009\u62e9\u9000\u51fa\u3002',analyticsOn:'\u5206\u6790\uff1a\u5df2\u5f00\u542f',analyticsOff:'\u5206\u6790\uff1a\u5df2\u5173\u95ed',analyticsClose:'\u5173\u95ed',manageAnalytics:'\u7ba1\u7406\u5206\u6790'}
+  });
+
+  // Update button text when language changes
+  new MutationObserver(function(){applyText()}).observe(document.documentElement,{attributes:true,attributeFilter:['data-lang']});
+
+  // Apply initial text
+  applyText();
+})();
+
 export function initKeyboard(config){
   config=config||{};
   var CUR_TAB=config.CUR_TAB||0;
