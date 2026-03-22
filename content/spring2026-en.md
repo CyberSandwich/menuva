@@ -6,9 +6,11 @@ updated: 22 March 2026
 contact_questions: hello@menuva.co.uk
 ---
 
-Menuva is currently focused on venues at the University of Warwick. During the spring break (22 March to 27 April 2026), many campus venues will operate on reduced hours or close entirely. As a result, the number of venues available in the app will be significantly lower than during term time.
+Menuva's Term 2 (Spring Term 2025/2026) pilot was focused exclusively on venues at the University of Warwick campus. During the spring break (22 March to 27 April 2026), many campus venues will operate on reduced hours or close entirely. As a result, the number of venues available in the app will be significantly lower than during term time.
 
-All venues will return to normal operating hours on **Monday 27 April 2026** (the start of Summer Term). Venue listings will be proactively updated on **Friday 25 April 2026** to reflect the return to normal service.
+We are using the break to expand Menuva beyond campus, so expect to see new venues when Summer Term begins.
+
+All campus venues will return to normal operating hours on **Monday 27 April 2026** (the start of Summer Term). Venue listings will be proactively updated on **Saturday 25 April 2026** to reflect the return to normal service.
 
 ## 1. Term 2 highlights
 
@@ -44,7 +46,27 @@ The following changes take effect from **Saturday 22 March 2026** and remain in 
 
 ### Suspended
 
-**Food Market Days** (Wednesday food trucks) will not operate during the spring break.
+**Food Market Days** (Wednesday food trucks at the Piazza) will not operate during the spring break. The following vendors are affected:
+
+| Vendor |
+| --- |
+| Buddha Belly |
+| Cleopatra's Kitchen |
+| Flying Cows |
+| Good Food Cartel |
+| Gyro Guys |
+| Ice Cream Truck |
+| Mister V |
+| Platinum Pancakes |
+| Poutine Punks |
+| Redfern Kitchen |
+| Spice Fever |
+| Street Chef Lloyd |
+| Tacos El Pap |
+| The Rollin Bowls |
+| Urban Spice Box |
+| Wicked Cookies |
+| Yardbirds Fried Chicken |
 
 ## 3. For venue operators
 

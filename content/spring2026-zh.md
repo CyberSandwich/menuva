@@ -6,9 +6,11 @@ updated: 2026年3月22日
 contact_questions: hello@menuva.co.uk
 ---
 
-Menuva 目前专注于华威大学校园内的餐饮场所。在春假期间（2026年3月22日至4月27日），许多校园场所将缩短营业时间或完全关闭。因此，应用中可用的场所数量将大幅减少。
+Menuva 的第二学期（2025/2026 春季学期）试点专注于华威大学校园内的餐饮场所。在春假期间（2026年3月22日至4月27日），许多校园场所将缩短营业时间或完全关闭。因此，应用中可用的场所数量将大幅减少。
 
-所有场所将于 **2026年4月27日（星期一）**（夏季学期开始）恢复正常营业时间。场所列表将于 **2026年4月25日（星期五）** 提前更新，以反映恢复正常服务的情况。
+我们正在利用假期将 Menuva 扩展至校园以外的场所，敬请期待夏季学期的新增场所。
+
+所有校园场所将于 **2026年4月27日（星期一）**（夏季学期开始）恢复正常营业时间。场所列表将于 **2026年4月25日（星期六）** 提前更新，以反映恢复正常服务的情况。
 
 ## 1. 第二学期亮点
 
@@ -44,7 +46,27 @@ Menuva 目前专注于华威大学校园内的餐饮场所。在春假期间（2
 
 ### 暂停
 
-**Food Market Days**（周三餐车集市）在春假期间将不会运营。
+**Food Market Days**（Piazza 周三餐车集市）在春假期间将不会运营。受影响的餐车如下：
+
+| 餐车 |
+| --- |
+| Buddha Belly |
+| Cleopatra's Kitchen |
+| Flying Cows |
+| Good Food Cartel |
+| Gyro Guys |
+| Ice Cream Truck |
+| Mister V |
+| Platinum Pancakes |
+| Poutine Punks |
+| Redfern Kitchen |
+| Spice Fever |
+| Street Chef Lloyd |
+| Tacos El Pap |
+| The Rollin Bowls |
+| Urban Spice Box |
+| Wicked Cookies |
+| Yardbirds Fried Chicken |
 
 ## 3. 致场所运营方
 
