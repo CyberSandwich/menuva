@@ -31,6 +31,8 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 
 **3.2** If you are under 18, you confirm you have permission from a parent or legal guardian.
 
+**3.3** **For users under 18.** If you are under 18, please make sure a parent or guardian knows you are using Menuva and has read our Terms and Privacy Policy. In simple terms: Menuva is a free app for browsing restaurant menus. We don't ask for your name, email, or any personal details. You can stop using Menuva at any time by closing the app or website.
+
 ## 4. What Menuva does and does not do
 
 ### A. What Menuva does
@@ -54,6 +56,8 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 - a medical or dietary advice service.
 
 **4.B.2** Menuva does not process orders, payments, tips, reservations, or bookings. Any purchase you make at a venue is a contract between you and that venue.
+
+**4.B.3** The basket feature does not submit orders to the restaurant. It is a visual aid for communicating your selections to venue staff in person.
 
 ## 5. Restaurant content, allergens, nutrition, translations (critical)
 

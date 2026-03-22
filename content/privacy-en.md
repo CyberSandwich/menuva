@@ -163,6 +163,8 @@ UK GDPR requires a lawful basis for processing.
 
 You can withdraw consent for location processing at any time by disabling location permissions in iOS settings.
 
+To opt out of analytics on the website, use the analytics toggle in the footer or visit our [Cookie Policy](/cookies/). Once opted out, no analytics data will be collected on future visits.
+
 ## 6. Who we share data with
 
 **6.1** We share data only as needed to run the Service.
@@ -224,6 +226,8 @@ You can withdraw consent for location processing at any time by disabling locati
 
 **10.1** The Service is intended for users aged 13+. We do not knowingly collect personal data from children under 13. The App does not currently implement age verification.
 
+**10.2** **For young users and parents.** Menuva is designed to be used by anyone aged 13 and over. If you are under 18, please ask a parent or guardian to read this policy with you. In simple terms: we count how many people use Menuva to help us improve it, but we don't know who you are, we don't store your name or email, and we don't share your information with advertisers. You can stop analytics at any time by using the analytics toggle in the footer.
+
 ## 11. Your rights and how they work in an accountless service
 
 **11.1** Depending on your circumstances, you may have the following rights under the UK GDPR: access (Art. 15), rectification (Art. 16), erasure (Art. 17), restriction of processing (Art. 18), data portability (Art. 20), and objection (Art. 21). You also have the right to lodge a complaint with the Information Commissioner's Office (ICO): website ico.org.uk, phone 0303 123 1113, address Wycliffe House, Water Lane, Wilmslow, Cheshire SK9 5AF.
@@ -237,6 +241,8 @@ You can withdraw consent for location processing at any time by disabling locati
 **11.5** **Automated decision-making.** We do not use your data for automated decision-making or profiling that produces legal or similarly significant effects.
 
 **11.6** **Provision of data.** Providing personal data is not a statutory or contractual requirement. The Service functions fully without analytics. You may opt out at any time.
+
+**11.7** **Data breach notification.** In the event of a personal data breach, we will notify the ICO within 72 hours where required and inform affected individuals without undue delay where there is a high risk to their rights and freedoms.
 
 ## 12. Changes to this Privacy Policy
 
