@@ -159,6 +159,8 @@ contact_support: support@menuva.co.uk
 
 **6.A.2** Google 按提供和保障这些服务所需的方式处理数据。
 
+**6.A.3** 菜单页面使用 Firebase App Check 配合 Google reCAPTCHA v3 来防止对我们后端服务的滥用。reCAPTCHA 通过分析浏览器行为和设备信号来验证请求是否来自真实用户。请参阅 Google 的[隐私政策](https://policies.google.com/privacy)和 reCAPTCHA [服务条款](https://policies.google.com/terms)。
+
 ### B. Google Forms（反馈）
 
 **6.B.1** 如果您通过 Google Forms 提交反馈，Google 将作为表单提供商处理该提交内容。

@@ -159,6 +159,8 @@ You can withdraw consent for location processing at any time by disabling locati
 
 **6.A.2** Google processes data as needed to provide and secure these services.
 
+**6.A.3** The menus page uses Firebase App Check with Google reCAPTCHA v3 to prevent abuse of our backend services. reCAPTCHA analyses browser behaviour and device signals to verify that requests come from genuine users. See Google's [Privacy Policy](https://policies.google.com/privacy) and reCAPTCHA [Terms of Service](https://policies.google.com/terms).
+
 ### B. Google Forms (feedback)
 
 **6.B.1** If you submit feedback via Google Forms, Google processes that submission as the form provider.
