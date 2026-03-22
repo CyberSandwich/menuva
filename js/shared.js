@@ -13,7 +13,6 @@ var CHROME_STRINGS={
 // Module-scoped handles for cross-module access (initKeyboard reads these)
 var _cmdHandle=null;
 var _langHandle=null;
-var _ageGateOpen=false;
 var _analyticsDialogOpen=false;
 
 export function chrome(key){return(CHROME_STRINGS[curLang()]||{})[key]||CHROME_STRINGS.en[key]||key}
@@ -291,7 +290,7 @@ export function initCommandPalette(config){
   var cmdItems=null;
 
   function openCmd(){
-    if(cmdOpen||_ageGateOpen)return;
+    if(cmdOpen)return;
     onBeforeOpen();
     cmdOpen=true;
     cmdInput.value='';
@@ -459,96 +458,6 @@ document.addEventListener('click',function(e){
   });
 });
 
-/* ── Age gate (AADC Standard 1) ── */
-(function initAgeGate(){
-  if(localStorage.getItem('age_confirmed'))return;
-
-  _ageGateOpen=true;
-
-  var overlay=document.createElement('div');
-  overlay.className='age-gate-overlay';
-  overlay.setAttribute('role','dialog');
-  overlay.setAttribute('aria-modal','true');
-  overlay.setAttribute('aria-labelledby','ag-title');
-  overlay.setAttribute('aria-describedby','ag-desc');
-  overlay.tabIndex=-1;
-
-  var card=document.createElement('div');
-  card.className='age-gate';
-
-  var h2=document.createElement('h2');
-  h2.id='ag-title';
-  var desc=document.createElement('p');
-  desc.id='ag-desc';
-  var actions=document.createElement('div');
-  actions.className='age-gate-actions';
-  var yesBtn=document.createElement('button');
-  yesBtn.className='age-gate-yes';
-  var noBtn=document.createElement('button');
-  noBtn.className='age-gate-no';
-  actions.appendChild(yesBtn);actions.appendChild(noBtn);
-
-  card.appendChild(h2);card.appendChild(desc);card.appendChild(actions);
-  overlay.appendChild(card);document.body.appendChild(overlay);
-
-  registerStrings({
-    en:{ageTitle:'Age Confirmation',ageDesc:'Menuva is designed for users aged 13 and over. Are you 13 or older?',ageYes:'Yes',ageNo:'No',ageRejTitle:'Come Back Later',ageRejDesc:'Menuva is designed for ages 13 and over. Please come back when you\u2019re older.'},
-    zh:{ageTitle:'\u5e74\u9f84\u786e\u8ba4',ageDesc:'Menuva \u9002\u7528\u4e8e 13 \u5c81\u53ca\u4ee5\u4e0a\u7684\u7528\u6237\u3002\u60a8\u662f\u5426\u5df2\u5e74\u6ee1 13 \u5c81\uff1f',ageYes:'\u662f',ageNo:'\u5426',ageRejTitle:'\u8bf7\u7a0d\u540e\u518d\u6765',ageRejDesc:'Menuva \u9002\u7528\u4e8e 13 \u5c81\u53ca\u4ee5\u4e0a\u7684\u7528\u6237\u3002\u8bf7\u5728\u5e74\u6ee1 13 \u5c81\u540e\u518d\u6765\u3002'}
-  });
-
-  function applyText(){
-    h2.textContent=chrome('ageTitle');
-    desc.textContent=chrome('ageDesc');
-    yesBtn.textContent=chrome('ageYes');
-    noBtn.textContent=chrome('ageNo');
-  }
-
-  applyText();
-
-  // Show immediately
-  document.body.style.overflow='hidden';
-  overlay.classList.add('open');
-  yesBtn.focus();
-
-  yesBtn.addEventListener('click',function(){
-    try{localStorage.setItem('age_confirmed','true')}catch(_){}
-    _ageGateOpen=false;
-    document.body.style.overflow='';
-    overlay.classList.remove('open');
-    // Remove from DOM after transition
-    setTimeout(function(){overlay.remove()},250);
-  });
-
-  noBtn.addEventListener('click',function(){
-    h2.textContent=chrome('ageRejTitle');
-    desc.textContent=chrome('ageRejDesc');
-    actions.remove();
-  });
-
-  // Focus trap: Tab cycles between Yes and No
-  overlay.addEventListener('keydown',function(e){
-    if(e.key==='Tab'){
-      var focusable=actions.parentNode?[yesBtn,noBtn]:[]; // No focusable elements after rejection
-      if(!focusable.length){e.preventDefault();return}
-      var first=focusable[0],last=focusable[focusable.length-1];
-      if(e.shiftKey){
-        if(document.activeElement===first){e.preventDefault();last.focus()}
-      }else{
-        if(document.activeElement===last){e.preventDefault();first.focus()}
-      }
-    }
-    // Block Escape — cannot dismiss age gate
-    if(e.key==='Escape')e.preventDefault();
-  });
-
-  // Update text when language changes
-  new MutationObserver(function(){
-    if(!_ageGateOpen)return;
-    // Only update if not in rejection state
-    if(actions.parentNode)applyText();
-  }).observe(document.documentElement,{attributes:true,attributeFilter:['data-lang']});
-})();
-
 /* ── Analytics preferences dialog ── */
 (function initAnalyticsOpt(){
   var btn=$('#analytics-opt');
@@ -602,7 +511,7 @@ document.addEventListener('click',function(e){
   }
 
   function openDialog(){
-    if(isOpen||_ageGateOpen)return;
+    if(isOpen)return;
     if(_cmdHandle&&_cmdHandle.isOpen())_cmdHandle.close();
     isOpen=true;_analyticsDialogOpen=true;
     prevFocus=document.activeElement;
@@ -719,7 +628,7 @@ export function initKeyboard(config){
   }
 
   document.addEventListener('keydown',function(e){
-    if(_ageGateOpen||_analyticsDialogOpen)return;
+    if(_analyticsDialogOpen)return;
     if(modalGuards(e))return;
 
     if((e.metaKey||e.ctrlKey)&&e.key==='k'){
