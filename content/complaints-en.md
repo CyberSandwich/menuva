@@ -8,7 +8,7 @@ We take complaints seriously and want to resolve them quickly. This page explain
 
 ## 1. How to complain
 
-Email [complaints@menuva.co.uk](mailto:complaints@menuva.co.uk?subject=Complaint&body=What%20happened%3A%0A%0ARelevant%20dates%3A%0A%0AOutcome%20I%20am%20looking%20for%3A) with the following information:
+Email [support@menuva.co.uk](mailto:support@menuva.co.uk?subject=Complaint&body=What%20happened%3A%0A%0ARelevant%20dates%3A%0A%0AOutcome%20I%20am%20looking%20for%3A) with the following information:
 
 - **What happened** — describe your concern clearly
 - **Relevant dates** — when the issue occurred
@@ -16,7 +16,7 @@ Email [complaints@menuva.co.uk](mailto:complaints@menuva.co.uk?subject=Complaint
 
 If your complaint relates to how we handle personal data, please also state which right under the [UK GDPR](https://www.legislation.gov.uk/eur/2016/679/contents) you believe has been affected (for example, the right to erasure under Article 17, or the right to object under Article 21). Our [Privacy Policy](/privacy/) explains how we process data and your rights in full.
 
-> **Tip:** The email link above opens a pre-structured template. You can also write to complaints@menuva.co.uk directly using any format you prefer.
+> **Tip:** The email link above opens a pre-structured template. You can also write to support@menuva.co.uk directly using any format you prefer.
 
 ## 2. What we will do
 
@@ -49,6 +49,6 @@ The ICO is the UK's independent supervisory authority for data protection and in
 
 ## 5. Contact
 
-- **Complaints:** [complaints@menuva.co.uk](mailto:complaints@menuva.co.uk)
+- **Complaints:** [support@menuva.co.uk](mailto:support@menuva.co.uk)
 - **General enquiries:** [hello@menuva.co.uk](mailto:hello@menuva.co.uk)
 - **Support:** [support@menuva.co.uk](mailto:support@menuva.co.uk)

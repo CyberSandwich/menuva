@@ -254,6 +254,6 @@ contact_support: support@menuva.co.uk
 
 **13.2** 技术支持：support@menuva.co.uk
 
-**13.3** 投诉：complaints@menuva.co.uk — 详情请参阅我们的[投诉程序](/complaints/)，包括如何向 ICO 提出申诉。
+**13.3** 投诉：support@menuva.co.uk — 详情请参阅我们的[投诉程序](/complaints/)，包括如何向 ICO 提出申诉。
 
 **13.4** 隐私政策页面：menuva.co.uk/privacy

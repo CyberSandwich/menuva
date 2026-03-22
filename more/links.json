@@ -18,6 +18,8 @@
     {"title": "Terms & Conditions", "titleZh": "使用条款", "url": "/terms/", "cat": "Legal"},
     {"title": "Accessibility Statement", "titleZh": "无障碍声明", "url": "/accessibility/", "cat": "Legal"},
     {"title": "Cookie Policy", "titleZh": "Cookie 政策", "url": "/cookies/", "cat": "Legal"},
+    {"title": "Complaints Procedure", "titleZh": "投诉程序", "url": "/complaints/", "cat": "Legal"},
+    {"title": "Regulatory Compliance", "titleZh": "法规合规", "url": "/compliance/", "cat": "Legal"},
     {"title": "Features", "titleZh": "功能", "url": "/features/", "cat": "Miscellaneous"},
     {"title": "Keyboard Shortcuts", "titleZh": "键盘快捷键", "url": "/shortcuts/", "cat": "Miscellaneous"},
     {"title": "Menuva Beta", "titleZh": "Menuva 测试版", "url": "https://testflight.apple.com/join/y6cwz9Qm", "cat": "Miscellaneous"},

@@ -254,6 +254,6 @@ To opt out of analytics on the website, use the analytics toggle in the footer o
 
 **13.2** Support: support@menuva.co.uk
 
-**13.3** Complaints: complaints@menuva.co.uk — see our [Complaints Procedure](/complaints/) for full details, including how to escalate to the ICO.
+**13.3** Complaints: support@menuva.co.uk — see our [Complaints Procedure](/complaints/) for full details, including how to escalate to the ICO.
 
 **13.4** Privacy Policy page: menuva.co.uk/privacy

@@ -23,6 +23,9 @@ export var ICONS={
   archive:'<polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/>',
   user:'<path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>',
   keyboard:'<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01"/><line x1="8" y1="14" x2="16" y2="14"/>',
+  flag:'<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>',
+  'check-circle':'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>',
+  eye:'<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>',
 
   // ── Menu / food icons ──
   cutlery:'<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3"/><path d="M18 15v7"/>',
@@ -103,6 +106,10 @@ var LINK_KEYWORDS=[
   {i:'list',w:['feature']},
   {i:'keyboard',w:['shortcut','keyboard']},
   {i:'flask',w:['beta','test']},
+  {i:'cookie',w:['cookie']},
+  {i:'flag',w:['complaint']},
+  {i:'check-circle',w:['compliance','regulatory']},
+  {i:'eye',w:['accessibility']},
   {i:'archive',w:['promotion','promo','archive','january']}
 ];
 
