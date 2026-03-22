@@ -98,6 +98,8 @@ This Privacy Policy explains how Menuva handles personal data when you use the M
 
 **3.C.8** **Ad features.** Ad storage, ad user data, and ad personalization are all disabled by default in both the App and the Website. We do not collect the advertising identifier (IDFA), do not use ATT-based tracking, and do not use analytics for cross-app or cross-site advertising.
 
+**3.C.9** **Outbound link tracking.** When you click a link to an external website, the link URL and link text (up to 100 characters) are recorded in analytics to understand which external resources are useful.
+
 ### D. Feedback (optional, Website)
 
 **3.D.1** If you submit feedback at menuva.co.uk/feedback, your submission may include:
@@ -116,6 +118,22 @@ This Privacy Policy explains how Menuva handles personal data when you use the M
 **3.F.1** The Website runs Google Analytics (GA4) to measure page views and menu interactions. The Website collects a subset of the analytics events described in Section 3.C above. Features that are specific to the App (such as location, onboarding, map interactions, and on-device preferences) are not collected on the Website.
 
 **3.F.2** Our hosting provider may also process technical log data (IP address and request metadata) to deliver the Website securely.
+
+### G. Cookies and similar technologies
+
+**3.G.1** We use the following technologies to store or access information on your device:
+
+- **Google Analytics cookies** (`_ga`, `_ga_*`): set by Google to distinguish unique users and maintain session state. These are analytics cookies and require your consent or opt-out acknowledgement.
+- **Google reCAPTCHA cookie** (`_GRECAPTCHA`): set by Google reCAPTCHA v3 on the menus page for bot detection and security. We treat this as strictly necessary for protecting our backend services from abuse.
+- **Local storage:** We store language preference, analytics opt-out choice, cached menu data, and cached page content in your browser's localStorage for performance and functionality. These do not track you and are strictly necessary for the Service to function.
+
+**3.G.2** For a full list of technologies used, see our [Cookie Policy](/cookies/).
+
+### H. On-device browser storage
+
+**3.H.1** We store the following in your browser's local storage for functionality and performance: your language preference, your analytics opt-out choice, cached menu data and page content (to reduce loading times), and whether you have dismissed the ordering disclaimer. A temporary navigation hint is stored in sessionStorage and is automatically cleared when you close the browser tab.
+
+**3.H.2** None of this data is transmitted to our servers or shared with third parties. It is deleted when you clear your browser data.
 
 ## 4. What we do not collect
 
@@ -177,6 +195,8 @@ You can withdraw consent for location processing at any time by disabling locati
 
 **6.D.3** We do not sell personal data.
 
+**6.2** **Sub-processors.** Google LLC (Google Analytics / GA4, Firebase Firestore, Firebase Storage, Firebase App Check, Google reCAPTCHA v3, Google Forms), Apple Inc. (App Store Connect analytics). We will update this list if we add or change sub-processors.
+
 ## 7. Data retention
 
 **7.1** We keep data only as long as needed:
@@ -189,7 +209,10 @@ You can withdraw consent for location processing at any time by disabling locati
 
 ## 8. International transfers
 
-**8.1** Our service providers may process data outside the UK. Where required, transfers are protected using appropriate safeguards (such as contractual protections) consistent with UK data protection requirements.
+**8.1** Our service providers may process data outside the UK, primarily in the United States:
+
+- **Google LLC** (Analytics, Firebase, reCAPTCHA, Google Forms): Google is certified under the UK Extension to the EU-US Data Privacy Framework. Google's Data Processing Terms also include UK Standard Contractual Clauses as a fallback mechanism.
+- **Apple Inc.** (App Store distribution, aggregated metrics): transfers are protected by Standard Contractual Clauses.
 
 ## 9. Security
 
