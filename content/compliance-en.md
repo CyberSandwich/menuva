@@ -23,7 +23,7 @@ Menuva takes legal compliance seriously. Although Menuva is a free, student-led 
 
 **2.1** Menuva uses Google Analytics (GA4) for usage measurement. We have assessed our obligations under the Privacy and Electronic Communications (EC Directive) Regulations 2003 (PECR) Regulation 6, as amended by the Data (Use and Access) Act 2025 (DUAA).
 
-**2.2** Analytics operates under the DUAA Regulation 6(2A) statistical analysis exception (PECR as amended). Its sole purpose is to collect statistical data about how the Service is used with a view to making improvements. Google data sharing is disabled, IP addresses are anonymised, and no personal identifiers are collected. The lawful basis for processing the resulting analytics data under the UK GDPR is legitimate interests (Article 6(1)(f)), documented in our Legitimate Interests Assessment.
+**2.2** Analytics operates under the statistical analysis exception in PECR Schedule A1, paragraph 5 (inserted by DUAA s.112). Its sole purpose is to collect statistical data about how the Service is used with a view to making improvements. Google data sharing is disabled, IP addresses are anonymised, and no personal identifiers are collected. The lawful basis for processing the resulting analytics data under the UK GDPR is legitimate interests (Article 6(1)(f)), documented in our Legitimate Interests Assessment.
 
 **2.3** You can opt out of analytics at any time using the **Manage Analytics** link in the footer of any page. Once opted out, the analytics script does not load and no usage data is collected.
 
@@ -43,7 +43,7 @@ Menuva takes legal compliance seriously. Although Menuva is a free, student-led 
 
 ## 4. Food and allergen information
 
-**4.1** Menuva is not a food business operator (FBO) under Regulation (EC) No 1169/2011 or the Food Information Regulations 2014. Menuva does not prepare, sell, or supply food. We are a digital platform that displays menu and allergen information provided by participating restaurants.
+**4.1** Menuva is not a food business operator (FBO) under Regulation (EU) No 1169/2011 or the Food Information Regulations 2014. Menuva does not prepare, sell, or supply food. We are a digital platform that displays menu and allergen information provided by participating restaurants.
 
 **4.2** Allergen data shown in Menuva is sourced from venue-provided information and is displayed as guidance only. Each menu clearly attributes the source restaurant, and data freshness timestamps indicate when the information was last updated.
 

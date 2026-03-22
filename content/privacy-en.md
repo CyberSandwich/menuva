@@ -129,7 +129,7 @@ This Privacy Policy is provided in accordance with the UK General Data Protectio
 - **Google reCAPTCHA cookie** (`_GRECAPTCHA`): set by Google reCAPTCHA v3 on the menus page for bot detection and security. We treat this as strictly necessary for protecting our backend services from abuse.
 - **Local storage:** We store language preference, analytics opt-out choice, cached menu data, and cached page content in your browser's localStorage for performance and functionality. These do not track you and are strictly necessary for the Service to function.
 
-**3.G.2** The legal basis for storing analytics cookies on your device is the statistical analysis exception under the Privacy and Electronic Communications (EC Directive) Regulations 2003 (PECR) Regulation 6(2A), as amended by the Data (Use and Access) Act 2025. The legal basis for processing the resulting analytics data under the UK GDPR is legitimate interests (Article 6(1)(f)). See Section 5 below.
+**3.G.2** The legal basis for storing analytics cookies on your device is the statistical analysis exception under the Privacy and Electronic Communications (EC Directive) Regulations 2003 (PECR), Schedule A1, paragraph 5 (inserted by the Data (Use and Access) Act 2025, s.112). The legal basis for processing the resulting analytics data under the UK GDPR is legitimate interests (Article 6(1)(f)). See Section 5 below.
 
 **3.G.3** For a full list of technologies used, see our [Cookie Policy](/cookies/).
 
