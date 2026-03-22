@@ -9,11 +9,11 @@ Menuva takes legal compliance seriously. Although Menuva is a free, student-led 
 
 ## 1. Data protection
 
-**1.1** Menuva processes limited personal data (primarily analytics event data and online identifiers) and is subject to the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.
+**1.1** Menuva processes limited personal data (primarily analytics event data and online identifiers) and is subject to the [UK General Data Protection Regulation](https://www.legislation.gov.uk/eur/2016/679/contents) (UK GDPR) and the [Data Protection Act 2018](https://www.legislation.gov.uk/ukpga/2018/12/contents).
 
 **1.2** We have completed a Data Protection Impact Assessment (DPIA) to evaluate risks, particularly in relation to younger users. A Legitimate Interests Assessment (LIA) is documented for each processing activity that relies on legitimate interests as its lawful basis. We maintain a Record of Processing Activities (ROPA) as required by Article 30 of the UK GDPR.
 
-**1.3** A data breach response procedure is in place to meet our notification obligations under UK GDPR Articles 33 and 34 and the Privacy and Electronic Communications (EC Directive) Regulations 2003 (PECR).
+**1.3** A data breach response procedure is in place to meet our notification obligations under UK GDPR Articles 33 and 34 and the [Privacy and Electronic Communications (EC Directive) Regulations 2003](https://www.legislation.gov.uk/uksi/2003/2426/contents) (PECR).
 
 **1.4** International data transfers (primarily to Google LLC and Apple Inc. in the United States) are protected by the UK Extension to the EU-US Data Privacy Framework and UK Standard Contractual Clauses, in accordance with UK GDPR Articles 44-49.
 
@@ -21,7 +21,7 @@ Menuva takes legal compliance seriously. Although Menuva is a free, student-led 
 
 ## 2. Cookies and analytics
 
-**2.1** Menuva uses Google Analytics (GA4) for usage measurement. We have assessed our obligations under the Privacy and Electronic Communications (EC Directive) Regulations 2003 (PECR) Regulation 6, as amended by the Data (Use and Access) Act 2025 (DUAA).
+**2.1** Menuva uses Google Analytics (GA4) for usage measurement. We have assessed our obligations under the Privacy and Electronic Communications (EC Directive) Regulations 2003 (PECR) Regulation 6, as amended by the [Data (Use and Access) Act 2025](https://www.legislation.gov.uk/ukpga/2025/25/contents) (DUAA).
 
 **2.2** Analytics operates under the statistical analysis exception in PECR Schedule A1, paragraph 5 (inserted by DUAA s.112). Its sole purpose is to collect statistical data about how the Service is used with a view to making improvements. Google data sharing is disabled, IP addresses are anonymised, and no personal identifiers are collected. The lawful basis for processing the resulting analytics data under the UK GDPR is legitimate interests (Article 6(1)(f)), documented in our Legitimate Interests Assessment.
 
@@ -31,7 +31,7 @@ Menuva takes legal compliance seriously. Although Menuva is a free, student-led 
 
 ## 3. Children's privacy
 
-**3.1** We have assessed Menuva against the ICO's Age Appropriate Design Code (AADC), introduced under Section 123 of the Data Protection Act 2018, which sets out 15 standards of age-appropriate design for online services likely to be accessed by children.
+**3.1** We have assessed Menuva against the ICO's Age Appropriate Design Code (AADC), introduced under [Section 123 of the Data Protection Act 2018](https://www.legislation.gov.uk/ukpga/2018/12/section/123), which sets out 15 standards of age-appropriate design for online services likely to be accessed by children.
 
 **3.2** Key measures we have taken:
 
@@ -43,7 +43,7 @@ Menuva takes legal compliance seriously. Although Menuva is a free, student-led 
 
 ## 4. Food and allergen information
 
-**4.1** Menuva is not a food business operator (FBO) under Regulation (EU) No 1169/2011 or the Food Information Regulations 2014. Menuva does not prepare, sell, or supply food. We are a digital platform that displays menu and allergen information provided by participating restaurants.
+**4.1** Menuva is not a food business operator (FBO) under [Regulation (EU) No 1169/2011](https://www.legislation.gov.uk/eur/2011/1169/contents) or the [Food Information Regulations 2014](https://www.legislation.gov.uk/uksi/2014/1855/contents). Menuva does not prepare, sell, or supply food. We are a digital platform that displays menu and allergen information provided by participating restaurants.
 
 **4.2** Allergen data shown in Menuva is sourced from venue-provided information and is displayed as guidance only. Each menu clearly attributes the source restaurant, and data freshness timestamps indicate when the information was last updated.
 
@@ -51,7 +51,7 @@ Menuva takes legal compliance seriously. Although Menuva is a free, student-led 
 
 ## 5. Business identification
 
-**5.1** In accordance with the Companies Act 2006 and the Electronic Commerce (EC Directive) Regulations 2002, we provide the following:
+**5.1** In accordance with the [Companies Act 2006](https://www.legislation.gov.uk/ukpga/2006/46/contents) and the [Electronic Commerce (EC Directive) Regulations 2002](https://www.legislation.gov.uk/uksi/2002/2013/contents), we provide the following:
 
 | | |
 | --- | --- |

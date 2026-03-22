@@ -132,7 +132,7 @@ contact_questions: hello@menuva.co.uk
 
 ## 11. 责任
 
-**11.1** 本条款不排除或限制依法不可排除或限制的责任，包括因过失造成的死亡或人身伤害（《1977 年不公平合同条款法》第 2(1) 条；《2015 年消费者权利法》第 65 条）、欺诈或欺诈性虚假陈述的责任。
+**11.1** 本条款不排除或限制依法不可排除或限制的责任，包括因过失造成的死亡或人身伤害（[《1977 年不公平合同条款法》](https://www.legislation.gov.uk/ukpga/1977/50/contents)第 2(1) 条；[《2015 年消费者权利法》](https://www.legislation.gov.uk/ukpga/2015/15/contents)第 65 条）、欺诈或欺诈性虚假陈述的责任。
 
 ### A. 消费者
 
@@ -162,9 +162,9 @@ contact_questions: hello@menuva.co.uk
 
 ## 13. 隐私和数据保护
 
-**13.1** 我们对个人数据的处理请参见我们的[隐私政策](/privacy/)，该政策根据英国通用数据保护条例（UK GDPR）和《2018 年数据保护法》制定。如本条款与隐私政策在隐私事务上存在冲突，以隐私政策为准。
+**13.1** 我们对个人数据的处理请参见我们的[隐私政策](/privacy/)，该政策根据[英国通用数据保护条例](https://www.legislation.gov.uk/eur/2016/679/contents)（UK GDPR）和[《2018 年数据保护法》](https://www.legislation.gov.uk/ukpga/2018/12/contents)制定。如本条款与隐私政策在隐私事务上存在冲突，以隐私政策为准。
 
-**13.2** 我们对 Cookie 和类似技术的使用请参见我们的 [Cookie 政策](/cookies/)，符合经《2025 年数据（使用与访问）法案》修订的《2003 年隐私与电子通信（欧盟指令）条例》(PECR) 的要求。
+**13.2** 我们对 Cookie 和类似技术的使用请参见我们的 [Cookie 政策](/cookies/)，符合经[《2025 年数据（使用与访问）法案》](https://www.legislation.gov.uk/ukpga/2025/25/contents)修订的[《2003 年隐私与电子通信（欧盟指令）条例》](https://www.legislation.gov.uk/uksi/2003/2426/contents)(PECR) 的要求。
 
 **13.3** 如果您对我们处理数据的方式有投诉，请参阅我们的[投诉程序](/complaints/)。您也有权根据 UK GDPR 第 77 条向信息专员办公室 (ICO) 提出投诉。
 

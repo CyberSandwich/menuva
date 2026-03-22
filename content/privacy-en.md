@@ -7,7 +7,7 @@ contact_questions: hello@menuva.co.uk
 contact_support: support@menuva.co.uk
 ---
 
-This Privacy Policy is provided in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018 (DPA 2018). It explains how Menuva handles personal data when you use the Menuva iOS app (the "App") and the Menuva web pages we operate (the "Website") (together, the "Service"). Menuva is designed to be accountless and data-minimising, but some information (especially location data, analytics event data, and online identifiers) can still be personal data under UK GDPR. This policy should be read alongside our [Terms & Conditions](/terms/), [Cookie Policy](/cookies/), and [Complaints Procedure](/complaints/).
+This Privacy Policy is provided in accordance with the [UK General Data Protection Regulation](https://www.legislation.gov.uk/eur/2016/679/contents) (UK GDPR) and the [Data Protection Act 2018](https://www.legislation.gov.uk/ukpga/2018/12/contents) (DPA 2018). It explains how Menuva handles personal data when you use the Menuva iOS app (the "App") and the Menuva web pages we operate (the "Website") (together, the "Service"). Menuva is designed to be accountless and data-minimising, but some information (especially location data, analytics event data, and online identifiers) can still be personal data under UK GDPR. This policy should be read alongside our [Terms & Conditions](/terms/), [Cookie Policy](/cookies/), and [Complaints Procedure](/complaints/).
 
 > **Key points:**
 > - we do not transmit raw latitude/longitude off-device (App only; the Website does not use location)
@@ -129,7 +129,7 @@ This Privacy Policy is provided in accordance with the UK General Data Protectio
 - **Google reCAPTCHA cookie** (`_GRECAPTCHA`): set by Google reCAPTCHA v3 on the menus page for bot detection and security. We treat this as strictly necessary for protecting our backend services from abuse.
 - **Local storage:** We store language preference, analytics opt-out choice, cached menu data, and cached page content in your browser's localStorage for performance and functionality. These do not track you and are strictly necessary for the Service to function.
 
-**3.G.2** The legal basis for storing analytics cookies on your device is the statistical analysis exception under the Privacy and Electronic Communications (EC Directive) Regulations 2003 (PECR), Schedule A1, paragraph 5 (inserted by the Data (Use and Access) Act 2025, s.112). The legal basis for processing the resulting analytics data under the UK GDPR is legitimate interests (Article 6(1)(f)). See Section 5 below.
+**3.G.2** The legal basis for storing analytics cookies on your device is the statistical analysis exception under the [Privacy and Electronic Communications (EC Directive) Regulations 2003](https://www.legislation.gov.uk/uksi/2003/2426/contents) (PECR), Schedule A1, paragraph 5 (inserted by the [Data (Use and Access) Act 2025](https://www.legislation.gov.uk/ukpga/2025/25/contents), s.112). The legal basis for processing the resulting analytics data under the UK GDPR is legitimate interests (Article 6(1)(f)). See Section 5 below.
 
 **3.G.3** For a full list of technologies used, see our [Cookie Policy](/cookies/).
 
