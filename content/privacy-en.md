@@ -119,6 +119,8 @@ This Privacy Policy explains how Menuva handles personal data when you use the M
 
 **3.F.2** Our hosting provider may also process technical log data (IP address and request metadata) to deliver the Website securely.
 
+**3.F.3** **Website-specific events.** On the Website, we additionally track: page views and content views (with referrer URL), redirect page visits for marketing attribution (which QR codes and campaigns drive traffic, including UTM parameters), 404 error page hits, outbound link clicks (as described in Section 3.C.9), and menu scroll depth. We do not log search queries, dietary or allergen filter selections, or any personal identifiers.
+
 ### G. Cookies and similar technologies
 
 **3.G.1** We use the following technologies to store or access information on your device:
