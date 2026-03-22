@@ -549,7 +549,7 @@ body{overflow-x:hidden}
   .bsk-backdrop{transition-duration:.01ms!important}
   .bsk-panel{transition-duration:.01ms!important}
 }
-.recaptcha-notice{text-align:center;font-size:.6875rem;color:var(--t4);margin-bottom:8px;line-height:1.5}
+.recaptcha-notice{text-align:center;font-size:.6875rem;color:var(--t4);margin:40px 0 8px;line-height:1.5}
 .recaptcha-notice a{color:var(--t4);text-decoration:underline;text-decoration-color:rgba(0,0,0,.15)}
 @media(hover:hover){.recaptcha-notice a:hover{color:var(--t3)}}
 .grecaptcha-badge{visibility:hidden}
@@ -1151,12 +1151,16 @@ function renderMenu(el,menu,doc,opts){
   attribution.className='menu-attribution';
   attribution.textContent=chrome('menuAttribution').replace('{name}',venueName.textContent);
   el.appendChild(attribution);
-  var cacheTs=0;
-  try{cacheTs=parseInt(localStorage.getItem('menu_ts_'+viewerSlug),10)||0}catch(_){}
-  if(cacheTs>0){
+  var pubTs=0;
+  if(doc.generatedAt){
+    // Firestore Timestamp object (.seconds) or raw millis
+    pubTs=doc.generatedAt.seconds?doc.generatedAt.seconds*1000:(typeof doc.generatedAt==='number'?doc.generatedAt:0);
+  }
+  if(!pubTs)try{pubTs=parseInt(localStorage.getItem('menu_ts_'+viewerSlug),10)||0}catch(_){}
+  if(pubTs>0){
     var freshness=document.createElement('div');
     freshness.className='menu-freshness';
-    freshness.textContent=chrome('lastUpdated')+' '+_fmtAge(cacheTs);
+    freshness.textContent=chrome('lastUpdated')+' '+_fmtAge(pubTs);
     el.appendChild(freshness);
   }
 
