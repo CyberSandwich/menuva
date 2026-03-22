@@ -81,13 +81,13 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 
 **5.C.2** If anything is unclear, confirm with venue staff.
 
-## 6. License and permitted use
+## 6. Licence and permitted use
 
-### A. License
+### A. Licence
 
-**6.A.1** Subject to these Terms, Menuva grants you a personal, non-exclusive, non-transferable, revocable license to use the Service for personal, non-commercial dining purposes.
+**6.A.1** Subject to these Terms, Menuva grants you a personal, non-exclusive, non-transferable, revocable licence to use the Service for personal, non-commercial dining purposes.
 
-**6.A.2** Your use of the mobile app may also be subject to the applicable end-user license terms of your device's app store (e.g., Apple's App Store terms).
+**6.A.2** Your use of the mobile app may also be subject to the applicable end-user licence terms of your device's app store (e.g., Apple's App Store terms).
 
 ### B. Restrictions
 
@@ -99,80 +99,102 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 - use the Service to send spam, distribute malware, or interfere with the Service's operation, or
 - use the Service in a way that infringes others' rights or violates any law.
 
-## 7. Intellectual property
+## 7. Apple App Store terms
 
-**7.1** The Service (including its software, design, branding, and non-Restaurant Content) is owned by or licensed to Menuva and protected by intellectual property laws.
+**7.1** If you downloaded the App from Apple's App Store, the following additional terms apply. These terms are required by Apple and supplement the rest of these Terms.
 
-**7.2** Restaurant Content is typically owned by the relevant restaurant/venue (or its licensors). You may view Restaurant Content through the Service for personal use only. You must not reuse or republish Restaurant Content without permission from the rights holder.
+**7.2** **Acknowledgement.** These Terms are between you and Menuva only, not Apple. Menuva, not Apple, is solely responsible for the App and its content.
 
-## 8. Service availability, pilot nature, and changes
+**7.3** **Scope of licence.** The licence granted to you in Section 6 is limited to a non-transferable licence to use the App on any Apple-branded product that you own or control, as permitted by the Usage Rules set out in the Apple Media Services Terms of Service.
 
-**8.1** Menuva is provided as a pilot and may change over time. We may:
+**7.4** **Maintenance and support.** Menuva is solely responsible for providing any maintenance and support services for the App. Apple has no obligation to provide any maintenance or support.
+
+**7.5** **Warranty.** Menuva is solely responsible for any product warranties, whether express or implied by law, to the extent not effectively disclaimed. In the event of any failure of the App to conform to any applicable warranty, you may notify Apple, and Apple will refund any applicable purchase price paid for the App. As the App is provided free of charge, this refund obligation is limited to the amount paid (if any). To the maximum extent permitted by applicable law, Apple has no other warranty obligation with respect to the App. Your statutory rights under the Consumer Rights Act 2015 are not affected.
+
+**7.6** **Product claims.** Menuva, not Apple, is responsible for addressing any claims relating to the App, including product liability claims, claims that the App fails to conform to any applicable legal or regulatory requirement, and claims arising under consumer protection, privacy, or similar legislation.
+
+**7.7** **Intellectual property.** In the event of any claim by a third party that the App infringes that party's intellectual property rights, Menuva, not Apple, is solely responsible for the investigation, defence, settlement, and discharge of any such claim.
+
+**7.8** **Legal compliance.** You represent and warrant that: (a) you are not located in a country that is subject to a UK or US Government embargo, or that has been designated as a "terrorist supporting" country; and (b) you are not listed on any UK or US Government list of prohibited or restricted parties.
+
+**7.9** **Third-party beneficiary.** Apple and its subsidiaries are third-party beneficiaries of these Terms. Upon your acceptance of these Terms, Apple has the right (and is deemed to have accepted the right) to enforce these Terms against you as a third-party beneficiary.
+
+**7.10** **Apple contact.** If you have any questions or complaints about the App, please contact us first (see Section 1). Apple's customer support is not responsible for the App. Apple's address: Apple Inc., One Apple Park Way, Cupertino, CA 95014, USA.
+
+## 8. Intellectual property
+
+**8.1** The Service (including its software, design, branding, and non-Restaurant Content) is owned by or licensed to Menuva and protected by intellectual property laws.
+
+**8.2** Restaurant Content is typically owned by the relevant restaurant/venue (or its licensors). You may view Restaurant Content through the Service for personal use only. You must not reuse or republish Restaurant Content without permission from the rights holder.
+
+## 9. Service availability, pilot nature, and changes
+
+**9.1** Menuva is provided as a pilot and may change over time. We may:
 
 - add, remove, or change features,
 - change which venues are included,
 - suspend the Service (in whole or in part), or
 - discontinue the Service.
 
-**8.2** We do not guarantee that the Service will be uninterrupted, secure, error-free, or always available.
+**9.2** We do not guarantee that the Service will be uninterrupted, secure, error-free, or always available.
 
-## 9. Third-party services and links
+## 10. Third-party services and links
 
-**9.1** The Service may include links to third-party services (e.g., maps) or use third-party infrastructure. Third parties have their own terms and policies. Menuva is not responsible for third-party services, content, availability, or practices.
+**10.1** The Service may include links to third-party services (e.g., maps) or use third-party infrastructure. Third parties have their own terms and policies. Menuva is not responsible for third-party services, content, availability, or practices.
 
-## 10. Disclaimers
+## 11. Disclaimers
 
-**10.1** To the maximum extent permitted by law:
+**11.1** To the maximum extent permitted by law:
 
 - the Service is provided "as is" and "as available,"
 - Menuva does not guarantee the accuracy, completeness, or reliability of Restaurant Content, translations, dietary/allergen indicators, or filters, and
 - Menuva does not guarantee that the Service will meet your requirements or be compatible with your device.
 
-**10.2** Nothing in these Terms limits rights that cannot be limited under applicable law.
+**11.2** Nothing in these Terms limits rights that cannot be limited under applicable law.
 
-## 11. Liability
+## 12. Liability
 
-**11.1** Nothing in these Terms excludes or limits liability where it would be unlawful to do so, including liability for death or personal injury caused by negligence ([Unfair Contract Terms Act 1977](https://www.legislation.gov.uk/ukpga/1977/50/contents), s. 2(1); [Consumer Rights Act 2015](https://www.legislation.gov.uk/ukpga/2015/15/contents), s. 65), fraud, or fraudulent misrepresentation.
+**12.1** Nothing in these Terms excludes or limits liability where it would be unlawful to do so, including liability for death or personal injury caused by negligence ([Unfair Contract Terms Act 1977](https://www.legislation.gov.uk/ukpga/1977/50/contents), s. 2(1); [Consumer Rights Act 2015](https://www.legislation.gov.uk/ukpga/2015/15/contents), s. 65), fraud, or fraudulent misrepresentation.
 
 ### A. Consumers
 
-**11.A.1** If you are a consumer, we are responsible for loss or damage you suffer that is a foreseeable result of our breach of these Terms or our failure to use reasonable care and skill. We are not responsible for loss or damage that is not foreseeable.
+**12.A.1** If you are a consumer, we are responsible for loss or damage you suffer that is a foreseeable result of our breach of these Terms or our failure to use reasonable care and skill. We are not responsible for loss or damage that is not foreseeable.
 
 ### B. What we are not responsible for
 
-**11.B.1** To the fullest extent permitted by law, Menuva is not liable for:
+**12.B.1** To the fullest extent permitted by law, Menuva is not liable for:
 
 - actions or omissions of restaurants/venues (including food preparation, allergen handling, cross-contamination, pricing, availability, service, or compliance),
 - decisions you make based on Restaurant Content, translations, labels, or filters, and
 - indirect or consequential losses (e.g., loss of profit, loss of opportunity, business interruption).
 
-## 12. Suspension and termination
+## 13. Suspension and termination
 
-**12.1** We may suspend or restrict access to the Service if we reasonably believe:
+**13.1** We may suspend or restrict access to the Service if we reasonably believe:
 
 - you are breaching these Terms,
 - your use creates security, legal, or operational risk, or
 - we must do so to comply with law or protect the Service, users, or venues.
 
-**12.2** You may stop using the Service at any time by uninstalling the app and/or ceasing to use the website.
+**13.2** You may stop using the Service at any time by uninstalling the app and/or ceasing to use the website.
 
-## 13. Privacy and data protection
+## 14. Privacy and data protection
 
-**13.1** Our handling of personal data is described in our [Privacy Policy](/privacy/), which is provided in accordance with the [UK General Data Protection Regulation](https://www.legislation.gov.uk/eur/2016/679/contents) (UK GDPR) and the [Data Protection Act 2018](https://www.legislation.gov.uk/ukpga/2018/12/contents). If there is any conflict between these Terms and the Privacy Policy on privacy matters, the Privacy Policy controls.
+**14.1** Our handling of personal data is described in our [Privacy Policy](/privacy/), which is provided in accordance with the [UK General Data Protection Regulation](https://www.legislation.gov.uk/eur/2016/679/contents) (UK GDPR) and the [Data Protection Act 2018](https://www.legislation.gov.uk/ukpga/2018/12/contents). If there is any conflict between these Terms and the Privacy Policy on privacy matters, the Privacy Policy controls.
 
-**13.2** Our use of cookies and similar technologies is described in our [Cookie Policy](/cookies/), in accordance with the [Privacy and Electronic Communications (EC Directive) Regulations 2003](https://www.legislation.gov.uk/uksi/2003/2426/contents) (PECR) as amended by the [Data (Use and Access) Act 2025](https://www.legislation.gov.uk/ukpga/2025/18/contents).
+**14.2** Our use of cookies and similar technologies is described in our [Cookie Policy](/cookies/), in accordance with the [Privacy and Electronic Communications (EC Directive) Regulations 2003](https://www.legislation.gov.uk/uksi/2003/2426/contents) (PECR) as amended by the [Data (Use and Access) Act 2025](https://www.legislation.gov.uk/ukpga/2025/18/contents).
 
-**13.3** If you have a complaint about how we handle your data, see our [Complaints Procedure](/complaints/). You also have the right under UK GDPR Article 77 to lodge a complaint with the Information Commissioner's Office (ICO).
+**14.3** If you have a complaint about how we handle your data, see our [Complaints Procedure](/complaints/). You also have the right under UK GDPR Article 77 to lodge a complaint with the Information Commissioner's Office (ICO).
 
-## 14. Changes to these Terms
+## 15. Changes to these Terms
 
-**14.1** We may update these Terms from time to time. If changes are material, we will take reasonable steps to notify you (e.g., in-app or on-site notice). Continued use of the Service after the effective date of updated Terms means you accept the updated Terms.
+**15.1** We may update these Terms from time to time. If changes are material, we will take reasonable steps to notify you (e.g., in-app or on-site notice). Continued use of the Service after the effective date of updated Terms means you accept the updated Terms.
 
-## 15. Governing law and jurisdiction
+## 16. Governing law and jurisdiction
 
-**15.1** These Terms are governed by the laws of England and Wales. The courts of England and Wales have jurisdiction, except where consumer protection laws require otherwise.
+**16.1** These Terms are governed by the laws of England and Wales. The courts of England and Wales have jurisdiction, except where consumer protection laws require otherwise.
 
-## 16. Related pages
+## 17. Related pages
 
 - [Privacy Policy](/privacy/): how we collect and use your data (UK GDPR, DPA 2018)
 - [Cookie Policy](/cookies/): cookies and similar technologies (PECR, DUAA 2025)
@@ -180,10 +202,10 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 - [Regulatory Compliance](/compliance/): the regulations we have assessed and how we address them
 - [Accessibility Statement](/accessibility/): our commitment to accessible design
 
-## 17. Miscellaneous
+## 18. Miscellaneous
 
-**17.1** **Severability.** If any part of these Terms is unenforceable, the rest remains effective.
+**18.1** **Severability.** If any part of these Terms is unenforceable, the rest remains effective.
 
-**17.2** **No waiver.** Delay in enforcement is not a waiver.
+**18.2** **No waiver.** Delay in enforcement is not a waiver.
 
-**17.3** **Entire agreement.** These Terms and any referenced policies form the entire agreement about your use of the Service.
+**18.3** **Entire agreement.** These Terms and any referenced policies form the entire agreement about your use of the Service.

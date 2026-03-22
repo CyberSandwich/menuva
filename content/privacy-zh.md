@@ -117,7 +117,7 @@ contact_support: support@menuva.co.uk
 
 **3.F.1** 网站运行 Google Analytics (GA4) 以测量页面浏览量和菜单交互。网站收集上述第 3.C 条中描述的分析事件的子集。仅限应用的功能（如位置、引导流程、地图交互和设备端偏好）不在网站上收集。
 
-**3.F.2** 我们的托管提供商也可能处理技术日志数据（IP 地址和请求元数据）以安全地交付网站。
+**3.F.2** GitHub Pages（我们的托管提供商，由 Microsoft Corporation 的子公司 GitHub, Inc. 运营）也可能处理技术日志数据（IP 地址和请求元数据）以安全地交付网站。
 
 **3.F.3** **网站特定事件。** 在网站上，我们还会跟踪：页面浏览和内容浏览（含来源 URL）、用于营销归因的重定向页面访问（哪些二维码和推广活动带来了流量，包括 UTM 参数）、404 错误页面访问、外部链接点击（如第 3.C.9 条所述）以及菜单滚动深度。我们不会记录搜索查询、饮食或过敏原筛选条件，也不会记录任何个人身份信息。
 
@@ -138,6 +138,14 @@ contact_support: support@menuva.co.uk
 **3.H.1** 我们在您浏览器的本地存储中保存以下信息，以实现功能和提升性能：您的语言偏好、分析退出选择、缓存的菜单数据和页面内容（以缩短加载时间），以及您是否已关闭点餐免责声明。一个临时导航提示存储在 sessionStorage 中，当您关闭浏览器标签页时会自动清除。
 
 **3.H.2** 上述数据均不会传输到我们的服务器，也不会与第三方共享。当您清除浏览器数据时，这些数据将被删除。
+
+### I. 同意记录（仅限应用）
+
+**3.I.1** 当您在应用中接受本条款和我们的隐私政策时，我们会记录您接受的日期和时间、设备型号、操作系统版本和应用版本。该记录目前仅存储在您的设备上。我们将来可能会将同意记录传输到我们的服务器，以维护数据保护法要求的可审计同意记录。届时我们将在此之前更新本政策。
+
+### J. 货币换算（仅限应用）
+
+**3.J.1** 应用从 ExchangeRate-API 和 Open Exchange Rates（均由 AYR Tech Pty Ltd 运营）获取当前汇率，以便以您偏好的货币显示价格。仅发送所请求的基础货币代码。您的 IP 地址会作为网络请求的一部分被传输。响应在您的设备上缓存最多 7 天，以减少外部请求。
 
 ## 4. 我们不收集的数据
 
@@ -162,6 +170,8 @@ contact_support: support@menuva.co.uk
 | 了解使用情况并改进服务 | 分析事件数据（应用和网站） | 合法利益（产品改进和试点评估） |
 | 测量菜单浏览和订单模式 | 电子商务漏斗事件、参与度指标 | 合法利益（产品改进） |
 | 接收和回复反馈 | 反馈内容；可选的联系方式 | 同意（您自行选择提交内容）和/或合法利益（改进服务） |
+| 维护可审计的同意记录 | 同意事件数据（仅限应用） | 合法利益（UK GDPR 第 7(1) 条记录保存） |
+| 以您偏好的货币显示价格 | IP 地址（传输至 API）、货币代码 | 合法利益（提供您请求的货币换算功能） |
 
 您可以随时在 iOS 设置中禁用位置权限来撤回对位置处理的同意。
 
@@ -201,7 +211,7 @@ contact_support: support@menuva.co.uk
 
 **6.D.3** 我们不出售个人数据。
 
-**6.2** **数据子处理者。** Google LLC（Google Analytics / GA4、Firebase Firestore、Firebase Storage、Firebase App Check、Google reCAPTCHA v3、Google Forms），Apple Inc.（App Store Connect 分析）。如果我们增加或更换子处理者，我们将更新此列表。
+**6.2** **数据子处理者。** Google LLC（Google Analytics / GA4、Firebase Firestore、Firebase Storage、Firebase App Check、Google reCAPTCHA v3、Google Forms），Apple Inc.（App Store Connect 分析），GitHub, Inc.（Microsoft Corporation）（通过 GitHub Pages 提供网站托管），AYR Tech Pty Ltd（ExchangeRate-API / Open Exchange Rates - 货币换算汇率）。如果我们增加或更换子处理者，我们将更新此列表。
 
 ## 7. 数据保留
 
@@ -219,6 +229,8 @@ contact_support: support@menuva.co.uk
 
 - **Google LLC**（Analytics、Firebase、reCAPTCHA、Google Forms）：Google 已获得《欧盟-美国数据隐私框架》英国扩展认证。Google 的数据处理条款还包含英国标准合同条款作为后备机制。
 - **Apple Inc.**（App Store 分发、汇总指标）：数据传输受标准合同条款保护。
+- **GitHub, Inc.（Microsoft Corporation）**（通过 GitHub Pages 提供网站托管）：GitHub 参与了《欧盟-美国数据隐私框架》英国扩展计划。GitHub 的数据保护协议还包含标准合同条款。
+- **AYR Tech Pty Ltd**（ExchangeRate-API / Open Exchange Rates）：货币换算汇率。服务器位于爱尔兰、南非和德国。
 
 ## 9. 安全
 

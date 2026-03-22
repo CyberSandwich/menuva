@@ -117,7 +117,7 @@ This Privacy Policy is provided in accordance with the [UK General Data Protecti
 
 **3.F.1** The Website runs Google Analytics (GA4) to measure page views and menu interactions. The Website collects a subset of the analytics events described in Section 3.C above. Features that are specific to the App (such as location, onboarding, map interactions, and on-device preferences) are not collected on the Website.
 
-**3.F.2** Our hosting provider may also process technical log data (IP address and request metadata) to deliver the Website securely.
+**3.F.2** GitHub Pages (our hosting provider, operated by GitHub, Inc., a subsidiary of Microsoft Corporation) may also process technical log data (IP address and request metadata) to deliver the Website securely.
 
 **3.F.3** **Website-specific events.** On the Website, we additionally track: page views and content views (with referrer URL), redirect page visits for marketing attribution (which QR codes and campaigns drive traffic, including UTM parameters), 404 error page hits, outbound link clicks (as described in Section 3.C.9), and menu scroll depth. We do not log search queries, dietary or allergen filter selections, or any personal identifiers.
 
@@ -138,6 +138,14 @@ This Privacy Policy is provided in accordance with the [UK General Data Protecti
 **3.H.1** We store the following in your browser's local storage for functionality and performance: your language preference, your analytics opt-out choice, cached menu data and page content (to reduce loading times), and whether you have dismissed the ordering disclaimer. A temporary navigation hint is stored in sessionStorage and is automatically cleared when you close the browser tab.
 
 **3.H.2** None of this data is transmitted to our servers or shared with third parties. It is deleted when you clear your browser data.
+
+### I. Consent records (App only)
+
+**3.I.1** When you accept these Terms and our Privacy Policy in the App, we record the date and time of your acceptance, your device model, operating system version, and app version. This record is currently stored only on your device. We may in future transmit consent records to our servers to maintain auditable records of consent as required by data protection law. We will update this policy before doing so.
+
+### J. Currency conversion (App only)
+
+**3.J.1** The App fetches current exchange rates from ExchangeRate-API and Open Exchange Rates (both operated by AYR Tech Pty Ltd) to display prices in your preferred currency. Only the requested base currency code is sent. Your IP address is transmitted as part of the network request. Responses are cached on your device for up to 7 days to minimise external requests.
 
 ## 4. What we do not collect
 
@@ -162,6 +170,8 @@ UK GDPR requires a lawful basis for processing.
 | Understand usage and improve the Service | Analytics event data (App and Website) | Legitimate interests (product improvement and pilot evaluation) |
 | Measure menu browsing and order patterns | E-commerce funnel events, engagement metrics | Legitimate interests (product improvement) |
 | Receive and respond to feedback | Feedback content; optional contact details | Consent (you choose what to submit) and/or legitimate interests (improving the Service) |
+| Maintain auditable consent records | Consent event data (App only) | Legitimate interests (UK GDPR Art. 7(1) record-keeping) |
+| Display prices in your preferred currency | IP address (transmitted to API), currency code | Legitimate interests (providing the currency conversion feature you request) |
 
 You can withdraw consent for location processing at any time by disabling location permissions in iOS settings.
 
@@ -201,7 +211,7 @@ To opt out of analytics on the website, use the analytics toggle in the footer o
 
 **6.D.3** We do not sell personal data.
 
-**6.2** **Sub-processors.** Google LLC (Google Analytics / GA4, Firebase Firestore, Firebase Storage, Firebase App Check, Google reCAPTCHA v3, Google Forms), Apple Inc. (App Store Connect analytics). We will update this list if we add or change sub-processors.
+**6.2** **Sub-processors.** Google LLC (Google Analytics / GA4, Firebase Firestore, Firebase Storage, Firebase App Check, Google reCAPTCHA v3, Google Forms), Apple Inc. (App Store Connect analytics), GitHub, Inc. (Microsoft Corporation) (Website hosting via GitHub Pages), AYR Tech Pty Ltd (ExchangeRate-API / Open Exchange Rates - currency conversion rates). We will update this list if we add or change sub-processors.
 
 ## 7. Data retention
 
@@ -219,6 +229,8 @@ To opt out of analytics on the website, use the analytics toggle in the footer o
 
 - **Google LLC** (Analytics, Firebase, reCAPTCHA, Google Forms): Google is certified under the UK Extension to the EU-US Data Privacy Framework. Google's Data Processing Terms also include UK Standard Contractual Clauses as a fallback mechanism.
 - **Apple Inc.** (App Store distribution, aggregated metrics): transfers are protected by Standard Contractual Clauses.
+- **GitHub, Inc. (Microsoft Corporation)** (Website hosting via GitHub Pages): GitHub participates in the UK Extension to the EU-US Data Privacy Framework. GitHub's Data Protection Agreement also includes Standard Contractual Clauses.
+- **AYR Tech Pty Ltd** (ExchangeRate-API / Open Exchange Rates): currency conversion rates. Servers located in Ireland, South Africa, and Germany.
 
 ## 9. Security
 
