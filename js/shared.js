@@ -13,6 +13,7 @@ var CHROME_STRINGS={
 // Module-scoped handles for cross-module access (initKeyboard reads these)
 var _cmdHandle=null;
 var _langHandle=null;
+var _analyticsDialogOpen=false;
 
 export function chrome(key){return(CHROME_STRINGS[curLang()]||{})[key]||CHROME_STRINGS.en[key]||key}
 
@@ -466,7 +467,6 @@ document.addEventListener('click',function(e){
   overlay.className='analytics-dialog-overlay';
   overlay.setAttribute('role','dialog');
   overlay.setAttribute('aria-modal','true');
-  overlay.setAttribute('aria-label','Analytics Preferences');
   overlay.tabIndex=-1;
 
   var dialog=document.createElement('div');
@@ -511,7 +511,7 @@ document.addEventListener('click',function(e){
   function openDialog(){
     if(isOpen)return;
     if(_cmdHandle&&_cmdHandle.isOpen())_cmdHandle.close();
-    isOpen=true;
+    isOpen=true;_analyticsDialogOpen=true;
     prevFocus=document.activeElement;
     applyText();
     document.body.style.overflow='hidden';
@@ -521,7 +521,7 @@ document.addEventListener('click',function(e){
 
   function closeDialog(){
     if(!isOpen)return;
-    isOpen=false;
+    isOpen=false;_analyticsDialogOpen=false;
     document.body.style.overflow='';
     overlay.classList.remove('open');
     if(prevFocus)prevFocus.focus();
@@ -626,6 +626,7 @@ export function initKeyboard(config){
   }
 
   document.addEventListener('keydown',function(e){
+    if(_analyticsDialogOpen)return;
     if(modalGuards(e))return;
 
     if((e.metaKey||e.ctrlKey)&&e.key==='k'){
