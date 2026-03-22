@@ -976,6 +976,35 @@ function showSkeleton(el){
   for(var j=0;j<4;j++){var c=document.createElement('div');c.className='skel skel-card';el.appendChild(c)}
 }
 
+function _appendInlineAnn(container){
+  // Try memory, then cache; if neither, async fetch from Firestore
+  var d=_annData||(function(){var c=_readAnnCache();return c&&_annValid(c)?c:null})();
+  if(d&&_annValid(d)){
+    var el=_buildAnnBanner(d,true);
+    el.style.marginTop='16px';
+    container.appendChild(el);
+    _ga('announcement_view',{ann_type:d.type||'info',ann_message:(d.message||'').trim(),ann_link:d.linkUrl||'',ann_context:'error'});
+    return;
+  }
+  // No cached data: fetch from Firestore and append if valid
+  window._acReady.then(function(){
+    return window._db.collection('appConfig').doc('announcement').get();
+  }).then(function(snap){
+    if(!snap.exists)return;
+    var fd=snap.data();
+    if(fd.expiresAt&&typeof fd.expiresAt.toMillis==='function'){fd.expiresAt={seconds:Math.floor(fd.expiresAt.toMillis()/1000)}}
+    if(fd.createdAt&&typeof fd.createdAt.toMillis==='function'){fd.createdAt={seconds:Math.floor(fd.createdAt.toMillis()/1000)}}
+    if(!_annValid(fd))return;
+    _writeAnnCache(fd);
+    _annData=fd;
+    var el=_buildAnnBanner(fd,false);
+    el.style.marginTop='16px';
+    container.appendChild(el);
+    requestAnimationFrame(function(){_annFadeIn(el)});
+    _ga('announcement_view',{ann_type:fd.type||'info',ann_message:(fd.message||'').trim(),ann_link:fd.linkUrl||'',ann_context:'error'});
+  }).catch(function(){});
+}
+
 function showViewerError(el,is404){
   el.textContent='';
   var msg=document.createElement('div');msg.className='empty';
@@ -987,6 +1016,7 @@ function showViewerError(el,is404){
     btn.addEventListener('click',function(){showSkeleton(el);loadViewer(el)});
     msg.appendChild(btn);
   }
+  if(is404)_appendInlineAnn(msg);
   el.appendChild(msg);
 }
 
