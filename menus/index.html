@@ -2165,7 +2165,7 @@ function _readAnnCache(){
   try{var r=localStorage.getItem('ann_data');return r?JSON.parse(r):null}catch(_){return null}
 }
 function _writeAnnCache(d){
-  try{if(d){localStorage.setItem('ann_data',JSON.stringify(d));console.log('[ANN-CACHE] written')}else{localStorage.removeItem('ann_data');console.log('[ANN-CACHE] CLEARED stack:',new Error().stack)}}catch(_){}
+  try{if(d)localStorage.setItem('ann_data',JSON.stringify(d));else localStorage.removeItem('ann_data')}catch(_){}
 }
 
 // Extract epoch‑seconds from any Timestamp shape the SDK might return:
@@ -2245,12 +2245,15 @@ function _annScheduleExpiry(d,slot){
   if(_annExpiryTimer)clearTimeout(_annExpiryTimer);
   var remaining=(d.expiresAt*1000)-Date.now();
   if(remaining<=0){slot.textContent='';_writeAnnCache(null);_annData=null;return}
+  // setTimeout overflows at 2^31-1 ms (~24.8 days); cap to 12 hours and re-check
+  var MAX_DELAY=43200000;
   _annExpiryTimer=setTimeout(function(){
+    if((d.expiresAt*1000)>Date.now()){_annScheduleExpiry(d,slot);return}
     _annRemove(slot);
     _writeAnnCache(null);
     _annData=null;
     _ga('announcement_expired',{ann_type:d.type,ann_message:d.message});
-  },remaining);
+  },Math.min(remaining,MAX_DELAY));
 }
 
 function _annMount(d,slot,fade){
@@ -2266,46 +2269,39 @@ var _annData=null;
 
 function renderAnnouncement(){
   var slot=$('#ann-slot');
-  if(!slot){console.log('[ANN] no slot');return}
+  if(!slot)return;
 
   // SWR phase 1: show from cache instantly (like menu cards)
   var cached=_readAnnCache();
   var showing=false;
-  console.log('[ANN] phase1 cached:',cached?'yes':'no','shouldDisplay:',cached?_annShouldDisplay(cached):'n/a');
   if(cached&&_annShouldDisplay(cached)){
     _annData=cached;
     _annMount(cached,slot,false);
     showing=true;
-    console.log('[ANN] phase1 mounted from cache');
   }
 
   // SWR phase 2: revalidate from Firestore
   window._acReady.then(function(){
-    console.log('[ANN] phase2 acReady resolved, fetching...');
     return window._db.collection('appConfig').doc('announcement').get();
   }).then(function(snap){
-    console.log('[ANN] phase2 snap.exists:',snap.exists);
     // Document deleted
     if(!snap.exists){
-      console.log('[ANN] phase2 BRANCH: doc deleted, showing=',showing);
       _writeAnnCache(null);_annData=null;
       if(showing)_annRemove(slot);
       return;
     }
 
     var fresh=_annNormalise(snap.data());
-    console.log('[ANN] phase2 fresh:',JSON.stringify(fresh));
 
     // Explicitly deactivated or expired: remove
     if(!fresh||!fresh.active||(fresh.expiresAt*1000)<=Date.now()){
-      console.log('[ANN] phase2 BRANCH: deactivated/expired, showing=',showing,'fresh:',!!fresh,'active:',fresh&&fresh.active,'expired:',fresh&&(fresh.expiresAt*1000)<=Date.now());
       _writeAnnCache(null);_annData=null;
       if(showing)_annRemove(slot);
       return;
     }
 
     // Valid but missing message: keep cached banner if showing, don't update cache
-    if(!fresh.message){console.log('[ANN] phase2 BRANCH: no message');return}
+    if(!fresh.message){return}
 
     // Update cache and in-memory ref
     _writeAnnCache(fresh);
@@ -2313,29 +2309,15 @@ function renderAnnouncement(){
 
     // If data unchanged from what's showing, just refresh the expiry timer
     if(showing&&_annKey(fresh)===_annKey(cached)){
-      console.log('[ANN] phase2 BRANCH: unchanged, refresh timer');
       _annScheduleExpiry(fresh,slot);
       return;
     }
 
     // Data changed or first mount: swap instantly (like menu cards SWR)
-    console.log('[ANN] phase2 BRANCH: mounting fresh, fade=',!showing);
     _annMount(fresh,slot,!showing);
-  }).catch(function(e){
+  }).catch(function(){
     // Network/App Check error: keep cached banner if showing
-    console.log('[ANN] phase2 ERROR:',e&&e.message,e&&e.code);
   });
-  // DEBUG: watch for anything removing the banner after mount
-  new MutationObserver(function(muts){
-    muts.forEach(function(m){
-      if(m.removedNodes.length){
-        console.log('[ANN-WATCH] nodes REMOVED from ann-slot!',m.removedNodes.length,'remaining children:',slot.children.length,'stack:',new Error().stack);
-      }
-      if(m.type==='attributes'&&m.attributeName==='style'){
-        console.log('[ANN-WATCH] style changed on ann-slot:',slot.style.cssText);
-      }
-    });
-  }).observe(slot,{childList:true,subtree:true,attributes:true,attributeFilter:['style']});
 }
 
 // Re-mount banner from memory on SPA back-navigation
