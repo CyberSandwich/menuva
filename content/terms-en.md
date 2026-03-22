@@ -164,7 +164,7 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 
 **13.1** Our handling of personal data is described in our [Privacy Policy](/privacy/), which is provided in accordance with the [UK General Data Protection Regulation](https://www.legislation.gov.uk/eur/2016/679/contents) (UK GDPR) and the [Data Protection Act 2018](https://www.legislation.gov.uk/ukpga/2018/12/contents). If there is any conflict between these Terms and the Privacy Policy on privacy matters, the Privacy Policy controls.
 
-**13.2** Our use of cookies and similar technologies is described in our [Cookie Policy](/cookies/), in accordance with the [Privacy and Electronic Communications (EC Directive) Regulations 2003](https://www.legislation.gov.uk/uksi/2003/2426/contents) (PECR) as amended by the [Data (Use and Access) Act 2025](https://www.legislation.gov.uk/ukpga/2025/25/contents).
+**13.2** Our use of cookies and similar technologies is described in our [Cookie Policy](/cookies/), in accordance with the [Privacy and Electronic Communications (EC Directive) Regulations 2003](https://www.legislation.gov.uk/uksi/2003/2426/contents) (PECR) as amended by the [Data (Use and Access) Act 2025](https://www.legislation.gov.uk/ukpga/2025/18/contents).
 
 **13.3** If you have a complaint about how we handle your data, see our [Complaints Procedure](/complaints/). You also have the right under UK GDPR Article 77 to lodge a complaint with the Information Commissioner's Office (ICO).
 

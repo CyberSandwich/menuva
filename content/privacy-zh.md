@@ -129,7 +129,7 @@ contact_support: support@menuva.co.uk
 - **Google reCAPTCHA cookie**（`_GRECAPTCHA`）：由 Google reCAPTCHA v3 在菜单页面上设置，用于机器人检测和安全防护。我们将其视为保护后端服务免受滥用所严格必要的 cookie。
 - **本地存储：** 我们在您浏览器的 localStorage 中存储语言偏好、分析退出选择、缓存的菜单数据和缓存的页面内容，以提升性能和功能。这些数据不会跟踪您，且为服务正常运行所严格必要。
 
-**3.G.2** 在您的设备上存储分析 Cookie 的法律依据是[《2003 年隐私与电子通信（欧盟指令）条例》](https://www.legislation.gov.uk/uksi/2003/2426/contents)(PECR) 附表 A1 第 5 段规定的统计分析例外条款（由[《2025 年数据（使用与访问）法案》](https://www.legislation.gov.uk/ukpga/2025/25/contents)第 112 条插入）。根据 UK GDPR 处理所得分析数据的法律依据是合法利益（第 6(1)(f) 条）。详见下文第 5 节。
+**3.G.2** 在您的设备上存储分析 Cookie 的法律依据是[《2003 年隐私与电子通信（欧盟指令）条例》](https://www.legislation.gov.uk/uksi/2003/2426/contents)(PECR) 附表 A1 第 5 段规定的统计分析例外条款（由[《2025 年数据（使用与访问）法案》](https://www.legislation.gov.uk/ukpga/2025/18/contents)第 112 条插入）。根据 UK GDPR 处理所得分析数据的法律依据是合法利益（第 6(1)(f) 条）。详见下文第 5 节。
 
 **3.G.3** 如需查看所用技术的完整列表，请参阅我们的 [Cookie 政策](/cookies/)。
 

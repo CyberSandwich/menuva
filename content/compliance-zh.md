@@ -21,7 +21,7 @@ Menuva 重视法律合规。尽管 Menuva 是一个免费的学生主导试点�
 
 ## 2. Cookie 和分析
 
-**2.1** Menuva 使用 Google Analytics (GA4) 进行使用情况测量。我们已评估了根据经[《2025 年数据（使用与访问）法案》](https://www.legislation.gov.uk/ukpga/2025/25/contents)(DUAA) 修订的[《2003 年隐私与电子通信（欧盟指令）条例》](https://www.legislation.gov.uk/uksi/2003/2426/contents)(PECR) 第 6 条所承担的义务。
+**2.1** Menuva 使用 Google Analytics (GA4) 进行使用情况测量。我们已评估了根据经[《2025 年数据（使用与访问）法案》](https://www.legislation.gov.uk/ukpga/2025/18/contents)(DUAA) 修订的[《2003 年隐私与电子通信（欧盟指令）条例》](https://www.legislation.gov.uk/uksi/2003/2426/contents)(PECR) 第 6 条所承担的义务。
 
 **2.2** 分析功能在 PECR 附表 A1 第 5 段规定的统计分析例外条款（由 DUAA 第 112 条插入）下运行。其唯一目的是收集有关服务使用情况的统计数据，以便进行改进。Google 数据共享已禁用，IP 地址已匿名化，且不收集个人标识符。根据 UK GDPR 处理所得分析数据的法律依据是合法利益（第 6(1)(f) 条），已记录在合法利益评估中。
 

@@ -21,7 +21,7 @@ Menuva takes legal compliance seriously. Although Menuva is a free, student-led 
 
 ## 2. Cookies and analytics
 
-**2.1** Menuva uses Google Analytics (GA4) for usage measurement. We have assessed our obligations under the Privacy and Electronic Communications (EC Directive) Regulations 2003 (PECR) Regulation 6, as amended by the [Data (Use and Access) Act 2025](https://www.legislation.gov.uk/ukpga/2025/25/contents) (DUAA).
+**2.1** Menuva uses Google Analytics (GA4) for usage measurement. We have assessed our obligations under the Privacy and Electronic Communications (EC Directive) Regulations 2003 (PECR) Regulation 6, as amended by the [Data (Use and Access) Act 2025](https://www.legislation.gov.uk/ukpga/2025/18/contents) (DUAA).
 
 **2.2** Analytics operates under the statistical analysis exception in PECR Schedule A1, paragraph 5 (inserted by DUAA s.112). Its sole purpose is to collect statistical data about how the Service is used with a view to making improvements. Google data sharing is disabled, IP addresses are anonymised, and no personal identifiers are collected. The lawful basis for processing the resulting analytics data under the UK GDPR is legitimate interests (Article 6(1)(f)), documented in our Legitimate Interests Assessment.
 
