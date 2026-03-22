@@ -1150,7 +1150,8 @@ function renderMenu(el,menu,doc,opts){
   el.appendChild(venueName);
   var attribution=document.createElement('div');
   attribution.className='menu-attribution';
-  attribution.textContent=chrome('menuAttribution').replace('{name}',venueName.textContent);
+  var brandName=resolveLang(menu.name)||resolveLang(doc.name)||doc.friendlyName||viewerSlug;
+  attribution.textContent=chrome('menuAttribution').replace('{name}',brandName);
   el.appendChild(attribution);
   var pubTs=0;
   if(doc.generatedAt){
