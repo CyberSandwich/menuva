@@ -828,6 +828,7 @@ window.addEventListener('popstate',function(e){
       var _t=$('.stitle');if(_t){_t.style.display='';_t.style.opacity='1'}
       var _ds=$('#dl-slot');if(_ds){_ds.style.display='';_ds.style.opacity='1'}
       var _as=$('#ann-slot');if(_as){_as.style.display='';_as.style.opacity='1'}
+      restoreAnnouncement();
       var _sw=$('.search-wrap');if(_sw){_sw.style.display='';_sw.style.opacity='1'}
       var _ml=$('#mlist');_fadeIn(_ml);
       window.scrollTo(0,_listScrollY);
@@ -2158,7 +2159,7 @@ function _annKey(d){
   return (d.message||'')+'|'+(d.type||'')+'|'+(d.linkUrl||'')+'|'+((d.expiresAt||{}).seconds||(d.expiresAt||{})._seconds||0)+'|'+!!d.active;
 }
 
-function _buildAnnBanner(d){
+function _buildAnnBanner(d,instant){
   var msg=(d.message||'').trim();
   var type=d.type||'info';
   var c=_annColors[type]||_annColors.info;
@@ -2169,7 +2170,11 @@ function _buildAnnBanner(d){
     el.href=d.linkUrl;el.target='_blank';el.rel='noopener noreferrer';
     el.addEventListener('click',function(){_ga('announcement_click',{ann_type:type,ann_message:msg,ann_url:d.linkUrl})});
   }
-  el.style.cssText='--ann-bg:'+c.bg+';--ann-bdr:'+c.bdr+';--ann-color:'+c.color+';--ann-icon:'+c.icon+';opacity:0';
+  // instant=true: skip CSS transition so cache renders without animation (like menu cards)
+  var css='--ann-bg:'+c.bg+';--ann-bdr:'+c.bdr+';--ann-color:'+c.color+';--ann-icon:'+c.icon;
+  if(instant)css+=';opacity:1;transition:none';
+  else css+=';opacity:0';
+  el.style.cssText=css;
   var parser=new DOMParser();
   var doc=parser.parseFromString(_annIcons[type]||_annIcons.info,'text/html');
   var svg=doc.body.firstChild;
@@ -2188,12 +2193,14 @@ function _buildAnnBanner(d){
 
 function _annFadeIn(el){
   el.offsetHeight;
+  el.style.transition='';
   el.style.opacity='1';
 }
 
 function _annFadeOut(slot,cb){
   var el=slot.querySelector('.ann-banner');
   if(!el){if(cb)cb();return}
+  el.style.transition='';
   el.style.opacity='0';
   setTimeout(function(){slot.textContent='';if(cb)cb()},200);
 }
@@ -2210,23 +2217,25 @@ function _annScheduleExpiry(d,slot){
 
 function _annMount(d,slot,fade){
   slot.textContent='';
-  var el=_buildAnnBanner(d);
+  var el=_buildAnnBanner(d,!fade);
   slot.appendChild(el);
   if(fade)requestAnimationFrame(function(){_annFadeIn(el)});
-  else el.style.opacity='1';
   _annScheduleExpiry(d,slot);
   _ga('announcement_view',{ann_type:d.type||'info',ann_message:(d.message||'').trim(),ann_link:d.linkUrl||''});
 }
+
+var _annData=null; // in-memory ref for re-mounting on back-navigation
 
 function renderAnnouncement(){
   var slot=$('#ann-slot');
   if(!slot)return;
 
-  // SWR: show cached immediately
+  // SWR: show cached immediately (instant, no animation - like menu cards from cache)
   var cached=_readAnnCache();
   var cachedKey=null;
   if(cached&&_annValid(cached)){
     cachedKey=_annKey(cached);
+    _annData=cached;
     _annMount(cached,slot,false);
   }
 
@@ -2234,25 +2243,33 @@ function renderAnnouncement(){
   window._acReady.then(function(){
     return window._db.collection('appConfig').doc('announcement').get();
   }).then(function(snap){
-    if(!snap.exists){_writeAnnCache(null);if(cachedKey){_annFadeOut(slot)};return}
+    if(!snap.exists){_writeAnnCache(null);_annData=null;if(cachedKey){_annFadeOut(slot)};return}
     var d=snap.data();
     // Normalise Firestore Timestamps to plain objects for cache serialisation
     if(d.expiresAt&&typeof d.expiresAt.toMillis==='function'){d.expiresAt={seconds:Math.floor(d.expiresAt.toMillis()/1000)}}
     if(d.createdAt&&typeof d.createdAt.toMillis==='function'){d.createdAt={seconds:Math.floor(d.createdAt.toMillis()/1000)}}
-    if(!_annValid(d)){_writeAnnCache(null);if(cachedKey){_annFadeOut(slot)};return}
+    if(!_annValid(d)){_writeAnnCache(null);_annData=null;if(cachedKey){_annFadeOut(slot)};return}
     _writeAnnCache(d);
+    _annData=d;
     var freshKey=_annKey(d);
     if(freshKey===cachedKey)return; // no change
     if(cachedKey){
-      // Data changed: fade out old, mount new
       _annFadeOut(slot,function(){_annMount(d,slot,true)});
     }else{
-      // No cache was shown: mount fresh with fade-in
       _annMount(d,slot,true);
     }
-  }).catch(function(){
-    // Network error: keep showing cache if we have it, otherwise nothing
-  });
+  }).catch(function(){});
+}
+
+// Re-mount banner from memory when returning to list view (SPA back-navigation)
+function restoreAnnouncement(){
+  var slot=$('#ann-slot');
+  if(!slot)return;
+  if(!_annData||!_annValid(_annData)){slot.textContent='';return}
+  // Only remount if slot is empty (cleared by expiry timer or DOM recycling)
+  if(!slot.querySelector('.ann-banner')){
+    _annMount(_annData,slot,false);
+  }
 }
 
 function renderMenuCards(items,el){

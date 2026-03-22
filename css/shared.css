@@ -224,7 +224,6 @@ nav{
   font:.8125rem/1.4 var(--font);
   color:var(--ann-color);
   text-decoration:none;
-  opacity:0;
   transition:opacity .2s,transform .1s
 }
 @media(hover:hover){a.ann-banner:hover{filter:brightness(.95);transform:translateY(-1px)}}
