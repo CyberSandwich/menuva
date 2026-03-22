@@ -224,9 +224,10 @@ nav{
   font:.8125rem/1.4 var(--font);
   color:var(--ann-color);
   text-decoration:none;
-  transition:opacity .15s,transform .1s
+  opacity:0;
+  transition:opacity .2s,transform .1s
 }
-@media(hover:hover){a.ann-banner:hover{opacity:.85;transform:translateY(-1px)}}
+@media(hover:hover){a.ann-banner:hover{filter:brightness(.95);transform:translateY(-1px)}}
 a.ann-banner:active{transform:translateY(0) scale(.985)}
 .ann-banner svg{width:18px;height:18px;flex-shrink:0;color:var(--ann-icon)}
 .ann-banner span{flex:1;min-width:0}

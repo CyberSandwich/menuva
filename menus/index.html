@@ -2118,53 +2118,141 @@ function makeDlCard(){
 
 function renderDlSlot(){var s=$('#dl-slot');if(s){s.textContent='';s.appendChild(makeDlCard())}}
 
+// ==================== ANNOUNCEMENT BANNER (SWR) ====================
+
+var _annColors={
+  info:{bg:'rgba(18,179,168,.08)',bdr:'rgba(18,179,168,.18)',color:'#0A8F86',icon:'#12B3A8'},
+  warning:{bg:'rgba(234,134,58,.08)',bdr:'rgba(234,134,58,.18)',color:'#B86520',icon:'#EA863A'},
+  promo:{bg:'rgba(149,97,226,.08)',bdr:'rgba(149,97,226,.18)',color:'#6B3FA0',icon:'#9561E2'}
+};
+var _annIcons={
+  info:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>',
+  warning:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>',
+  promo:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 11-5.8-1.6"/></svg>'
+};
+var _annExpiryTimer=null;
+
+function _readAnnCache(){
+  try{var r=localStorage.getItem('ann_data');return r?JSON.parse(r):null}catch(_){return null}
+}
+function _writeAnnCache(d){
+  try{if(d)localStorage.setItem('ann_data',JSON.stringify(d));else localStorage.removeItem('ann_data')}catch(_){}
+}
+
+function _annValid(d){
+  if(!d||!d.active)return false;
+  var exp=d.expiresAt;
+  if(!exp)return false;
+  var ms=(exp.seconds||exp._seconds||0)*1000;
+  if(ms<=Date.now())return false;
+  if(!(d.message||'').trim())return false;
+  return true;
+}
+
+function _annExpiresMs(d){
+  var exp=d.expiresAt;
+  return ((exp.seconds||exp._seconds||0)*1000)-Date.now();
+}
+
+function _annKey(d){
+  return (d.message||'')+'|'+(d.type||'')+'|'+(d.linkUrl||'')+'|'+((d.expiresAt||{}).seconds||(d.expiresAt||{})._seconds||0)+'|'+!!d.active;
+}
+
+function _buildAnnBanner(d){
+  var msg=(d.message||'').trim();
+  var type=d.type||'info';
+  var c=_annColors[type]||_annColors.info;
+  var hasLink=d.linkUrl&&/^https?:\/\//i.test(d.linkUrl);
+  var el=document.createElement(hasLink?'a':'div');
+  el.className='ann-banner';
+  if(hasLink){
+    el.href=d.linkUrl;el.target='_blank';el.rel='noopener noreferrer';
+    el.addEventListener('click',function(){_ga('announcement_click',{ann_type:type,ann_message:msg,ann_url:d.linkUrl})});
+  }
+  el.style.cssText='--ann-bg:'+c.bg+';--ann-bdr:'+c.bdr+';--ann-color:'+c.color+';--ann-icon:'+c.icon+';opacity:0';
+  var parser=new DOMParser();
+  var doc=parser.parseFromString(_annIcons[type]||_annIcons.info,'text/html');
+  var svg=doc.body.firstChild;
+  if(svg)el.appendChild(svg);
+  var span=document.createElement('span');
+  span.textContent=msg;
+  el.appendChild(span);
+  if(hasLink){
+    var chevDoc=parser.parseFromString(CHEVRON,'text/html');
+    var chev=chevDoc.body.firstChild;
+    if(chev){chev.style.cssText='width:14px;height:14px;flex-shrink:0;opacity:.5';el.appendChild(chev)}
+  }
+  el.setAttribute('role',hasLink?'link':'status');
+  return el;
+}
+
+function _annFadeIn(el){
+  el.offsetHeight;
+  el.style.opacity='1';
+}
+
+function _annFadeOut(slot,cb){
+  var el=slot.querySelector('.ann-banner');
+  if(!el){if(cb)cb();return}
+  el.style.opacity='0';
+  setTimeout(function(){slot.textContent='';if(cb)cb()},200);
+}
+
+function _annScheduleExpiry(d,slot){
+  if(_annExpiryTimer)clearTimeout(_annExpiryTimer);
+  var remaining=_annExpiresMs(d);
+  if(remaining<=0){slot.textContent='';_writeAnnCache(null);return}
+  _annExpiryTimer=setTimeout(function(){
+    _annFadeOut(slot,function(){_writeAnnCache(null)});
+    _ga('announcement_expired',{ann_type:d.type||'info',ann_message:(d.message||'').trim()});
+  },remaining);
+}
+
+function _annMount(d,slot,fade){
+  slot.textContent='';
+  var el=_buildAnnBanner(d);
+  slot.appendChild(el);
+  if(fade)requestAnimationFrame(function(){_annFadeIn(el)});
+  else el.style.opacity='1';
+  _annScheduleExpiry(d,slot);
+  _ga('announcement_view',{ann_type:d.type||'info',ann_message:(d.message||'').trim(),ann_link:d.linkUrl||''});
+}
+
 function renderAnnouncement(){
   var slot=$('#ann-slot');
   if(!slot)return;
+
+  // SWR: show cached immediately
+  var cached=_readAnnCache();
+  var cachedKey=null;
+  if(cached&&_annValid(cached)){
+    cachedKey=_annKey(cached);
+    _annMount(cached,slot,false);
+  }
+
+  // Revalidate from Firestore
   window._acReady.then(function(){
     return window._db.collection('appConfig').doc('announcement').get();
   }).then(function(snap){
-    if(!snap.exists)return;
+    if(!snap.exists){_writeAnnCache(null);if(cachedKey){_annFadeOut(slot)};return}
     var d=snap.data();
-    if(!d.active)return;
-    var exp=d.expiresAt;
-    if(!exp)return;
-    var expiresMs=(exp.seconds||0)*1000;
-    if(expiresMs<=Date.now())return;
-    var msg=(d.message||'').trim();
-    if(!msg)return;
-    var type=d.type||'info';
-    var colors={
-      info:{bg:'rgba(18,179,168,.08)',bdr:'rgba(18,179,168,.18)',color:'#0A8F86',icon:'#12B3A8'},
-      warning:{bg:'rgba(234,134,58,.08)',bdr:'rgba(234,134,58,.18)',color:'#B86520',icon:'#EA863A'},
-      promo:{bg:'rgba(149,97,226,.08)',bdr:'rgba(149,97,226,.18)',color:'#6B3FA0',icon:'#9561E2'}
-    };
-    var c=colors[type]||colors.info;
-    var icons={
-      info:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>',
-      warning:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>',
-      promo:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 11-5.8-1.6"/></svg>'
-    };
-    var hasLink=d.linkUrl&&/^https?:\/\//i.test(d.linkUrl);
-    var el=document.createElement(hasLink?'a':'div');
-    el.className='ann-banner';
-    if(hasLink){el.href=d.linkUrl;el.target='_blank';el.rel='noopener noreferrer'}
-    el.style.cssText='--ann-bg:'+c.bg+';--ann-bdr:'+c.bdr+';--ann-color:'+c.color+';--ann-icon:'+c.icon;
-    var parser=new DOMParser();
-    var doc=parser.parseFromString(icons[type]||icons.info,'text/html');
-    var svg=doc.body.firstChild;
-    if(svg)el.appendChild(svg);
-    var span=document.createElement('span');
-    span.textContent=msg;
-    el.appendChild(span);
-    if(hasLink){
-      var chevDoc=parser.parseFromString(CHEVRON,'text/html');
-      var chev=chevDoc.body.firstChild;
-      if(chev){chev.style.cssText='width:14px;height:14px;flex-shrink:0;opacity:.5';el.appendChild(chev)}
+    // Normalise Firestore Timestamps to plain objects for cache serialisation
+    if(d.expiresAt&&typeof d.expiresAt.toMillis==='function'){d.expiresAt={seconds:Math.floor(d.expiresAt.toMillis()/1000)}}
+    if(d.createdAt&&typeof d.createdAt.toMillis==='function'){d.createdAt={seconds:Math.floor(d.createdAt.toMillis()/1000)}}
+    if(!_annValid(d)){_writeAnnCache(null);if(cachedKey){_annFadeOut(slot)};return}
+    _writeAnnCache(d);
+    var freshKey=_annKey(d);
+    if(freshKey===cachedKey)return; // no change
+    if(cachedKey){
+      // Data changed: fade out old, mount new
+      _annFadeOut(slot,function(){_annMount(d,slot,true)});
+    }else{
+      // No cache was shown: mount fresh with fade-in
+      _annMount(d,slot,true);
     }
-    el.setAttribute('role',hasLink?'link':'status');
-    slot.appendChild(el);
-  }).catch(function(){});
+  }).catch(function(){
+    // Network error: keep showing cache if we have it, otherwise nothing
+  });
 }
 
 function renderMenuCards(items,el){
