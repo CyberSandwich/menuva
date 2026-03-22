@@ -59,7 +59,7 @@ Session storage is automatically cleared when you close the browser tab.
 
 ## 3. Your analytics choice
 
-We use the DUAA Reg 6(2A) analytics exception. Analytics is enabled by default for the sole purpose of statistical analysis to improve the service. Google data sharing is disabled, and no personal data is collected.
+Analytics is enabled by default under the statistical analysis exception in the Privacy and Electronic Communications (EC Directive) Regulations 2003, Schedule A1, paragraph 5 (inserted by the Data (Use and Access) Act 2025, s.112). The sole purpose is to collect statistical data about how the service is used with a view to making improvements. Google data sharing is disabled, and no personal data is collected.
 
 You can opt out at any time:
 
