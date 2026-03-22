@@ -236,6 +236,8 @@ You can withdraw consent for location processing at any time by disabling locati
 
 **11.5** **Automated decision-making.** We do not use your data for automated decision-making or profiling that produces legal or similarly significant effects.
 
+**11.6** **Provision of data.** Providing personal data is not a statutory or contractual requirement. The Service functions fully without analytics. You may opt out at any time.
+
 ## 12. Changes to this Privacy Policy
 
 **12.1** If we change how we process data (for example, adding new analytics events or SDKs, introducing user accounts, changing analytics retention settings, or expanding who can access analytics dashboards), we will update this policy and, where appropriate, provide in-app or Website notice. Apple also requires keeping App Privacy disclosures accurate.
