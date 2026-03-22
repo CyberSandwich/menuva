@@ -226,14 +226,13 @@ You can withdraw consent for location processing at any time by disabling locati
 
 ## 11. Your rights and how they work in an accountless service
 
-**11.1** Depending on your circumstances, you may have rights including access, deletion, correction, restriction, portability, and objection. You also have the right to complain to the UK supervisory authority (the Information Commissioner's Office).
+**11.1** Depending on your circumstances, you may have the following rights under the UK GDPR: access (Art. 15), rectification (Art. 16), erasure (Art. 17), restriction of processing (Art. 18), data portability (Art. 20), and objection (Art. 21). You also have the right to lodge a complaint with the UK supervisory authority, the Information Commissioner's Office (ico.org.uk).
 
-**11.2** **Accountless limitation.** Because the Service does not use accounts and does not collect direct identifiers, we may not be able to identify or retrieve data about you beyond:
+**11.2** **Article 11 — identification not required.** Because the Service does not require identification of data subjects, we may be unable to identify your personal data in our analytics systems. Under UK GDPR Article 11, we are not required to process additional information solely to identify you. If you contact us to exercise your rights, please provide any information that could help us locate your data (for example, the email address you used to submit feedback or the approximate date of your correspondence). Where we cannot identify your data, we will explain why and what steps you can take.
 
-- feedback you submitted (if you provided contact details or sufficient context to locate it), and
-- correspondence you send us by email.
+**11.3** **Exercising your rights.** To exercise any right, email hello@menuva.co.uk with the subject line "Data Request." We will respond within one calendar month.
 
-**11.3** **Objecting to analytics.** You can object to analytics processing by contacting us. Because analytics is not tied to an account identity, we generally cannot reliably locate or delete past analytics records associated with a specific person. On the App, deleting it stops further analytics events from that device. On the Website, you can use browser settings or extensions to block analytics scripts.
+**11.4** **Objecting to analytics.** You can object to analytics processing at any time. On the Website, use the analytics toggle in the footer or visit our [Cookie Policy](/cookies/). On the App, deleting it stops further analytics events from that device. Because analytics is not tied to an account identity, we generally cannot locate or delete past analytics records associated with a specific person.
 
 ## 12. Changes to this Privacy Policy
 
