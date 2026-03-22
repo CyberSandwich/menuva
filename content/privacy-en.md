@@ -26,6 +26,8 @@ This Privacy Policy is provided in accordance with the [UK General Data Protecti
 
 **1.4** If you contact us by email, we process the information you include to respond.
 
+**1.5** We have assessed that we are not required to appoint a Data Protection Officer under Article 37 of the UK GDPR. For privacy enquiries, contact hello@menuva.co.uk.
+
 ## 2. Intended users and territory
 
 **2.1** Menuva is intended for users in the United Kingdom. If you use the Service elsewhere, this policy still applies, and our service providers may process data internationally (see Section 8).
@@ -126,12 +128,14 @@ This Privacy Policy is provided in accordance with the [UK General Data Protecti
 **3.G.1** We use the following technologies to store or access information on your device:
 
 - **Google Analytics cookies** (`_ga`, `_ga_*`): set by Google to distinguish unique users and maintain session state. These are analytics cookies and require your consent or opt-out acknowledgement.
-- **Google reCAPTCHA cookie** (`_GRECAPTCHA`): set by Google reCAPTCHA v3 on the menus page for bot detection and security. We treat this as strictly necessary for protecting our backend services from abuse.
+- **Google reCAPTCHA cookie** (`_GRECAPTCHA`): set by Google reCAPTCHA v3 on the menus page for bot detection and security. reCAPTCHA also analyses browser behaviour and device signals beyond the cookie itself (see Section 6.A.3). We treat this as strictly necessary for protecting our backend services from abuse. From April 2026, Menuva is the data controller for reCAPTCHA data processed on the Website.
 - **Local storage:** We store language preference, analytics opt-out choice, cached menu data, and cached page content in your browser's localStorage for performance and functionality. These do not track you and are strictly necessary for the Service to function.
 
 **3.G.2** The legal basis for storing analytics cookies on your device is the statistical analysis exception under the [Privacy and Electronic Communications (EC Directive) Regulations 2003](https://www.legislation.gov.uk/uksi/2003/2426/contents) (PECR), Schedule A1, paragraph 5 (inserted by the [Data (Use and Access) Act 2025](https://www.legislation.gov.uk/ukpga/2025/18/contents), s.112). The legal basis for processing the resulting analytics data under the UK GDPR is legitimate interests (Article 6(1)(f)). See Section 5 below.
 
 **3.G.3** For a full list of technologies used, see our [Cookie Policy](/cookies/).
+
+**3.G.4** Under the DUAA 2025 statistical analysis exception, we confirm that: (a) analytics cookies are used solely for statistical measurement to improve the Service; (b) the resulting information is aggregate and cannot be used to identify individuals; (c) analytics data is not shared with third parties except Google as our analytics provider assisting with service improvements; and (d) Google's data sharing for products and services is disabled in our analytics configuration. You may opt out of analytics at any time using the toggle in the website footer.
 
 ### H. On-device browser storage
 
@@ -173,6 +177,8 @@ UK GDPR requires a lawful basis for processing.
 | Maintain auditable consent records | Consent event data (App only) | Legitimate interests (UK GDPR Art. 7(1) record-keeping) |
 | Display prices in your preferred currency | IP address (transmitted to API), currency code | Legitimate interests (providing the currency conversion feature you request) |
 
+**5.2** **Balancing test.** We have assessed that our legitimate interests in understanding usage patterns for product improvement do not override your rights, given that: analytics data is pseudonymous and does not include personal identifiers; IP addresses are anonymised; you can opt out at any time via the website footer toggle; and we have disabled Google's data sharing features. Our full Legitimate Interests Assessment is documented internally and available on request.
+
 You can withdraw consent for location processing at any time by disabling location permissions in iOS settings.
 
 To opt out of analytics on the website, use the analytics toggle in the footer or visit our [Cookie Policy](/cookies/). Once opted out, no analytics data will be collected on future visits.
@@ -189,11 +195,14 @@ To opt out of analytics on the website, use the analytics toggle in the footer o
 - Firebase Firestore (read-only menu metadata),
 - Firebase Analytics (App usage analytics),
 - Google Analytics / GA4 (Website usage analytics),
-- Firebase App Check (abuse prevention, for example validating requests using Apple's device attestation mechanisms).
+- Firebase App Check (abuse prevention; see Section 6.A.3).
 
 **6.A.2** Google processes data as needed to provide and secure these services.
 
-**6.A.3** The menus page uses Firebase App Check with Google reCAPTCHA v3 to prevent abuse of our backend services. reCAPTCHA analyses browser behaviour and device signals to verify that requests come from genuine users. See Google's [Privacy Policy](https://policies.google.com/privacy) and reCAPTCHA [Terms of Service](https://policies.google.com/terms).
+**6.A.3** **Firebase App Check.** We use Firebase App Check to verify that requests to our backend come from genuine instances of the Menuva app or website, preventing automated abuse.
+
+- **On iOS:** App Check uses Apple's App Attest, which generates cryptographic device attestation tokens verified by Firebase. These tokens are unique per app installation (not backed up, not synced across devices) and contain no hardware identifiers. Tokens may be retained by Firebase for up to 30 days when replay protection is used.
+- **On the Website:** App Check uses Google reCAPTCHA v3. reCAPTCHA analyses browser behaviour and device signals (including mouse movement, scroll behaviour, keystroke dynamics, browser fingerprint, and IP address reputation) to verify that requests come from genuine users. See Google's [Privacy Policy](https://policies.google.com/privacy) and reCAPTCHA [Terms of Service](https://policies.google.com/terms).
 
 ### B. Google Forms (feedback)
 

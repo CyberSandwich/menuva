@@ -26,6 +26,8 @@ contact_support: support@menuva.co.uk
 
 **1.4** 如果您通过电子邮件联系我们，我们会处理您提供的信息以进行回复。
 
+**1.5** 我们已评估确认，根据英国 GDPR 第 37 条，我们无需任命数据保护官。如有隐私方面的咨询，请联系 hello@menuva.co.uk。
+
 ## 2. 目标用户和适用地区
 
 **2.1** Menuva 面向英国用户。如果您在其他地区使用本服务，本政策仍然适用，且我们的服务提供商可能会在国际范围内处理数据（见第 8 条）。
@@ -126,12 +128,14 @@ contact_support: support@menuva.co.uk
 **3.G.1** 我们使用以下技术在您的设备上存储或访问信息：
 
 - **Google Analytics cookie**（`_ga`、`_ga_*`）：由 Google 设置，用于区分唯一用户并维持会话状态。这些属于分析 cookie，需要您的同意或退出确认。
-- **Google reCAPTCHA cookie**（`_GRECAPTCHA`）：由 Google reCAPTCHA v3 在菜单页面上设置，用于机器人检测和安全防护。我们将其视为保护后端服务免受滥用所严格必要的 cookie。
+- **Google reCAPTCHA cookie**（`_GRECAPTCHA`）：由 Google reCAPTCHA v3 在菜单页面上设置，用于机器人检测和安全防护。reCAPTCHA 还会分析 cookie 本身以外的浏览器行为和设备信号（见第 6.A.3 节）。我们将其视为保护后端服务免受滥用所严格必要的 cookie。自 2026 年 4 月起，Menuva 是网站上 reCAPTCHA 数据处理的数据控制者。
 - **本地存储：** 我们在您浏览器的 localStorage 中存储语言偏好、分析退出选择、缓存的菜单数据和缓存的页面内容，以提升性能和功能。这些数据不会跟踪您，且为服务正常运行所严格必要。
 
 **3.G.2** 在您的设备上存储分析 Cookie 的法律依据是[《2003 年隐私与电子通信（欧盟指令）条例》](https://www.legislation.gov.uk/uksi/2003/2426/contents)(PECR) 附表 A1 第 5 段规定的统计分析例外条款（由[《2025 年数据（使用与访问）法案》](https://www.legislation.gov.uk/ukpga/2025/18/contents)第 112 条插入）。根据 UK GDPR 处理所得分析数据的法律依据是合法利益（第 6(1)(f) 条）。详见下文第 5 节。
 
 **3.G.3** 如需查看所用技术的完整列表，请参阅我们的 [Cookie 政策](/cookies/)。
+
+**3.G.4** 根据《2025 年数据（使用与访问）法案》的统计分析例外条款，我们确认：(a) 分析 Cookie 仅用于统计测量以改进服务；(b) 所得信息为汇总数据，无法用于识别个人身份；(c) 分析数据不与第三方共享，仅与作为我们分析提供商协助改进服务的 Google 共享；(d) 我们的分析配置中已禁用 Google 的产品和服务数据共享功能。您可以随时使用网站页脚的开关退出分析。
 
 ### H. 设备端浏览器存储
 
@@ -173,6 +177,8 @@ contact_support: support@menuva.co.uk
 | 维护可审计的同意记录 | 同意事件数据（仅限应用） | 合法利益（UK GDPR 第 7(1) 条记录保存） |
 | 以您偏好的货币显示价格 | IP 地址（传输至 API）、货币代码 | 合法利益（提供您请求的货币换算功能） |
 
+**5.2** **利益平衡测试。** 我们已评估确认，鉴于以下原因，我们在了解使用模式以改进产品方面的合法利益不会凌驾于您的权利之上：分析数据是假名化的，不包含个人标识信息；IP 地址已匿名化处理；您可以随时通过网站页脚的开关选择退出；我们已禁用 Google 的数据共享功能。我们完整的合法利益评估已在内部记录存档，如需查阅可应要求提供。
+
 您可以随时在 iOS 设置中禁用位置权限来撤回对位置处理的同意。
 
 如需在网站上退出分析，请使用页脚的分析开关或访问我们的 [Cookie 政策](/cookies/)。退出后，将不再在您未来的访问中收集分析数据。
@@ -189,11 +195,14 @@ contact_support: support@menuva.co.uk
 - Firebase Firestore（只读菜单元数据），
 - Firebase Analytics（应用使用情况分析），
 - Google Analytics / GA4（网站使用情况分析），
-- Firebase App Check（防止滥用，例如使用 Apple 的设备认证机制验证请求）。
+- Firebase App Check（防止滥用；见第 6.A.3 节）。
 
 **6.A.2** Google 按提供和保障这些服务所需的方式处理数据。
 
-**6.A.3** 菜单页面使用 Firebase App Check 配合 Google reCAPTCHA v3 来防止对我们后端服务的滥用。reCAPTCHA 通过分析浏览器行为和设备信号来验证请求是否来自真实用户。请参阅 Google 的[隐私政策](https://policies.google.com/privacy)和 reCAPTCHA [服务条款](https://policies.google.com/terms)。
+**6.A.3** **Firebase App Check。** 我们使用 Firebase App Check 来验证对后端的请求是否来自 Menuva 应用或网站的真实实例，以防止自动化滥用。
+
+- **在 iOS 上：**App Check 使用 Apple 的 App Attest，生成由 Firebase 验证的加密设备认证令牌。这些令牌对每个应用安装是唯一的（不会备份，不会跨设备同步），且不包含硬件标识符。使用重放保护时，Firebase 可能会保留令牌最多 30 天。
+- **在网站上：**App Check 使用 Google reCAPTCHA v3。reCAPTCHA 通过分析浏览器行为和设备信号（包括鼠标移动、滚动行为、按键动态、浏览器指纹和 IP 地址信誉）来验证请求是否来自真实用户。请参阅 Google 的[隐私政策](https://policies.google.com/privacy)和 reCAPTCHA [服务条款](https://policies.google.com/terms)。
 
 ### B. Google Forms（反馈）
 
