@@ -34,7 +34,7 @@ This Privacy Policy is provided in accordance with the [UK General Data Protecti
 
 ## 3. What data we collect
 
-**3.0.1** Where a feature is specific to one platform, it is marked "(App only)" or "(Website only)." The main differences are: the App uses device location for venue discovery; the App stores dietary preferences on-device; the Website offers an analytics opt-out toggle in the footer; and the App and Website use different technologies for abuse prevention (see Section 6.A.3).
+**3.0.1** Where a feature is specific to one platform, it is marked "(App only)" or "(Website only)." The main differences are: the App uses device location for venue discovery; the App stores dietary preferences on-device; both the App and Website offer analytics opt-out toggles; and the App and Website use different technologies for abuse prevention (see Section 6.A.3).
 
 ### A. Precise location (App only, foreground)
 
@@ -263,7 +263,7 @@ To opt out of analytics on the website, use the analytics toggle in the footer o
 
 **11.3** **Exercising your rights.** To exercise any right, email hello@menuva.co.uk with the subject line "Data Request." We will respond within one calendar month.
 
-**11.4** **Objecting to analytics.** You can object to analytics processing at any time. On the Website, use the analytics toggle in the footer or visit our [Cookie Policy](/cookies/). On the App, deleting it stops further analytics events from that device. Because analytics is not tied to an account identity, we generally cannot locate or delete past analytics records associated with a specific person.
+**11.4** **Objecting to analytics.** You can object to analytics processing at any time. On the Website, use the analytics toggle in the footer or visit our [Cookie Policy](/cookies/). On the App, use the Analytics toggle in Settings to disable analytics collection. Because analytics is not tied to an account identity, we generally cannot locate or delete past analytics records associated with a specific person.
 
 **11.5** **Automated decision-making.** We do not use your data for automated decision-making or profiling that produces legal or similarly significant effects.
 
