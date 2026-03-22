@@ -978,12 +978,12 @@ function showSkeleton(el){
 
 function _appendInlineAnn(container){
   // Try memory, then cache; if neither, async fetch from Firestore
-  var d=_annData||(function(){var c=_readAnnCache();return c&&_annValid(c)?c:null})();
-  if(d&&_annValid(d)){
+  var d=_annData||(function(){var c=_readAnnCache();return c&&_annShouldDisplay(c)?c:null})();
+  if(d&&_annShouldDisplay(d)){
     var el=_buildAnnBanner(d,true);
     el.style.marginTop='16px';
     container.appendChild(el);
-    _ga('announcement_view',{ann_type:d.type||'info',ann_message:(d.message||'').trim(),ann_link:d.linkUrl||'',ann_context:'error'});
+    _ga('announcement_view',{ann_type:d.type,ann_message:d.message,ann_link:d.linkUrl||'',ann_context:'error'});
     return;
   }
   // No cached data: fetch from Firestore and append if valid
@@ -991,17 +991,15 @@ function _appendInlineAnn(container){
     return window._db.collection('appConfig').doc('announcement').get();
   }).then(function(snap){
     if(!snap.exists)return;
-    var fd=snap.data();
-    if(fd.expiresAt&&typeof fd.expiresAt.toMillis==='function'){fd.expiresAt={seconds:Math.floor(fd.expiresAt.toMillis()/1000)}}
-    if(fd.createdAt&&typeof fd.createdAt.toMillis==='function'){fd.createdAt={seconds:Math.floor(fd.createdAt.toMillis()/1000)}}
-    if(!_annValid(fd))return;
-    _writeAnnCache(fd);
-    _annData=fd;
-    var el=_buildAnnBanner(fd,false);
+    var fresh=_annNormalise(snap.data());
+    if(!_annShouldDisplay(fresh))return;
+    _writeAnnCache(fresh);
+    _annData=fresh;
+    var el=_buildAnnBanner(fresh,false);
     el.style.marginTop='16px';
     container.appendChild(el);
     requestAnimationFrame(function(){_annFadeIn(el)});
-    _ga('announcement_view',{ann_type:fd.type||'info',ann_message:(fd.message||'').trim(),ann_link:fd.linkUrl||'',ann_context:'error'});
+    _ga('announcement_view',{ann_type:fresh.type,ann_message:fresh.message,ann_link:fresh.linkUrl||'',ann_context:'error'});
   }).catch(function(){});
 }
 
@@ -2170,27 +2168,36 @@ function _writeAnnCache(d){
   try{if(d)localStorage.setItem('ann_data',JSON.stringify(d));else localStorage.removeItem('ann_data')}catch(_){}
 }
 
-function _annValid(d){
-  if(!d||!d.active)return false;
-  var exp=d.expiresAt;
-  if(!exp)return false;
-  var ms=(exp.seconds||exp._seconds||0)*1000;
-  if(ms<=Date.now())return false;
-  if(!(d.message||'').trim())return false;
-  return true;
+// Extract epoch‑seconds from any Timestamp shape the SDK might return:
+// Timestamp object (.seconds property), compat internal ({_seconds}), or plain {seconds}
+function _tsSeconds(ts){
+  if(!ts)return 0;
+  if(typeof ts.toMillis==='function')return Math.floor(ts.toMillis()/1000);
+  return ts.seconds||ts._seconds||0;
 }
 
-function _annExpiresMs(d){
-  var exp=d.expiresAt;
-  return ((exp.seconds||exp._seconds||0)*1000)-Date.now();
+function _annNormalise(d){
+  if(!d)return null;
+  return{
+    message:(d.message||'').trim(),
+    type:d.type||'info',
+    linkUrl:d.linkUrl||null,
+    active:!!d.active,
+    expiresAt:_tsSeconds(d.expiresAt),
+    createdAt:_tsSeconds(d.createdAt),
+    createdBy:d.createdBy||''
+  };
+}
+
+function _annShouldDisplay(d){
+  return d&&d.active&&d.expiresAt>0&&(d.expiresAt*1000)>Date.now()&&d.message;
 }
 
 function _annKey(d){
-  return (d.message||'')+'|'+(d.type||'')+'|'+(d.linkUrl||'')+'|'+((d.expiresAt||{}).seconds||(d.expiresAt||{})._seconds||0)+'|'+!!d.active;
+  return d.message+'|'+d.type+'|'+(d.linkUrl||'')+'|'+d.expiresAt+'|'+d.active;
 }
 
 function _buildAnnBanner(d,instant){
-  var msg=(d.message||'').trim();
   var type=d.type||'info';
   var c=_annColors[type]||_annColors.info;
   var hasLink=d.linkUrl&&/^https?:\/\//i.test(d.linkUrl);
@@ -2198,9 +2205,8 @@ function _buildAnnBanner(d,instant){
   el.className='ann-banner';
   if(hasLink){
     el.href=d.linkUrl;el.target='_blank';el.rel='noopener noreferrer';
-    el.addEventListener('click',function(){_ga('announcement_click',{ann_type:type,ann_message:msg,ann_url:d.linkUrl})});
+    el.addEventListener('click',function(){_ga('announcement_click',{ann_type:type,ann_message:d.message,ann_url:d.linkUrl})});
   }
-  // instant=true: skip CSS transition so cache renders without animation (like menu cards)
   var css='--ann-bg:'+c.bg+';--ann-bdr:'+c.bdr+';--ann-color:'+c.color+';--ann-icon:'+c.icon;
   if(instant)css+=';opacity:1;transition:none';
   else css+=';opacity:0';
@@ -2210,7 +2216,7 @@ function _buildAnnBanner(d,instant){
   var svg=doc.body.firstChild;
   if(svg)el.appendChild(svg);
   var span=document.createElement('span');
-  span.textContent=msg;
+  span.textContent=d.message;
   el.appendChild(span);
   if(hasLink){
     var chevDoc=parser.parseFromString(CHEVRON,'text/html');
@@ -2227,21 +2233,23 @@ function _annFadeIn(el){
   el.style.opacity='1';
 }
 
-function _annFadeOut(slot,cb){
+function _annRemove(slot){
   var el=slot.querySelector('.ann-banner');
-  if(!el){if(cb)cb();return}
+  if(!el){slot.textContent='';return}
   el.style.transition='';
   el.style.opacity='0';
-  setTimeout(function(){slot.textContent='';if(cb)cb()},200);
+  setTimeout(function(){slot.textContent=''},200);
 }
 
 function _annScheduleExpiry(d,slot){
   if(_annExpiryTimer)clearTimeout(_annExpiryTimer);
-  var remaining=_annExpiresMs(d);
-  if(remaining<=0){slot.textContent='';_writeAnnCache(null);return}
+  var remaining=(d.expiresAt*1000)-Date.now();
+  if(remaining<=0){slot.textContent='';_writeAnnCache(null);_annData=null;return}
   _annExpiryTimer=setTimeout(function(){
-    _annFadeOut(slot,function(){_writeAnnCache(null)});
-    _ga('announcement_expired',{ann_type:d.type||'info',ann_message:(d.message||'').trim()});
+    _annRemove(slot);
+    _writeAnnCache(null);
+    _annData=null;
+    _ga('announcement_expired',{ann_type:d.type,ann_message:d.message});
   },remaining);
 }
 
@@ -2251,52 +2259,69 @@ function _annMount(d,slot,fade){
   slot.appendChild(el);
   if(fade)requestAnimationFrame(function(){_annFadeIn(el)});
   _annScheduleExpiry(d,slot);
-  _ga('announcement_view',{ann_type:d.type||'info',ann_message:(d.message||'').trim(),ann_link:d.linkUrl||''});
+  _ga('announcement_view',{ann_type:d.type,ann_message:d.message,ann_link:d.linkUrl||''});
 }
 
-var _annData=null; // in-memory ref for re-mounting on back-navigation
+var _annData=null;
 
 function renderAnnouncement(){
   var slot=$('#ann-slot');
   if(!slot)return;
 
-  // SWR: show cached immediately (instant, no animation - like menu cards from cache)
+  // SWR phase 1: show from cache instantly (like menu cards)
   var cached=_readAnnCache();
-  var cachedKey=null;
-  if(cached&&_annValid(cached)){
-    cachedKey=_annKey(cached);
+  var showing=false;
+  if(cached&&_annShouldDisplay(cached)){
     _annData=cached;
     _annMount(cached,slot,false);
+    showing=true;
   }
 
-  // Revalidate from Firestore
+  // SWR phase 2: revalidate from Firestore
   window._acReady.then(function(){
     return window._db.collection('appConfig').doc('announcement').get();
   }).then(function(snap){
-    if(!snap.exists){_writeAnnCache(null);_annData=null;if(cachedKey){_annFadeOut(slot)};return}
-    var d=snap.data();
-    // Normalise Firestore Timestamps to plain objects for cache serialisation
-    if(d.expiresAt&&typeof d.expiresAt.toMillis==='function'){d.expiresAt={seconds:Math.floor(d.expiresAt.toMillis()/1000)}}
-    if(d.createdAt&&typeof d.createdAt.toMillis==='function'){d.createdAt={seconds:Math.floor(d.createdAt.toMillis()/1000)}}
-    if(!_annValid(d)){_writeAnnCache(null);_annData=null;if(cachedKey){_annFadeOut(slot)};return}
-    _writeAnnCache(d);
-    _annData=d;
-    var freshKey=_annKey(d);
-    if(freshKey===cachedKey)return; // no change
-    if(cachedKey){
-      _annFadeOut(slot,function(){_annMount(d,slot,true)});
-    }else{
-      _annMount(d,slot,true);
+    // Document deleted
+    if(!snap.exists){
+      _writeAnnCache(null);_annData=null;
+      if(showing)_annRemove(slot);
+      return;
     }
-  }).catch(function(){});
+
+    var fresh=_annNormalise(snap.data());
+
+    // Explicitly deactivated or expired: remove
+    if(!fresh||!fresh.active||(fresh.expiresAt*1000)<=Date.now()){
+      _writeAnnCache(null);_annData=null;
+      if(showing)_annRemove(slot);
+      return;
+    }
+
+    // Valid but missing message: keep cached banner if showing, don't update cache
+    if(!fresh.message){return}
+
+    // Update cache and in-memory ref
+    _writeAnnCache(fresh);
+    _annData=fresh;
+
+    // If data unchanged from what's showing, just refresh the expiry timer
+    if(showing&&_annKey(fresh)===_annKey(cached)){
+      _annScheduleExpiry(fresh,slot);
+      return;
+    }
+
+    // Data changed or first mount: swap instantly (like menu cards SWR)
+    _annMount(fresh,slot,!showing);
+  }).catch(function(){
+    // Network/App Check error: keep cached banner if showing
+  });
 }
 
-// Re-mount banner from memory when returning to list view (SPA back-navigation)
+// Re-mount banner from memory on SPA back-navigation
 function restoreAnnouncement(){
   var slot=$('#ann-slot');
   if(!slot)return;
-  if(!_annData||!_annValid(_annData)){slot.textContent='';return}
-  // Only remount if slot is empty (cleared by expiry timer or DOM recycling)
+  if(!_annData||!_annShouldDisplay(_annData)){slot.textContent='';return}
   if(!slot.querySelector('.ann-banner')){
     _annMount(_annData,slot,false);
   }
