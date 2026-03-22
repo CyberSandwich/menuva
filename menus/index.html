@@ -2165,7 +2165,7 @@ function _readAnnCache(){
   try{var r=localStorage.getItem('ann_data');return r?JSON.parse(r):null}catch(_){return null}
 }
 function _writeAnnCache(d){
-  try{if(d)localStorage.setItem('ann_data',JSON.stringify(d));else localStorage.removeItem('ann_data')}catch(_){}
+  try{if(d){localStorage.setItem('ann_data',JSON.stringify(d));console.log('[ANN-CACHE] written')}else{localStorage.removeItem('ann_data');console.log('[ANN-CACHE] CLEARED');console.trace('[ANN-CACHE] clear stack')}}catch(_){}
 }
 
 // Extract epoch‑seconds from any Timestamp shape the SDK might return:
@@ -2325,6 +2325,18 @@ function renderAnnouncement(){
     // Network/App Check error: keep cached banner if showing
     console.log('[ANN] phase2 ERROR:',e&&e.message,e&&e.code);
   });
+  // DEBUG: watch for anything removing the banner after mount
+  new MutationObserver(function(muts){
+    muts.forEach(function(m){
+      if(m.removedNodes.length){
+        console.log('[ANN-WATCH] nodes REMOVED from ann-slot!',m.removedNodes.length,'remaining children:',slot.children.length);
+        console.trace('[ANN-WATCH] removal stack');
+      }
+      if(m.type==='attributes'&&m.attributeName==='style'){
+        console.log('[ANN-WATCH] style changed on ann-slot:',slot.style.cssText);
+      }
+    });
+  }).observe(slot,{childList:true,subtree:true,attributes:true,attributeFilter:['style']});
 }
 
 // Re-mount banner from memory on SPA back-navigation
