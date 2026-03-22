@@ -478,9 +478,11 @@ document.addEventListener('click',function(e){
   desc.id='adlg-desc';
   var toggle=document.createElement('button');
   toggle.className='analytics-toggle';
-  var dot=document.createElement('span');dot.className='atog-dot';
   var tLabel=document.createElement('span');tLabel.className='atog-label';
-  toggle.appendChild(dot);toggle.appendChild(tLabel);
+  var track=document.createElement('span');track.className='atog-track';
+  var thumb=document.createElement('span');thumb.className='atog-thumb';
+  track.appendChild(thumb);
+  toggle.appendChild(tLabel);toggle.appendChild(track);
   var closeBtn=document.createElement('button');
   closeBtn.className='analytics-dialog-close';
 
