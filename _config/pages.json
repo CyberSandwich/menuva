@@ -93,6 +93,12 @@
       "title": "Regulatory Compliance",
       "description": "How menuva addresses UK data protection, cookie regulations, children's privacy, and food safety standards.",
       "priority": 0.3
+    },
+    {
+      "slug": "spring2026",
+      "title": "Spring Break 2026",
+      "description": "Service update for Menuva during the University of Warwick spring break 2026. Venue availability, schedule changes, and Term 2 highlights.",
+      "priority": 0.5
     }
   ],
   "sitemap_extra": [

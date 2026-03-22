@@ -23,6 +23,7 @@
     {"title": "Features", "titleZh": "功能", "url": "/features/", "cat": "Miscellaneous"},
     {"title": "Keyboard Shortcuts", "titleZh": "键盘快捷键", "url": "/shortcuts/", "cat": "Miscellaneous"},
     {"title": "Menuva Beta", "titleZh": "Menuva 测试版", "url": "https://testflight.apple.com/join/y6cwz9Qm", "cat": "Miscellaneous"},
+    {"title": "Spring Break 2026", "titleZh": "2026年春假", "url": "/spring2026/", "cat": "Miscellaneous"},
     {"title": "January 2026 Promotion", "titleZh": "2026年1月促销活动", "url": "/promo/", "cat": "Archive"}
   ]
 }
