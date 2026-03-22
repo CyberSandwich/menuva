@@ -226,7 +226,7 @@ You can withdraw consent for location processing at any time by disabling locati
 
 ## 11. Your rights and how they work in an accountless service
 
-**11.1** Depending on your circumstances, you may have the following rights under the UK GDPR: access (Art. 15), rectification (Art. 16), erasure (Art. 17), restriction of processing (Art. 18), data portability (Art. 20), and objection (Art. 21). You also have the right to lodge a complaint with the UK supervisory authority, the Information Commissioner's Office (ico.org.uk).
+**11.1** Depending on your circumstances, you may have the following rights under the UK GDPR: access (Art. 15), rectification (Art. 16), erasure (Art. 17), restriction of processing (Art. 18), data portability (Art. 20), and objection (Art. 21). You also have the right to lodge a complaint with the Information Commissioner's Office (ICO): website ico.org.uk, phone 0303 123 1113, address Wycliffe House, Water Lane, Wilmslow, Cheshire SK9 5AF.
 
 **11.2** **Article 11 — identification not required.** Because the Service does not require identification of data subjects, we may be unable to identify your personal data in our analytics systems. Under UK GDPR Article 11, we are not required to process additional information solely to identify you. If you contact us to exercise your rights, please provide any information that could help us locate your data (for example, the email address you used to submit feedback or the approximate date of your correspondence). Where we cannot identify your data, we will explain why and what steps you can take.
 
