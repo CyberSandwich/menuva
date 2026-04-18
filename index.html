@@ -78,16 +78,27 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
   from{opacity:0;transform:translateY(16px)}
   to{opacity:1;transform:none}
 }
-.hero-text{
+.hero-text-btn{
   display:block;
   max-width:280px;
   width:70%;
-  height:auto;
   margin:40px auto 64px;
-  user-select:none;
-  -webkit-user-drag:none;
+  background:none;
+  border:0;
+  padding:0;
+  font:inherit;
+  color:inherit;
   cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
   animation:heroIn .5s cubic-bezier(.25,.46,.45,.94) .1s both
+}
+.hero-text-btn:focus-visible{border-radius:8px}
+.hero-text{
+  display:block;
+  width:100%;
+  height:auto;
+  user-select:none;
+  -webkit-user-drag:none
 }
 .hero-phone{
   display:block;
@@ -193,7 +204,7 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
 
 <main id="main" class="wrap">
   <h1 class="sr-only">menuva</h1>
-  <img class="hero-text" src="/hero-text-en.png?v=10" alt="menuva - your digital menu platform" width="833" height="236" decoding="async">
+  <button type="button" class="hero-text-btn" aria-label="Show QR code"><img class="hero-text" src="/hero-text-en.png?v=10" alt="" width="833" height="236" decoding="async"></button>
   <img class="hero-phone" src="/hero-phone-en.png?v=10" alt="menuva app showing map view of nearby restaurants" width="1237" height="2560" decoding="async" loading="lazy">
 
   <div class="dl-link">
@@ -235,8 +246,8 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
 import { initCommandPalette, initKeyboard, initLanguage, registerStrings, chrome } from '/js/shared.js?v=10';
 
 registerStrings({
-  en:{dlBtn:'Download on the App Store',dlTitle:'Download menuva on the App Store',giveFeedback:'Give Feedback',copyLabel:'Copy',copyEmail:'Copy Email Address',copyFeedback:'Copy Feedback Link',sendEmail:'Send email',feedbackTitle:'Give feedback',heroTextAlt:'menuva - your digital menu platform',heroPhoneAlt:'menuva app showing map view of nearby restaurants'},
-  zh:{dlBtn:'在 App Store 下载',dlTitle:'在 App Store 下载 menuva',giveFeedback:'意见反馈',copyLabel:'复制',copyEmail:'复制邮箱地址',copyFeedback:'复制反馈链接',sendEmail:'发送邮件',feedbackTitle:'意见反馈',heroTextAlt:'menuva - 您的智能点餐平台',heroPhoneAlt:'menuva 应用展示附近餐厅地图'}
+  en:{dlBtn:'Download on the App Store',dlTitle:'Download menuva on the App Store',giveFeedback:'Give Feedback',copyLabel:'Copy',copyEmail:'Copy Email Address',copyFeedback:'Copy Feedback Link',sendEmail:'Send email',feedbackTitle:'Give feedback',heroPhoneAlt:'menuva app showing map view of nearby restaurants',showQR:'Show QR code'},
+  zh:{dlBtn:'在 App Store 下载',dlTitle:'在 App Store 下载 menuva',giveFeedback:'意见反馈',copyLabel:'复制',copyEmail:'复制邮箱地址',copyFeedback:'复制反馈链接',sendEmail:'发送邮件',feedbackTitle:'意见反馈',heroPhoneAlt:'menuva 应用展示附近餐厅地图',showQR:'显示二维码'}
 });
 
 // ==================== COPY ====================
@@ -305,8 +316,8 @@ function closeQR(){
   qrOverlay.classList.remove('open');
 }
 
-var heroLogo=document.querySelector('.hero-text');
-if(heroLogo)heroLogo.addEventListener('click',function(){openQR()});
+var heroLogo=document.querySelector('.hero-text-btn');
+if(heroLogo){heroLogo.setAttribute('aria-label',chrome('showQR'));heroLogo.addEventListener('click',function(){openQR()})}
 
 var heroPhone=document.querySelector('.hero-phone');
 if(heroPhone)heroPhone.addEventListener('click',function(){window.open('https://apps.apple.com/us/app/menuva/id6756895068','_blank')});
@@ -340,7 +351,9 @@ initLanguage({
     var suffix=lng==='zh'?'zh':'en';
 
     var heroText=document.querySelector('.hero-text');
-    if(heroText){heroText.src='/hero-text-'+suffix+'.png?v=10';heroText.alt=chrome('heroTextAlt')}
+    if(heroText)heroText.src='/hero-text-'+suffix+'.png?v=10';
+    var heroBtn=document.querySelector('.hero-text-btn');
+    if(heroBtn)heroBtn.setAttribute('aria-label',chrome('showQR'));
     var heroPhone=document.querySelector('.hero-phone');
     if(heroPhone){heroPhone.src='/hero-phone-'+suffix+'.png?v=10';heroPhone.alt=chrome('heroPhoneAlt')}
 
