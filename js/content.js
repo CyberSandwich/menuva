@@ -51,7 +51,7 @@ function parseMd(md){
     if(line.charAt(0)==='|'){
       if(!tbl){
         cl();h+='<table><thead><tr>';
-        line.split('|').filter(function(c){return c.trim()}).forEach(function(c){h+='<th>'+il(c.trim())+'</th>'});
+        line.split('|').filter(function(c){return c.trim()}).forEach(function(c){h+='<th scope="col">'+il(c.trim())+'</th>'});
         h+='</tr></thead><tbody>';
         tbl=true;
         if(i+1<lines.length&&/^\|[\s\-:|]+\|$/.test(lines[i+1]))i++;
@@ -124,7 +124,7 @@ function render(raw,el){
   var frag=document.createDocumentFragment();
   var doc=document.createElement('div');doc.className='doc';
 
-  var heading=document.createElement('div');heading.className='doc-heading';
+  var heading=document.createElement('h1');heading.className='doc-heading';
   heading.textContent=meta.heading||meta.title||'';doc.appendChild(heading);
 
   var metaDiv=document.createElement('div');metaDiv.className='doc-meta';
