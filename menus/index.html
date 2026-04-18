@@ -1098,7 +1098,7 @@ function renderItem(item,currency,eager){
 
   // Add button
   var addBtn=document.createElement('button');addBtn.className='icard-add';
-  addBtn.textContent='+';addBtn.setAttribute('aria-label','Add');
+  addBtn.textContent='+';addBtn.setAttribute('aria-label',_addBtnLabel(item,null,0));
   card.appendChild(addBtn);
 
   // Searchable text for in-menu search
@@ -3451,16 +3451,34 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
   return bar;
 }
 
+function _addBtnLabel(item,level,count){
+  var name=resolveLang(item&&item.name)||'';
+  if(level&&level!=='safe'){
+    var prefix=level==='contains'?'containsYourRestriction':'mayContainYourRestriction';
+    var fullKey=count>1?prefix+'s':prefix;
+    return chrome(fullKey)+'. '+name;
+  }
+  return chrome('addToBasket')+' '+name;
+}
+
 function _setAddBtnAllergen(btn,level,count){
   btn.classList.remove('af-contains','af-may');
+  var card=btn.closest&&btn.closest('.icard');
+  var item=null;
+  if(card){
+    var idx=parseInt(card.getAttribute('data-item-idx'),10);
+    if(!isNaN(idx))item=_viewerItems[idx];
+  }
   if(!level||level==='safe'){
     btn.textContent='+';
+    if(item)btn.setAttribute('aria-label',_addBtnLabel(item,null,0));
     return;
   }
   var prefix=level==='contains'?'containsYourRestriction':'mayContainYourRestriction';
   var fullKey=count>1?prefix+'s':prefix;
   btn.textContent=chrome(fullKey);
   btn.classList.add(level==='contains'?'af-contains':'af-may');
+  if(item)btn.setAttribute('aria-label',_addBtnLabel(item,level,count));
 }
 
 function applyAllergenFilter(secContainer,pillsBar){
@@ -3695,9 +3713,9 @@ function _bskItemQty(itemId){
 
 function _bskMakeAddBtn(card,item){
   var addBtn=document.createElement('button');addBtn.className='icard-add';
-  addBtn.textContent='+';addBtn.setAttribute('aria-label','Add');
   var afLevel=card.getAttribute('data-af-level');
   var afCount=parseInt(card.getAttribute('data-af-count'),10)||0;
+  addBtn.textContent='+';addBtn.setAttribute('aria-label',_addBtnLabel(item,afLevel||null,afCount));
   if(afLevel&&afLevel!=='safe')_setAddBtnAllergen(addBtn,afLevel,afCount);
   return addBtn;
 }
