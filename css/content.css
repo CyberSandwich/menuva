@@ -26,7 +26,7 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
   font-weight:700;
   letter-spacing:-.03em;
   color:var(--t1);
-  margin-bottom:4px
+  margin:0 0 4px
 }
 .doc-meta{
   font-size:.75rem;
