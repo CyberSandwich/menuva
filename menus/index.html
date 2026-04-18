@@ -564,7 +564,7 @@ body{overflow-x:hidden}
 <main id="main" class="wrap">
   <h1 class="stitle">Menus</h1>
   <div id="dl-slot"></div>
-  <div id="ann-slot"></div>
+  <div id="ann-slot" aria-live="polite"></div>
   <div class="search-wrap"><input type="text" id="msearch" class="search" placeholder="Search Menus" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-label="Search Menus" aria-controls="mlist" maxlength="100"><button class="search-x" aria-label="Clear search"></button><span id="msearch-live" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap"></span></div>
   <div id="mlist"></div>
   <div id="menu-view" style="display:none"></div>
@@ -2224,7 +2224,7 @@ function _buildAnnBanner(d,instant){
     var chev=chevDoc.body.firstChild;
     if(chev){chev.style.cssText='width:14px;height:14px;flex-shrink:0;opacity:.5';el.appendChild(chev)}
   }
-  el.setAttribute('role',hasLink?'link':'status');
+  el.setAttribute('tabindex','0');
   return el;
 }
 
