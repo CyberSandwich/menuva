@@ -3300,15 +3300,15 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
 
   // Date field
   var dateField=document.createElement('div');dateField.className='preview-field';
-  var dateLbl=document.createElement('label');dateLbl.className='preview-label';dateLbl.textContent=chrome('previewDate');
-  var dateInput=document.createElement('input');dateInput.type='date';dateInput.className='preview-input';
+  var dateLbl=document.createElement('label');dateLbl.className='preview-label';dateLbl.textContent=chrome('previewDate');dateLbl.htmlFor='preview-date-input';
+  var dateInput=document.createElement('input');dateInput.type='date';dateInput.className='preview-input';dateInput.id='preview-date-input';dateInput.autocomplete='off';
   dateField.appendChild(dateLbl);dateField.appendChild(dateInput);
   previewPanel.appendChild(dateField);
 
   // Time field
   var timeField=document.createElement('div');timeField.className='preview-field';
-  var timeLbl=document.createElement('label');timeLbl.className='preview-label';timeLbl.textContent=chrome('previewTime');
-  var timeInput=document.createElement('input');timeInput.type='time';timeInput.className='preview-input';
+  var timeLbl=document.createElement('label');timeLbl.className='preview-label';timeLbl.textContent=chrome('previewTime');timeLbl.htmlFor='preview-time-input';
+  var timeInput=document.createElement('input');timeInput.type='time';timeInput.className='preview-input';timeInput.id='preview-time-input';timeInput.autocomplete='off';
   timeField.appendChild(timeLbl);timeField.appendChild(timeInput);
   previewPanel.appendChild(timeField);
 
