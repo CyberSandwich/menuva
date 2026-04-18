@@ -3051,11 +3051,10 @@ function _syncPillClasses(container){
   pills.forEach(function(p){
     var key=p.getAttribute('data-akey');
     var type=p.getAttribute('data-atype');
-    if(type==='allergen'){
-      p.classList.toggle('active-allergen',_activeAllergens.has(ALLERGEN_NORMALIZE[key]||key));
-    }else{
-      p.classList.toggle('active-dietary',_activeDietary.has(key));
-    }
+    if(!key||!type)return;
+    var active=type==='allergen'?_activeAllergens.has(ALLERGEN_NORMALIZE[key]||key):_activeDietary.has(key);
+    p.classList.toggle(type==='allergen'?'active-allergen':'active-dietary',active);
+    p.setAttribute('aria-pressed',active?'true':'false');
   });
 }
 
@@ -3260,6 +3259,7 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
     var key=DIETARY_KEYS[i];
     var pill=document.createElement('button');pill.className='afilter-pill';
     pill.setAttribute('data-akey',key);pill.setAttribute('data-atype','dietary');
+    pill.setAttribute('aria-pressed','false');
     pill.textContent=dLabels[key]||key;
     filterPills.appendChild(pill);
   }
@@ -3272,6 +3272,7 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
     var key=ALLERGEN_KEYS[i];
     var pill=document.createElement('button');pill.className='afilter-pill';
     pill.setAttribute('data-akey',key);pill.setAttribute('data-atype','allergen');
+    pill.setAttribute('aria-pressed','false');
     pill.textContent=aLabels[key]||key;
     filterPills.appendChild(pill);
   }
