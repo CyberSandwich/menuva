@@ -288,10 +288,12 @@ export function initCommandPalette(config){
   var cmdOpen=false;
   var cmdIdx=-1;
   var cmdItems=null;
+  var cmdPrevFocus=null;
 
   function openCmd(){
     if(cmdOpen)return;
     onBeforeOpen();
+    cmdPrevFocus=document.activeElement;
     cmdOpen=true;
     cmdInput.value='';
     cmdX.style.display='none';
@@ -323,6 +325,7 @@ export function initCommandPalette(config){
     cmdOverlay.setAttribute('aria-hidden','true');
     cmdOverlay.classList.remove('open');
     cmdInput.blur();
+    if(cmdPrevFocus){try{cmdPrevFocus.focus()}catch(_){}cmdPrevFocus=null}
   }
 
   cmdOverlay.addEventListener('click',function(e){
@@ -358,7 +361,7 @@ export function initCommandPalette(config){
       cmdResults.appendChild(empty);return;
     }
     results.forEach(function(r){
-      var row=document.createElement('button');row.className='cmd-row';
+      var row=document.createElement('button');row.className='cmd-row';row.tabIndex=-1;
       var t=document.createElement('span');t.className='cmd-row-title';t.textContent=r.title;
       var tag=document.createElement('span');tag.className='cmd-row-type';tag.textContent=r.type;
       row.appendChild(t);row.appendChild(tag);
@@ -385,8 +388,17 @@ export function initCommandPalette(config){
     cmdTimer=setTimeout(cmdRender,80);
   });
   cmdX.addEventListener('click',function(){clearTimeout(cmdTimer);cmdInput.value='';cmdX.style.display='none';cmdRender();cmdInput.focus()});
+  cmdX.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){e.preventDefault();closeCmd();return}
+    if(e.key==='Tab'){e.preventDefault();cmdInput.focus()}
+  });
+  cmdOverlay.addEventListener('keydown',function(e){
+    if(e.defaultPrevented)return;
+    if(e.key==='Escape'){e.preventDefault();closeCmd()}
+  });
 
   cmdInput.addEventListener('keydown',function(e){
+    if(e.key==='Tab'&&e.shiftKey&&cmdX.style.display!=='none'){e.preventDefault();cmdX.focus();return}
     if(e.key==='ArrowDown'||(!e.shiftKey&&e.key==='Tab')){e.preventDefault();cmdNav(1)}
     else if(e.key==='ArrowUp'||(e.shiftKey&&e.key==='Tab')){e.preventDefault();cmdNav(-1)}
     else if(e.key==='Enter'){
