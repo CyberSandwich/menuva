@@ -3573,6 +3573,7 @@ var _bskFab=null;
 var _bskBackdrop=null;
 var _bskPanel=null;
 var _bskPanelOpen=false;
+var _bskPrevFocus=null;
 
 // ---- Basket data model ----
 
@@ -3946,6 +3947,7 @@ function _bskRenderList(){
 
 function _bskOpenPanel(){
   if(_bskPanelOpen||!_basket.length)return;
+  _bskPrevFocus=document.activeElement;
   _bskPanelOpen=true;
   _ga('view_cart',{currency:_viewerCurrency,value:basketTotal()/100,items:_basket.map(function(b){return{item_id:b.item.id,item_name:resolveLang(b.item.name)||'',price:b.unitPrice/100,quantity:b.quantity}})});
   _bskBuildPanelDOM();
@@ -3965,6 +3967,7 @@ function _bskClosePanel(){
   _bskPanel.classList.remove('open');
   _bskBackdrop.classList.remove('open');
   document.body.style.overflow='';
+  if(_bskPrevFocus){try{_bskPrevFocus.focus()}catch(_){}_bskPrevFocus=null}
 }
 
 // Initialize basket DOM (only in viewer mode)
