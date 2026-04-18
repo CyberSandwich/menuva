@@ -490,6 +490,7 @@ document.addEventListener('click',function(e){
   desc.id='adlg-desc';
   var toggle=document.createElement('button');
   toggle.className='analytics-toggle';
+  toggle.setAttribute('role','switch');
   var tLabel=document.createElement('span');tLabel.className='atog-label';
   var track=document.createElement('span');track.className='atog-track';
   var thumb=document.createElement('span');thumb.className='atog-thumb';
@@ -517,6 +518,7 @@ document.addEventListener('click',function(e){
     desc.textContent=chrome('analyticsDesc');
     var state=getState();
     toggle.setAttribute('data-state',state);
+    toggle.setAttribute('aria-checked',state==='on'?'true':'false');
     tLabel.textContent=chrome(state==='on'?'analyticsOn':'analyticsOff');
     closeBtn.textContent=chrome('analyticsClose');
     btn.textContent=chrome('manageAnalytics');
@@ -564,7 +566,8 @@ document.addEventListener('click',function(e){
   toggle.addEventListener('click',function(){
     var cur=getState();
     try{localStorage.setItem('analytics_consent',cur==='on'?'denied':'granted')}catch(_){}
-    location.reload();
+    applyText();
+    setTimeout(function(){location.reload()},200);
   });
 
   closeBtn.addEventListener('click',closeDialog);
