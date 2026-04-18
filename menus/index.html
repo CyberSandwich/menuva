@@ -351,7 +351,7 @@ body{overflow-x:hidden}
   display:none;flex-wrap:wrap;gap:8px;padding:10px 0 2px;
   max-height:0;overflow:hidden;transition:max-height .25s ease,opacity .2s;opacity:0
 }
-.afilter-pills.open{display:flex;max-height:400px;opacity:1}
+.afilter-pills.open{display:flex;max-height:800px;opacity:1}
 .afilter-pill{
   padding:9px 14px;min-height:44px;border-radius:var(--rr);
   border:1.5px solid var(--bdr);background:var(--card);
@@ -3344,6 +3344,7 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
     if(!pill)return;
     var key=pill.getAttribute('data-akey');
     var type=pill.getAttribute('data-atype');
+    if(!key||!type)return;
     var userSet=type==='allergen'?_userAllergens:_userDietary;
     var normKey=type==='allergen'?(ALLERGEN_NORMALIZE[key]||key):key;
 
