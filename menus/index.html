@@ -1050,6 +1050,7 @@ function renderItem(item,currency,eager){
   var card=document.createElement('div');card.className='icard';
   card.setAttribute('data-item-idx',idx);
   card.setAttribute('role','button');card.tabIndex=0;
+  card.setAttribute('aria-label',resolveLang(item.name)||'');
 
   // Image (optional - triggers 4-quadrant grid layout)
   var url=pickImage(item.media);
