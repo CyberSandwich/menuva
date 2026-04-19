@@ -2,7 +2,7 @@
 title: 投资者
 heading: 投资者
 effective: 2026年3月18日
-updated: 2026年3月18日
+updated: 2026年4月19日
 ---
 
 感谢您对 Menuva 的关注。本页面概述了 Menuva 的发展机遇、当前进展，以及如何就餐饮行业的未来展开对话。
@@ -110,7 +110,7 @@ Menuva 的核心产品对食客和餐厅均免费，且将持续保持免费。�
 - 20+ 家餐厅已入驻，且快速增长中
 - menuva.co.uk 网页端菜单浏览已上线
 - 获华威大学及华威商学院官方报道
-- Lord Rootes 基金获得者
+- Lord Rootes 基金获得者（来自华威大学的 2,868 英镑非稀释性资助）
 - 餐厅管理后台已上线 (admin.menuva.co.uk)
 
 ### 路线图
@@ -134,7 +134,7 @@ Menuva 由 Duke Saputra 创立，他是华威商学院的应届毕业生。Duke 
 
 - **微软 Early in Career 奖**（Microsoft Early in Career Award）
 - **华威商学院年级最高分（x2）**
-- **Lord Rootes 基金**获得者
+- **Lord Rootes 基金**获得者（来自华威大学的 2,868 英镑非稀释性资助）
 - 获大学及商学院媒体多次报道
 
 ## 11. 当前投资状态

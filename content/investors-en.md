@@ -2,7 +2,7 @@
 title: Investors
 heading: Investors
 effective: 18 March 2026
-updated: 18 March 2026
+updated: 19 April 2026
 ---
 
 Thank you for your interest in Menuva. This page outlines the opportunity, our progress, and how to start a conversation about the future of dining.
@@ -110,7 +110,7 @@ To request this information, please contact [ventures@saputra.co.uk](mailto:vent
 - 20+ venues onboarded and growing rapidly
 - Web menu browsing live at menuva.co.uk
 - Featured by the University of Warwick and Warwick Business School
-- Lord Rootes Fund recipient
+- Lord Rootes Fund recipient (£2,868 non-dilutive grant from the University of Warwick)
 - Admin dashboard live for restaurant operators at admin.menuva.co.uk
 
 ### Roadmap
@@ -134,7 +134,7 @@ Menuva is founded by Duke Saputra, a final-year student at Warwick Business Scho
 
 - **Microsoft Early in Career Award**
 - **WBS Top Year Mark (x2)**
-- **Lord Rootes Fund** recipient
+- **Lord Rootes Fund** recipient (£2,868 non-dilutive grant from the University of Warwick)
 - Featured across university and business school media
 
 ## 11. Current investment status
