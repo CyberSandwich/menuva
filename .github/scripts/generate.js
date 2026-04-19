@@ -129,12 +129,23 @@ function renderBody(raw) {
 
 function buildContactBlock(meta, lang) {
   if (!meta.contact_questions && !meta.contact_support) return '';
-  const strings = lang === 'zh' ? { questions: '\u54a8\u8be2', support: '\u652f\u6301' } : { questions: 'Questions', support: 'Support' };
-  const parts = [];
-  if (meta.contact_questions) parts.push(strings.questions + ': <a href="mailto:' + escAttr(meta.contact_questions) + '">' + escHtml(meta.contact_questions) + '</a>');
-  if (meta.contact_support) parts.push(strings.support + ': <a href="mailto:' + escAttr(meta.contact_support) + '">' + escHtml(meta.contact_support) + '</a>');
+  const strings = lang === 'zh'
+    ? { contact: '\u8054\u7cfb', questions: '\u54a8\u8be2', support: '\u652f\u6301' }
+    : { contact: 'Contact', questions: 'Questions', support: 'Support' };
+  const rows = [];
+  if (meta.contact_questions) {
+    rows.push('<p><strong>' + strings.questions + '</strong>: <a href="mailto:' + escAttr(meta.contact_questions) + '">' + escHtml(meta.contact_questions) + '</a></p>');
+  }
+  if (meta.contact_support) {
+    rows.push('<p><strong>' + strings.support + '</strong>: <a href="mailto:' + escAttr(meta.contact_support) + '">' + escHtml(meta.contact_support) + '</a></p>');
+  }
   const hidden = lang === 'zh' ? ' hidden' : '';
-  return '<div class="doc-contact" data-lang="' + lang + '"' + hidden + '>' + parts.join(' <span aria-hidden="true">&middot;</span> ') + '</div>';
+  return (
+    '<div class="doc-body" data-lang="' + lang + '"' + hidden + '>' +
+    '<div class="link-sec"><h3>' + strings.contact + '</h3></div>' +
+    '<div class="pcontent">' + rows.join('') + '</div>' +
+    '</div>'
+  );
 }
 
 function applyPlaceholders(html, map) {
