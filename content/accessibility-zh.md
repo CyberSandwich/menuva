@@ -2,7 +2,7 @@
 title: 无障碍声明
 heading: Menuva 无障碍声明
 effective: 2026年3月17日
-updated: 2026年3月18日
+updated: 2026年4月19日
 contact_questions: hello@menuva.co.uk
 contact_support: support@menuva.co.uk
 ---
@@ -12,7 +12,7 @@ contact_support: support@menuva.co.uk
 > **要点:**
 > - Menuva 提供 iOS 应用和网页应用两种形式
 > - 两个平台在设计时均考虑了无障碍性,包括动态字体、良好对比度和简洁层次结构
-> - 网页应用的目标是符合 WCAG 2.2 AA 级标准
+> - 网页应用的目标是符合网页内容无障碍指南 (WCAG) 2.2 AA 级标准
 > - 正式的无障碍审计和修复计划在 2026 年 4 月 27 日之前完成
 
 ## 1. iOS 应用

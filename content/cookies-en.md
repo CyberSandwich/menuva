@@ -2,7 +2,7 @@
 title: Cookie Policy
 heading: Cookie Policy
 effective: 22 March 2026
-updated: 22 March 2026
+updated: 19 April 2026
 ---
 
 This Cookie Policy explains how menuva.co.uk ("the Website") uses cookies, local storage, and similar technologies. It should be read alongside our [Privacy Policy](/privacy/).
@@ -43,7 +43,7 @@ These items are stored in your browser's local storage for functionality and per
 | `swr_*` | Cached JSON responses (page content, link lists) to reduce loading times | Until cleared | Menuva |
 | `md12_*` | Cached and versioned page content for faster navigation | Until version bump | Menuva |
 | `mlist_raw`, `mlist_ts` | Cached restaurant list and its fetch timestamp | Until cleared | Menuva |
-| `menu_json_*` | Cached menu data (up to 5–7 menus, oldest evicted automatically) | LRU eviction | Menuva |
+| `menu_json_*` | Cached menu data (up to 5-7 menus, oldest evicted automatically) | Least-recently-used (LRU) eviction | Menuva |
 | `menu_sha_*` | Content hash for cache validation (checks if menu has changed) | LRU eviction | Menuva |
 | `menu_doc_*` | Cached Firestore document metadata for each menu | LRU eviction | Menuva |
 | `menu_ts_*` | Timestamp of when each menu was last cached | LRU eviction | Menuva |

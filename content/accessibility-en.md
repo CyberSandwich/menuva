@@ -2,7 +2,7 @@
 title: Accessibility Statement
 heading: Menuva Accessibility Statement
 effective: 17 March 2026
-updated: 18 March 2026
+updated: 19 April 2026
 contact_questions: hello@menuva.co.uk
 contact_support: support@menuva.co.uk
 ---
@@ -12,7 +12,7 @@ This is a voluntary accessibility statement for Menuva, a non-commercial, studen
 > **Key points:**
 > - Menuva is available as an iOS app and a web application
 > - both platforms are designed with accessibility in mind, including Dynamic Type, good contrast, and simple hierarchy
-> - WCAG 2.2 Level AA compliance is our target for the web application
+> - Web Content Accessibility Guidelines (WCAG) 2.2 Level AA compliance is our target for the web application
 > - a formal accessibility audit with fixes is planned before 27 April 2026
 
 ## 1. iOS application

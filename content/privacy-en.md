@@ -2,7 +2,7 @@
 title: Privacy Policy
 heading: Menuva Privacy Policy
 effective: 22 March 2026
-updated: 22 March 2026
+updated: 19 April 2026
 contact_questions: hello@menuva.co.uk
 contact_support: support@menuva.co.uk
 ---
@@ -94,13 +94,13 @@ This Privacy Policy is provided in accordance with the [UK General Data Protecti
 - Free-text search queries are never logged. Search events send only the result count.
 - Dietary and allergen configuration events log only is_settings_mode (a boolean indicating onboarding vs. settings). Specific dietary or allergen selections are never sent.
 - Allergen subsection interactions log only the subsection identifier and whether it was expanded or collapsed. Severity information is not included.
-- Menu customization identifiers (customization and option IDs) are hashed using FNV-1a to opaque values before being sent to analytics. The original names cannot be recovered from analytics data alone.
+- Menu customization identifiers (customization and option IDs) are hashed using Fowler-Noll-Vo 1a (FNV-1a) to opaque values before being sent to analytics. The original names cannot be recovered from analytics data alone.
 - Location data in analytics is limited to a boolean flag (has_location) and venue identifiers (restaurant slug). Coordinates are never sent.
 - No personal identifiers, names, or email addresses are included in analytics events. We do not set a custom user ID in analytics.
 
 **3.C.7** **Device and technical data.** Firebase Analytics and Google Analytics process device and app information and identifiers used for measurement (for example, an app-instance identifier), plus technical data that may be processed by the analytics provider to deliver the service securely and reliably (such as IP address and request metadata).
 
-**3.C.8** **Ad features.** Ad storage, ad user data, and ad personalization are all disabled by default in both the App and the Website. We do not collect the advertising identifier (IDFA), do not use ATT-based tracking, and do not use analytics for cross-app or cross-site advertising.
+**3.C.8** **Ad features.** Ad storage, ad user data, and ad personalization are all disabled by default in both the App and the Website. We do not collect the advertising identifier (IDFA), do not use App Tracking Transparency (ATT)-based tracking, and do not use analytics for cross-app or cross-site advertising.
 
 **3.C.9** **Outbound link tracking.** When you click a link to an external website, the link URL and link text (up to 100 characters) are recorded in analytics to understand which external resources are useful.
 

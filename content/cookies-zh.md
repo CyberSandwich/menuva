@@ -2,7 +2,7 @@
 title: Cookie 政策
 heading: Cookie 政策
 effective: 2026年3月22日
-updated: 2026年3月22日
+updated: 2026年4月19日
 ---
 
 本 Cookie 政策说明 menuva.co.uk（以下简称"网站"）如何使用 Cookie、本地存储及类似技术。请结合我们的[隐私政策](/privacy/)一并阅读。
@@ -43,7 +43,7 @@ Cookie 是由浏览器存储在您设备上的小型文本文件。本地存储�
 | `swr_*` | 缓存的 JSON 响应（页面内容、链接列表），用于减少加载时间 | 直到清除 | Menuva |
 | `md12_*` | 缓存的版本化页面内容，用于更快的导航 | 直到版本更新 | Menuva |
 | `mlist_raw`、`mlist_ts` | 缓存的餐厅列表及其获取时间戳 | 直到清除 | Menuva |
-| `menu_json_*` | 缓存的菜单数据（最多 5-7 个菜单，最旧的自动清除） | LRU 淘汰 | Menuva |
+| `menu_json_*` | 缓存的菜单数据（最多 5-7 个菜单，最旧的自动清除） | 最近最少使用 (LRU) 淘汰 | Menuva |
 | `menu_sha_*` | 用于缓存验证的内容哈希（检查菜单是否已更改） | LRU 淘汰 | Menuva |
 | `menu_doc_*` | 每个菜单的缓存 Firestore 文档元数据 | LRU 淘汰 | Menuva |
 | `menu_ts_*` | 每个菜单最后一次缓存的时间戳 | LRU 淘汰 | Menuva |
