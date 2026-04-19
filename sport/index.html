@@ -3,10 +3,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
   <title>menuva | sport</title>
   <meta name="description" content="Redirecting…"/>
   <meta name="robots" content="noindex"/>
+  <meta name="theme-color" content="#FAFAFA"/>
+  <meta name="color-scheme" content="light"/>
+  <link rel="icon" type="image/png" href="/favicon.png?v=16">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=16">
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
   <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
   <script>
@@ -21,7 +25,7 @@
       var toUrl=new URL(DEST_PATH,location.origin);
       toUrl.search=params.toString();
       function go(){location.replace(toUrl.toString())}
-      function setLink(){var a=document.getElementById('fallbackLink');if(a)a.href=toUrl.toString()}
+      function setLink(){var a=document.getElementById('msg-link');if(a)a.href=toUrl.toString()}
       if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setLink,{once:true});else setLink();
       try{if(localStorage.getItem('analytics_consent')==='denied'){go();return}}catch(_){}
       var debug=params.get('debug_mode')==='true';
@@ -41,10 +45,30 @@
       setTimeout(go,DELAY);
     })();
   </script>
-  <style>body{margin:0;padding:24px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.muted{opacity:.7}</style>
+  <style>
+    :root{--bg:#FAFAFA;--card:#FFF;--t1:#1A1A1A;--t2:#6B6B6B;--t3:#9A9A9A;--bdr:#E8E8E8;--acc:#12B3A8;--shadow:0 1px 3px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.04);--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,system-ui,sans-serif}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{min-height:100%}
+    body{font-family:var(--font);background:var(--bg);color:var(--t1);display:grid;place-items:center;min-height:100vh;min-height:100dvh;padding:24px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.5}
+    main{width:100%;max-width:380px}
+    .card{background:var(--card);border-radius:24px;box-shadow:var(--shadow);padding:44px 32px;text-align:center}
+    .icon{width:56px;height:56px;margin:0 auto 20px;border-radius:18px;background:rgba(18,179,168,.1);color:var(--acc);display:grid;place-items:center}
+    .icon svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;animation:pulse 1.6s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.92)}}
+    h1{font-size:1.25rem;font-weight:600;letter-spacing:-.02em;margin-bottom:24px;color:var(--t1)}
+    .btn{display:inline-block;padding:11px 24px;background:var(--t1);color:var(--card);border-radius:50px;text-decoration:none;font-weight:500;font-size:.9375rem;letter-spacing:-.005em;transition:transform .12s,box-shadow .15s}
+    @media(hover:hover){.btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.12)}}
+    .btn:active{transform:translateY(0) scale(.98)}
+    @media(prefers-reduced-motion:reduce){.icon svg{animation:none!important}.btn{transition:none}}
+  </style>
 </head>
 <body>
-  <div>Redirecting…</div>
-  <div class="muted">If you are not redirected, <a id="fallbackLink" href="/">tap here</a></div>
+  <main>
+    <div class="card">
+      <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></svg></div>
+      <h1>Redirecting</h1>
+      <a id="msg-link" class="btn" href="/">Continue</a>
+    </div>
+  </main>
 </body>
 </html>

@@ -124,7 +124,7 @@
     { "slug": "sb", "name": "sherbourne", "blocks": "Sherbourne", "kitchens": 71 }
   ],
   "redirects_external": [
-    { "slug": "download", "dest": "https://apps.apple.com/us/app/menuva/id6756895068", "title": "Download menuva", "body": "Opening the App Store\u2026" },
-    { "slug": "beta", "dest": "https://testflight.apple.com/join/y6cwz9Qm", "title": "Beta", "body": "Opening TestFlight\u2026" }
+    { "slug": "download", "dest": "https://apps.apple.com/us/app/menuva/id6756895068", "title": "Download menuva", "body": "Opening the App Store" },
+    { "slug": "beta", "dest": "https://testflight.apple.com/join/y6cwz9Qm", "title": "Beta", "body": "Opening TestFlight" }
   ]
 }
