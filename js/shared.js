@@ -666,11 +666,13 @@ export function initKeyboard(config){
 
     if(_cmdHandle&&_cmdHandle.isOpen()){if(e.key==='Escape')_cmdHandle.close();return}
 
-    var tag=document.activeElement&&document.activeElement.tagName;
+    var ae=document.activeElement;
+    var tag=ae&&ae.tagName;
     if(tag==='INPUT'||tag==='TEXTAREA'){
-      if(e.key==='Escape'){document.activeElement.blur();kbClear()}
+      if(e.key==='Escape'){ae.blur();kbClear()}
       return;
     }
+    if(tag==='SELECT'||(ae&&ae.isContentEditable))return;
 
     if(e.metaKey||e.ctrlKey||e.altKey)return;
 
