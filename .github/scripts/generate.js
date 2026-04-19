@@ -183,15 +183,16 @@ function renderBody(raw) {
 function buildContactBlock(slug, lang) {
   if (slug === 'contact') return '';
   const strings = lang === 'zh'
-    ? { contact: '\u8054\u7cfb', visit: '\u524d\u5f80\u8054\u7cfb\u9875\u9762' }
-    : { contact: 'Contact', visit: 'Visit Contact page' };
+    ? { contact: '\u8054\u7cfb', email: '\u90ae\u7bb1', more: '\u66f4\u591a', visit: '\u524d\u5f80\u8054\u7cfb\u9875\u9762' }
+    : { contact: 'Contact', email: 'Email', more: 'More', visit: 'Visit Contact page' };
   const email = 'hello@menuva.co.uk';
   const hidden = lang === 'zh' ? ' hidden' : '';
   return (
     '<div class="doc-body" data-lang="' + lang + '"' + hidden + '>' +
     '<div class="link-sec"><h3>' + strings.contact + '</h3></div>' +
     '<div class="pcontent">' +
-    '<p><a href="mailto:' + email + '">' + email + '</a> &middot; <a href="/contact/">' + strings.visit + '</a></p>' +
+    '<p><strong>' + strings.email + '</strong>: <a href="mailto:' + email + '">' + email + '</a></p>' +
+    '<p><strong>' + strings.more + '</strong>: <a href="/contact/">' + strings.visit + '</a></p>' +
     '</div>' +
     '</div>'
   );
