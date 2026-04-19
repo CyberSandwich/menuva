@@ -63,7 +63,7 @@
 <body>
 <a href="#main" class="skip-link">Skip to Content</a>
 
-<main id="main" class="wrap">
+<main id="main" class="wrap"{{MAIN_ATTRS}}>
   <h1 class="doc-heading" data-lang="en">{{HEADING_EN}}</h1>
   <h1 class="doc-heading" data-lang="zh" hidden>{{HEADING_ZH}}</h1>
   <div class="doc-meta" data-lang="en">Effective date: {{EFFECTIVE_EN}} &middot; Last updated: {{UPDATED_EN}}</div>
@@ -88,7 +88,7 @@
 
 <script type="module">
 import{initContentPage}from'/js/content.js?v={{V}}';
-initContentPage({slug:'{{SLUG}}'});
+initContentPage({slug:'{{SLUG}}',version:'{{V}}'});
 </script>
 </body>
 </html>

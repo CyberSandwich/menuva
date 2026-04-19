@@ -138,6 +138,8 @@ if (!Array.isArray(config.content) || config.content.length === 0) {
     if (typeof entry.title !== 'string' || entry.title.length === 0) errors.push('content[' + i + '].title: must be a non-empty string');
     if (typeof entry.description !== 'string' || entry.description.length === 0) errors.push('content[' + i + '].description: must be a non-empty string');
     if (entry.priority != null && (typeof entry.priority !== 'number' || entry.priority < 0 || entry.priority > 1)) errors.push('content[' + i + '].priority: must be a number between 0.0 and 1.0');
+    if (entry.qr != null && typeof entry.qr !== 'boolean') errors.push('content[' + i + '].qr: must be a boolean');
+    if (entry.qr === true && !fs.existsSync(path.join(ROOT, 'qr-' + entry.slug + '.png'))) errors.push('content[' + i + '].qr: flag set but qr-' + entry.slug + '.png missing at repo root');
   });
 }
 if (!Array.isArray(config.sitemap_extra)) {
@@ -282,7 +284,8 @@ for (const entry of config.content) {
     BODY_EN: en.body,
     BODY_ZH: zh.body,
     CONTACT_EN: buildContactBlock(entry.slug, 'en'),
-    CONTACT_ZH: buildContactBlock(entry.slug, 'zh')
+    CONTACT_ZH: buildContactBlock(entry.slug, 'zh'),
+    MAIN_ATTRS: entry.qr === true ? ' data-qr="' + entry.slug + '"' : ''
   });
 
   const dir = path.join(ROOT, entry.slug);

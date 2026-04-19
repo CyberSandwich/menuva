@@ -306,7 +306,7 @@ var qrPrevFocus=null;
 function openQR(){
   if(qrOpen)return;
   if(cmd&&cmd.isOpen())cmd.close();
-  if(!qrImg.src)qrImg.src='/qr.png?v=10';
+  if(!qrImg.src)qrImg.src='/qr-home.png?v=10';
   qrPrevFocus=document.activeElement;
   qrOpen=true;
   document.body.style.overflow='hidden';

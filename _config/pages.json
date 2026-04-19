@@ -1,5 +1,5 @@
 {
-  "version": 17,
+  "version": 18,
   "year": 2026,
   "ga_id": "G-LLFDHVYBWL",
   "domain": "https://menuva.co.uk",
@@ -68,7 +68,8 @@
       "slug": "join",
       "title": "Add Your Restaurant",
       "description": "Add your restaurant to menuva. Reach more diners with a beautiful, interactive digital menu.",
-      "priority": 0.8
+      "priority": 0.8,
+      "qr": true
     },
     {
       "slug": "shortcuts",

@@ -147,6 +147,35 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
 
 .doc-body img{max-width:100%;height:auto;border-radius:12px;margin:8px 0}
 
+/* ── QR overlay (heading tap, pages with qr:true) ── */
+[data-qr] .doc-heading{cursor:pointer;-webkit-tap-highlight-color:transparent}
+[data-qr] .doc-heading:focus-visible{outline:2px solid var(--acc);outline-offset:4px;border-radius:6px}
+.qr-overlay{
+  position:fixed;inset:0;z-index:100;
+  background:rgba(0,0,0,.25);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;
+  transition:opacity .2s,visibility .2s;
+  outline:none
+}
+@supports(backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)){
+  .qr-overlay{backdrop-filter:blur(12px) saturate(1.4);-webkit-backdrop-filter:blur(12px) saturate(1.4);background:rgba(0,0,0,.18)}
+}
+.qr-overlay.open{opacity:1;visibility:visible}
+.qr-card{
+  background:#fff;
+  border-radius:20px;
+  padding:24px;overflow:hidden;
+  width:min(340px,80vmin);aspect-ratio:1;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 40px rgba(0,0,0,.16),0 2px 12px rgba(0,0,0,.08);
+  transform:scale(.92);opacity:0;
+  transition:transform .2s cubic-bezier(.2,.9,.3,1),opacity .2s;
+  cursor:pointer
+}
+.qr-overlay.open .qr-card{transform:scale(1);opacity:1}
+.qr-card img{width:100%;height:auto;display:block;image-rendering:crisp-edges;image-rendering:pixelated;border-radius:0;margin:0}
+
 /* ── Empty state ── */
 .empty{text-align:center;padding:48px 20px;color:var(--t3);font-size:.875rem}
 .empty a{color:var(--t2);text-decoration:none}
