@@ -6,7 +6,9 @@ updated: 7 December 2025
 contact_questions: hello@menuva.co.uk
 ---
 
-A 10% discount is available on eligible items ordered using Menuva at participating venues at the University of Warwick (the "Promotion"). By participating in the Promotion, you agree to be bound by these terms and any additional instructions reasonably issued by a participating venue.
+> This promotion ended on 23 January 2026. The terms below are retained for reference only.
+
+A 10% discount was available on eligible items ordered using Menuva at participating venues at the University of Warwick (the "Promotion"). By participating in the Promotion, you agreed to be bound by these terms and any additional instructions reasonably issued by a participating venue.
 
 ## 1. Overview
 
