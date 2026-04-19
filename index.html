@@ -304,10 +304,12 @@ var qrImg=document.createElement('img');qrImg.alt='QR code to menuva.co.uk';qrIm
 qrCard.appendChild(qrImg);qrOverlay.appendChild(qrCard);document.body.appendChild(qrOverlay);
 
 var qrOpen=false;
+var qrPrevFocus=null;
 function openQR(){
   if(qrOpen)return;
   if(cmd&&cmd.isOpen())cmd.close();
   if(!qrImg.src)qrImg.src='/qr.png?v=10';
+  qrPrevFocus=document.activeElement;
   qrOpen=true;
   document.body.style.overflow='hidden';
   qrOverlay.classList.add('open');
@@ -318,6 +320,7 @@ function closeQR(){
   qrOpen=false;
   document.body.style.overflow='';
   qrOverlay.classList.remove('open');
+  if(qrPrevFocus){try{qrPrevFocus.focus()}catch(_){}qrPrevFocus=null}
 }
 
 var heroLogo=document.querySelector('.hero-text-btn');
@@ -329,7 +332,10 @@ if(heroPhone)heroPhone.addEventListener('click',function(){window.open('https://
 qrOverlay.addEventListener('click',function(e){
   if(e.target===qrOverlay)closeQR();
 });
-qrOverlay.addEventListener('keydown',function(e){if(e.key==='Escape')closeQR()});
+qrOverlay.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){closeQR();return}
+  if(e.key==='Tab'){e.preventDefault();qrOverlay.focus()}
+});
 qrCard.addEventListener('click',function(){
   closeQR();
   if(cmd)cmd.open();
