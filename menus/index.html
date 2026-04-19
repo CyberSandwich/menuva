@@ -3214,9 +3214,8 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
   // Toolbar row: Filter + Preview buttons
   var row=document.createElement('div');row.className='toolbar-row';
 
-  // Filter toggle
+  // Filter toggle. No aria-label: the active-filter count badge must be part of the accessible name (M-12).
   var filterToggle=document.createElement('button');filterToggle.className='afilter-toggle';
-  filterToggle.setAttribute('aria-label',chrome('filter'));
   filterToggle.setAttribute('aria-expanded','false');
   filterToggle.setAttribute('aria-controls','tb-filter-panel');
   filterToggle.appendChild(_afilterMakeFunnelSvg());
