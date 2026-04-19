@@ -10,7 +10,7 @@ contact_questions: hello@menuva.co.uk
 ## 1. 入门
 
 1. Menuva 无需登录。完成引导流程后即可立即使用。
-2. 您必须同意[使用条款](https://menuva.co.uk/terms)和[隐私政策](https://menuva.co.uk/privacy)才能继续。在两个复选框均勾选之前无法继续操作。
+2. 您必须同意[使用条款](/terms/)和[隐私政策](/privacy/)才能继续。在两个复选框均勾选之前无法继续操作。
 
 ## 2. 个性化设置
 

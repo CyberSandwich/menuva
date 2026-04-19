@@ -10,7 +10,7 @@ How to personalize, browse menus, and place an order.
 ## 1. Getting started
 
 1. Menuva does not require a login. You can use the app immediately after onboarding.
-2. You must accept both the [Terms and Conditions](https://menuva.co.uk/terms) and the [Privacy Policy](https://menuva.co.uk/privacy) to proceed. You cannot continue until both checkboxes are selected.
+2. You must accept both the [Terms and Conditions](/terms/) and the [Privacy Policy](/privacy/) to proceed. You cannot continue until both checkboxes are selected.
 
 ## 2. Personalization
 
