@@ -2,7 +2,7 @@
 title: January 2026 Promotion
 heading: Menuva January 2026 Promotion Terms and Conditions
 effective: 7 December 2025
-updated: 7 December 2025
+updated: 19 April 2026
 contact_questions: hello@menuva.co.uk
 ---
 

@@ -2,7 +2,7 @@
 title: 2026年1月促销活动
 heading: Menuva 2026年1月促销活动条款与条件
 effective: 2025年12月7日
-updated: 2025年12月7日
+updated: 2026年4月19日
 contact_questions: hello@menuva.co.uk
 ---
 
