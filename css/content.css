@@ -103,6 +103,7 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
 .doc-body blockquote ul{margin:8px 0 0 20px;padding:0}
 .doc-body blockquote li{margin-bottom:4px}
 .doc-body blockquote p{font-size:.8125rem;margin-bottom:6px}
+.doc-body blockquote>:last-child{margin-bottom:0}
 
 .doc-body .doc-table{
   margin:12px 0 16px;
