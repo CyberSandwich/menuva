@@ -20,13 +20,13 @@ contact_support: support@menuva.co.uk
 
 **1.1** **数据控制者。** Duke DJ Saputra（学生主导项目，“Menuva”）。
 
-**1.2** **电子邮件。** hello@menuva.co.uk（常规咨询）和 support@menuva.co.uk（技术支持）。
+**1.2** **电子邮件。** [hello@menuva.co.uk](mailto:hello@menuva.co.uk)（常规咨询）和 [support@menuva.co.uk](mailto:support@menuva.co.uk)（技术支持）。
 
 **1.3** **地址。** Warwick Business School, University of Warwick, Scarman Rd, Coventry CV4 7AL, United Kingdom.
 
 **1.4** 如果您通过电子邮件联系我们，我们会处理您提供的信息以进行回复。
 
-**1.5** 我们已评估确认，根据英国 GDPR 第 37 条，我们无需任命数据保护官。如有隐私方面的咨询，请联系 hello@menuva.co.uk。
+**1.5** 我们已评估确认，根据英国 GDPR 第 37 条，我们无需任命数据保护官。如有隐私方面的咨询，请联系 [hello@menuva.co.uk](mailto:hello@menuva.co.uk)。
 
 ## 2. 目标用户和适用地区
 
@@ -261,7 +261,7 @@ contact_support: support@menuva.co.uk
 
 **11.2** **第 11 条：无需身份识别。** 由于本服务不要求识别数据主体的身份，我们可能无法在分析系统中识别您的个人数据。根据英国 GDPR 第 11 条，我们无需仅为识别您的身份而处理额外信息。如果您联系我们行使您的权利，请提供任何有助于我们定位您数据的信息（例如，您提交反馈时使用的电子邮件地址或您通信的大致日期）。如果我们无法识别您的数据，我们将解释原因以及您可以采取的步骤。
 
-**11.3** **行使您的权利。** 如需行使任何权利，请发送电子邮件至 hello@menuva.co.uk，主题行请注明"Data Request"。我们将在一个日历月内回复。
+**11.3** **行使您的权利。** 如需行使任何权利，请发送电子邮件至 [hello@menuva.co.uk](mailto:hello@menuva.co.uk)，主题行请注明"Data Request"。我们将在一个日历月内回复。
 
 **11.4** **反对分析。** 您可以随时反对分析处理。在网站上，使用页脚的分析开关或访问我们的 [Cookie 政策](/cookies/)。在应用中，使用"设置"中的"数据分析"开关来禁用分析收集。由于分析与账户身份无关，我们通常无法定位或删除与特定个人关联的历史分析记录。
 

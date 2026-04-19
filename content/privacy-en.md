@@ -20,13 +20,13 @@ This Privacy Policy is provided in accordance with the [UK General Data Protecti
 
 **1.1** **Controller.** Duke DJ Saputra (student-led project, "Menuva").
 
-**1.2** **Emails.** hello@menuva.co.uk (general) and support@menuva.co.uk (support).
+**1.2** **Emails.** [hello@menuva.co.uk](mailto:hello@menuva.co.uk) (general) and [support@menuva.co.uk](mailto:support@menuva.co.uk) (support).
 
 **1.3** **Address.** Warwick Business School, University of Warwick, Scarman Rd, Coventry CV4 7AL, United Kingdom.
 
 **1.4** If you contact us by email, we process the information you include to respond.
 
-**1.5** We have assessed that we are not required to appoint a Data Protection Officer under Article 37 of the UK GDPR. For privacy enquiries, contact hello@menuva.co.uk.
+**1.5** We have assessed that we are not required to appoint a Data Protection Officer under Article 37 of the UK GDPR. For privacy enquiries, contact [hello@menuva.co.uk](mailto:hello@menuva.co.uk).
 
 ## 2. Intended users and territory
 
@@ -261,7 +261,7 @@ To opt out of analytics on the website, use the analytics toggle in the footer o
 
 **11.2** **Article 11: identification not required.** Because the Service does not require identification of data subjects, we may be unable to identify your personal data in our analytics systems. Under UK GDPR Article 11, we are not required to process additional information solely to identify you. If you contact us to exercise your rights, please provide any information that could help us locate your data (for example, the email address you used to submit feedback or the approximate date of your correspondence). Where we cannot identify your data, we will explain why and what steps you can take.
 
-**11.3** **Exercising your rights.** To exercise any right, email hello@menuva.co.uk with the subject line "Data Request." We will respond within one calendar month.
+**11.3** **Exercising your rights.** To exercise any right, email [hello@menuva.co.uk](mailto:hello@menuva.co.uk) with the subject line "Data Request." We will respond within one calendar month.
 
 **11.4** **Objecting to analytics.** You can object to analytics processing at any time. On the Website, use the analytics toggle in the footer or visit our [Cookie Policy](/cookies/). On the App, use the Analytics toggle in Settings to disable analytics collection. Because analytics is not tied to an account identity, we generally cannot locate or delete past analytics records associated with a specific person.
 
