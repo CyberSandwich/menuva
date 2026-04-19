@@ -18,19 +18,21 @@
 :root{--bg:#FAFAFA;--card:#FFF;--t1:#1A1A1A;--t2:#6B6B6B;--t3:#9A9A9A;--bdr:#E8E8E8;--acc:#12B3A8;--shadow:0 1px 3px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.04);--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,system-ui,sans-serif}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{min-height:100%}
-body{font-family:var(--font);background:var(--bg);color:var(--t1);display:grid;place-items:center;padding:24px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.5}
-main{width:100%;max-width:420px}
-.card{background:var(--card);border-radius:28px;box-shadow:var(--shadow);padding:40px 32px;text-align:center}
-.icon{width:64px;height:64px;margin:0 auto 22px;border-radius:20px;background:rgba(18,179,168,.1);color:var(--acc);display:grid;place-items:center}
-.icon svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+body{font-family:var(--font);background:var(--bg);color:var(--t1);display:grid;place-items:center;min-height:100vh;min-height:100dvh;padding:24px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.5}
+main{width:100%;max-width:380px}
+.card{background:var(--card);border-radius:24px;box-shadow:var(--shadow);padding:44px 32px;text-align:center}
+.icon{width:56px;height:56px;margin:0 auto 20px;border-radius:18px;background:rgba(18,179,168,.1);color:var(--acc);display:grid;place-items:center}
+.icon svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .icon.redir svg{animation:pulse 1.6s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.92)}}
-h1{font-size:1.375rem;font-weight:600;letter-spacing:-.02em;margin-bottom:8px;color:var(--t1)}
-#msg-body{color:var(--t2);font-size:.9375rem;margin-bottom:24px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:var(--t1);color:var(--card);border-radius:50px;text-decoration:none;font-weight:500;font-size:.9375rem;transition:transform .12s,box-shadow .15s}
+h1{font-size:1.25rem;font-weight:600;letter-spacing:-.02em;margin-bottom:24px;color:var(--t1)}
+.btn{display:inline-block;padding:11px 24px;background:var(--t1);color:var(--card);border-radius:50px;text-decoration:none;font-weight:500;font-size:.9375rem;letter-spacing:-.005em;transition:transform .12s,box-shadow .15s,background .15s}
 @media(hover:hover){.btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.12)}}
 .btn:active{transform:translateY(0) scale(.98)}
-.btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.support{display:none;margin-top:20px;font-size:.8125rem;color:var(--t3)}
+.support a{color:var(--t2);text-decoration:none;border-bottom:1px solid var(--bdr);transition:color .15s,border-color .15s}
+@media(hover:hover){.support a:hover{color:var(--t1);border-bottom-color:var(--t3)}}
+.support.show{display:block}
 @media(prefers-reduced-motion:reduce){.icon svg{animation:none!important}.btn{transition:none}}
 </style>
 <script>try{if(localStorage.getItem('lang')==='zh')document.documentElement.lang='zh-Hans'}catch(_){}</script>
@@ -122,17 +124,13 @@ h1{font-size:1.375rem;font-weight:600;letter-spacing:-.02em;margin-bottom:8px;co
       if(ic&&o.icon)swapIcon(ic,o.icon,o.iconClass);
       var h=document.getElementById('msg-title');
       if(h&&o.title)h.textContent=o.title;
-      var body=document.getElementById('msg-body');
-      if(body&&o.text)body.textContent=o.text;
       var link=document.getElementById('msg-link');
       if(link){
         if(o.href)link.href=o.href;
-        if(o.linkText){
-          var tn=link.firstChild;
-          if(tn&&tn.nodeType===3)tn.nodeValue=o.linkText;
-          else link.insertBefore(document.createTextNode(o.linkText),link.firstChild);
-        }
+        if(o.linkText)link.textContent=o.linkText;
       }
+      var sup=document.getElementById('msg-support');
+      if(sup&&o.support)sup.classList.add('show');
     }
     if(document.body)go();
     else document.addEventListener('DOMContentLoaded',go,{once:true});
@@ -160,18 +158,18 @@ h1{font-size:1.375rem;font-weight:600;letter-spacing:-.02em;margin-bottom:8px;co
 
     document.title='menuva | '+title;
 
-    var bodyText,heading,iconKey;
+    var heading,iconKey;
     if(ext&&dest.indexOf('testflight')!==-1){
-      heading='Opening TestFlight';bodyText='Taking you to the beta...';iconKey='ext';
+      heading='Opening TestFlight';iconKey='ext';
     }else if(ext&&dest.indexOf('apps.apple.com')!==-1){
-      heading='Opening the App Store';bodyText='Taking you to the app...';iconKey='ext';
+      heading='Opening the App Store';iconKey='ext';
     }else if(ext){
-      heading='Opening link';bodyText='Taking you there...';iconKey='ext';
+      heading='Opening Link';iconKey='ext';
     }else{
-      heading='Redirecting';bodyText='Just a moment...';iconKey='compass';
+      heading='Redirecting';iconKey='compass';
     }
 
-    render({icon:iconKey,iconClass:'redir',title:heading,text:bodyText,href:ext?dest:toUrl,linkText:'Continue'});
+    render({icon:iconKey,iconClass:'redir',title:heading,href:ext?dest:toUrl,linkText:'Continue'});
 
     function doRedirect(){window.location.replace(toUrl)}
 
@@ -231,7 +229,7 @@ h1{font-size:1.375rem;font-weight:600;letter-spacing:-.02em;margin-bottom:8px;co
   var debug4=params4.get('debug_mode')==='true';
 
   document.title='menuva | 404';
-  render({icon:'q',title:'Page not found',text:"That page doesn't exist. Taking you home...",href:'/',linkText:'Go to homepage'});
+  render({icon:'q',title:'Page Not Found',href:'/',linkText:'Go to Homepage',support:true});
 
   function doRedirect4(){window.location.replace('/')}
 
@@ -264,8 +262,8 @@ h1{font-size:1.375rem;font-weight:600;letter-spacing:-.02em;margin-bottom:8px;co
   <div class="card">
     <div id="msg-icon" class="icon redir"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></svg></div>
     <h1 id="msg-title">Redirecting</h1>
-    <p id="msg-body">Just a moment...</p>
-    <a id="msg-link" class="btn" href="/">Continue<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    <a id="msg-link" class="btn" href="/">Continue</a>
+    <p id="msg-support" class="support">Something broken? <a href="mailto:support@menuva.co.uk">support@menuva.co.uk</a></p>
   </div>
 </main>
 </body>
