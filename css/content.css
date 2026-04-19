@@ -113,7 +113,7 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
 .doc-body .doc-table table{
   width:100%;
   border-collapse:collapse;
-  font-size:.8125rem;
+  font-size:.75rem;
   line-height:1.5;
   margin:0
 }
@@ -127,12 +127,12 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
   text-align:left;
   font-weight:600;
   color:var(--t1);
-  padding:10px 12px;
-  border-bottom:2px solid var(--bdr);
+  padding:7px 10px;
+  border-bottom:1px solid var(--bdr);
   background:var(--bg2)
 }
 .doc-body td{
-  padding:10px 12px;
+  padding:7px 10px;
   border-bottom:1px solid var(--bdr2);
   color:var(--t2);
   vertical-align:top
