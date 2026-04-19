@@ -2,7 +2,7 @@
 title: 合规
 heading: 法规合规
 effective: 2026年3月22日
-updated: 2026年3月22日
+updated: 2026年4月19日
 ---
 
 Menuva 重视法律合规。尽管 Menuva 是一个免费的学生主导试点项目，我们已经评估并解决了适用于处理个人数据和食品信息的英国数字服务的监管框架。本页面概述了我们的合规方法。
@@ -53,11 +53,9 @@ Menuva 重视法律合规。尽管 Menuva 是一个免费的学生主导试点�
 
 **5.1** 根据[《2006 年公司法》](https://www.legislation.gov.uk/ukpga/2006/46/contents)和[《2002 年电子商务（欧盟指令）条例》](https://www.legislation.gov.uk/uksi/2002/2013/contents)，我们提供以下信息：
 
-| | |
-| --- | --- |
-| **经营者** | Duke DJ Saputra |
-| **地址** | Warwick Business School, University of Warwick, Scarman Rd, Coventry CV4 7AL |
-| **电子邮件** | hello@menuva.co.uk |
+- **经营者：** Duke DJ Saputra
+- **地址：** Warwick Business School, University of Warwick, Scarman Rd, Coventry CV4 7AL
+- **电子邮件：** hello@menuva.co.uk
 
 **5.2** Menuva 是一个学生主导的项目，不是注册公司。
 

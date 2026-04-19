@@ -2,7 +2,7 @@
 title: Compliance
 heading: Regulatory Compliance
 effective: 22 March 2026
-updated: 22 March 2026
+updated: 19 April 2026
 ---
 
 Menuva takes legal compliance seriously. Although Menuva is a free, student-led pilot project, we have assessed and addressed the regulatory frameworks that apply to a UK-based digital service handling personal data and food information. This page summarises our approach.
@@ -53,11 +53,9 @@ Menuva takes legal compliance seriously. Although Menuva is a free, student-led 
 
 **5.1** In accordance with the [Companies Act 2006](https://www.legislation.gov.uk/ukpga/2006/46/contents) and the [Electronic Commerce (EC Directive) Regulations 2002](https://www.legislation.gov.uk/uksi/2002/2013/contents), we provide the following:
 
-| | |
-| --- | --- |
-| **Operator** | Duke DJ Saputra |
-| **Address** | Warwick Business School, University of Warwick, Scarman Rd, Coventry CV4 7AL |
-| **Email** | hello@menuva.co.uk |
+- **Operator:** Duke DJ Saputra
+- **Address:** Warwick Business School, University of Warwick, Scarman Rd, Coventry CV4 7AL
+- **Email:** hello@menuva.co.uk
 
 **5.2** Menuva is a student-led project and is not a registered company.
 
