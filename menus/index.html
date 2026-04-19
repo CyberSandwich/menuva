@@ -782,7 +782,7 @@ var _listScrollY=0;
 var _pillScrollHandler=null;
 
 if(isViewer){
-  var _t=$('.stitle');if(_t)_t.style.display='none';
+  var _t=$('.stitle');if(_t){_t.textContent='';_t.style.cursor=''}
   var _ds=$('#dl-slot');if(_ds)_ds.style.display='none';
   var _as=$('#ann-slot');if(_as)_as.style.display='none';
   var _sw=$('.search-wrap');if(_sw)_sw.style.display='none';
@@ -809,7 +809,7 @@ window.addEventListener('popstate',function(e){
     // Save list scroll before switching
     if(!isViewer)_listScrollY=window.scrollY;
     viewerSlug=st.slug;viewerLocId=st.loc||'';isViewer=true;
-    var _t=$('.stitle');if(_t)_t.style.display='none';
+    var _t=$('.stitle');if(_t){_t.textContent='';_t.style.cursor=''}
     var _ds=$('#dl-slot');if(_ds)_ds.style.display='none';
     var _as=$('#ann-slot');if(_as)_as.style.display='none';
     var _sw=$('.search-wrap');if(_sw)_sw.style.display='none';
@@ -826,7 +826,7 @@ window.addEventListener('popstate',function(e){
     _ga('page_view',{page_title:'Menus',page_path:'/menus/'});
     var _mv=$('#menu-view');
     _fadeOut(_mv,function(){
-      var _t=$('.stitle');if(_t){_t.style.display='';_t.style.opacity='1'}
+      var _t=$('.stitle');if(_t){_t.textContent=chrome('menus');_t.style.cursor='pointer';_t.style.display='';_t.style.opacity='1'}
       var _ds=$('#dl-slot');if(_ds){_ds.style.display='';_ds.style.opacity='1'}
       var _as=$('#ann-slot');if(_as){_as.style.display='';_as.style.opacity='1'}
       restoreAnnouncement();
@@ -1168,8 +1168,9 @@ function renderMenu(el,menu,doc,opts){
   var currency=menu.currency||doc.currency||'GBP';
   _viewerCurrency=currency;
 
-  // Venue header (matches list page stitle style)
-  var venueName=document.createElement('h2');venueName.className='stitle';
+  // Venue header: reuse the page's existing h1.stitle (lives outside #menu-view)
+  // so there is always exactly one h1 on the page.
+  var venueName=$('.stitle');
   // Pick location by URL param or fall back to first
   var loc=null;
   var targetLocId=viewerLocId;
@@ -1182,8 +1183,7 @@ function renderMenu(el,menu,doc,opts){
     if(!loc)loc=menu.locations[0];
   }
   var locName=loc?resolveLang(loc.name):'';
-  venueName.textContent=locName||resolveLang(menu.name)||resolveLang(doc.name)||doc.friendlyName||viewerSlug;
-  el.appendChild(venueName);
+  if(venueName)venueName.textContent=locName||resolveLang(menu.name)||resolveLang(doc.name)||doc.friendlyName||viewerSlug;
   var attribution=document.createElement('div');
   attribution.className='menu-attribution';
   var brandName=resolveLang(menu.name)||resolveLang(doc.name)||doc.friendlyName||viewerSlug;
@@ -4130,7 +4130,7 @@ var cmd = initCommandPalette({
 
 initLanguage({
   onApply:function(lng){
-    var t=document.querySelector('.stitle');if(t)t.textContent=chrome('menus');
+    var t=document.querySelector('.stitle');if(t&&!isViewer)t.textContent=chrome('menus');
     renderDlSlot();
     var si=document.querySelector('#msearch');
     if(si){si.placeholder=chrome('searchMenus');si.setAttribute('aria-label',chrome('searchMenus'))}
@@ -4145,7 +4145,10 @@ initLanguage({
 });
 
 var menuTitle=document.querySelector('.stitle');
-if(menuTitle){menuTitle.style.cursor='pointer';menuTitle.addEventListener('click',function(){if(cmd)cmd.open()})}
+if(menuTitle){
+  if(!isViewer)menuTitle.style.cursor='pointer';
+  menuTitle.addEventListener('click',function(){if(!isViewer&&cmd)cmd.open()});
+}
 
 initKeyboard({
   CUR_TAB:1,
