@@ -2143,7 +2143,7 @@ function makeDlCard(){
   var wrap=document.createElement('div');wrap.className='dl-link';
   var a=document.createElement('a');
   a.href='https://apps.apple.com/us/app/menuva/id6756895068';
-  a.target='_blank';a.rel='noopener noreferrer';a.title=chrome('download');
+  a.target='_blank';a.rel='noopener noreferrer';
   var parser=new DOMParser();var doc=parser.parseFromString(APPLE_SVG,'text/html');
   var svg=doc.body.firstChild;if(svg)a.appendChild(svg);
   a.appendChild(document.createTextNode(chrome('download')));
@@ -3957,7 +3957,7 @@ function _bskRenderList(){
       var minus=document.createElement('button');minus.className='bsk-minus';
       minus.textContent='\u2212';minus.setAttribute('aria-label',chrome('decreaseQty').replace('{name}',resolveLang(entry.item.name)||''));
       minus.addEventListener('click',function(){updateBasketQty(idx,-1)});
-      var val=document.createElement('div');val.className='bsk-qty-val';val.textContent=entry.quantity;
+      var val=document.createElement('div');val.className='bsk-qty-val';val.textContent=entry.quantity;val.setAttribute('aria-hidden','true');
       var plus=document.createElement('button');plus.className='bsk-plus';
       plus.textContent='+';plus.setAttribute('aria-label',chrome('increaseQty').replace('{name}',resolveLang(entry.item.name)||''));
       plus.addEventListener('click',function(){updateBasketQty(idx,1)});
