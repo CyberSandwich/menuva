@@ -83,7 +83,7 @@ export function parseMd(md, _depth) {
     if (para.length) { h += '<p>' + para.join('\n') + '</p>'; para = []; }
     if (ul) { h += '</ul>'; ul = false; }
     if (ol) { h += '</ol>'; ol = false; }
-    if (tbl) { h += '</tbody></table>'; tbl = false; }
+    if (tbl) { h += '</tbody></table></div>'; tbl = false; }
   }
 
   for (let i = 0; i < lines.length; i++) {
@@ -112,7 +112,7 @@ export function parseMd(md, _depth) {
     if (line.charAt(0) === '|') {
       if (!tbl) {
         cl();
-        h += '<table><thead><tr>';
+        h += '<div class="doc-table"><table><thead><tr>';
         line.split('|').filter(function (c) { return c.trim(); }).forEach(function (c) {
           h += '<th scope="col">' + il(c.trim()) + '</th>';
         });
