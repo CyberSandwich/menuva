@@ -4023,6 +4023,7 @@ window.addEventListener('online',function(){
 window.addEventListener('offline',function(){
   if(document.getElementById('offline-bar'))return;
   var b=document.createElement('div');b.id='offline-bar';
+  b.setAttribute('role','alert');
   b.style.cssText='position:fixed;top:0;left:0;right:0;padding:8px;background:var(--warning);color:#fff;text-align:center;font:500 .8125rem/1 var(--font);z-index:200';
   b.textContent=chrome('offline');
   document.body.appendChild(b);
