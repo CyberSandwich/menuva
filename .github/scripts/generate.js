@@ -323,25 +323,26 @@ function generateRedirect(tpl, slug, replacements) {
 if (redirectTpl) {
   if (Array.isArray(config.redirects_menus)) {
     for (const slug of config.redirects_menus) {
-      generateRedirect(redirectTpl, slug, { SLUG: slug, TITLE: slug, GA_ID: config.ga_id, DEST_PATH: '/menus/', TO_PATH: '/menus', META_DESC: 'Redirecting to menus\u2026', BODY_TEXT: 'Opening Menus', FALLBACK_HREF: '/menus/', COMMENT: '' });
+      generateRedirect(redirectTpl, slug, { SLUG: slug, TITLE: slug, GA_ID: config.ga_id, DEST_PATH: '/menus/', TO_PATH: '/menus', META_DESC: 'Redirecting to menus\u2026', BODY_TEXT: 'Opening Menus', SUB_TEXT: 'menuva.co.uk/menus', FALLBACK_HREF: '/menus/', COMMENT: '' });
     }
   }
   if (Array.isArray(config.redirects_home)) {
     for (const slug of config.redirects_home) {
-      generateRedirect(redirectTpl, slug, { SLUG: slug, TITLE: slug, GA_ID: config.ga_id, DEST_PATH: '/', TO_PATH: '/', META_DESC: 'Redirecting\u2026', BODY_TEXT: 'Redirecting', FALLBACK_HREF: '/', COMMENT: '' });
+      generateRedirect(redirectTpl, slug, { SLUG: slug, TITLE: slug, GA_ID: config.ga_id, DEST_PATH: '/', TO_PATH: '/', META_DESC: 'Redirecting\u2026', BODY_TEXT: 'Redirecting', SUB_TEXT: 'menuva.co.uk', FALLBACK_HREF: '/', COMMENT: '' });
     }
   }
   if (Array.isArray(config.redirects_accommodation)) {
     for (const hub of config.redirects_accommodation) {
       const comment = '<!--\n  Redirect: /' + hub.slug + '\n  Hub: ' + hub.name + '\n  Blocks covered: ' + hub.blocks + '\n  Kitchens: ' + hub.kitchens + '\n-->\n  ';
-      generateRedirect(redirectTpl, hub.slug, { SLUG: hub.slug, TITLE: hub.name, GA_ID: config.ga_id, DEST_PATH: '/', TO_PATH: '/', META_DESC: 'Redirecting\u2026', BODY_TEXT: 'Redirecting', FALLBACK_HREF: '/', COMMENT: comment });
+      generateRedirect(redirectTpl, hub.slug, { SLUG: hub.slug, TITLE: hub.name, GA_ID: config.ga_id, DEST_PATH: '/', TO_PATH: '/', META_DESC: 'Redirecting\u2026', BODY_TEXT: 'Redirecting', SUB_TEXT: 'menuva.co.uk', FALLBACK_HREF: '/', COMMENT: comment });
     }
   }
 }
 
 if (redirectExtTpl && Array.isArray(config.redirects_external)) {
   for (const ext of config.redirects_external) {
-    generateRedirect(redirectExtTpl, ext.slug, { SLUG: ext.slug, TITLE: ext.title, GA_ID: config.ga_id, DEST_URL: ext.dest, META_DESC: ext.body, BODY_TEXT: ext.body });
+    const extSub = String(ext.dest).replace(/^https?:\/\//, '').replace(/\/$/, '');
+    generateRedirect(redirectExtTpl, ext.slug, { SLUG: ext.slug, TITLE: ext.title, GA_ID: config.ga_id, DEST_URL: ext.dest, META_DESC: ext.body, BODY_TEXT: ext.body, SUB_TEXT: extSub });
   }
 }
 
