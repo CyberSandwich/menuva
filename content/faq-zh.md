@@ -77,7 +77,7 @@ Android 可能会根据试点结果和反馈决定。
 
 ### 如何影响下一步开发？
 
-通过 menuva.co.uk/feedback 或应用内的反馈按钮（主页）提交反馈。
+通过应用内的反馈按钮（主页）或发送邮件至 [support@menuva.co.uk](mailto:support@menuva.co.uk) 提交反馈。
 
 ## 6. 教程
 
@@ -377,7 +377,7 @@ Menuva 的过敏原指标、饮食标签、警告和筛选器不构成保证。M
 
 ### 如何提交反馈？
 
-使用应用内反馈按钮（主页）或 menuva.co.uk/feedback。
+使用应用内反馈按钮（主页）或发送邮件至 [support@menuva.co.uk](mailto:support@menuva.co.uk)。
 
 ### 报告安全问题？
 

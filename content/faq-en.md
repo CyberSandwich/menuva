@@ -77,7 +77,7 @@ Android may follow depending on pilot outcomes and feedback.
 
 ### How can I influence what gets built next?
 
-Submit feedback via menuva.co.uk/feedback or the in-app Feedback button (Home screen).
+Submit feedback via the in-app Feedback button (Home screen) or email [support@menuva.co.uk](mailto:support@menuva.co.uk).
 
 ## 6. Tutorial
 
@@ -377,7 +377,7 @@ Report issues to support@menuva.co.uk and include as much relevant detail as pos
 
 ### How to submit feedback?
 
-Use the in-app Feedback button (Home screen) or menuva.co.uk/feedback.
+Use the in-app Feedback button (Home screen) or email [support@menuva.co.uk](mailto:support@menuva.co.uk).
 
 ### Reporting security issues?
 
