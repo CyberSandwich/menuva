@@ -46,20 +46,25 @@
     })();
   </script>
   <style>
-    :root{--bg:#FAFAFA;--card:#FFF;--t1:#1A1A1A;--t2:#6B6B6B;--t3:#9A9A9A;--bdr:#E8E8E8;--acc:#12B3A8;--shadow:0 1px 3px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.04);--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,system-ui,sans-serif}
+    :root{--bg:#FAFAFA;--card:#FFF;--t1:#1A1A1A;--t2:#6B6B6B;--t3:#9A9A9A;--t4:#C7C7CC;--bdr:#E8E8E8;--bdr2:#F0F0F0;--acc:#12B3A8;--shadow:0 1px 3px rgba(0,0,0,.04),0 6px 20px rgba(0,0,0,.05);--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,system-ui,sans-serif}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html,body{min-height:100%}
-    body{font-family:var(--font);background:var(--bg);color:var(--t1);display:grid;place-items:center;min-height:100vh;min-height:100dvh;padding:24px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.5}
-    main{width:100%;max-width:380px}
-    .card{background:var(--card);border-radius:24px;box-shadow:var(--shadow);padding:44px 32px;text-align:center}
-    .icon{width:56px;height:56px;margin:0 auto 20px;border-radius:18px;background:rgba(18,179,168,.1);color:var(--acc);display:grid;place-items:center}
-    .icon svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;animation:pulse 1.6s ease-in-out infinite}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.92)}}
-    h1{font-size:1.25rem;font-weight:600;letter-spacing:-.02em;margin-bottom:24px;color:var(--t1)}
-    .btn{display:inline-block;padding:11px 24px;background:var(--t1);color:var(--card);border-radius:50px;text-decoration:none;font-weight:500;font-size:.9375rem;letter-spacing:-.005em;transition:transform .12s,box-shadow .15s}
-    @media(hover:hover){.btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.12)}}
-    .btn:active{transform:translateY(0) scale(.98)}
-    @media(prefers-reduced-motion:reduce){.icon svg{animation:none!important}.btn{transition:none}}
+    body{font-family:var(--font);background:var(--bg);color:var(--t1);display:flex;flex-direction:column;align-items:center;min-height:100vh;min-height:100dvh;padding:32px 24px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.5}
+    main{flex:1;display:flex;align-items:center;justify-content:center;width:100%;max-width:360px}
+    .card{background:var(--card);border-radius:28px;box-shadow:var(--shadow);padding:56px 36px 44px;text-align:center;width:100%;animation:cardin .5s cubic-bezier(.25,.46,.45,.94) both}
+    @keyframes cardin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    .icon{width:76px;height:76px;margin:0 auto 28px;border-radius:24px;background:rgba(18,179,168,.08);color:var(--acc);display:grid;place-items:center}
+    .icon svg{width:34px;height:34px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+    h1{font-size:1.375rem;font-weight:600;letter-spacing:-.024em;margin-bottom:20px;color:var(--t1)}
+    .loader{width:56px;height:2px;margin:0 auto;background:var(--bdr2);border-radius:2px;overflow:hidden;position:relative}
+    .loader::before{content:'';position:absolute;inset:0;width:40%;background:var(--acc);border-radius:2px;animation:sweep 1.5s cubic-bezier(.4,0,.2,1) infinite}
+    @keyframes sweep{0%{transform:translateX(-100%)}100%{transform:translateX(250%)}}
+    .action{width:100%;max-width:360px;padding:28px 0 max(8px,env(safe-area-inset-bottom));display:flex;justify-content:center;opacity:0;animation:fadein .6s ease-out 1s forwards}
+    @keyframes fadein{to{opacity:1}}
+    .btn{display:inline-block;padding:11px 26px;background:transparent;color:var(--t2);border:1.5px solid var(--bdr);border-radius:50px;text-decoration:none;font-weight:500;font-size:.875rem;letter-spacing:-.005em;transition:color .15s,border-color .15s,background .15s}
+    @media(hover:hover){.btn:hover{color:var(--t1);border-color:var(--t3);background:var(--card)}}
+    .btn:active{color:var(--t1);border-color:var(--t2)}
+    @media(prefers-reduced-motion:reduce){.loader::before{animation:none;width:100%;opacity:.4}.card{animation:none}.action{animation:none;opacity:1}.btn{transition:none}}
   </style>
 </head>
 <body>
@@ -67,8 +72,9 @@
     <div class="card">
       <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></svg></div>
       <h1>Redirecting</h1>
-      <a id="msg-link" class="btn" href="/">Continue</a>
+      <div class="loader" aria-hidden="true"></div>
     </div>
   </main>
+  <div class="action"><a id="msg-link" class="btn" href="/">Tap to continue</a></div>
 </body>
 </html>
