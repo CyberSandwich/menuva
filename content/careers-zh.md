@@ -3,7 +3,6 @@ title: 加入我们
 heading: 加入我们的团队
 effective: 2026年3月18日
 updated: 2026年3月18日
-contact_questions: hello@menuva.co.uk
 ---
 
 Menuva 目前没有公开招聘任何特定职位。但我们始终在寻找优秀的人才，与我们一起打造未来全球菜单的默认平台。

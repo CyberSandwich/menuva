@@ -180,23 +180,19 @@ function renderBody(raw) {
   return { meta: fm.meta, body: layout.body, title: layout.title, plain: html };
 }
 
-function buildContactBlock(meta, lang) {
-  if (!meta.contact_questions && !meta.contact_support) return '';
+function buildContactBlock(slug, lang) {
+  if (slug === 'contact') return '';
   const strings = lang === 'zh'
-    ? { contact: '\u8054\u7cfb', questions: '\u54a8\u8be2', support: '\u652f\u6301' }
-    : { contact: 'Contact', questions: 'Questions', support: 'Support' };
-  const rows = [];
-  if (meta.contact_questions) {
-    rows.push('<p><strong>' + strings.questions + '</strong>: <a href="mailto:' + escAttr(meta.contact_questions) + '">' + escHtml(meta.contact_questions) + '</a></p>');
-  }
-  if (meta.contact_support) {
-    rows.push('<p><strong>' + strings.support + '</strong>: <a href="mailto:' + escAttr(meta.contact_support) + '">' + escHtml(meta.contact_support) + '</a></p>');
-  }
+    ? { contact: '\u8054\u7cfb', visit: '\u524d\u5f80\u8054\u7cfb\u9875\u9762' }
+    : { contact: 'Contact', visit: 'Visit Contact page' };
+  const email = 'hello@menuva.co.uk';
   const hidden = lang === 'zh' ? ' hidden' : '';
   return (
     '<div class="doc-body" data-lang="' + lang + '"' + hidden + '>' +
     '<div class="link-sec"><h3>' + strings.contact + '</h3></div>' +
-    '<div class="pcontent">' + rows.join('') + '</div>' +
+    '<div class="pcontent">' +
+    '<p><a href="mailto:' + email + '">' + email + '</a> &middot; <a href="/contact/">' + strings.visit + '</a></p>' +
+    '</div>' +
     '</div>'
   );
 }
@@ -284,8 +280,8 @@ for (const entry of config.content) {
     DATE_MODIFIED_ISO: toIsoFull(dateModifiedIso),
     BODY_EN: en.body,
     BODY_ZH: zh.body,
-    CONTACT_EN: buildContactBlock(en.meta, 'en'),
-    CONTACT_ZH: buildContactBlock(zh.meta, 'zh')
+    CONTACT_EN: buildContactBlock(entry.slug, 'en'),
+    CONTACT_ZH: buildContactBlock(entry.slug, 'zh')
   });
 
   const dir = path.join(ROOT, entry.slug);

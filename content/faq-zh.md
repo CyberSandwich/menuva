@@ -3,8 +3,6 @@ title: 常见问题
 heading: Menuva 常见问题
 effective: 2026年3月17日
 updated: 2026年4月19日
-contact_questions: hello@menuva.co.uk
-contact_support: support@menuva.co.uk
 ---
 
 关于 Menuva 的常见问题。适用于 Menuva iOS 应用（试点）和 Menuva 网站（menuva.co.uk）。
@@ -77,7 +75,7 @@ Android 可能会根据试点结果和反馈决定。
 
 ### 如何影响下一步开发？
 
-通过应用内的反馈按钮（主页）或发送邮件至 [support@menuva.co.uk](mailto:support@menuva.co.uk) 提交反馈。
+通过应用内的反馈按钮（主页）或发送邮件至 [hello@menuva.co.uk](mailto:hello@menuva.co.uk) 提交反馈。
 
 ## 6. 教程
 
@@ -371,17 +369,17 @@ Menuva 的过敏原指标、饮食标签、警告和筛选器不构成保证。M
 
 ### 报告不正确的信息？
 
-请发送邮件至 support@menuva.co.uk，并附上尽可能多的相关详情，如餐厅名称、菜品名称、截图、您当时的操作、设备型号、iOS 版本以及是否使用了时间旅行。
+请发送邮件至 hello@menuva.co.uk，并附上尽可能多的相关详情，如餐厅名称、菜品名称、截图、您当时的操作、设备型号、iOS 版本以及是否使用了时间旅行。
 
 ## 22. 反馈、支持和安全
 
 ### 如何提交反馈？
 
-使用应用内反馈按钮（主页）或发送邮件至 [support@menuva.co.uk](mailto:support@menuva.co.uk)。
+使用应用内反馈按钮（主页）或发送邮件至 [hello@menuva.co.uk](mailto:hello@menuva.co.uk)。
 
 ### 报告安全问题？
 
-请发送邮件至 support@menuva.co.uk，附上尽可能多的详情。
+请发送邮件至 hello@menuva.co.uk，附上尽可能多的详情。
 
 ## 23. 重置和卸载
 
@@ -393,9 +391,3 @@ Menuva 的过敏原指标、饮食标签、警告和筛选器不构成保证。M
 
 卸载会清除设备上的数据，并停止该设备继续发送分析事件。
 
-## 24. 联系方式
-
-- **一般咨询:** hello@menuva.co.uk
-- **支持:** support@menuva.co.uk
-- **餐厅运营:** ops@menuva.co.uk
-- **常见问题:** menuva.co.uk/faq

@@ -3,8 +3,6 @@ title: Accessibility Statement
 heading: Menuva Accessibility Statement
 effective: 17 March 2026
 updated: 19 April 2026
-contact_questions: hello@menuva.co.uk
-contact_support: support@menuva.co.uk
 ---
 
 This is a voluntary accessibility statement for Menuva, a non-commercial, student-led prototype developed at the University of Warwick. As Menuva is not a public-sector service or commercial product, a formal statement under the Public Sector Bodies (Websites and Mobile Applications) Accessibility Regulations 2018 is not legally required. In support of Warwick's commitment to digital inclusion, this statement describes what we have done so far, where we still have work to do, and how to tell us when something falls short.
@@ -14,7 +12,7 @@ This is a voluntary accessibility statement for Menuva, a non-commercial, studen
 > - both platforms are designed with accessibility in mind, including Dynamic Type, good contrast, keyboard access, and simple hierarchy
 > - we aim for Web Content Accessibility Guidelines (WCAG) 2.2 Level AA on the web, but as a student pilot without the budget for formal third-party certification we cannot guarantee full AA compliance across every page
 > - in April 2026 we completed an internal WCAG 2.2 AA audit of the web application and shipped fixes covering the vast majority of findings
-> - if anything does not work for you, please email support@menuva.co.uk and we will try our best to put it right
+> - if anything does not work for you, please email hello@menuva.co.uk and we will try our best to put it right
 
 ## 1. iOS application
 
@@ -72,7 +70,7 @@ This is a voluntary accessibility statement for Menuva, a non-commercial, studen
 
 **4.1** We target WCAG 2.2 Level AA across the web application and Apple's Human Interface Guidelines on iOS. We are a student-led pilot with no budget for a formal third-party certification, so we do not claim to be certified at AA. Our April 2026 internal audit is the best evidence we can offer today.
 
-**4.2** If you find something on the site that prevents you from using Menuva, or that you believe falls short of WCAG 2.2 AA, please email support@menuva.co.uk. We take accessibility feedback seriously and will try our best to improve our services as we go.
+**4.2** If you find something on the site that prevents you from using Menuva, or that you believe falls short of WCAG 2.2 AA, please email hello@menuva.co.uk. We take accessibility feedback seriously and will try our best to improve our services as we go.
 
 ## 5. Known limitations
 
@@ -84,10 +82,6 @@ This is a voluntary accessibility statement for Menuva, a non-commercial, studen
 
 **5.4** A full end-to-end VoiceOver pass on a real iOS device, for every flow on the web application, is planned but not yet complete.
 
-## 6. Feedback and contact
+## 6. Feedback
 
 **6.1** If you experience an accessibility barrier using Menuva, or have suggestions for improvement, please contact us. We take accessibility feedback seriously and will work to address issues promptly.
-
-**6.2** **General enquiries:** hello@menuva.co.uk
-
-**6.3** **Support:** support@menuva.co.uk

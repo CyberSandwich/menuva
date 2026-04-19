@@ -2,14 +2,14 @@
 title: Complaints
 heading: Complaints Procedure
 effective: 22 March 2026
-updated: 22 March 2026
+updated: 19 April 2026
 ---
 
 We take complaints seriously and want to resolve them quickly. This page explains how to raise a complaint about data protection, privacy, or any aspect of the Menuva service. This procedure is provided in accordance with Section 103 of the Data (Use and Access) Act 2025.
 
 ## 1. How to complain
 
-Email [support@menuva.co.uk](mailto:support@menuva.co.uk?subject=Complaint&body=What%20happened%3A%0A%0ARelevant%20dates%3A%0A%0AOutcome%20I%20am%20looking%20for%3A) with the following information:
+Email [hello@menuva.co.uk](mailto:hello@menuva.co.uk?subject=Complaint&body=What%20happened%3A%0A%0ARelevant%20dates%3A%0A%0AOutcome%20I%20am%20looking%20for%3A) with the following information:
 
 - **What happened:** describe your concern clearly
 - **Relevant dates:** when the issue occurred
@@ -17,7 +17,7 @@ Email [support@menuva.co.uk](mailto:support@menuva.co.uk?subject=Complaint&body=
 
 If your complaint relates to how we handle personal data, please also state which right under the [UK GDPR](https://www.legislation.gov.uk/eur/2016/679/contents) you believe has been affected (for example, the right to erasure under Article 17, or the right to object under Article 21). Our [Privacy Policy](/privacy/) explains how we process data and your rights in full.
 
-> **Tip:** The email link above opens a pre-structured template. You can also write to support@menuva.co.uk directly using any format you prefer.
+> **Tip:** The email link above opens a pre-structured template. You can also write to hello@menuva.co.uk directly using any format you prefer.
 
 ## 2. What we will do
 
@@ -48,8 +48,3 @@ The ICO is the UK's independent supervisory authority for data protection and in
 - [Regulatory Compliance](/compliance/): the regulations we have assessed and how we address them
 - [Contact](/contact/): general enquiries and support
 
-## 5. Contact
-
-- **Complaints:** [support@menuva.co.uk](mailto:support@menuva.co.uk)
-- **General enquiries:** [hello@menuva.co.uk](mailto:hello@menuva.co.uk)
-- **Support:** [support@menuva.co.uk](mailto:support@menuva.co.uk)

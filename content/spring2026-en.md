@@ -3,7 +3,6 @@ title: Spring Break 2026
 heading: Menuva Spring Break 2026
 effective: 21 March 2026
 updated: 19 April 2026
-contact_questions: hello@menuva.co.uk
 ---
 
 Menuva's Term 2 (Spring Term 2025/2026) pilot was focused exclusively on venues at the University of Warwick campus. During the spring break (21 March to 27 April 2026), many campus venues will operate on reduced hours or close entirely. As a result, the number of venues available in the app will be significantly lower than during term time.
@@ -70,8 +69,8 @@ The following changes take effect from **Saturday 21 March 2026** and remain in 
 
 **Current partners:** your venue will reappear in the app closer to term time. No action is needed on your part.
 
-**New venues:** if you would like to add your restaurant to Menuva, visit [Add Your Restaurant](/join/) or email [support@menuva.co.uk](mailto:support@menuva.co.uk).
+**New venues:** if you would like to add your restaurant to Menuva, visit [Add Your Restaurant](/join/) or email [hello@menuva.co.uk](mailto:hello@menuva.co.uk).
 
 ## 4. Questions
 
-For any questions, visit [Contact](/contact/) or email [hello@menuva.co.uk](mailto:hello@menuva.co.uk). For app issues, email [support@menuva.co.uk](mailto:support@menuva.co.uk).
+For any questions or app issues, visit [Contact](/contact/) or email [hello@menuva.co.uk](mailto:hello@menuva.co.uk).

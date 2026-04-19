@@ -3,7 +3,6 @@ title: 投资者
 heading: 投资者
 effective: 2026年3月18日
 updated: 2026年3月18日
-contact_questions: hello@menuva.co.uk
 ---
 
 感谢您对 Menuva 的关注。本页面概述了 Menuva 的发展机遇、当前进展，以及如何就餐饮行业的未来展开对话。

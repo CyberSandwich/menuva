@@ -3,7 +3,6 @@ title: Investors
 heading: Investors
 effective: 18 March 2026
 updated: 18 March 2026
-contact_questions: hello@menuva.co.uk
 ---
 
 Thank you for your interest in Menuva. This page outlines the opportunity, our progress, and how to start a conversation about the future of dining.

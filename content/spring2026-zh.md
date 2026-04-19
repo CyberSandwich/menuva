@@ -3,7 +3,6 @@ title: 2026年春假
 heading: Menuva 2026年春假
 effective: 2026年3月21日
 updated: 2026年4月19日
-contact_questions: hello@menuva.co.uk
 ---
 
 Menuva 的第二学期（2025/2026 春季学期）试点专注于华威大学校园内的餐饮场所。在春假期间（2026年3月21日至4月27日），许多校园场所将缩短营业时间或完全关闭。因此，应用中可用的场所数量将大幅减少。
@@ -70,8 +69,8 @@ Menuva 的第二学期（2025/2026 春季学期）试点专注于华威大学校
 
 **现有合作伙伴：** 您的场所将在临近开学时重新出现在应用中，无需您采取任何操作。
 
-**新场所：** 如果您希望将餐厅添加到 Menuva，请访问[添加您的餐厅](/join/)或发送邮件至 [support@menuva.co.uk](mailto:support@menuva.co.uk)。
+**新场所：** 如果您希望将餐厅添加到 Menuva，请访问[添加您的餐厅](/join/)或发送邮件至 [hello@menuva.co.uk](mailto:hello@menuva.co.uk)。
 
 ## 4. 问题咨询
 
-如有任何疑问，请访问[联系我们](/contact/)或发送邮件至 [hello@menuva.co.uk](mailto:hello@menuva.co.uk)。如遇应用问题，请发送邮件至 [support@menuva.co.uk](mailto:support@menuva.co.uk)。
+如有任何疑问或应用问题，请访问[联系我们](/contact/)或发送邮件至 [hello@menuva.co.uk](mailto:hello@menuva.co.uk)。

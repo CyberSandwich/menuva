@@ -3,8 +3,6 @@ title: 隐私政策
 heading: Menuva 隐私政策
 effective: 2026年3月22日
 updated: 2026年4月19日
-contact_questions: hello@menuva.co.uk
-contact_support: support@menuva.co.uk
 ---
 
 本隐私政策根据[英国通用数据保护条例](https://www.legislation.gov.uk/eur/2016/679/contents)（UK GDPR）和[《2018 年数据保护法》](https://www.legislation.gov.uk/ukpga/2018/12/contents)(DPA 2018) 制定。本政策说明当您使用 Menuva iOS 应用程序（以下简称”应用”）和我们运营的 Menuva 网页（以下简称”网站”）（统称”服务”）时，Menuva 如何处理个人数据。Menuva 的设计理念是无需账户且尽量减少数据收集，但某些信息（尤其是位置数据、分析事件数据和在线标识符）仍可能构成 UK GDPR 定义下的个人数据。本政策应与我们的[条款与细则](/terms/)、[Cookie 政策](/cookies/)和[投诉程序](/complaints/)一并阅读。
@@ -20,7 +18,7 @@ contact_support: support@menuva.co.uk
 
 **1.1** **数据控制者。** Duke DJ Saputra（学生主导项目，“Menuva”）。
 
-**1.2** **电子邮件。** [hello@menuva.co.uk](mailto:hello@menuva.co.uk)（常规咨询）和 [support@menuva.co.uk](mailto:support@menuva.co.uk)（技术支持）。
+**1.2** **电子邮件。** [hello@menuva.co.uk](mailto:hello@menuva.co.uk)。
 
 **1.3** **地址。** Warwick Business School, University of Warwick, Scarman Rd, Coventry CV4 7AL, United Kingdom.
 
@@ -290,12 +288,6 @@ contact_support: support@menuva.co.uk
 - [法规合规](/compliance/)：我们已评估的法规及合规方式
 - [无障碍声明](/accessibility/)：我们对无障碍设计的承诺
 
-## 14. 联系方式
+## 14. 投诉
 
-**14.1** 问题或请求：hello@menuva.co.uk
-
-**14.2** 技术支持：support@menuva.co.uk
-
-**14.3** 投诉：support@menuva.co.uk。详情请参阅我们的[投诉程序](/complaints/)，包括如何向 ICO 提出申诉。
-
-**14.4** 隐私政策页面：menuva.co.uk/privacy
+**14.1** 如对我们处理您的数据方式有投诉，请参阅我们的[投诉程序](/complaints/)，其中也说明了如何根据 UK GDPR 第 77 条向 ICO 申诉。

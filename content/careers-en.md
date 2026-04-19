@@ -3,7 +3,6 @@ title: Join Our Team
 heading: Join Our Team
 effective: 18 March 2026
 updated: 18 March 2026
-contact_questions: hello@menuva.co.uk
 ---
 
 Menuva is not publicly advertising any specific role openings. That said, we are always looking for exceptional people who want to help build the future default platform for menus, internationally.

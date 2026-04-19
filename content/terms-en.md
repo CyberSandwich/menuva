@@ -2,8 +2,7 @@
 title: Terms & Conditions
 heading: Menuva Terms & Conditions
 effective: 22 March 2026
-updated: 22 March 2026
-contact_questions: hello@menuva.co.uk
+updated: 19 April 2026
 ---
 
 These Terms & Conditions ("Terms") govern your access to and use of the Menuva mobile application, the Menuva website (menuva.co.uk), and any related services we provide (together, the "Service"). By downloading, installing, accessing, or using the Service, you agree to these Terms. If you do not agree, do not use the Service. These Terms should be read alongside our [Privacy Policy](/privacy/), [Cookie Policy](/cookies/), and [Complaints Procedure](/complaints/).
@@ -87,7 +86,7 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 
 ### D. Reporting inaccurate content
 
-**5.D.1** If you believe any Restaurant Content is inaccurate, misleading, or objectionable, please report it to support@menuva.co.uk. We will investigate and, where appropriate, correct or remove the content.
+**5.D.1** If you believe any Restaurant Content is inaccurate, misleading, or objectionable, please report it to hello@menuva.co.uk. We will investigate and, where appropriate, correct or remove the content.
 
 ## 6. Licence and permitted use
 
@@ -206,7 +205,7 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 
 **15.2** If you do not agree to updated Terms, you may stop using the Service and delete the App at any time. Continued use of the Service after the effective date of updated Terms constitutes acceptance of the changes.
 
-**15.3** We may notify you of changes to these Terms or the Service via in-app announcements, website notices, or email where you have provided one. For general enquiries, contact hello@menuva.co.uk. For technical support, contact support@menuva.co.uk.
+**15.3** We may notify you of changes to these Terms or the Service via in-app announcements, website notices, or email where you have provided one. For enquiries, contact hello@menuva.co.uk.
 
 ## 16. Governing law and jurisdiction
 

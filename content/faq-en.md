@@ -3,8 +3,6 @@ title: FAQ
 heading: Menuva FAQ
 effective: 17 March 2026
 updated: 19 April 2026
-contact_questions: hello@menuva.co.uk
-contact_support: support@menuva.co.uk
 ---
 
 Frequently asked questions about Menuva. Applies to the Menuva iOS app (pilot) and the Menuva website (menuva.co.uk).
@@ -77,7 +75,7 @@ Android may follow depending on pilot outcomes and feedback.
 
 ### How can I influence what gets built next?
 
-Submit feedback via the in-app Feedback button (Home screen) or email [support@menuva.co.uk](mailto:support@menuva.co.uk).
+Submit feedback via the in-app Feedback button (Home screen) or email [hello@menuva.co.uk](mailto:hello@menuva.co.uk).
 
 ## 6. Tutorial
 
@@ -371,17 +369,17 @@ Menuva's allergen indicators, dietary labels, warnings, and filters are not guar
 
 ### Reporting incorrect information?
 
-Report issues to support@menuva.co.uk and include as much relevant detail as possible, such as venue, item name, screenshot, what you were doing, device model, iOS version, and whether Time Travel was used.
+Report issues to hello@menuva.co.uk and include as much relevant detail as possible, such as venue, item name, screenshot, what you were doing, device model, iOS version, and whether Time Travel was used.
 
 ## 22. Feedback, support, and security
 
 ### How to submit feedback?
 
-Use the in-app Feedback button (Home screen) or email [support@menuva.co.uk](mailto:support@menuva.co.uk).
+Use the in-app Feedback button (Home screen) or email [hello@menuva.co.uk](mailto:hello@menuva.co.uk).
 
 ### Reporting security issues?
 
-Email support@menuva.co.uk with as much detail as possible.
+Email hello@menuva.co.uk with as much detail as possible.
 
 ## 23. Reset and uninstall
 
@@ -393,9 +391,3 @@ Reset deletes all on-device app data, including basket, preferences, and cached 
 
 Uninstalling clears on-device data and stops further analytics events from being sent from that device.
 
-## 24. Contacts
-
-- **General:** hello@menuva.co.uk
-- **Support:** support@menuva.co.uk
-- **Venue operations:** ops@menuva.co.uk
-- **FAQ:** menuva.co.uk/faq
