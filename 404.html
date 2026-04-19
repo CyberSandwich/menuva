@@ -2,15 +2,37 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Redirecting</title>
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#FAFAFA">
+<meta name="color-scheme" content="light">
+<link rel="icon" type="image/png" href="/favicon.png?v=16">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=16">
 <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
 <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
 <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://firebasestorage.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
-<style>body{margin:0;padding:24px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}h1{font-size:1.5rem;font-weight:600;margin:0 0 8px}p{margin:0 0 8px}.muted{opacity:.7}</style>
+<style>
+:root{--bg:#FAFAFA;--card:#FFF;--t1:#1A1A1A;--t2:#6B6B6B;--t3:#9A9A9A;--bdr:#E8E8E8;--acc:#12B3A8;--shadow:0 1px 3px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.04);--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,system-ui,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--t1);display:grid;place-items:center;padding:24px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.5}
+main{width:100%;max-width:420px}
+.card{background:var(--card);border-radius:28px;box-shadow:var(--shadow);padding:40px 32px;text-align:center}
+.icon{width:64px;height:64px;margin:0 auto 22px;border-radius:20px;background:rgba(18,179,168,.1);color:var(--acc);display:grid;place-items:center}
+.icon svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.icon.redir svg{animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.92)}}
+h1{font-size:1.375rem;font-weight:600;letter-spacing:-.02em;margin-bottom:8px;color:var(--t1)}
+#msg-body{color:var(--t2);font-size:.9375rem;margin-bottom:24px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:var(--t1);color:var(--card);border-radius:50px;text-decoration:none;font-weight:500;font-size:.9375rem;transition:transform .12s,box-shadow .15s}
+@media(hover:hover){.btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.12)}}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(prefers-reduced-motion:reduce){.icon svg{animation:none!important}.btn{transition:none}}
+</style>
 <script>try{if(localStorage.getItem('lang')==='zh')document.documentElement.lang='zh-Hans'}catch(_){}</script>
 <script>
 (function(){
@@ -32,7 +54,6 @@
   if(p.indexOf('/menus/')===0||p==='/menus'){
     var parts=p.replace('/menus','').replace(/^\//,'').split('/').filter(Boolean);
     if(parts.length>=1){
-      // Stash slug in sessionStorage so menus page can start fetching during SDK load
       try{sessionStorage.setItem('_menuPrefetch',parts[0])}catch(_){}
       var url='/menus/?slug='+encodeURIComponent(parts[0]);
       if(parts[1])url+='&loc='+encodeURIComponent(parts[1]);
@@ -54,7 +75,6 @@
     beta:"https://testflight.apple.com/join/y6cwz9Qm",
     feedback:"https://docs.google.com/forms/d/e/1FAIpQLSeZRJYK2gEEBXD-C-Ub8LzEIjZXNjissO3IXiFIQ6J4z0_-WA/viewform"
   };
-  /* Title overrides (where GA4 title != slug) */
   var T={
     ar:"westwood",bb:"bluebell",cc:"claycroft & tocil",
     cv:"benefactors & cryfield",jm:"arthur vick & jack martin",
@@ -78,15 +98,40 @@
     gtag('config',MID,{send_page_view:false,anonymize_ip:true,debug_mode:debug});
   }
 
-  function render(text,href,title){
+  /* Lucide icon paths (inner SVG only) */
+  var ICONS={
+    compass:'<circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/>',
+    ext:'<path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>',
+    q:'<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>'
+  };
+
+  function swapIcon(el,key,cls){
+    var svgDoc=new DOMParser().parseFromString(
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">'+ICONS[key]+'</svg>',
+      'image/svg+xml'
+    );
+    var svg=document.importNode(svgDoc.documentElement,true);
+    el.textContent='';
+    el.appendChild(svg);
+    el.className='icon'+(cls?' '+cls:'');
+  }
+
+  function render(o){
     function go(){
+      var ic=document.getElementById('msg-icon');
+      if(ic&&o.icon)swapIcon(ic,o.icon,o.iconClass);
+      var h=document.getElementById('msg-title');
+      if(h&&o.title)h.textContent=o.title;
       var body=document.getElementById('msg-body');
-      if(body)body.textContent=text;
+      if(body&&o.text)body.textContent=o.text;
       var link=document.getElementById('msg-link');
-      if(link)link.href=href;
-      if(title){
-        var h=document.getElementById('msg-title');
-        if(h)h.textContent=title;
+      if(link){
+        if(o.href)link.href=o.href;
+        if(o.linkText){
+          var tn=link.firstChild;
+          if(tn&&tn.nodeType===3)tn.nodeValue=o.linkText;
+          else link.insertBefore(document.createTextNode(o.linkText),link.firstChild);
+        }
       }
     }
     if(document.body)go();
@@ -104,10 +149,8 @@
     var toUrl;
 
     if(ext){
-      /* External (download, beta): second-hop pattern */
       toUrl=dest;
     }else{
-      /* Internal: inject qr_source and from, forward all params */
       if(!params.has('qr_source'))params.set('qr_source',slug);
       if(!params.has('from'))params.set('from',slug);
       var u=new URL(dest,location.origin);
@@ -117,18 +160,18 @@
 
     document.title='menuva | '+title;
 
-    var bodyText;
+    var bodyText,heading,iconKey;
     if(ext&&dest.indexOf('testflight')!==-1){
-      bodyText='Opening TestFlight...';
+      heading='Opening TestFlight';bodyText='Taking you to the beta...';iconKey='ext';
     }else if(ext&&dest.indexOf('apps.apple.com')!==-1){
-      bodyText='Opening the App Store...';
-    }else if(dest==='/download/'){
-      bodyText='Opening download...';
+      heading='Opening the App Store';bodyText='Taking you to the app...';iconKey='ext';
+    }else if(ext){
+      heading='Opening link';bodyText='Taking you there...';iconKey='ext';
     }else{
-      bodyText='Redirecting...';
+      heading='Redirecting';bodyText='Just a moment...';iconKey='compass';
     }
 
-    render(bodyText,ext?dest:toUrl);
+    render({icon:iconKey,iconClass:'redir',title:heading,text:bodyText,href:ext?dest:toUrl,linkText:'Continue'});
 
     function doRedirect(){window.location.replace(toUrl)}
 
@@ -188,7 +231,7 @@
   var debug4=params4.get('debug_mode')==='true';
 
   document.title='menuva | 404';
-  render('Redirecting...','/','Page not found');
+  render({icon:'q',title:'Page not found',text:"That page doesn't exist. Taking you home...",href:'/',linkText:'Go to homepage'});
 
   function doRedirect4(){window.location.replace('/')}
 
@@ -217,10 +260,13 @@
 </script>
 </head>
 <body>
-<main id="msg">
-<h1 id="msg-title">Redirecting</h1>
-<p id="msg-body">Taking you to the homepage...</p>
-<p class="muted"><a id="msg-link" href="/">Go to homepage</a></p>
+<main>
+  <div class="card">
+    <div id="msg-icon" class="icon redir"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></svg></div>
+    <h1 id="msg-title">Redirecting</h1>
+    <p id="msg-body">Just a moment...</p>
+    <a id="msg-link" class="btn" href="/">Continue<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  </div>
 </main>
 </body>
 </html>
