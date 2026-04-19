@@ -18,11 +18,11 @@ Menuva is not publicly advertising any specific role openings. That said, we are
 
 We are looking for highly proactive individuals with a track record of taking initiative. You do not need to be an expert in anything. What matters most is your drive to learn, upskill, and deliver results.
 
-### 2.1 Growth
+### Growth
 
 Venue growth and user growth. You would work closely with restaurants, cafes, societies, student unions, university departments, and other organisations to bring menuva to more people and more places.
 
-### 2.2 Technical excellence
+### Technical excellence
 
 Building and improving the product across our stack. Experience in any of the following is a plus, but not required:
 

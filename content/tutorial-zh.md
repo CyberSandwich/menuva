@@ -1,6 +1,7 @@
 ---
 title: 使用教程
 heading: Menuva iOS 使用教程
+effective: 2026年3月18日
 updated: 2026年4月19日
 contact_questions: hello@menuva.co.uk
 ---

@@ -1,6 +1,7 @@
 ---
 title: Tutorial
 heading: Menuva iOS Tutorial
+effective: 18 March 2026
 updated: 19 April 2026
 contact_questions: hello@menuva.co.uk
 ---

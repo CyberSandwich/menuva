@@ -1,4 +1,4 @@
-/* ── Content page layout ── */
+/* ── Content page layout (card-based, Saputra-style) ── */
 html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
 
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
@@ -12,19 +12,9 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
 }
 @media(min-width:640px){.wrap{padding:32px 32px 120px}}
 
-/* ── Document card ── */
-.doc{
-  background:var(--card);
-  border-radius:20px;
-  box-shadow:var(--shadow);
-  padding:32px 28px;
-  margin-bottom:32px;
-  contain:content
-}
-@media(min-width:640px){.doc{padding:40px 36px}}
-
+/* ── Page heading + meta ── */
 .doc-heading{
-  font-size:clamp(1.25rem,3.5vw,1.5rem);
+  font-size:clamp(1.5rem,4vw,1.875rem);
   font-weight:700;
   letter-spacing:-.03em;
   color:var(--t1);
@@ -33,57 +23,77 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
 .doc-meta{
   font-size:.75rem;
   color:var(--t4);
-  margin-bottom:24px
+  margin:0 0 20px
 }
 
-/* ── Markdown body ── */
-.doc-body>p:first-child{
+/* ── Section divider (from H2) ── */
+.doc-body .link-sec{margin:28px 0 10px}
+.doc-body .link-sec:first-child{margin-top:8px}
+.doc-body .link-sec h3{
+  font-size:.75rem;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--t3);
+  margin:0;
+  padding:0 4px
+}
+
+/* ── Card (from H3 grouping) ── */
+.doc-body .pcontent{
+  background:var(--card);
+  box-shadow:var(--shadow);
+  padding:20px 24px;
+  border-radius:24px;
+  margin-bottom:12px;
+  contain:content
+}
+@media(min-width:640px){.doc-body .pcontent{padding:24px 28px}}
+.doc-body .pcontent>:first-child{margin-top:0}
+.doc-body .pcontent>:last-child{margin-bottom:0}
+
+/* ── Markdown primitives inside cards ── */
+.doc-body h3{
+  font-size:1rem;
+  font-weight:600;
+  color:var(--t1);
+  margin:0 0 12px;
+  letter-spacing:-.01em
+}
+.doc-body h4{
   font-size:.9375rem;
-  line-height:1.65;
-  color:var(--t2);
-  margin-bottom:20px
+  font-weight:600;
+  color:var(--t1);
+  margin:16px 0 6px
 }
 
 .doc-body p{
   font-size:.875rem;
   line-height:1.65;
   color:var(--t2);
-  margin-bottom:10px
+  margin:0 0 10px
 }
-
 .doc-body strong{font-weight:600;color:var(--t1)}
 .doc-body em{font-style:italic}
+.doc-body del{color:var(--t4);text-decoration:line-through}
+.doc-body mark{background:var(--accent-bg,#fff3b0);color:var(--t1);padding:0 2px;border-radius:3px}
+
 .doc-body code{font-family:ui-monospace,SFMono-Regular,monospace;font-size:.8125rem;background:var(--bg2);padding:2px 5px;border-radius:4px}
 .doc-body kbd{font-family:ui-monospace,SFMono-Regular,monospace;font-size:.8125rem;background:var(--bg2);border:1px solid var(--bdr);border-bottom-width:2px;border-radius:4px;padding:1px 6px;color:var(--t1)}
 .doc-body pre{background:var(--bg2);border-radius:10px;padding:14px 18px;margin:12px 0 16px;overflow-x:auto}
 .doc-body pre code{background:none;padding:0;font-size:.8125rem;line-height:1.6}
 
-.doc-body h2{
-  font-size:1.0625rem;
-  font-weight:700;
-  letter-spacing:-.01em;
-  color:var(--t1);
-  margin:28px 0 12px;
-  padding-top:20px;
-  border-top:1px solid var(--bdr2)
-}
-.doc-body h2:first-child{border-top:none;padding-top:0}
-
-.doc-body h3{
-  font-size:.9375rem;
-  font-weight:600;
-  color:var(--t1);
-  margin:20px 0 8px
-}
-
 .doc-body ul,.doc-body ol{margin:0 0 10px 20px;padding:0}
 .doc-body li{font-size:.875rem;line-height:1.6;color:var(--t2);margin-bottom:4px}
+.doc-body ul.task-list{list-style:none;margin-left:0}
+.doc-body li.task-item{display:flex;align-items:flex-start;gap:8px}
+.doc-body li.task-item input[type=checkbox]{margin-top:4px}
 
 .doc-body blockquote{
   background:var(--bg2);
   border-radius:14px;
-  padding:16px 20px;
-  margin:0 0 28px;
+  padding:14px 18px;
+  margin:0 0 16px;
   font-size:.8125rem;
   line-height:1.6;
   color:var(--t2)
@@ -116,11 +126,17 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
 }
 .doc-body tr:last-child td{border-bottom:none}
 
+.doc-body a{color:var(--accent,#12b3a8);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s ease}
+@media(hover:hover){.doc-body a:hover{border-bottom-color:currentColor}}
+
+.doc-body hr{border:none;border-top:1px solid var(--bdr2);margin:16px 0}
+
+.doc-body img{max-width:100%;height:auto;border-radius:12px;margin:8px 0}
+
 /* ── Contact footer ── */
 .doc-contact{
-  margin-top:28px;
-  padding-top:20px;
-  border-top:1px solid var(--bdr2);
+  margin-top:20px;
+  padding:16px 24px;
   text-align:center;
   font-size:.8125rem;
   color:var(--t3);
@@ -138,7 +154,7 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
 @media print{
   nav{display:none}
   .wrap{padding-bottom:0;max-width:100%}
-  .doc{box-shadow:none;padding:20px 0}
+  .doc-body .pcontent{box-shadow:none;padding:8px 0;border-radius:0}
 }
 
 /* ── Reduced motion ── */
