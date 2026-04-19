@@ -20,21 +20,22 @@
 html,body{min-height:100%}
 body{font-family:var(--font);background:var(--bg);color:var(--t1);display:grid;place-items:center;min-height:100vh;min-height:100dvh;padding:24px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.5}
 main{width:100%;max-width:400px;display:flex;flex-direction:column;gap:14px}
-.pcard{display:flex;align-items:center;gap:16px;padding:18px 20px;width:100%;background:var(--card);border-radius:20px;box-shadow:var(--shadow);text-decoration:none;color:var(--t1);transition:box-shadow .15s,transform .1s;animation:cardin .5s cubic-bezier(.25,.46,.45,.94) both}
-@keyframes cardin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.pcard{display:flex;align-items:center;gap:16px;padding:18px 20px;width:100%;background:var(--card);border-radius:20px;box-shadow:var(--shadow);text-decoration:none;color:var(--t1);transition:box-shadow .15s,transform .1s;animation:fadein .5s ease-out both}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
 @media(hover:hover){.pcard:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}}
 .pcard:active{transform:translateY(-1px) scale(.985)}
 .picon{width:44px;height:44px;border-radius:14px;background:rgba(18,179,168,.08);color:var(--acc);display:grid;place-items:center;flex-shrink:0}
 .picon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.picon.spin svg{animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.picon.spin svg{animation:none}}
 .pinf{flex:1;min-width:0}
 .pt{font-size:1.0625rem;font-weight:600;letter-spacing:-.01em;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pd{font-size:.8125rem;color:var(--t3);margin-top:3px;letter-spacing:-.005em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .arr{color:var(--t4);flex-shrink:0;display:grid;place-items:center}
 .arr svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.pcard.support{display:none;opacity:0}
-.pcard.support.show{display:flex;animation:fadein .6s ease-out 1s forwards}
-@keyframes fadein{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-@media(prefers-reduced-motion:reduce){.pcard{animation:none}.pcard.support.show{animation:none;opacity:1;transform:none}}
+.pcard.support{animation-delay:1s}
+@media(prefers-reduced-motion:reduce){.pcard{animation:none}}
 </style>
 <script>try{if(localStorage.getItem('lang')==='zh')document.documentElement.lang='zh-Hans'}catch(_){}</script>
 <script>
@@ -103,8 +104,7 @@ main{width:100%;max-width:400px;display:flex;flex-direction:column;gap:14px}
 
   /* Lucide icon paths (inner SVG only) */
   var ICONS={
-    compass:'<circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/>',
-    ext:'<path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>',
+    load:'<path d="M21 12a9 9 0 1 1-6.219-8.56"/>',
     q:'<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>'
   };
 
@@ -127,13 +127,14 @@ main{width:100%;max-width:400px;display:flex;flex-direction:column;gap:14px}
       var card=document.getElementById('msg-card');
       if(card&&o.href)card.href=o.href;
       var ic=document.getElementById('msg-icon');
-      if(ic&&o.icon)swapIcon(ic,o.icon);
+      if(ic){
+        if(o.icon)swapIcon(ic,o.icon);
+        if(o.spin)ic.classList.add('spin');
+      }
       var t=document.getElementById('msg-title');
       if(t&&o.title)t.textContent=o.title;
       var d=document.getElementById('msg-sub');
       if(d)d.textContent=o.sub||'Redirecting\u2026';
-      var sup=document.getElementById('msg-support');
-      if(sup&&o.support)sup.classList.add('show');
     }
     if(document.body)go();
     else document.addEventListener('DOMContentLoaded',go,{once:true});
@@ -161,19 +162,20 @@ main{width:100%;max-width:400px;display:flex;flex-direction:column;gap:14px}
 
     document.title='menuva | '+title;
 
-    var heading,iconKey;
+    var heading;
     if(ext&&dest.indexOf('testflight')!==-1){
-      heading='Opening TestFlight';iconKey='ext';
+      heading='Opening TestFlight';
     }else if(ext&&dest.indexOf('apps.apple.com')!==-1){
-      heading='Opening the App Store';iconKey='ext';
+      heading='Opening the App Store';
     }else if(ext){
-      heading='Opening Link';iconKey='ext';
+      heading='Opening Link';
     }else{
-      heading='Redirecting';iconKey='compass';
+      heading='Redirecting';
     }
 
     var subUrl=ext?dest:('menuva.co.uk'+dest);
-    render({icon:iconKey,title:heading,sub:formatUrl(subUrl),href:ext?dest:toUrl});
+    render({icon:'load',spin:true,title:heading,sub:formatUrl(subUrl),href:ext?dest:toUrl});
+    return
 
     function doRedirect(){window.location.replace(toUrl)}
 
@@ -233,7 +235,7 @@ main{width:100%;max-width:400px;display:flex;flex-direction:column;gap:14px}
   var debug4=params4.get('debug_mode')==='true';
 
   document.title='menuva | 404';
-  render({icon:'q',title:'Page Not Found',sub:'Redirecting\u2026',href:'/',support:true});
+  render({icon:'q',title:'Page Not Found',sub:'Redirecting\u2026',href:'/'});
 
   function doRedirect4(){window.location.replace('/')}
 
@@ -264,18 +266,18 @@ main{width:100%;max-width:400px;display:flex;flex-direction:column;gap:14px}
 <body>
 <main>
   <a id="msg-card" class="pcard" href="/">
-    <div id="msg-icon" class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></svg></div>
+    <div id="msg-icon" class="picon spin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg></div>
     <div class="pinf">
       <div id="msg-title" class="pt">Redirecting</div>
       <div id="msg-sub" class="pd">Redirecting&hellip;</div>
     </div>
     <div class="arr"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></div>
   </a>
-  <a id="msg-support" class="pcard support" href="mailto:support@menuva.co.uk">
+  <a id="msg-support" class="pcard support" href="/contact/">
     <div class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></div>
     <div class="pinf">
       <div class="pt">Contact Support</div>
-      <div class="pd">support@menuva.co.uk</div>
+      <div class="pd">menuva.co.uk/contact</div>
     </div>
     <div class="arr"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></div>
   </a>
