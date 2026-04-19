@@ -3597,6 +3597,7 @@ function applyAllergenFilter(secContainer,pillsBar){
 
 var _basket=[];// Array of {item, selectedOptions:[{groupId,optionId,label,delta}], quantity, unitPrice, totalPrice}
 var _bskFab=null;
+var _bskLiveRegion=null;
 var _bskBackdrop=null;
 var _bskPanel=null;
 var _bskPanelOpen=false;
@@ -3628,6 +3629,7 @@ function addToBasket(item,selOpts,unitPrice){
   _bskUpdateFab();
   _bskUpdateBadges();
   _bskPulseFab();
+  _bskAnnounce(_bskSummaryMsg());
 }
 
 function removeFromBasket(idx){
@@ -3639,6 +3641,7 @@ function removeFromBasket(idx){
   _bskUpdateFab();
   _bskUpdateBadges();
   if(!_basket.length)_bskClosePanel();
+  _bskAnnounce(_bskSummaryMsg());
 }
 
 function updateBasketQty(idx,delta){
@@ -3649,6 +3652,7 @@ function updateBasketQty(idx,delta){
   _bskUpdateFab();
   _bskUpdateBadges();
   _bskRenderList();
+  _bskAnnounce(_bskSummaryMsg());
 }
 
 function clearBasket(){
@@ -3657,6 +3661,7 @@ function clearBasket(){
   _bskUpdateFab();
   _bskUpdateBadges();
   _bskClosePanel();
+  _bskAnnounce(chrome('basket')+': 0');
 }
 
 function basketTotal(){
@@ -3700,14 +3705,37 @@ function _bskCreateFab(){
   _bskFab=document.createElement('button');
   _bskFab.className='bsk-nav';
   _bskFab.setAttribute('aria-label','Basket');
-  _bskFab.setAttribute('aria-live','polite');
   _bskFab.addEventListener('click',function(e){
     e.stopPropagation();
     _bskOpenPanel();
   });
   // Append to right tabs group (alongside language toggle)
   var navRight=document.querySelector('nav .tabs:last-child');
-  if(navRight)navRight.appendChild(_bskFab);
+  if(navRight){
+    navRight.appendChild(_bskFab);
+    _bskLiveRegion=document.createElement('span');
+    _bskLiveRegion.id='bsk-live';
+    _bskLiveRegion.setAttribute('aria-live','polite');
+    _bskLiveRegion.setAttribute('aria-atomic','true');
+    _bskLiveRegion.setAttribute('style','position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap');
+    navRight.appendChild(_bskLiveRegion);
+  }
+}
+
+function _bskAnnounce(msg){
+  if(!_bskLiveRegion)return;
+  _bskLiveRegion.textContent='';
+  setTimeout(function(){
+    if(_bskLiveRegion)_bskLiveRegion.textContent=msg;
+  },100);
+}
+
+function _bskSummaryMsg(){
+  var label=chrome('basket');
+  var count=basketItemCount();
+  if(!count)return label+': 0';
+  var price=formatPrice(basketTotal(),_viewerCurrency);
+  return price?label+': '+count+', '+price:label+': '+count;
 }
 
 function _bskUpdateFab(){
