@@ -421,6 +421,10 @@ export function initLanguage(config){
   var onApply=config.onApply||function(){};
   var analytics=config.analytics||function(){};
   var langTimer;
+  registerStrings({
+    en:{switchToChinese:'Switch to Chinese',switchToEnglish:'Switch to English'},
+    zh:{switchToChinese:'\u5207\u6362\u81f3\u4e2d\u6587',switchToEnglish:'\u5207\u6362\u81f3\u82f1\u6587'}
+  });
   var liveRegion=document.createElement('span');
   liveRegion.setAttribute('aria-live','polite');
   liveRegion.setAttribute('style','position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap');
@@ -431,7 +435,10 @@ export function initLanguage(config){
     document.documentElement.setAttribute('data-lang',lng);
     document.documentElement.lang=lng==='zh'?'zh-Hans':'en-GB';
     var btn=document.getElementById('lang-btn');
-    if(btn)btn.textContent=LANG_LABELS[lng];
+    if(btn){
+      btn.textContent=LANG_LABELS[lng];
+      btn.setAttribute('aria-label',LANG_LABELS[lng]+', '+chrome(lng==='en'?'switchToChinese':'switchToEnglish'));
+    }
     var tabs=document.querySelectorAll('nav .tabs:first-child a');
     var labels=[chrome('home'),chrome('menus'),chrome('more')];
     tabs.forEach(function(a,i){if(labels[i])a.textContent=labels[i]});
