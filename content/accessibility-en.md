@@ -7,19 +7,20 @@ contact_questions: hello@menuva.co.uk
 contact_support: support@menuva.co.uk
 ---
 
-This is a voluntary accessibility statement for Menuva, a non-commercial, student-led prototype developed as a student project at the University of Warwick. As Menuva is not a public-sector service or commercial product, a formal accessibility statement under the Public Sector Bodies (Websites and Mobile Applications) Accessibility Regulations 2018 is not legally required. However, in support of Warwick's commitment to digital inclusion, the following provides an overview of our accessibility approach.
+This is a voluntary accessibility statement for Menuva, a non-commercial, student-led prototype developed at the University of Warwick. As Menuva is not a public-sector service or commercial product, a formal statement under the Public Sector Bodies (Websites and Mobile Applications) Accessibility Regulations 2018 is not legally required. In support of Warwick's commitment to digital inclusion, this statement describes what we have done so far, where we still have work to do, and how to tell us when something falls short.
 
-> **Key points:**
-> - Menuva is available as an iOS app and a web application
-> - both platforms are designed with accessibility in mind, including Dynamic Type, good contrast, and simple hierarchy
-> - Web Content Accessibility Guidelines (WCAG) 2.2 Level AA compliance is our target for the web application
-> - a formal accessibility audit with fixes is planned before 27 April 2026
+> **Key points.**
+> - Menuva is available as an iOS app and a web application at menuva.co.uk
+> - both platforms are designed with accessibility in mind, including Dynamic Type, good contrast, keyboard access, and simple hierarchy
+> - we aim for Web Content Accessibility Guidelines (WCAG) 2.2 Level AA on the web, but as a student pilot without the budget for formal third-party certification we cannot guarantee full AA compliance across every page
+> - in April 2026 we completed an internal WCAG 2.2 AA audit of the web application and shipped fixes covering the vast majority of findings
+> - if anything does not work for you, please email support@menuva.co.uk and we will try our best to put it right
 
 ## 1. iOS application
 
 **1.1** The Menuva iOS app is designed in accordance with Apple's Human Interface Guidelines and built to work with iOS accessibility features.
 
-**1.2** **Supported accessibility features:**
+**1.2** **Supported accessibility features.**
 
 - Dynamic Type (tested at minimum and maximum sizes)
 - system Dark and Light Mode
@@ -30,15 +31,36 @@ This is a voluntary accessibility statement for Menuva, a non-commercial, studen
 
 ## 2. Web application
 
-**2.1** The Menuva web application at menuva.co.uk supports:
+**2.1** In April 2026 we completed an internal WCAG 2.2 Level AA audit covering the homepage, menus page, more page, every content page, and the 404 fallback. The audit surfaced 73 findings; most have now been fixed. The sections below summarise what is in place and what it means for you in practice.
 
-- dynamic font sizes via responsive typography
-- good colour contrast ratios across all text and interactive elements
-- keyboard navigation and focus management
-- reduced-motion support for users who prefer less animation
-- a simple, minimal interface designed to reduce cognitive load
+**2.2** **Screen reader support.** The site works with VoiceOver, NVDA, and JAWS.
 
-**2.2** WCAG 2.2 Level AA was kept in mind throughout development of the web application. A formal accessibility audit with targeted fixes will be completed before Monday 27 April 2026 (the start of the University of Warwick's 2025/2026 Summer Term) to ensure compliance.
+- each page has a single top-level heading and a consistent outline, so you can jump section to section
+- decorative icons are hidden from screen readers, and every button has a clear name (for example, the basket "Add" button reads the item name, not just "Add")
+- data tables declare column headers so table navigation works as expected
+- loading, error, and offline states are announced the moment they happen
+- filter chips and disclosure toggles expose their pressed or expanded state, so you know whether a filter is on
+- the analytics opt-out is exposed as a proper switch control
+
+**2.3** **Keyboard access.** You can use the whole site without a mouse.
+
+- every interactive element is reachable with Tab and activatable with Enter or Space
+- dialogs (QR code, command palette, basket, item customisation) trap focus while open and return focus to where you were when they close
+- a skip-to-main-content link appears at the top of every page when you press Tab
+- single-character shortcuts (1, 2, 3, L, /, ?) now require the Alt key so they no longer collide with screen-reader commands
+- a visible focus ring is shown whenever you navigate with the keyboard
+
+**2.4** **Language.**
+
+- the page's language attribute updates the moment you switch between English and 中文, so screen readers use the correct voice
+- language changes are announced politely so you know the switch took effect
+- English and Chinese content is kept structurally parallel
+
+**2.5** **Motion and structural clarity.**
+
+- animations reduce or stop when you have "Reduce Motion" turned on in your operating system
+- frequently-asked questions render as real headings, step-by-step guides render as ordered lists, and key names on the shortcuts page render as keyboard glyphs
+- the 404 page renders its content as plain HTML before any JavaScript runs, so you can read it and escape even if scripts fail
 
 ## 3. Language and comprehension
 
@@ -46,18 +68,26 @@ This is a voluntary accessibility statement for Menuva, a non-commercial, studen
 
 **3.2** Currency comprehension is supported through automatic conversion between GBP and 160+ currencies (currently 163), with rates updated daily via an open-source exchange-rate provider, used in accordance with its licence and terms of use. This allows diners to understand pricing without manual calculations or external tools.
 
-## 4. Known limitations
+## 4. Our WCAG 2.2 AA aim
 
-**4.1** This statement will be updated as accessibility improvements are made. Known limitations include:
+**4.1** We target WCAG 2.2 Level AA across the web application and Apple's Human Interface Guidelines on iOS. We are a student-led pilot with no budget for a formal third-party certification, so we do not claim to be certified at AA. Our April 2026 internal audit is the best evidence we can offer today.
 
-- the iOS app does not currently include a formal WCAG audit
-- not all third-party content (such as restaurant-provided menu images) may meet accessibility standards
-- the web application's WCAG 2.2 Level AA audit is in progress (target completion: 27 April 2026)
+**4.2** If you find something on the site that prevents you from using Menuva, or that you believe falls short of WCAG 2.2 AA, please email support@menuva.co.uk. We take accessibility feedback seriously and will try our best to improve our services as we go.
 
-## 5. Feedback and contact
+## 5. Known limitations
 
-**5.1** If you experience an accessibility barrier using Menuva, or have suggestions for improvement, please contact us. We take accessibility feedback seriously and will work to address issues promptly.
+**5.1** Some interface elements on the web application may not yet meet the WCAG 2.2 AA thresholds for colour contrast or minimum target size. The remediations change the site's visual design and have been deferred until a dedicated visual-design review.
 
-**5.2** **General enquiries:** hello@menuva.co.uk
+**5.2** The iOS app relies on Apple's platform accessibility features and our own manual testing; it has not had a separate formal WCAG audit.
 
-**5.3** **Support:** support@menuva.co.uk
+**5.3** We do not control the accessibility of restaurant-provided menu images or other third-party content embedded within menus.
+
+**5.4** A full end-to-end VoiceOver pass on a real iOS device, for every flow on the web application, is planned but not yet complete.
+
+## 6. Feedback and contact
+
+**6.1** If you experience an accessibility barrier using Menuva, or have suggestions for improvement, please contact us. We take accessibility feedback seriously and will work to address issues promptly.
+
+**6.2** **General enquiries:** hello@menuva.co.uk
+
+**6.3** **Support:** support@menuva.co.uk
