@@ -131,9 +131,14 @@ function render(raw,el){
   var heading=document.createElement('h1');heading.className='doc-heading';
   heading.textContent=meta.heading||meta.title||'';doc.appendChild(heading);
 
-  var metaDiv=document.createElement('div');metaDiv.className='doc-meta';
-  metaDiv.textContent=chrome('effectiveDate')+': '+(meta.effective||'')+' \u00B7 '+chrome('lastUpdated')+': '+(meta.updated||'');
-  doc.appendChild(metaDiv);
+  var metaParts=[];
+  if(meta.effective)metaParts.push(chrome('effectiveDate')+': '+meta.effective);
+  if(meta.updated)metaParts.push(chrome('lastUpdated')+': '+meta.updated);
+  if(metaParts.length){
+    var metaDiv=document.createElement('div');metaDiv.className='doc-meta';
+    metaDiv.textContent=metaParts.join(' \u00B7 ');
+    doc.appendChild(metaDiv);
+  }
 
   // Safe: content is first-party .md files committed to repo, not user input
   var body=document.createElement('div');body.className='doc-body';
