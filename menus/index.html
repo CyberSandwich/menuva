@@ -1451,6 +1451,7 @@ function _refreshForPreview(){
   var newToggle=el.querySelector('.preview-toggle');
   if(newPanel&&prevOpen)newPanel.classList.add('open');
   if(newToggle&&prevToggleActive)newToggle.classList.add('active');
+  if(newToggle&&prevToggleActive)newToggle.setAttribute('aria-expanded','true');
   var dateIn=el.querySelector('.preview-input[type="date"]');
   var timeIn=el.querySelector('.preview-input[type="time"]');
   if(dateIn)dateIn.value=prevDateVal;
@@ -1467,6 +1468,7 @@ function _refreshForPreview(){
     var filterToggle=el.querySelector('.afilter-toggle');
     if(filterToggle){
       filterToggle.classList.add('active');
+      filterToggle.setAttribute('aria-expanded','true');
       var total=_activeAllergens.size+_activeDietary.size;
       var badge=document.createElement('span');badge.className='afilter-count';badge.textContent=total;
       filterToggle.appendChild(badge);
@@ -3215,6 +3217,8 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
   // Filter toggle
   var filterToggle=document.createElement('button');filterToggle.className='afilter-toggle';
   filterToggle.setAttribute('aria-label',chrome('filter'));
+  filterToggle.setAttribute('aria-expanded','false');
+  filterToggle.setAttribute('aria-controls','tb-filter-panel');
   filterToggle.appendChild(_afilterMakeFunnelSvg());
   var filterLabel=document.createElement('span');filterLabel.textContent=chrome('filter');
   filterToggle.appendChild(filterLabel);
@@ -3223,6 +3227,8 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
   // Preview toggle
   var previewToggle=document.createElement('button');previewToggle.className='preview-toggle';
   previewToggle.setAttribute('aria-label',chrome('preview'));
+  previewToggle.setAttribute('aria-expanded','false');
+  previewToggle.setAttribute('aria-controls','tb-preview-panel');
   previewToggle.appendChild(_makeClockSvg());
   var previewLabel=document.createElement('span');previewLabel.textContent=chrome('preview');
   previewToggle.appendChild(previewLabel);
@@ -3234,6 +3240,8 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
   if(hoursCal){
     hoursToggle=document.createElement('button');hoursToggle.className='preview-toggle';
     hoursToggle.setAttribute('aria-label',chrome('openingHours'));
+    hoursToggle.setAttribute('aria-expanded','false');
+    hoursToggle.setAttribute('aria-controls','tb-hours-panel');
     hoursToggle.appendChild(_makeHoursSvg());
     var hoursLabel=document.createElement('span');hoursLabel.textContent=chrome('openingHours');
     hoursToggle.appendChild(hoursLabel);
@@ -3244,6 +3252,7 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
 
   // Filter panel
   var filterPills=document.createElement('div');filterPills.className='afilter-pills';
+  filterPills.id='tb-filter-panel';
   var lang=curLang();
   var aLabels=ALLERGEN_LABELS[lang]||ALLERGEN_LABELS.en;
   var dLabels=DIETARY_LABELS[lang]||DIETARY_LABELS.en;
@@ -3299,6 +3308,7 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
 
   // Preview panel
   var previewPanel=document.createElement('div');previewPanel.className='preview-panel';
+  previewPanel.id='tb-preview-panel';
 
   // Date field
   var dateField=document.createElement('div');dateField.className='preview-field';
@@ -3324,6 +3334,7 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
   // Hours panel
   if(hoursCal){
     hoursPanel=document.createElement('div');hoursPanel.className='hours-panel';
+    hoursPanel.id='tb-hours-panel';
     _buildHoursContent(hoursPanel,hoursCal,menu.timezone||'Europe/London');
     bar.appendChild(hoursPanel);
   }
@@ -3335,9 +3346,11 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
     var isOpen=filterPills.classList.contains('open');
     filterPills.classList.toggle('open');
     filterToggle.classList.toggle('active',!isOpen);
+    filterToggle.setAttribute('aria-expanded',filterPills.classList.contains('open')?'true':'false');
     if(!isOpen){
       previewPanel.classList.remove('open');previewToggle.classList.remove('active');
-      if(hoursCal){hoursPanel.classList.remove('open');hoursToggle.classList.remove('active')}
+      previewToggle.setAttribute('aria-expanded','false');
+      if(hoursCal){hoursPanel.classList.remove('open');hoursToggle.classList.remove('active');hoursToggle.setAttribute('aria-expanded','false')}
     }
   });
 
@@ -3381,9 +3394,11 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
     var isOpen=previewPanel.classList.contains('open');
     previewPanel.classList.toggle('open');
     previewToggle.classList.toggle('active',!isOpen);
+    previewToggle.setAttribute('aria-expanded',previewPanel.classList.contains('open')?'true':'false');
     if(!isOpen){
       filterPills.classList.remove('open');filterToggle.classList.remove('active');
-      if(hoursCal){hoursPanel.classList.remove('open');hoursToggle.classList.remove('active')}
+      filterToggle.setAttribute('aria-expanded','false');
+      if(hoursCal){hoursPanel.classList.remove('open');hoursToggle.classList.remove('active');hoursToggle.setAttribute('aria-expanded','false')}
     }
     if(isOpen){
       // Closing: clear preview state and refresh
@@ -3436,6 +3451,7 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
     dateInput.value='';timeInput.value='';
     previewToggle.classList.remove('active');
     previewPanel.classList.remove('open');
+    previewToggle.setAttribute('aria-expanded','false');
     _refreshForPreview();
   });
 
@@ -3445,9 +3461,12 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
       var isOpen=hoursPanel.classList.contains('open');
       hoursPanel.classList.toggle('open');
       hoursToggle.classList.toggle('active',!isOpen);
+      hoursToggle.setAttribute('aria-expanded',hoursPanel.classList.contains('open')?'true':'false');
       if(!isOpen){
         filterPills.classList.remove('open');filterToggle.classList.remove('active');
+        filterToggle.setAttribute('aria-expanded','false');
         previewPanel.classList.remove('open');previewToggle.classList.remove('active');
+        previewToggle.setAttribute('aria-expanded','false');
       }
     });
   }
