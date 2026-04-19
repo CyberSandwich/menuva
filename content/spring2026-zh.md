@@ -2,7 +2,7 @@
 title: 2026年春假
 heading: Menuva 2026年春假
 effective: 2026年3月21日
-updated: 2026年3月22日
+updated: 2026年4月19日
 contact_questions: hello@menuva.co.uk
 ---
 
@@ -48,25 +48,23 @@ Menuva 的第二学期（2025/2026 春季学期）试点专注于华威大学校
 
 **Food Market Days**（Piazza 周三餐车集市）在春假期间将不会运营。受影响的餐车如下：
 
-| 餐车 |
-| --- |
-| Buddha Belly |
-| Cleopatra's Kitchen |
-| Flying Cows |
-| Good Food Cartel |
-| Gyro Guys |
-| Ice Cream Truck |
-| Mister V |
-| Platinum Pancakes |
-| Poutine Punks |
-| Redfern Kitchen |
-| Spice Fever |
-| Street Chef Lloyd |
-| Tacos El Pap |
-| The Rollin Bowls |
-| Urban Spice Box |
-| Wicked Cookies |
-| Yardbirds Fried Chicken |
+- Buddha Belly
+- Cleopatra's Kitchen
+- Flying Cows
+- Good Food Cartel
+- Gyro Guys
+- Ice Cream Truck
+- Mister V
+- Platinum Pancakes
+- Poutine Punks
+- Redfern Kitchen
+- Spice Fever
+- Street Chef Lloyd
+- Tacos El Pap
+- The Rollin Bowls
+- Urban Spice Box
+- Wicked Cookies
+- Yardbirds Fried Chicken
 
 ## 3. 致场所运营方
 

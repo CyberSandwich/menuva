@@ -2,7 +2,7 @@
 title: Spring Break 2026
 heading: Menuva Spring Break 2026
 effective: 21 March 2026
-updated: 22 March 2026
+updated: 19 April 2026
 contact_questions: hello@menuva.co.uk
 ---
 
@@ -48,25 +48,23 @@ The following changes take effect from **Saturday 21 March 2026** and remain in 
 
 **Food Market Days** (Wednesday food trucks at the Piazza) will not operate during the spring break. The following vendors are affected:
 
-| Vendor |
-| --- |
-| Buddha Belly |
-| Cleopatra's Kitchen |
-| Flying Cows |
-| Good Food Cartel |
-| Gyro Guys |
-| Ice Cream Truck |
-| Mister V |
-| Platinum Pancakes |
-| Poutine Punks |
-| Redfern Kitchen |
-| Spice Fever |
-| Street Chef Lloyd |
-| Tacos El Pap |
-| The Rollin Bowls |
-| Urban Spice Box |
-| Wicked Cookies |
-| Yardbirds Fried Chicken |
+- Buddha Belly
+- Cleopatra's Kitchen
+- Flying Cows
+- Good Food Cartel
+- Gyro Guys
+- Ice Cream Truck
+- Mister V
+- Platinum Pancakes
+- Poutine Punks
+- Redfern Kitchen
+- Spice Fever
+- Street Chef Lloyd
+- Tacos El Pap
+- The Rollin Bowls
+- Urban Spice Box
+- Wicked Cookies
+- Yardbirds Fried Chicken
 
 ## 3. For venue operators
 
