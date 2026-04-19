@@ -75,7 +75,7 @@ Menuva 重视法律合规。尽管 Menuva 是一个免费的学生主导试点�
 
 - [隐私政策](/privacy/)：数据收集、使用及您的权利的详细信息
 - [Cookie 政策](/cookies/)：Cookie、本地存储和类似技术
-- [条款与条件](/terms/)：Menuva 服务的使用条款
+- [条款与细则](/terms/)：Menuva 服务的使用条款
 - [投诉程序](/complaints/)：如何提出投诉，包括向 ICO 申诉
 - [无障碍声明](/accessibility/)：我们对无障碍设计的承诺
 - [联系方式](/contact/)：一般咨询和支持
