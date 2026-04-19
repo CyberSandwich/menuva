@@ -28,7 +28,8 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
 
 /* ── Section divider (from H2) ── */
 .doc-body .link-sec{margin:28px 0 10px}
-.doc-body .link-sec:first-child{margin-top:8px}
+#content-en>.link-sec:first-child,
+#content-zh>.link-sec:first-child{margin-top:8px}
 .doc-body .link-sec h3{
   font-size:.75rem;
   font-weight:600;
