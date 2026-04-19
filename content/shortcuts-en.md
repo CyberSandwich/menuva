@@ -2,16 +2,16 @@
 title: Keyboard Shortcuts
 heading: Keyboard Shortcuts
 effective: 18 March 2026
-updated: 18 March 2026
+updated: 19 April 2026
 ---
 
 ## Navigation
 
 | Key | Action |
 |-----|--------|
-| **1** | Go to Home |
-| **2** | Go to Menus |
-| **3** | Go to More |
+| **Alt+1** | Go to Home |
+| **Alt+2** | Go to Menus |
+| **Alt+3** | Go to More |
 | **Left** / **Right** | Previous / Next tab |
 | **G** then **H** | Go to Home |
 | **G** then **M** | Go to Menus |
@@ -23,8 +23,9 @@ updated: 18 March 2026
 | Key | Action |
 |-----|--------|
 | **Cmd+K** or **Ctrl+K** | Open global search |
-| **/** | Focus page search |
-| **Up** / **Down** or **J** / **K** | Navigate results |
+| **Alt+/** | Focus page search |
+| **Up** / **Down** | Navigate results |
+| **Alt+J** / **Alt+K** | Navigate results |
 | **Enter** | Select result |
 | **Escape** | Close search / clear focus |
 | **Tab** / **Shift+Tab** | Navigate results (in global search) |
@@ -33,5 +34,5 @@ updated: 18 March 2026
 
 | Key | Action |
 |-----|--------|
-| **L** | Toggle language (EN / Chinese) |
-| **?** | View this page |
+| **Alt+L** | Toggle language (EN / Chinese) |
+| **Alt+?** | View this page |

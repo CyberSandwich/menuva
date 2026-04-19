@@ -674,66 +674,68 @@ export function initKeyboard(config){
     }
     if(tag==='SELECT'||(ae&&ae.isContentEditable))return;
 
-    if(e.metaKey||e.ctrlKey||e.altKey)return;
+    if(e.metaKey||e.ctrlKey)return;
 
     var key=e.key;
+    var code=e.code;
 
-    if(key==='g'&&!pendingG){
-      pendingG=true;clearTimeout(gTimer);
-      gTimer=setTimeout(function(){pendingG=false},500);
+    if(!e.altKey){
+      if(key==='g'&&!pendingG){
+        pendingG=true;clearTimeout(gTimer);
+        gTimer=setTimeout(function(){pendingG=false},500);
+        return;
+      }
+      if(pendingG){
+        pendingG=false;clearTimeout(gTimer);
+        if(key==='h'){location.href='/';return}
+        if(key==='m'){location.href='/menus/';return}
+        if(key==='o'){location.href='/more/';return}
+      }
+
+      if(key==='Backspace'&&onBack){onBack();return}
+
+      if(key==='ArrowRight'||key==='ArrowLeft'){
+        var next=CUR_TAB+(key==='ArrowRight'?1:-1);
+        if(next<0)next=TAB_URLS.length-1;
+        if(next>=TAB_URLS.length)next=0;
+        if(next!==CUR_TAB)location.href=TAB_URLS[next];
+        return;
+      }
+
+      if(cardSelector){
+        if(key==='ArrowDown'){e.preventDefault();kbMove(1);return}
+        if(key==='ArrowUp'){e.preventDefault();kbMove(-1);return}
+        if(key==='Enter'&&kbIdx>=0&&kbCards[kbIdx]){kbCards[kbIdx].click();kbClear();return}
+        if(key==='Escape'&&kbIdx>=0){kbClear();return}
+      }
+
+      onKey(key,e);
       return;
     }
-    if(pendingG){
-      pendingG=false;clearTimeout(gTimer);
-      if(key==='h'){location.href='/';return}
-      if(key==='m'){location.href='/menus/';return}
-      if(key==='o'){location.href='/more/';return}
+
+    // Alt-gated single-char shortcuts (use e.code - Option/Alt modifies e.key on macOS)
+    if(code==='Slash'){
+      e.preventDefault();
+      if(e.shiftKey){location.href='/shortcuts/';return}
+      var sid=resolveSearchInputId();
+      if(sid){var si=$(typeof sid==='string'?'#'+sid:sid);if(si)si.focus()}
+      return;
     }
-
-    if(key==='?'){location.href='/shortcuts/';return}
-    if(key==='Backspace'&&onBack){onBack();return}
-
-    if(key>='1'&&key<='3'){
-      var idx=+key-1;
+    if(code==='Digit1'||code==='Digit2'||code==='Digit3'){
+      e.preventDefault();
+      var idx=+code.slice(-1)-1;
       if(idx!==CUR_TAB)location.href=TAB_URLS[idx];
       return;
     }
-
-    if(key==='l'){
+    if(code==='KeyL'){
+      e.preventDefault();
       if(_langHandle)_langHandle.toggle();
       return;
     }
-
-    if(key==='/'){
-      var sid=resolveSearchInputId();
-      if(sid){
-        var si=$(typeof sid==='string'?'#'+sid:sid);
-        if(si){e.preventDefault();si.focus()}
-      }
-      return;
-    }
-
     if(cardSelector){
-      if(key==='j'||key==='ArrowDown'){e.preventDefault();kbMove(1);return}
-      if(key==='k'||key==='ArrowUp'){e.preventDefault();kbMove(-1);return}
+      if(code==='KeyJ'){e.preventDefault();kbMove(1);return}
+      if(code==='KeyK'){e.preventDefault();kbMove(-1);return}
     }
-
-    if(key==='ArrowRight'||key==='ArrowLeft'){
-      var next=CUR_TAB+(key==='ArrowRight'?1:-1);
-      if(next<0)next=TAB_URLS.length-1;
-      if(next>=TAB_URLS.length)next=0;
-      if(next!==CUR_TAB)location.href=TAB_URLS[next];
-      return;
-    }
-
-    if(cardSelector){
-      if(key==='Enter'&&kbIdx>=0&&kbCards[kbIdx]){
-        kbCards[kbIdx].click();
-        kbClear();return;
-      }
-      if(key==='Escape'&&kbIdx>=0){kbClear();return}
-    }
-
-    onKey(key,e);
+    onKey(code,e);
   });
 }
