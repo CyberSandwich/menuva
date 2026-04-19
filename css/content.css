@@ -54,6 +54,7 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
 .doc-body strong{font-weight:600;color:var(--t1)}
 .doc-body em{font-style:italic}
 .doc-body code{font-family:ui-monospace,SFMono-Regular,monospace;font-size:.8125rem;background:var(--bg2);padding:2px 5px;border-radius:4px}
+.doc-body kbd{font-family:ui-monospace,SFMono-Regular,monospace;font-size:.8125rem;background:var(--bg2);border:1px solid var(--bdr);border-bottom-width:2px;border-radius:4px;padding:1px 6px;color:var(--t1)}
 .doc-body pre{background:var(--bg2);border-radius:10px;padding:14px 18px;margin:12px 0 16px;overflow-x:auto}
 .doc-body pre code{background:none;padding:0;font-size:.8125rem;line-height:1.6}
 

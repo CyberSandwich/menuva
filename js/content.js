@@ -18,6 +18,7 @@ function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g
 
 function il(t){
   return t
+    .replace(/\[\[([^\]]+)\]\]/g,function(_,c){return'<kbd>'+esc(c)+'</kbd>'})
     .replace(/`([^`]+)`/g,function(_,c){return'<code>'+esc(c)+'</code>'})
     .replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')
     .replace(/\*([^*]+)\*/g,'<em>$1</em>')
