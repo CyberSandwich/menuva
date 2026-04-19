@@ -19,7 +19,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{min-height:100%}
 body{font-family:var(--font);background:var(--bg);color:var(--t1);display:grid;place-items:center;min-height:100vh;min-height:100dvh;padding:24px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.5}
-main{width:100%;max-width:400px;display:flex;flex-direction:column;align-items:center;gap:16px}
+main{width:100%;max-width:400px;display:flex;flex-direction:column;gap:14px}
 .pcard{display:flex;align-items:center;gap:16px;padding:18px 20px;width:100%;background:var(--card);border-radius:20px;box-shadow:var(--shadow);text-decoration:none;color:var(--t1);transition:box-shadow .15s,transform .1s;animation:cardin .5s cubic-bezier(.25,.46,.45,.94) both}
 @keyframes cardin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media(hover:hover){.pcard:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}}
@@ -31,12 +31,10 @@ main{width:100%;max-width:400px;display:flex;flex-direction:column;align-items:c
 .pd{font-size:.8125rem;color:var(--t3);margin-top:3px;letter-spacing:-.005em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .arr{color:var(--t4);flex-shrink:0;display:grid;place-items:center}
 .arr svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.support{display:none;font-size:.8125rem;color:var(--t3);letter-spacing:-.005em;text-align:center;padding:0 12px}
-.support a{color:var(--t2);text-decoration:none;border-bottom:1px solid var(--bdr);padding-bottom:1px;transition:color .15s,border-color .15s}
-@media(hover:hover){.support a:hover{color:var(--t1);border-bottom-color:var(--t3)}}
-.support.show{display:block;animation:fadein .6s ease-out 1s both}
-@keyframes fadein{from{opacity:0}to{opacity:1}}
-@media(prefers-reduced-motion:reduce){.pcard{animation:none}.support{animation:none}}
+.pcard.support{display:none;opacity:0}
+.pcard.support.show{display:flex;animation:fadein .6s ease-out 1s forwards}
+@keyframes fadein{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.pcard{animation:none}.pcard.support.show{animation:none;opacity:1;transform:none}}
 </style>
 <script>try{if(localStorage.getItem('lang')==='zh')document.documentElement.lang='zh-Hans'}catch(_){}</script>
 <script>
@@ -273,7 +271,14 @@ main{width:100%;max-width:400px;display:flex;flex-direction:column;align-items:c
     </div>
     <div class="arr"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></div>
   </a>
-  <p id="msg-support" class="support">Something broken? <a href="mailto:support@menuva.co.uk">support@menuva.co.uk</a></p>
+  <a id="msg-support" class="pcard support" href="mailto:support@menuva.co.uk">
+    <div class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></div>
+    <div class="pinf">
+      <div class="pt">Contact Support</div>
+      <div class="pd">support@menuva.co.uk</div>
+    </div>
+    <div class="arr"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></div>
+  </a>
 </main>
 </body>
 </html>
