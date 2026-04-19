@@ -7,6 +7,13 @@
  * Reads _config/pages.json and content/*.md, prerenders content pages with
  * both EN and ZH bodies plus JSON-LD, generates redirect pages, and writes
  * sitemap.xml with per-page lastmod.
+ *
+ * QR overlay (optional, per-page):
+ *   Content entries may set "qr": true to enable a heading-tap QR overlay.
+ *   Requires a PNG at repo-root path qr-{slug}.png (the build fails otherwise).
+ *   The template emits data-qr="{slug}" on <main>; js/content.js reads it
+ *   and wires up the overlay. Homepage uses qr-home.png with its own
+ *   inlined overlay in index.html. Naming is fixed: qr-{slug}.png at root.
  */
 
 const fs = require('fs');
