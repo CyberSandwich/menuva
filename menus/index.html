@@ -3133,7 +3133,7 @@ function _buildHoursContent(panel,calendar,timezone){
   var status=computeOpenStatus(calendar,tz);
   if(status){
     var statusRow=document.createElement('div');statusRow.className='hours-status';
-    var dot=document.createElement('span');dot.className='hours-dot '+(status.open?'open':'closed');
+    var dot=document.createElement('span');dot.className='hours-dot '+(status.open?'open':'closed');dot.setAttribute('aria-hidden','true');
     statusRow.appendChild(dot);
     var lbl=document.createElement('span');
     lbl.textContent=status.open?chrome('openNow'):chrome('closedNow');
