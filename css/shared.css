@@ -34,8 +34,8 @@ body{
 ::selection{background:rgba(18,179,168,.12);color:var(--t1)}
 
 /* Skip link */
-.skip-link{position:absolute;top:-100%;left:50%;transform:translateX(-50%);padding:12px 24px;background:var(--card);border-radius:0 0 12px 12px;box-shadow:var(--shadow);font:500 .875rem/1 var(--font);color:var(--t1);z-index:100;transition:top .2s;text-decoration:none}
-.skip-link:focus{top:0}
+.skip-link{position:absolute;top:0;left:50%;transform:translateX(-50%);padding:12px 24px;background:var(--card);border-radius:0 0 12px 12px;box-shadow:var(--shadow);font:500 .875rem/1 var(--font);color:var(--t1);z-index:100;text-decoration:none;clip-path:inset(0 0 100% 0);transition:clip-path .2s}
+.skip-link:focus{clip-path:inset(0)}
 
 /* Focus */
 :focus{outline:2px solid var(--acc);outline-offset:3px}
