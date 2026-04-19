@@ -3879,11 +3879,11 @@ function _bskBuildPanelDOM(){
   var clearBtn=document.createElement('button');clearBtn.className='bsk-clear';
   clearBtn.textContent=chrome('clearAll');
   var confirming=false,tmr=0;
-  clearBtn._resetConfirm=function(){if(tmr){clearTimeout(tmr);tmr=0}confirming=false;clearBtn.classList.remove('bsk-clear-confirm');clearBtn.textContent=chrome('clearAll')};
+  clearBtn._resetConfirm=function(){if(tmr){clearTimeout(tmr);tmr=0}confirming=false;clearBtn.textContent=chrome('clearAll')};
   clearBtn.addEventListener('click',function(){
     if(confirming){clearBtn._resetConfirm();clearBasket();return}
-    confirming=true;clearBtn.classList.add('bsk-clear-confirm');clearBtn.textContent=chrome('confirmClear');
-    tmr=setTimeout(function(){confirming=false;tmr=0;clearBtn.classList.remove('bsk-clear-confirm');clearBtn.textContent=chrome('clearAll')},3000);
+    confirming=true;clearBtn.textContent=chrome('confirmClear');
+    tmr=setTimeout(function(){confirming=false;tmr=0;clearBtn.textContent=chrome('clearAll')},3000);
   });
   hdr.appendChild(clearBtn);
 
