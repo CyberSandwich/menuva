@@ -1007,7 +1007,7 @@ function _appendInlineAnn(container){
 
 function showViewerError(el,is404){
   el.textContent='';
-  var msg=document.createElement('div');msg.className='empty';
+  var msg=document.createElement('div');msg.className='empty';msg.setAttribute('role','alert');
   msg.textContent=is404?chrome('notFound'):chrome('error');
   msg.appendChild(notifyLine());
   if(!is404){
