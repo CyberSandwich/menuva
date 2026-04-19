@@ -3879,10 +3879,11 @@ function _bskBuildPanelDOM(){
   var clearBtn=document.createElement('button');clearBtn.className='bsk-clear';
   clearBtn.textContent=chrome('clearAll');
   var confirming=false,tmr=0;
+  clearBtn._resetConfirm=function(){if(tmr){clearTimeout(tmr);tmr=0}confirming=false;clearBtn.classList.remove('bsk-clear-confirm');clearBtn.textContent=chrome('clearAll')};
   clearBtn.addEventListener('click',function(){
-    if(confirming){clearTimeout(tmr);confirming=false;clearBtn.classList.remove('bsk-clear-confirm');clearBtn.textContent=chrome('clearAll');clearBasket();return}
+    if(confirming){clearBtn._resetConfirm();clearBasket();return}
     confirming=true;clearBtn.classList.add('bsk-clear-confirm');clearBtn.textContent=chrome('confirmClear');
-    tmr=setTimeout(function(){confirming=false;clearBtn.classList.remove('bsk-clear-confirm');clearBtn.textContent=chrome('clearAll')},3000);
+    tmr=setTimeout(function(){confirming=false;tmr=0;clearBtn.classList.remove('bsk-clear-confirm');clearBtn.textContent=chrome('clearAll')},3000);
   });
   hdr.appendChild(clearBtn);
 
@@ -3988,6 +3989,7 @@ function _bskOpenPanel(){
 
 function _bskClosePanel(){
   if(!_bskPanelOpen)return;
+  if(_bskPanel){var cb=_bskPanel.querySelector('.bsk-clear');if(cb&&cb._resetConfirm)cb._resetConfirm();}
   _bskPanelOpen=false;
   _bskPanel.style.transition='';
   _bskPanel.style.transform='';
