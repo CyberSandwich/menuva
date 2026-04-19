@@ -10,8 +10,8 @@
 import{initCommandPalette,initKeyboard,initLanguage,registerStrings,chrome}from'/js/shared.js?v=9';
 
 registerStrings({
-  en:{effectiveDate:'Effective date',lastUpdated:'Last updated',contentNotAvailable:'Content not yet available in this language.',pleaseNotify:'Please notify',questions:'Questions',support:'Support'},
-  zh:{effectiveDate:'生效日期',lastUpdated:'最后更新',contentNotAvailable:'此语言的内容尚未提供。',pleaseNotify:'请联系',questions:'咨询',support:'支持'}
+  en:{effectiveDate:'Effective date',lastUpdated:'Last updated',contentNotAvailable:'Content not yet available in this language.',pleaseNotify:'Please notify',questions:'Questions',support:'Support',opensInNewTab:'(opens in new tab)'},
+  zh:{effectiveDate:'生效日期',lastUpdated:'最后更新',contentNotAvailable:'此语言的内容尚未提供。',pleaseNotify:'请联系',questions:'咨询',support:'支持',opensInNewTab:'（在新分页中打开）'}
 });
 
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
@@ -22,7 +22,11 @@ function il(t){
     .replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')
     .replace(/\*([^*]+)\*/g,'<em>$1</em>')
     .replace(/!\[([^\]]*)\]\(([^)]+)\)/g,function(_,alt,src){return'<img src="'+esc(src)+'" alt="'+esc(alt)+'" loading="lazy">'})
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g,function(_,text,href){return'<a href="'+esc(href)+'" target="_blank" rel="noopener noreferrer">'+text+'</a>'});
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g,function(_,text,href){
+      var ext=/^https?:\/\//i.test(href)&&!/^https?:\/\/(www\.)?menuva\.co\.uk(\/|$)/i.test(href);
+      if(ext)return'<a href="'+esc(href)+'" target="_blank" rel="noopener noreferrer">'+text+'<span class="sr-only"> '+chrome('opensInNewTab')+'</span></a>';
+      return'<a href="'+esc(href)+'">'+text+'</a>';
+    });
 }
 
 function parseMd(md){
