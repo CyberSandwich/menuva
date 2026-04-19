@@ -2,7 +2,7 @@
 title: 添加您的餐厅
 heading: 将您的餐厅加入 Menuva
 effective: 2026年3月18日
-updated: 2026年3月18日
+updated: 2026年4月19日
 contact_questions: support@menuva.co.uk
 ---
 
@@ -10,14 +10,9 @@ Menuva 目前正在接受指定的入驻申请。自助申请功能即将开放�
 
 ## 1. 如何申请
 
-**1.1** 访问 [admin.menuva.co.uk](https://admin.menuva.co.uk)，使用 Google 或任何电子邮件地址登录。邮箱登录无需密码。
-
-**1.2** 发送邮件至 [support@menuva.co.uk](mailto:support@menuva.co.uk)，包含以下信息：
-
-- 登录时使用的电子邮件地址。
-- 证明您是合法餐饮场所的所有者或授权代表（例如，营业执照、公司注册信息或餐厅官方网站链接）。
-
-**1.3** 访问权限获批后，管理门户将引导您添加餐厅信息，包括名称、营业时间、位置和菜单项目。
+1. 访问 [admin.menuva.co.uk](https://admin.menuva.co.uk)，使用 Google 或任何电子邮件地址登录。邮箱登录无需密码。
+2. 发送邮件至 [support@menuva.co.uk](mailto:support@menuva.co.uk)，提供登录时使用的电子邮件地址，以及证明您是合法餐饮场所的所有者或授权代表的材料（例如营业执照、公司注册信息或餐厅官方网站链接）。
+3. 访问权限获批后，管理门户将引导您添加餐厅信息，包括名称、营业时间、位置和菜单项目。
 
 ## 2. 菜单创建支持
 
@@ -40,6 +35,5 @@ Menuva 目前正在接受指定的入驻申请。自助申请功能即将开放�
 
 ## 3. 注意事项
 
-**3.1** Menuva 仍处于早期阶段。管理门户和入驻流程正在持续优化中。
-
-**3.2** 如果您遇到任何问题、发现体验可以改进或发现错误，请尽快联系 [support@menuva.co.uk](mailto:support@menuva.co.uk)。您的反馈将直接影响平台的发展。
+1. Menuva 仍处于早期阶段。管理门户和入驻流程正在持续优化中。
+2. 如果您遇到任何问题、发现体验可以改进或发现错误，请尽快联系 [support@menuva.co.uk](mailto:support@menuva.co.uk)。您的反馈将直接影响平台的发展。
