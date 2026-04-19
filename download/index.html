@@ -42,7 +42,7 @@
     })();
   </script>
   <style>
-    :root{--bg:#FAFAFA;--card:#FFF;--t1:#1A1A1A;--t2:#6B6B6B;--t3:#9A9A9A;--t4:#C7C7CC;--bdr:#E8E8E8;--acc:#12B3A8;--shadow:0 1px 3px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.04);--shadow-hover:0 2px 8px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.08);--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,system-ui,sans-serif}
+    :root{--bg:#FAFAFA;--bg2:#F5F5F5;--card:#FFF;--t1:#1A1A1A;--t2:#6B6B6B;--t3:#9A9A9A;--t4:#C7C7CC;--bdr:#E8E8E8;--shadow:0 1px 3px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.04);--shadow-hover:0 2px 8px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.08);--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,system-ui,sans-serif}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html,body{min-height:100%}
     body{font-family:var(--font);background:var(--bg);color:var(--t1);display:grid;place-items:center;min-height:100vh;min-height:100dvh;padding:24px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.5}
@@ -52,7 +52,7 @@
     @media(hover:hover){.pcard:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}}
     .pcard:active{transform:translateY(-1px) scale(.985)}
     .pcard.support{animation-delay:1s}
-    .picon{width:44px;height:44px;border-radius:14px;background:rgba(18,179,168,.08);color:var(--acc);display:grid;place-items:center;flex-shrink:0}
+    .picon{width:44px;height:44px;border-radius:14px;background:var(--bg2);color:var(--t2);display:grid;place-items:center;flex-shrink:0}
     .picon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
     .picon.spin svg{animation:spin 1s linear infinite}
     @keyframes spin{to{transform:rotate(360deg)}}
