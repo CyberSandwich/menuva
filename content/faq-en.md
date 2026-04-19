@@ -40,7 +40,7 @@ Menuva is a digital menu platform that makes dining-in simple and accessible for
 - **Availability:** Downloadable from every iOS App Store region, intended for UK use
 - **Accounts:** None (no sign-in)
 - **Ordering:** No in-app ordering, payments, or reservations
-- **Venues:** 11 venues and 19 food trucks as of Spring Term 2025/2026, and growing. See the app or [menuva.co.uk/menus/](/menus/) for the latest list.
+- **Venues:** 26 venues as of Spring Term 2025/2026, and growing. See the app or [menuva.co.uk/menus/](/menus/) for the latest list.
 - **Languages:** English (UK), Chinese
 
 ## 3. Getting started

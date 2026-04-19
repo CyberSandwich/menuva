@@ -1,5 +1,5 @@
 ---
-title: 使用教程
+title: 使用教程 (iOS)
 heading: Menuva iOS 使用教程
 effective: 2026年3月18日
 updated: 2026年4月19日

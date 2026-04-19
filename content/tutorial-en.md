@@ -1,5 +1,5 @@
 ---
-title: Tutorial
+title: Tutorial (iOS)
 heading: Menuva iOS Tutorial
 effective: 18 March 2026
 updated: 19 April 2026
