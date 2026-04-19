@@ -420,6 +420,11 @@ export function initLanguage(config){
   var onApply=config.onApply||function(){};
   var analytics=config.analytics||function(){};
   var langTimer;
+  var liveRegion=document.createElement('span');
+  liveRegion.setAttribute('aria-live','polite');
+  liveRegion.setAttribute('style','position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap');
+  document.body.appendChild(liveRegion);
+  var liveTimer;
 
   function applyLanguage(lng){
     document.documentElement.setAttribute('data-lang',lng);
@@ -438,7 +443,12 @@ export function initLanguage(config){
     analytics(next,prev);
     try{localStorage.setItem('lang',next)}catch(_){}
     clearTimeout(langTimer);
-    langTimer=setTimeout(function(){applyLanguage(next)},100);
+    langTimer=setTimeout(function(){
+      applyLanguage(next);
+      liveRegion.textContent=next==='zh'?'已切换为中文':'Language changed to English';
+      clearTimeout(liveTimer);
+      liveTimer=setTimeout(function(){liveRegion.textContent=''},1500);
+    },100);
   }
 
   document.getElementById('lang-btn').addEventListener('click',toggle);
