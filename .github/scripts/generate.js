@@ -47,6 +47,59 @@ function escHtml(s) {
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
+function stripMdToText(s) {
+  return String(s || '')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1')
+    .replace(/!\[([^\]]*)\]\([^)]+\)/g, '$1')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/\*([^*]+)\*/g, '$1')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/~~([^~]+)~~/g, '$1')
+    .replace(/==([^=]+)==/g, '$1')
+    .replace(/^\s*[-*]\s+/gm, '• ')
+    .replace(/^\s*\d+\.\s+/gm, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
+function extractFaqPairs(raw) {
+  if (!raw) return [];
+  const lines = raw.split(/\r?\n/);
+  let i = 0;
+  if (lines[0] === '---') {
+    i = 1;
+    while (i < lines.length && lines[i] !== '---') i++;
+    i++;
+  }
+  const pairs = [];
+  let q = null;
+  let buf = [];
+  function flush() {
+    if (q) {
+      const a = stripMdToText(buf.join('\n'));
+      if (a) pairs.push({ q, a });
+    }
+    q = null;
+    buf = [];
+  }
+  for (; i < lines.length; i++) {
+    const line = lines[i];
+    const h3 = line.match(/^### (.+?)\s*$/);
+    const h2 = line.match(/^## /);
+    if (h3) {
+      flush();
+      const title = h3[1].trim();
+      if (/\?$/.test(title)) q = title;
+    } else if (h2) {
+      flush();
+    } else if (q) {
+      buf.push(line);
+    }
+  }
+  flush();
+  return pairs;
+}
+
 (async () => {
 
 const mdUrl = urlMod.pathToFileURL(path.join(ROOT, 'js', 'md.js')).href;
@@ -192,6 +245,25 @@ for (const entry of config.content) {
     'publisher': { '@type': 'Organization', 'name': 'Menuva', 'url': config.domain }
   }, null, 2);
 
+  let extraJsonLd = '';
+  if (entry.slug === 'faq') {
+    const pairs = extractFaqPairs(rawEn);
+    if (pairs.length > 0) {
+      const faqLd = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'inLanguage': 'en-GB',
+        'mainEntity': pairs.map(p => ({
+          '@type': 'Question',
+          'name': p.q,
+          'acceptedAnswer': { '@type': 'Answer', 'text': p.a }
+        }))
+      });
+      extraJsonLd = '<script type="application/ld+json">' + faqLd + '</script>';
+      console.log('  + faq FAQPage schema (' + pairs.length + ' Q&A pairs)');
+    }
+  }
+
   const html = applyPlaceholders(template, {
     TITLE: escHtml(entry.title),
     SLUG: entry.slug,
@@ -201,6 +273,7 @@ for (const entry of config.content) {
     YEAR: String(config.year),
     META_DESCRIPTION: escAttr(desc),
     JSON_LD: jsonLd,
+    EXTRA_JSON_LD: extraJsonLd,
     HEADING_EN: escHtml(heading),
     HEADING_ZH: escHtml(headingZh),
     EFFECTIVE_EN: escHtml(effectiveEn),

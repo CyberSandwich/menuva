@@ -139,7 +139,7 @@ html{scroll-behavior:smooth;overflow-y:scroll;background:var(--bg)}
 }
 .doc-body tr:last-child td{border-bottom:none}
 
-.doc-body a{color:var(--accent,#12b3a8);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s ease}
+.doc-body a{color:var(--acc);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s ease}
 @media(hover:hover){.doc-body a:hover{border-bottom-color:currentColor}}
 
 .doc-body hr{border:none;border-top:1px solid var(--bdr2);margin:16px 0}
