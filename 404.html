@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://firebasestorage.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
-<style>body{margin:0;padding:24px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.muted{opacity:.7}</style>
+<style>body{margin:0;padding:24px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}h1{font-size:1.5rem;font-weight:600;margin:0 0 8px}p{margin:0 0 8px}.muted{opacity:.7}</style>
 <script>try{if(localStorage.getItem('lang')==='zh')document.documentElement.lang='zh-Hans'}catch(_){}</script>
 <script>
 (function(){
@@ -80,17 +80,10 @@
 
   function render(text,href){
     function go(){
-      var d=document.createElement('div');
-      d.textContent=text;
-      var m=document.createElement('div');
-      m.className='muted';
-      m.appendChild(document.createTextNode('If you are not redirected, '));
-      var a=document.createElement('a');
-      a.href=href;
-      a.textContent='tap here';
-      m.appendChild(a);
-      document.body.appendChild(d);
-      document.body.appendChild(m);
+      var body=document.getElementById('msg-body');
+      if(body)body.textContent=text;
+      var link=document.getElementById('msg-link');
+      if(link)link.href=href;
     }
     if(document.body)go();
     else document.addEventListener('DOMContentLoaded',go,{once:true});
@@ -219,5 +212,11 @@
 })();
 </script>
 </head>
-<body></body>
+<body>
+<main id="msg">
+<h1>Page not found</h1>
+<p id="msg-body">Taking you to the homepage...</p>
+<p class="muted"><a id="msg-link" href="/">Go to homepage</a></p>
+</main>
+</body>
 </html>
