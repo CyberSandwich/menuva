@@ -6,6 +6,8 @@ on:
     paths:
       - '_config/**'
       - '_templates/**'
+      - 'content/**'
+      - 'js/md.js'
       - '.github/scripts/generate.js'
   workflow_dispatch:
 
