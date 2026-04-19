@@ -1,6 +1,7 @@
 ---
 title: Contact
 heading: Contact Menuva
+effective: 17 March 2026
 updated: 17 March 2026
 contact_questions: hello@menuva.co.uk
 ---

@@ -1,6 +1,7 @@
 ---
 title: 联系我们
 heading: 联系 Menuva
+effective: 2026年3月17日
 updated: 2026年3月17日
 contact_questions: hello@menuva.co.uk
 ---
