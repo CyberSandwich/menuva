@@ -100,7 +100,7 @@ This Privacy Policy is provided in accordance with the [UK General Data Protecti
 
 **3.C.7** **Device and technical data.** Firebase Analytics and Google Analytics process device and app information and identifiers used for measurement (for example, an app-instance identifier), plus technical data that may be processed by the analytics provider to deliver the service securely and reliably (such as IP address and request metadata).
 
-**3.C.8** **Ad features.** Ad storage, ad user data, and ad personalization are all disabled by default in both the App and the Website. We do not collect the advertising identifier (IDFA), do not use App Tracking Transparency (ATT)-based tracking, and do not use analytics for cross-app or cross-site advertising.
+**3.C.8** **Ad features.** Ad storage, ad user data, and ad personalization are all disabled by default in both the App and the Website. We do not collect the advertising identifier (IDFA), do not use tracking based on App Tracking Transparency (ATT), and do not use analytics for cross-app or cross-site advertising.
 
 **3.C.9** **Outbound link tracking.** When you click a link to an external website, the link URL and link text (up to 100 characters) are recorded in analytics to understand which external resources are useful.
 
