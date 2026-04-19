@@ -416,6 +416,7 @@ export function initCommandPalette(config){
 }
 
 export function initLanguage(config){
+  if(_langHandle)return _langHandle;
   config=config||{};
   var onApply=config.onApply||function(){};
   var analytics=config.analytics||function(){};
