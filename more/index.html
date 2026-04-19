@@ -221,6 +221,7 @@ swrFetch('links','/more/links.json',function(data){
   LINKS=data.links;
   var el=$('#llist');
   el.textContent='';
+  el._saved=null;
   showLinks();
   var si=$('#lsearch');
   if(si&&si.value)filterList(si,el);
@@ -271,14 +272,20 @@ function filterList(input,container){
   var q=input.value.trim().toLowerCase();
   var words=q.split(/\s+/).filter(Boolean);
   var secs=[].slice.call(container.querySelectorAll('.link-sec'));
+  var cards=[].slice.call(container.querySelectorAll('.pcard'));
   var live=document.getElementById('lsearch-live');
   var empty=container.querySelector('.search-empty');
 
+  // Snapshot original card positions once so we can restore categorized layout on clear
+  if(!container._saved&&cards.length){
+    container._saved=cards.map(function(c){return{el:c,parent:c.parentNode}});
+  }
+
   if(!words.length){
-    secs.forEach(function(s){
-      s.style.display='';
-      [].slice.call(s.querySelectorAll('.pcard')).forEach(function(c){c.style.display=''});
-    });
+    if(container._saved){
+      container._saved.forEach(function(s){s.parent.appendChild(s.el);s.el.style.display=''});
+    }
+    secs.forEach(function(s){s.style.display=''});
     if(empty){empty.parentNode.removeChild(empty)}
     if(live){
       live.textContent=chrome('searchCleared');
@@ -288,20 +295,26 @@ function filterList(input,container){
     return;
   }
 
-  var total=0;
-  secs.forEach(function(s){
-    var cards=[].slice.call(s.querySelectorAll('.pcard'));
-    var visible=0;
-    cards.forEach(function(c){
-      var t=c.getAttribute('data-q')||c.textContent.toLowerCase();
-      var ok=words.every(function(w){return scoreWord(w,t)>0});
-      if(ok){c.style.display='';visible++}
-      else{c.style.display='none'}
-    });
-    s.style.display=visible?'':'none';
-    total+=visible;
+  // Flatten: score every card, keep only those matching all words, sort by score desc
+  var scored=[];
+  cards.forEach(function(c){
+    var t=c.getAttribute('data-q')||c.textContent.toLowerCase();
+    var sum=0,ok=true;
+    for(var i=0;i<words.length;i++){
+      var s=scoreWord(words[i],t);
+      if(s<=0){ok=false;break}
+      sum+=s;
+    }
+    if(ok)scored.push({el:c,score:sum});
+    else c.style.display='none';
   });
+  scored.sort(function(a,b){return b.score-a.score});
 
+  // Collapse all section headers and re-append matching cards as a single flat list
+  secs.forEach(function(s){s.style.display='none'});
+  scored.forEach(function(r){r.el.style.display='';container.appendChild(r.el)});
+
+  var total=scored.length;
   if(!total){
     if(!empty){empty=document.createElement('div');empty.className='empty search-empty';empty.textContent=chrome('noResultsMore');empty.setAttribute('role','status');container.appendChild(empty)}
     empty.style.display='';
@@ -358,7 +371,7 @@ initLanguage({
     var si=document.querySelector('#lsearch');
     if(si){si.placeholder=chrome('search');si.setAttribute('aria-label',chrome('search'))}
     var el=document.querySelector('#llist');
-    if(el){el.textContent='';showLinks();if(si&&si.value)filterList(si,el)}
+    if(el){el.textContent='';el._saved=null;showLinks();if(si&&si.value)filterList(si,el)}
   }
 });
 
