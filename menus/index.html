@@ -2344,6 +2344,7 @@ function renderMenuCards(items,el){
   groups.forEach(function(g){
     if(!g.items.length)return;
     var hdr=document.createElement('div');hdr.className='sec-hdr';
+    hdr.setAttribute('role','heading');hdr.setAttribute('aria-level','2');
     hdr.style.cssText='padding:20px 4px 6px;font:600 .75rem/1 var(--font);color:var(--t3);text-transform:uppercase;letter-spacing:.5px';
     hdr.textContent=g.label;
     el.appendChild(hdr);
