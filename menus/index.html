@@ -1399,7 +1399,7 @@ function loadViewer(el){
     renderMenu(el,result.menu,result.doc);
     _injectJsonLd(result.menu,result.doc);
     if(result._offline){
-      var ob=document.createElement('div');ob.className='offline-banner';
+      var ob=document.createElement('div');ob.className='offline-banner';ob.setAttribute('role','status');
       ob.textContent=curLang()==='zh'?'\u79BB\u7EBF\u6A21\u5F0F \u2014 \u663E\u793A\u7F13\u5B58\u83DC\u5355':'Offline \u2014 Showing Cached Menu';
       el.insertBefore(ob,el.firstChild);
     }
