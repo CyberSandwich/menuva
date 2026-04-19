@@ -8,9 +8,10 @@
  * both EN and ZH bodies plus JSON-LD, generates redirect pages, and writes
  * sitemap.xml with per-page lastmod.
  *
- * QR overlay (optional, per-page):
- *   Content entries may set "qr": true to enable a heading-tap QR overlay.
- *   Requires a PNG at repo-root path qr-{slug}.png (the build fails otherwise).
+ * QR overlay (auto-detected, per-page):
+ *   If a file named qr-{slug}.png exists at the repo root, the content page
+ *   for that slug gets a heading-tap QR overlay. No config flag needed -
+ *   drop the file in, overlay appears; remove it, overlay goes away.
  *   The template emits data-qr="{slug}" on <main>; js/content.js reads it
  *   and wires up the overlay. Homepage uses qr-home.png with its own
  *   inlined overlay in index.html. Naming is fixed: qr-{slug}.png at root.
@@ -145,8 +146,6 @@ if (!Array.isArray(config.content) || config.content.length === 0) {
     if (typeof entry.title !== 'string' || entry.title.length === 0) errors.push('content[' + i + '].title: must be a non-empty string');
     if (typeof entry.description !== 'string' || entry.description.length === 0) errors.push('content[' + i + '].description: must be a non-empty string');
     if (entry.priority != null && (typeof entry.priority !== 'number' || entry.priority < 0 || entry.priority > 1)) errors.push('content[' + i + '].priority: must be a number between 0.0 and 1.0');
-    if (entry.qr != null && typeof entry.qr !== 'boolean') errors.push('content[' + i + '].qr: must be a boolean');
-    if (entry.qr === true && !fs.existsSync(path.join(ROOT, 'qr-' + entry.slug + '.png'))) errors.push('content[' + i + '].qr: flag set but qr-' + entry.slug + '.png missing at repo root');
   });
 }
 if (!Array.isArray(config.sitemap_extra)) {
@@ -292,7 +291,7 @@ for (const entry of config.content) {
     BODY_ZH: zh.body,
     CONTACT_EN: buildContactBlock(entry.slug, 'en'),
     CONTACT_ZH: buildContactBlock(entry.slug, 'zh'),
-    MAIN_ATTRS: entry.qr === true ? ' data-qr="' + entry.slug + '"' : ''
+    MAIN_ATTRS: fs.existsSync(path.join(ROOT, 'qr-' + entry.slug + '.png')) ? ' data-qr="' + entry.slug + '"' : ''
   });
 
   const dir = path.join(ROOT, entry.slug);
