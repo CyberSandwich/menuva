@@ -7,7 +7,7 @@ updated: 19 April 2026
 
 Thank you for your interest in Menuva. This page outlines the opportunity, our progress, and how to start a conversation about the future of dining.
 
-## 1. The opportunity in one line
+## 1. The opportunity
 
 Menuva is building the default way people interact with restaurant menus, eliminating barriers between diners and the food they love.
 
