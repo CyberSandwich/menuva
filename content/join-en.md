@@ -92,15 +92,11 @@ Email [hello@menuva.co.uk](mailto:hello@menuva.co.uk) with the following.
 
 We review applications weekly. Once approved, pick either option below.
 
-## 5. Managing your menu
+## 5. Managing it yourself in the admin portal
 
-### We handle it (recommended)
+Visit [admin.menuva.co.uk](https://admin.menuva.co.uk) and sign in with Google or any email address (passwordless). The portal walks you through venue, hours, location, and items. Every change appears to diners instantly.
 
-Send your menu materials to [hello@menuva.co.uk](mailto:hello@menuva.co.uk). We build, translate, and publish. When something changes, email us or update the portal yourself. Fastest way to go live.
-
-### You manage it yourself
-
-Visit [admin.menuva.co.uk](https://admin.menuva.co.uk) and sign in with Google or any email (passwordless). The portal walks you through venue, hours, location, and items. Every change appears to diners instantly.
+**First-time access.** Before your first sign-in is approved, email [hello@menuva.co.uk](mailto:hello@menuva.co.uk) from the same address you used to sign in so we can verify your identity. Our team approves access as soon as possible.
 
 ## 6. What to expect
 
