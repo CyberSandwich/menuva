@@ -13,38 +13,36 @@ If you found this page on your own, we still want to hear from you. Menuva is cu
 
 | Metric | Today |
 | --- | --- |
-| Active diners | 2,000+ |
-| Venues onboarded | 30+ |
+| Active diners | ~2,000 |
+| Venues onboarded | 25+ |
 | Launched | 12 January 2026 |
 | Home campus | University of Warwick |
 | Languages | English, Chinese (more planned) |
 | Currencies | 150+ |
-| UK allergens filtered | 14 |
-| Dietary preferences filtered | 7 |
 
 ## 2. Why join Menuva
 
 > Menuva is a ==student-led project== at the University of Warwick with ==no revenue and no commercial activity==. It is free for restaurants today and will stay free.
 
-### Active, engaged diners
+### More diners discovering you
 
-2,000+ Warwick diners already use Menuva, with new users every week. Your menu lands in front of them before they decide where to eat.
+~2,000 active Warwick diners already use Menuva, with new users every week. 83% of diners research menus before visiting a restaurant, so being listed means your menu lands in front of them at the exact moment they are deciding where to eat.
 
-### Real foot traffic
+### Higher bookings and basket sizes
 
-Diners browse from their accommodation, on the walk over, or at the bus stop. Complete menus drive pre-arrival decisions, so diners turn up ready to order.
+Venues with visible menus online see approximately 10% higher bookings. Menus with photos, descriptions, and allergen data consistently raise average order value, because diners arrive knowing what they want and feel confident ordering extras like sides, drinks, and desserts.
 
-### Instant updates
+### International and restricted-diet diners
 
-Change a price, mark an item out of stock, or add a seasonal special. Diners see it within seconds.
+Menus are auto-translated into Chinese, with more languages planned. Prices show in 150+ currencies. All 14 UK regulated allergens and 7 dietary preferences are fully filterable, so international students and diners with restrictions can eat with you instead of walking past.
 
-### A shareable public link
+### A free public link you can share
 
-Every venue gets a page at `menuva.co.uk/menus`. Share it on Instagram, WhatsApp, or Google Maps. Print it on flyers. No app required to view.
+Every venue gets a page at `menuva.co.uk/menus`. Share it on Instagram, WhatsApp, or Google Maps, print it on flyers, or use it as your table QR. Diners do not need the app to view it.
 
-### International reach
+### Instant menu changes
 
-Auto-translated into Chinese, more languages planned. Prices in 150+ currencies. All 14 UK regulated allergens and 7 dietary preferences fully filterable.
+Update a price, mark an item out of stock, or add a seasonal special. Diners see the change within seconds. No reprinting, no waiting.
 
 ### Analytics (coming soon)
 
@@ -52,25 +50,29 @@ In-portal analytics are launching soon. In the meantime, email [hello@menuva.co.
 
 ## 3. Menu creation support
 
-==Free, hands-on setup for every new venue.== Our team builds your initial menu from whatever you send. Afterwards you only need to edit in the admin portal when things change.
+Our team will assist new venues in onboarding their menu to remove the initial admin burden. Afterwards, onboarding is as easy as editing your menu in the admin portal whenever things change.
 
-### What to send
+We accept a wide range of file formats with no strict restriction. Images, PDFs, Excel spreadsheets, Word documents, PowerPoint decks, photos of printed menus, or links to your existing menu are all fine. Send whatever you already have. This helps us understand real-world inputs and automate onboarding for future venues.
 
-| Priority | Information |
-| --- | --- |
-| Required | Item name and price |
-| Recommended | Hero and item images |
-| Recommended | Descriptions |
-| Recommended | Allergens and dietary tags |
-| Recommended | Customisations (name, price, min/max, required) |
-| Recommended | Food hygiene rating |
-| Recommended | Sections and subsections |
+### Required information
 
-More detail means a more complete menu on day one. Email everything to [hello@menuva.co.uk](mailto:hello@menuva.co.uk).
+- Item name
+- Item price
 
-### Cost
+### Optional information
 
-Free. Setup, hosting, translations, analytics, and every platform feature are free today and will stay free for restaurants.
+Providing any of these makes your menu more complete and compelling on day one.
+
+- Item descriptions
+- Allergens and dietary tags
+- Food hygiene rating
+- Sections and subsections for organizing the menu
+
+**Images.** Any aspect ratio is accepted. The menu renders best with a 16:9 header image (advertising graphic or a photo of the venue) and 1:1 item images (one per dish). If your aspect ratios differ, our team will resize them for you.
+
+**Customizations.** Sides, add-ons, size variations, or any modifiers. For each customization group, include the option names, option prices, minimum and maximum quantities allowed, and whether the group is required or optional.
+
+Email everything to [hello@menuva.co.uk](mailto:hello@menuva.co.uk). Menu setup is free and will remain free.
 
 ## 4. How to apply
 
@@ -94,7 +96,7 @@ We review applications weekly. Once approved, pick either option below.
 
 ### We handle it (recommended)
 
-Send your menu materials to [hello@menuva.co.uk](mailto:hello@menuva.co.uk). We build, translate, and publish. Email us when things change, or update the portal yourself. Fastest way to go live.
+Send your menu materials to [hello@menuva.co.uk](mailto:hello@menuva.co.uk). We build, translate, and publish. When something changes, email us or update the portal yourself. Fastest way to go live.
 
 ### You manage it yourself
 
@@ -104,5 +106,3 @@ Visit [admin.menuva.co.uk](https://admin.menuva.co.uk) and sign in with Google o
 
 1. Menuva is in its early stages. The admin portal and onboarding flow are actively being refined.
 2. Run into an issue or spot something we can improve? Email [hello@menuva.co.uk](mailto:hello@menuva.co.uk). Your feedback directly shapes the platform.
-
-More context is in our [FAQ](/faq/) and [Investor page](/investors/). Both may be slightly behind the latest numbers but give a fuller picture.
