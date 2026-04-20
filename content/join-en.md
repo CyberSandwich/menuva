@@ -5,91 +5,104 @@ effective: 18 March 2026
 updated: 20 April 2026
 ---
 
-If you are reading this, there is a good chance your venue has been pre-selected to join Menuva. If so, welcome. We are genuinely glad to have you here.
+If you are reading this, your venue may have been pre-selected to join Menuva. If so, welcome. We are genuinely glad to have you here.
 
-If you found this page on your own, we still want to hear from you. Menuva is currently curating its venue roster by invitation, but we actively welcome nominations from restaurants that share our vision. Details are in the **How to apply** section below.
+If you found this page on your own, we still want to hear from you. Menuva is currently invite-only, but we actively welcome nominations. See **How to apply** below.
 
-## 1. Why join Menuva
+## 1. Menuva by the numbers
 
-> Menuva is a ==student-led project== at the University of Warwick with ==no revenue and no commercial activity==. It is free for restaurants, with no subscription, no commission, no hardware to buy, and no operational change required. It will remain free for restaurants going forward.
+| Metric | Today |
+| --- | --- |
+| Active diners | 2,000+ |
+| Venues onboarded | 30+ |
+| Launched | 12 January 2026 |
+| Home campus | University of Warwick |
+| Languages | English, Chinese (more planned) |
+| Currencies | 150+ |
+| UK allergens filtered | 14 |
+| Dietary preferences filtered | 7 |
 
-### An engaged, active audience
+## 2. Why join Menuva
 
-2,000+ diners already use Menuva across the University of Warwick, with new users joining every week. Being on the platform puts your menu directly in front of them, often before they have decided where to eat.
+> Menuva is a ==student-led project== at the University of Warwick with ==no revenue and no commercial activity==. It is free for restaurants today and will stay free.
+
+### Active, engaged diners
+
+2,000+ Warwick diners already use Menuva, with new users every week. Your menu lands in front of them before they decide where to eat.
 
 ### Real foot traffic
 
-Diners open Menuva in their accommodation, on the walk over, or at the bus stop. Venues with a complete menu are measurably more discoverable than those without, and diners who browse in advance arrive ready to order.
+Diners browse from their accommodation, on the walk over, or at the bus stop. Complete menus drive pre-arrival decisions, so diners turn up ready to order.
 
-### An instantly digital menu
+### Instant updates
 
-A structured digital menu is searchable, filterable, and always up to date. Update a price, mark an item out of stock, or add a seasonal special in the admin portal and diners see the change within seconds.
+Change a price, mark an item out of stock, or add a seasonal special. Diners see it within seconds.
 
-### A shareable link you control
+### A shareable public link
 
-Every venue gets a public page on `menuva.co.uk/menus`. Share it on Instagram, WhatsApp, or Google Maps, print it on flyers, or put it behind your own QR code. Diners do not need the app to view it.
+Every venue gets a page at `menuva.co.uk/menus`. Share it on Instagram, WhatsApp, or Google Maps. Print it on flyers. No app required to view.
 
 ### International reach
 
-Menus are automatically translated into Chinese, with more languages planned. Prices convert to 150+ currencies. All 14 UK regulated allergens and 7 dietary preferences are filterable, so international students and diners with restrictions can order with confidence.
+Auto-translated into Chinese, more languages planned. Prices in 150+ currencies. All 14 UK regulated allergens and 7 dietary preferences fully filterable.
 
-### Analytics without the setup
+### Analytics (coming soon)
 
-See which items draw the most attention, how diners discover your venue, and which dietary filters they use most. Understand your audience without running your own tracking.
+In-portal analytics are launching soon. In the meantime, email [hello@menuva.co.uk](mailto:hello@menuva.co.uk) any time for a report covering views, engagement, filter usage, and top items.
 
-## 2. Menu creation support
+## 3. Menu creation support
 
-Menuva offers ==free, hands-on menu setup== for every new venue. This is the recommended path. Our team builds your initial menu from whatever you can share, so your only ongoing job is quick edits in the admin portal as things change.
+==Free, hands-on setup for every new venue.== Our team builds your initial menu from whatever you send. Afterwards you only need to edit in the admin portal when things change.
 
-### What to send us
+### What to send
 
 | Priority | Information |
 | --- | --- |
-| Required | Item name and price for every menu item |
+| Required | Item name and price |
 | Recommended | Hero and item images |
-| Recommended | Item descriptions |
-| Recommended | Allergen and dietary information |
-| Recommended | Customisations (option names, prices, min/max quantities, mandatory or optional) |
+| Recommended | Descriptions |
+| Recommended | Allergens and dietary tags |
+| Recommended | Customisations (name, price, min/max, required) |
 | Recommended | Food hygiene rating |
-| Recommended | Sections and subsections for organisation |
+| Recommended | Sections and subsections |
 
-The more detail you share, the more complete your menu will be from day one. Email everything to [hello@menuva.co.uk](mailto:hello@menuva.co.uk).
+More detail means a more complete menu on day one. Email everything to [hello@menuva.co.uk](mailto:hello@menuva.co.uk).
 
 ### Cost
 
-Free. Menu creation, hosting, translations, analytics, and all platform features are free today and will remain free for restaurants going forward.
+Free. Setup, hosting, translations, analytics, and every platform feature are free today and will stay free for restaurants.
 
-## 3. How to apply
+## 4. How to apply
 
 ### If you have been pre-selected
 
-Reply to the email from our team confirming that you would like to proceed. We will take it from there.
+Reply to the email from our team. We take it from there.
 
-### If you would like to nominate your venue
+### If you are nominating your venue
 
-Send an email to [hello@menuva.co.uk](mailto:hello@menuva.co.uk) and include the following.
+Email [hello@menuva.co.uk](mailto:hello@menuva.co.uk) with the following.
 
 - **Venue name**
-- **Venue location** (full address)
+- **Full address**
 - **Opening hours**
-- **Relevant links** (website, Instagram, existing menu, Google Maps listing)
-- **Proof of authority** (business registration, Companies House listing, or a link showing your role on the venue's official channels)
+- **Relevant links** (website, Instagram, existing menu, Google Maps)
+- **Proof of authority** (business registration, Companies House listing, or a link showing your role on the venue's channels)
 
-We review applications weekly. Once approved, you can choose to have us build your menu for you (recommended, free), or manage it yourself in the admin portal.
+We review applications weekly. Once approved, pick either option below.
 
-## 4. Managing your menu
+## 5. Managing your menu
 
-### We handle it for you (recommended)
+### We handle it (recommended)
 
-Send your menu materials to [hello@menuva.co.uk](mailto:hello@menuva.co.uk). Our team builds the initial menu, translates it, and publishes it. When something changes, email us or update it in the admin portal yourself. Most venues take this route because setup is genuinely free and gets you live faster.
+Send your menu materials to [hello@menuva.co.uk](mailto:hello@menuva.co.uk). We build, translate, and publish. Email us when things change, or update the portal yourself. Fastest way to go live.
 
 ### You manage it yourself
 
-If you prefer full control, visit [admin.menuva.co.uk](https://admin.menuva.co.uk) once your access is approved and sign in with Google or any email address. Email sign-in is passwordless. The portal walks you through adding venues, opening hours, location, and menu items. Every change appears to diners instantly.
+Visit [admin.menuva.co.uk](https://admin.menuva.co.uk) and sign in with Google or any email (passwordless). The portal walks you through venue, hours, location, and items. Every change appears to diners instantly.
 
-## 5. What to expect
+## 6. What to expect
 
-1. Menuva is in its early stages. The admin portal and onboarding experience are actively being refined.
-2. If you run into any issues, find the experience could be better, or spot a bug at any point, email [hello@menuva.co.uk](mailto:hello@menuva.co.uk). Your feedback directly shapes the platform.
+1. Menuva is in its early stages. The admin portal and onboarding flow are actively being refined.
+2. Run into an issue or spot something we can improve? Email [hello@menuva.co.uk](mailto:hello@menuva.co.uk). Your feedback directly shapes the platform.
 
-For more context on the platform, see our [FAQ](/faq/) and [Investor page](/investors/). Both may be slightly behind the latest numbers but give a fuller picture of where Menuva is today and where it is going.
+More context is in our [FAQ](/faq/) and [Investor page](/investors/). Both may be slightly behind the latest numbers but give a fuller picture.
