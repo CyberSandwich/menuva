@@ -34,7 +34,7 @@ Venues with visible menus online see approximately 10% higher bookings. Menus wi
 
 ### International and restricted-diet diners
 
-Menus are auto-translated into Chinese, with more languages planned. Prices show in 150+ currencies. All 14 UK regulated allergens and 7 dietary preferences are fully filterable, so international students and diners with restrictions can eat with you instead of walking past.
+Menus are auto-translated into Chinese, with more languages planned. Prices show in 150+ currencies. All 14 UK regulated allergens and dietary preferences are fully filterable, so international students and diners with restrictions can eat with you instead of walking past.
 
 ### A free public link you can share
 
