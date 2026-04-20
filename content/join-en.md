@@ -67,12 +67,18 @@ Providing any of these makes your menu more complete on day one.
 - Images (see below)
 - Customizations (see below)
 - Item descriptions
-- Allergens and dietary tags
+- Allergens and dietary tags (contains and may contain)
+- Nutritional information (see below)
+- Ingredient statement
+- Item availability schedule
+- Other locations and how they vary
 - Food hygiene rating
 
 **Images.** Any aspect ratio is accepted. The menu renders best with a widescreen header image (advertising graphic or a photo of the venue) and square item images (one per dish). If your aspect ratios differ, our team will resize them for you.
 
 **Customizations.** Sides, add-ons, size variations, or any modifiers. For each customization group, include the option names, option prices, minimum and maximum quantities allowed, and whether the group is required or optional.
+
+**Nutritional information.** Per-serving values for energy (kJ and kcal), fat, saturates, carbohydrate, sugars, fibre, protein, and salt.
 
 ## 4. How to apply
 
