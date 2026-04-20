@@ -2644,20 +2644,38 @@ function _sortByDist(items){
   });
 }
 
-function _showToast(msg){
+function _showToast(msg,copyText){
   var old=document.querySelector('.mv-toast');if(old)old.parentNode.removeChild(old);
   clearTimeout(_toastT);
   var wrap=document.createElement('div');wrap.className='mv-toast';wrap.setAttribute('role','status');
   var pill=document.createElement('div');pill.className='mv-toast-pill';pill.textContent=msg;
+  if(copyText)pill.setAttribute('title','Tap to copy details');
   wrap.appendChild(pill);
   var dismiss=function(){
     clearTimeout(_toastT);
     wrap.style.animation='mvToastOut .2s ease forwards';
     setTimeout(function(){if(wrap.parentNode)wrap.parentNode.removeChild(wrap)},200);
   };
-  wrap.addEventListener('click',dismiss);
+  var copyAndDismiss=function(){
+    clearTimeout(_toastT);
+    var write=(navigator.clipboard&&navigator.clipboard.writeText)?navigator.clipboard.writeText(copyText):_legacyCopy(copyText);
+    Promise.resolve(write).then(function(){pill.textContent='Copied';_toastT=setTimeout(dismiss,1200)}).catch(function(){pill.textContent='Copy failed';_toastT=setTimeout(dismiss,1200)});
+  };
+  wrap.addEventListener('click',copyText?copyAndDismiss:dismiss);
   document.body.appendChild(wrap);
-  _toastT=setTimeout(dismiss,4000);
+  _toastT=setTimeout(dismiss,copyText?8000:4000);
+}
+
+function _legacyCopy(text){
+  return new Promise(function(resolve,reject){
+    try{
+      var ta=document.createElement('textarea');ta.value=text;
+      ta.style.cssText='position:fixed;top:-1000px;left:0;opacity:0';
+      document.body.appendChild(ta);ta.select();
+      var ok=document.execCommand('copy');ta.parentNode.removeChild(ta);
+      ok?resolve():reject();
+    }catch(e){reject(e)}
+  });
 }
 
 function _setSortBtnState(state){
@@ -2682,7 +2700,9 @@ function _onGeoError(err){
   var rawMsg=(err&&err.message||'').trim();
   try{console.warn('[menuva] geolocation error',{code:code,message:rawMsg,ua:navigator.userAgent})}catch(_){}
   var fallback=chrome(code===1?'locDenied':'locUnavailable');
-  _showToast(rawMsg&&rawMsg.length<=80?rawMsg:fallback);
+  var shown=rawMsg&&rawMsg.length<=80?rawMsg:fallback;
+  var copyBundle='menuva geolocation error\ncode: '+code+'\nmessage: '+rawMsg+'\nua: '+navigator.userAgent+'\nurl: '+location.href+'\nts: '+new Date().toISOString();
+  _showToast(shown,copyBundle);
   _ga('sort_distance_denied',{code:code||0,msg:rawMsg.slice(0,80)});
 }
 
