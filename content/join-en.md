@@ -7,7 +7,7 @@ updated: 20 April 2026
 
 If you are reading this, your venue may have been pre-selected to join Menuva. If so, welcome. We are genuinely glad to have you here.
 
-If you found this page on your own, we still want to hear from you. Menuva is currently invite-only, but we actively welcome nominations. See **How to apply** below.
+If you found this page on your own, we still want to hear from you. Menuva is currently invite-only, but we actively welcome nominations. See **How to apply** in section 4 below.
 
 ## 1. Menuva by the numbers
 
@@ -52,27 +52,27 @@ In-portal analytics are launching soon. In the meantime, email [hello@menuva.co.
 
 Our team will assist new venues in onboarding their menu to remove the initial admin burden. Afterwards, onboarding is as easy as editing your menu in the [admin portal](https://admin.menuva.co.uk) whenever things change.
 
-We accept a wide range of file formats with no strict restriction. Images, PDFs, Excel spreadsheets, Word documents, PowerPoint decks, photos of printed menus, or links to your existing menu are all fine. Send whatever you already have. This helps us understand real-world inputs and automate onboarding for future venues.
+Please send your menu(s) to [hello@menuva.co.uk](mailto:hello@menuva.co.uk). We accept a wide range of file formats with no strict restriction. Images, PDFs, Excel spreadsheets, Word documents, PowerPoint decks, photos of printed menus, or links to your existing menu are all fine. Send whatever you already have. This helps us understand real-world inputs and automate onboarding for future venues.
 
 ### Required information
 
-- Item name
-- Item price
+- Item names
+- Item prices
 
 ### Optional information
 
 Providing any of these makes your menu more complete on day one.
 
+- Sections and subsections for organizing the menu
+- Images (see below)
+- Customizations (see below)
 - Item descriptions
 - Allergens and dietary tags
 - Food hygiene rating
-- Sections and subsections for organizing the menu
 
 **Images.** Any aspect ratio is accepted. The menu renders best with a widescreen header image (advertising graphic or a photo of the venue) and square item images (one per dish). If your aspect ratios differ, our team will resize them for you.
 
 **Customizations.** Sides, add-ons, size variations, or any modifiers. For each customization group, include the option names, option prices, minimum and maximum quantities allowed, and whether the group is required or optional.
-
-Email everything to [hello@menuva.co.uk](mailto:hello@menuva.co.uk). Menu setup is free and will remain free.
 
 ## 4. How to apply
 
