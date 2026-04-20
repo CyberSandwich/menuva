@@ -2679,9 +2679,11 @@ function _rerenderList(){
 function _onGeoError(err){
   _setSortBtnState('off');
   var code=err&&err.code;
-  try{console.warn('[menuva] geolocation error',{code:code,message:err&&err.message})}catch(_){}
-  _showToast(chrome(code===1?'locDenied':'locUnavailable'));
-  _ga('sort_distance_denied',{code:code||0});
+  var rawMsg=(err&&err.message||'').trim();
+  try{console.warn('[menuva] geolocation error',{code:code,message:rawMsg,ua:navigator.userAgent})}catch(_){}
+  var fallback=chrome(code===1?'locDenied':'locUnavailable');
+  _showToast(rawMsg&&rawMsg.length<=80?rawMsg:fallback);
+  _ga('sort_distance_denied',{code:code||0,msg:rawMsg.slice(0,80)});
 }
 
 function _toggleSortByDistance(){
