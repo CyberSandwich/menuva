@@ -2,7 +2,7 @@
 title: Terms & Conditions
 heading: Menuva Terms & Conditions
 effective: 22 March 2026
-updated: 19 April 2026
+updated: 20 April 2026
 ---
 
 These Terms & Conditions ("Terms") govern your access to and use of the Menuva mobile application, the Menuva website (menuva.co.uk), and any related services we provide (together, the "Service"). By downloading, installing, accessing, or using the Service, you agree to these Terms. If you do not agree, do not use the Service. These Terms should be read alongside our [Privacy Policy](/privacy/), [Cookie Policy](/cookies/), and [Complaints Procedure](/complaints/).
@@ -44,7 +44,7 @@ These Terms & Conditions ("Terms") govern your access to and use of the Menuva m
 - filter based on dietary preferences and allergens, and
 - build a mock basket to support in-person ordering conversations with staff.
 
-**4.A.2** Not all features are available on all platforms. Certain features (such as dark mode and location-based discovery) may only be available on the mobile application.
+**4.A.2** Not all features are available on all platforms. Certain features (such as dark mode) may only be available on the mobile application. Where the Website offers a location-based feature (for example, the optional "Sort by Distance" toggle on the menus page), device location is read and processed on-device only and is not transmitted to our servers.
 
 ### B. What Menuva does not do
 

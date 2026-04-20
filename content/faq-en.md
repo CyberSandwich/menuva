@@ -2,7 +2,7 @@
 title: FAQ
 heading: Menuva FAQ
 effective: 17 March 2026
-updated: 19 April 2026
+updated: 20 April 2026
 ---
 
 Frequently asked questions about Menuva. Applies to the Menuva iOS app (pilot) and the Menuva website (menuva.co.uk).
@@ -95,6 +95,8 @@ When "When In Use" location is granted, the app uses on-device location to:
 
 - show the nearest venue on the Home screen, and
 - sort venues by distance (Home and Map).
+
+On the Website, location is used on-device only for the optional "Sort by Distance" toggle on the menus page. Coordinates are never transmitted off-device.
 
 ### What happens if location is denied?
 
@@ -339,9 +341,9 @@ Menuva is accountless and data-minimizing.
 
 ### Location privacy?
 
-- Precise location is processed on-device for nearby venue discovery and sorting.
-- Raw latitude/longitude is not transmitted off-device.
-- Last known location/city may be cached on-device only.
+- Precise location is processed on-device only on both the App and the Website (the Website's optional "Sort by Distance" toggle uses the browser geolocation API locally).
+- Raw latitude/longitude is never transmitted off-device.
+- The App may cache your last known location/city on-device only. The Website stores only an on/off preference for the "Sort by Distance" toggle in browser localStorage; no coordinates are stored.
 
 ### Analytics?
 

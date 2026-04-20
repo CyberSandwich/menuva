@@ -2,13 +2,13 @@
 title: Privacy Policy
 heading: Menuva Privacy Policy
 effective: 22 March 2026
-updated: 19 April 2026
+updated: 20 April 2026
 ---
 
 This Privacy Policy is provided in accordance with the [UK General Data Protection Regulation](https://www.legislation.gov.uk/eur/2016/679/contents) (UK GDPR) and the [Data Protection Act 2018](https://www.legislation.gov.uk/ukpga/2018/12/contents) (DPA 2018). It explains how Menuva handles personal data when you use the Menuva iOS app (the "App") and the Menuva web pages we operate (the "Website") (together, the "Service"). Menuva is designed to be accountless and data-minimising, but some information (especially location data, analytics event data, and online identifiers) can still be personal data under UK GDPR. This policy should be read alongside our [Terms & Conditions](/terms/), [Cookie Policy](/cookies/), and [Complaints Procedure](/complaints/).
 
 > **Key points:**
-> - we do not transmit raw latitude/longitude off-device (App only; the Website does not use location)
+> - we do not transmit raw latitude/longitude off-device (both the App and the Website process location on-device only)
 > - both the App and the Website use analytics for usage measurement
 > - analytics does not log free-text search queries, specific dietary or allergen selections, or allergen severity
 > - customization identifiers are hashed so analytics cannot identify specific menu choices
@@ -32,28 +32,29 @@ This Privacy Policy is provided in accordance with the [UK General Data Protecti
 
 ## 3. What data we collect
 
-**3.0.1** Where a feature is specific to one platform, it is marked "(App only)" or "(Website only)." The main differences are: the App uses device location for venue discovery; the App stores dietary preferences on-device; both the App and Website offer analytics opt-out toggles; and the App and Website use different technologies for abuse prevention (see Section 6.A.3).
+**3.0.1** Where a feature is specific to one platform, it is marked "(App only)" or "(Website only)." The main differences are: the App uses device location for venue discovery and the Website uses device location for the optional "Sort by Distance" toggle on the menus page (both on-device only); the App stores dietary preferences on-device; both the App and Website offer analytics opt-out toggles; and the App and Website use different technologies for abuse prevention (see Section 6.A.3).
 
-### A. Precise location (App only, foreground)
+### A. Precise location (App and Website, foreground)
 
-**3.A.1** If you grant iOS location permission ("When In Use"), the App collects precise location on your device to:
+**3.A.1** If you grant location permission (iOS "When In Use" in the App, or browser geolocation permission on the Website's menus page), precise location is read on your device to:
 
-- show nearby venues, and
-- determine which venue's menus to load.
+- show nearby venues and determine which venue's menus to load (App), and
+- re-order the menu list by distance when you enable the "Sort by Distance" toggle (Website).
 
 **3.A.2** **How it works.**
 
-- Location updates may run continuously while the App is in the foreground on relevant screens (for example, home/map).
-- Distance calculations happen locally on your device.
-- The App may cache your last known location and city on-device only (for example, via iOS local storage) for faster loading and fallback behavior.
+- In the App, location updates may run continuously while the App is in the foreground on relevant screens (for example, home/map).
+- On the Website, the browser geolocation API is called only when you tap "Sort by Distance" (and silently on subsequent visits if you previously enabled the toggle). No continuous updates.
+- Distance calculations happen locally on your device on both platforms.
+- The App may cache your last known location and city on-device only (for example, via iOS local storage) for faster loading and fallback behavior. The Website persists only a single boolean flag (whether "Sort by Distance" is on) in browser localStorage; it does not cache coordinates.
 
 **3.A.3** **What we do not do.**
 
-- We do not transmit raw latitude/longitude off-device.
+- We do not transmit raw latitude/longitude off-device (App or Website).
 - We do not intentionally store your precise location in our databases.
-- Analytics receives only a boolean flag (has_location true/false) and the venue identifier (restaurant slug), never coordinates.
+- In the App, analytics receives only a boolean flag (has_location true/false) and the venue identifier (restaurant slug), never coordinates. On the Website, analytics for the "Sort by Distance" toggle records only the toggle state (on/off) and, on failure, the browser's error code and a short truncated error message; coordinates are never sent.
 
-**3.A.4** You can disable location access at any time in iOS settings. If you deny location access, manual venue selection remains available. The Website does not use location services.
+**3.A.4** You can disable location access at any time in iOS settings (App) or in your browser's site permissions (Website). If you deny or revoke location access, manual venue selection and alphabetical ordering remain available on both platforms.
 
 ### B. Dietary and allergen preferences (on-device)
 
@@ -119,11 +120,11 @@ This Privacy Policy is provided in accordance with the [UK General Data Protecti
 
 ### F. Website analytics (Google Analytics)
 
-**3.F.1** The Website runs Google Analytics (GA4) to measure page views and menu interactions. The Website collects a subset of the analytics events described in Section 3.C above. Features that are specific to the App (such as location, onboarding, map interactions, and on-device preferences) are not collected on the Website.
+**3.F.1** The Website runs Google Analytics (GA4) to measure page views and menu interactions. The Website collects a subset of the analytics events described in Section 3.C above. Features that are specific to the App (such as onboarding, map interactions, and on-device preferences) are not collected on the Website.
 
 **3.F.2** GitHub Pages (our hosting provider, operated by GitHub, Inc., a subsidiary of Microsoft Corporation) may also process technical log data (IP address and request metadata) to deliver the Website securely.
 
-**3.F.3** **Website-specific events.** On the Website, we additionally track: page views and content views (with referrer URL), redirect page visits for marketing attribution (which QR codes and campaigns drive traffic, including UTM parameters), 404 error page hits, outbound link clicks (as described in Section 3.C.9), and menu scroll depth. We do not log search queries, dietary or allergen filter selections, or any personal identifiers.
+**3.F.3** **Website-specific events.** On the Website, we additionally track: page views and content views (with referrer URL), redirect page visits for marketing attribution (which QR codes and campaigns drive traffic, including UTM parameters), 404 error page hits, outbound link clicks (as described in Section 3.C.9), menu scroll depth, and the "Sort by Distance" toggle events on the menus page (toggle state on/off; on failure, the browser's error code and a short truncated error message - never coordinates). We do not log search queries, dietary or allergen filter selections, or any personal identifiers.
 
 ### G. Cookies and similar technologies
 
@@ -141,7 +142,7 @@ This Privacy Policy is provided in accordance with the [UK General Data Protecti
 
 ### H. On-device browser storage
 
-**3.H.1** We store the following in your browser's local storage for functionality and performance: your language preference, your analytics opt-out choice, cached menu data and page content (to reduce loading times), and whether you have dismissed the ordering disclaimer. A temporary navigation hint is stored in sessionStorage and is automatically cleared when you close the browser tab.
+**3.H.1** We store the following in your browser's local storage for functionality and performance: your language preference, your analytics opt-out choice, cached menu data and page content (to reduce loading times), whether you have dismissed the ordering disclaimer, and whether you have enabled the "Sort by Distance" toggle on the menus page (a single on/off flag, no coordinates). A temporary navigation hint is stored in sessionStorage and is automatically cleared when you close the browser tab.
 
 **3.H.2** None of this data is transmitted to our servers or shared with third parties. It is deleted when you clear your browser data.
 
@@ -171,7 +172,7 @@ UK GDPR requires a lawful basis for processing.
 
 | Purpose | Data | Lawful basis |
 | --- | --- | --- |
-| Provide nearby venue discovery and load correct menus | Precise location (on-device, App only) | Consent (you enable location permission in iOS) |
+| Provide nearby venue discovery, load correct menus, and optionally sort the menus page by distance | Precise location (on-device; App and Website) | Consent (you enable iOS location permission in the App, or browser geolocation permission on the Website) |
 | Provide the Service reliably and securely | Technical/network data handled by providers | Legitimate interests (operate a secure, reliable service) |
 | Understand usage and improve the Service | Analytics event data (App and Website) | Legitimate interests (product improvement and pilot evaluation) |
 | Measure menu browsing and order patterns | E-commerce funnel events, engagement metrics | Legitimate interests (product improvement) |
@@ -181,7 +182,7 @@ UK GDPR requires a lawful basis for processing.
 
 **5.2** **Balancing test.** We have assessed that our legitimate interests in understanding usage patterns for product improvement do not override your rights, given that: analytics data is pseudonymous and does not include personal identifiers; IP addresses are anonymised; you can opt out at any time via the website footer toggle; and we have disabled Google's data sharing features. Our full Legitimate Interests Assessment is documented internally and available on request.
 
-You can withdraw consent for location processing at any time by disabling location permissions in iOS settings.
+You can withdraw consent for location processing at any time by disabling location permissions in iOS settings (App) or in your browser's site permissions (Website), or by turning off the "Sort by Distance" toggle on the menus page.
 
 To opt out of analytics on the website, use the analytics toggle in the footer or visit our [Cookie Policy](/cookies/). Once opted out, no analytics data will be collected on future visits.
 
@@ -228,7 +229,7 @@ To opt out of analytics on the website, use the analytics toggle in the footer o
 
 **7.1** We keep data only as long as needed:
 
-- **Precise location:** used on-device; not stored in our databases; last known location/city may be cached locally until you delete the App or reset preferences
+- **Precise location:** used on-device on both the App and Website; not stored in our databases. The App may cache the last known location/city on-device until you delete the App or reset preferences. The Website stores only a "Sort by Distance" on/off preference flag in browser localStorage, and no coordinates.
 - **On-device preferences and caches:** stored locally until you delete the App or clear browser data
 - **Analytics (Firebase/GA4):** retained for 14 months (per our current analytics retention configuration)
 - **Feedback submissions (Google Forms):** we periodically review feedback and delete or anonymize it when no longer needed, typically within 24 months, unless we need to keep it longer to resolve issues or for legitimate record-keeping
@@ -277,6 +278,7 @@ To opt out of analytics on the website, use the analytics toggle in the footer o
 
 | Date | Summary |
 |------|---------|
+| 20 April 2026 | Disclosed the new Website "Sort by Distance" toggle on the menus page: location is read via browser geolocation, processed on-device only, never transmitted off-device; only an on/off preference flag is stored in browser localStorage; analytics records toggle state and (on failure) error code and short error message, never coordinates. |
 | 22 March 2026 | Added cookie/tracking disclosures, sub-processor list, international transfer details, DUAA statistical exception conditions, expanded children's section, data breach notification, automated decision-making statement, data subject rights reframed under Art. 11, analytics opt-out mechanism, PECR breach notification reference, platform differences summary. |
 | 12 January 2026 | Initial version. |
 
