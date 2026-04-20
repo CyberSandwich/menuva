@@ -50,7 +50,7 @@ In-portal analytics are launching soon. In the meantime, email [hello@menuva.co.
 
 ## 3. Menu creation support
 
-Our team will assist new venues in onboarding their menu to remove the initial admin burden. Afterwards, onboarding is as easy as editing your menu in the admin portal whenever things change.
+Our team will assist new venues in onboarding their menu to remove the initial admin burden. Afterwards, onboarding is as easy as editing your menu in the [admin portal](https://admin.menuva.co.uk) whenever things change.
 
 We accept a wide range of file formats with no strict restriction. Images, PDFs, Excel spreadsheets, Word documents, PowerPoint decks, photos of printed menus, or links to your existing menu are all fine. Send whatever you already have. This helps us understand real-world inputs and automate onboarding for future venues.
 
@@ -104,5 +104,5 @@ Visit [admin.menuva.co.uk](https://admin.menuva.co.uk) and sign in with Google o
 
 ## 6. What to expect
 
-1. Menuva is in its early stages. The admin portal and onboarding flow are actively being refined.
+1. Menuva is in its early stages. The [admin portal](https://admin.menuva.co.uk) and onboarding flow are actively being refined.
 2. Run into an issue or spot something we can improve? Email [hello@menuva.co.uk](mailto:hello@menuva.co.uk). Your feedback directly shapes the platform.
