@@ -2706,10 +2706,15 @@ function _onGeoError(err){
   _ga('sort_distance_denied',{code:code||0,msg:rawMsg.slice(0,80)});
 }
 
+function _saveSortPref(on){
+  try{on?localStorage.setItem('sort_dist_on','1'):localStorage.removeItem('sort_dist_on')}catch(_){}
+}
+
 function _toggleSortByDistance(){
   if(_sortByDistance){
     _sortByDistance=false;_userCoords=null;
     _setSortBtnState('off');
+    _saveSortPref(false);
     _rerenderList();
     _ga('sort_distance_toggle',{state:'off'});
     return;
@@ -2720,15 +2725,35 @@ function _toggleSortByDistance(){
     _userCoords={lat:pos.coords.latitude,lon:pos.coords.longitude};
     _sortByDistance=true;
     _setSortBtnState('on');
+    _saveSortPref(true);
     _rerenderList();
     _ga('sort_distance_toggle',{state:'on'});
   },_onGeoError,{enableHighAccuracy:false,timeout:20000,maximumAge:0});
+}
+
+function _restoreSortByDistance(){
+  if(isViewer||!navigator.geolocation)return;
+  _setSortBtnState('loading');
+  navigator.geolocation.getCurrentPosition(function(pos){
+    _userCoords={lat:pos.coords.latitude,lon:pos.coords.longitude};
+    _sortByDistance=true;
+    _setSortBtnState('on');
+    _rerenderList();
+    _ga('sort_distance_restore',{state:'on'});
+  },function(err){
+    try{console.warn('[menuva] sort-dist restore failed',{code:err&&err.code,message:err&&err.message})}catch(_){}
+    _saveSortPref(false);
+    _setSortBtnState('off');
+    _ga('sort_distance_restore',{state:'off',code:(err&&err.code)||0});
+  },{enableHighAccuracy:false,timeout:10000,maximumAge:600000});
 }
 
 (function wireSortDist(){
   var btn=$('#sort-dist-btn');if(!btn)return;
   _setSortBtnState('off');
   btn.addEventListener('click',_toggleSortByDistance);
+  var saved=false;try{saved=localStorage.getItem('sort_dist_on')==='1'}catch(_){}
+  if(saved)_restoreSortByDistance();
 })();
 
 (function wireSearch(){
