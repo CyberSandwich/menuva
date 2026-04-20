@@ -61,14 +61,14 @@ We accept a wide range of file formats with no strict restriction. Images, PDFs,
 
 ### Optional information
 
-Providing any of these makes your menu more complete and compelling on day one.
+Providing any of these makes your menu more complete on day one.
 
 - Item descriptions
 - Allergens and dietary tags
 - Food hygiene rating
 - Sections and subsections for organizing the menu
 
-**Images.** Any aspect ratio is accepted. The menu renders best with a 16:9 header image (advertising graphic or a photo of the venue) and 1:1 item images (one per dish). If your aspect ratios differ, our team will resize them for you.
+**Images.** Any aspect ratio is accepted. The menu renders best with a widescreen header image (advertising graphic or a photo of the venue) and square item images (one per dish). If your aspect ratios differ, our team will resize them for you.
 
 **Customizations.** Sides, add-ons, size variations, or any modifiers. For each customization group, include the option names, option prices, minimum and maximum quantities allowed, and whether the group is required or optional.
 
