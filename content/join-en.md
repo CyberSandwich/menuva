@@ -11,7 +11,7 @@ If you found this page on your own, we still want to hear from you. Menuva is cu
 
 ## 1. Why join Menuva
 
-> Menuva is ==free and non-commercial==. No subscription, no commission, no hardware to buy, no operational change required. It will remain free for restaurants going forward.
+> Menuva is a ==student-led project== at the University of Warwick with ==no revenue and no commercial activity==. It is free for restaurants, with no subscription, no commission, no hardware to buy, and no operational change required. It will remain free for restaurants going forward.
 
 ### An engaged, active audience
 
