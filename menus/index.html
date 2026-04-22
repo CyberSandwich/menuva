@@ -2002,18 +2002,31 @@ function buildSections(menu,locationId){
       _restrictedItemSet=restrictedItemIds;
     }
 
+    // Defensive fallback: if every menu wrapper is restricted AND none are
+    // active (e.g. a single-wrapper menu whose appliesTo.calendarId points at
+    // the restaurant's opening hours, outside of which nothing renders),
+    // treat all wrappers as unrestricted so the menu still shows. The
+    // location-level openingCalendarId still drives any "closed" banner.
+    var hasAnyActive=false;
+    for(var ck in activatedSecs){if(Object.prototype.hasOwnProperty.call(activatedSecs,ck)){hasAnyActive=true;break}}
+    var treatAllAsUnrestricted=hasAnyRestricted&&!hasAnyActive;
+
     // Pass 2: build orderedIds from base menu order, respecting restrictions
     var seen={};
     for(var mi=0;mi<menu.menus.length;mi++){
       var m=menu.menus[mi];
       if(!m||!m.sectionIds)continue;
-      var isRestricted=!!(m.appliesTo||m.weekPattern);
+      var isRestricted=treatAllAsUnrestricted?false:!!(m.appliesTo||m.weekPattern);
 
       // Skip inactive restricted menus (already evaluated above)
       if(isRestricted&&!activatedSecs[m.sectionIds[0]])continue;
 
       for(var si=0;si<m.sectionIds.length;si++){
         var sid=m.sectionIds[si];
+        if(treatAllAsUnrestricted){
+          if(!seen[sid]){seen[sid]=true;orderedIds.push(sid)}
+          continue;
+        }
         // Unrestricted menus skip restricted sections unless activated
         if(!isRestricted&&restrictedSecs[sid]&&!activatedSecs[sid])continue;
         // Restricted sections only if activated
@@ -2021,6 +2034,10 @@ function buildSections(menu,locationId){
         if(!seen[sid]){seen[sid]=true;orderedIds.push(sid)}
       }
     }
+
+    // Drop the restricted item scoping when we've promoted everything to
+    // unrestricted — otherwise liveItemIds would filter to an empty set.
+    if(treatAllAsUnrestricted)_restrictedItemSet=null;
   } else {
     // Use top-level sections sorted by order
     var sorted=allSections.slice().sort(function(a,b){return(a.order||0)-(b.order||0)});
