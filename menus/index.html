@@ -629,16 +629,9 @@ window._acReady=new Promise(function(_fbResolve){
     else{_fbResolve()}
   });
 });
-// Early speculative JSON prefetch - fires during SDK load, before App Check
-(function(){
-  var params=new URLSearchParams(location.search);
-  var slug=params.get('slug');
-  if(!slug)return;
-  try{var ps=sessionStorage.getItem('_menuPrefetch');if(ps)sessionStorage.removeItem('_menuPrefetch')}catch(_){}
-  var path='menus/v5/'+slug+'.json';
-  var url='https://firebasestorage.googleapis.com/v0/b/menuva-firebase.firebasestorage.app/o/'+encodeURIComponent(path)+'?alt=media';
-  window._earlyJsonFetch=fetch(url).then(function(r){if(!r.ok)return null;return r.text()}).catch(function(){return null});
-})();
+// Clear any stale prefetch hint; Storage is App Check enforced, so a
+// tokenless speculative fetch would always 401 — we rely on the SDK path.
+try{sessionStorage.removeItem('_menuPrefetch')}catch(_){}
 </script>
 
 <script type="module">
@@ -963,14 +956,12 @@ function fetchMenuWithCache(slug){
   var cached=_readCache(slug);
   if(cached){_touchCache(slug);return Promise.resolve({menu:cached.menu,doc:cached.doc,_revalidate:_revalidate(slug,cached.sha)})}
   var stdPath='menus/v5/'+slug+'.json';
-  // Use early prefetch if available (fired during SDK load), otherwise fetch after App Check
-  var earlyJson=window._earlyJsonFetch||null;
-  window._earlyJsonFetch=null;
-  // Parallel fetch: Firestore doc + Storage JSON both start after App Check
+  // Parallel fetch: Firestore doc + Storage JSON both start after App Check.
+  // SDK path is required — Storage is App Check enforced, so only the
+  // getDownloadURL-issued token URL will succeed.
   return window._acReady.then(function(){
     var docP=window._db.collection('menus').doc(slug).get();
-    // Prefer early prefetch, fallback to authenticated fetch
-    var jsonP=earlyJson?earlyJson.then(function(t){return t||_fetchJson({storagePath:stdPath},slug)}):_fetchJson({storagePath:stdPath},slug);
+    var jsonP=_fetchJson({storagePath:stdPath},slug);
     return docP.then(function(doc){
       if(!doc.exists)return Promise.reject({code:404});
       var data=doc.data();
