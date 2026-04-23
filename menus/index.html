@@ -1952,11 +1952,12 @@ function buildSections(menu,locationId){
     var activatedSecs={};
     var restrictedItemIds={};
     var hasAnyRestricted=false;
+    var hasAnyUnrestricted=false;
     for(var mi=0;mi<menu.menus.length;mi++){
       var m=menu.menus[mi];
       if(!m||!m.sectionIds)continue;
       var isRestricted=!!(m.appliesTo||m.weekPattern);
-      if(!isRestricted)continue;
+      if(!isRestricted){hasAnyUnrestricted=true;continue}
       hasAnyRestricted=true;
       for(var si=0;si<m.sectionIds.length;si++){
         restrictedSecs[m.sectionIds[si]]=true;
@@ -2002,14 +2003,17 @@ function buildSections(menu,locationId){
       _restrictedItemSet=restrictedItemIds;
     }
 
-    // Defensive fallback: if every menu wrapper is restricted AND none are
+    // Defensive fallback: if EVERY menu wrapper is restricted AND none are
     // active (e.g. a single-wrapper menu whose appliesTo.calendarId points at
     // the restaurant's opening hours, outside of which nothing renders),
     // treat all wrappers as unrestricted so the menu still shows. The
     // location-level openingCalendarId still drives any "closed" banner.
+    // Skip when an unrestricted wrapper exists: it already provides the
+    // default content, and promoting day/week-specific specials would leak
+    // their items (scoped via _restrictedItemSet) into every day.
     var hasAnyActive=false;
     for(var ck in activatedSecs){if(Object.prototype.hasOwnProperty.call(activatedSecs,ck)){hasAnyActive=true;break}}
-    var treatAllAsUnrestricted=hasAnyRestricted&&!hasAnyActive;
+    var treatAllAsUnrestricted=hasAnyRestricted&&!hasAnyUnrestricted&&!hasAnyActive;
 
     // Pass 2: build orderedIds from base menu order, respecting restrictions
     var seen={};
