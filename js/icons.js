@@ -1,7 +1,7 @@
 // Centralized SVG icon paths (stroke-based, 24x24 viewBox).
 // All icons sourced from the Lucide library via ../saputra.co.uk/iconic/icons/*.svg
 // and inlined as inner SVG content only (no <svg> wrapper).
-// Import: import { ICONS, mkIcon, matchMenuIcon, matchLinkIcon } from '/js/icons.js?v=11';
+// Import: import { ICONS, mkIcon, matchMenuIcon, matchLinkIcon } from '/js/icons.js?v=12';
 
 export var ICONS={
 
@@ -80,7 +80,11 @@ export var ICONS={
   bird:'<path d="M16 7h.01"/><path d="M3.4 18H12a8 8 0 0 0 8-8V7a4 4 0 0 0-7.28-2.3L2 20"/><path d="m20 7 2 .5-2 .5"/><path d="M10 18v3"/><path d="M14 17.75V21"/><path d="M7 18a6 6 0 0 0 3.84-10.61"/>',
   rabbit:'<path d="M13 16a3 3 0 0 1 2.24 5"/><path d="M18 12h.01"/><path d="M18 21h-8a4 4 0 0 1-4-4 7 7 0 0 1 7-7h.2L9.6 6.4a1 1 0 1 1 2.8-2.8L15.8 7h.2c3.3 0 6 2.7 6 6v1a2 2 0 0 1-2 2h-1a3 3 0 0 0-3 3"/><path d="M20 8.54V4a2 2 0 1 0-4 0v3"/><path d="M7.612 12.524a3 3 0 1 0-1.6 4.3"/>',
   snail:'<path d="M2 13a6 6 0 1 0 12 0 4 4 0 1 0-8 0 2 2 0 0 0 4 0"/><circle cx="10" cy="13" r="8"/><path d="M2 21h12c4.4 0 8-3.6 8-8V7a2 2 0 1 0-4 0v6"/><path d="M18 3 19.1 5.2"/><path d="M22 3 20.9 5.2"/>',
-  'utensils-crossed':'<path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7"/><path d="m2.1 21.8 6.4-6.3"/><path d="m19 5-7 7"/>'
+  'utensils-crossed':'<path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7"/><path d="m2.1 21.8 6.4-6.3"/><path d="m19 5-7 7"/>',
+  flame:'<path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/>',
+  rocket:'<path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/>',
+  martini:'<path d="M8 22h8"/><path d="M12 11v11"/><path d="m19 3-7 8-7-8Z"/>',
+  truck:'<path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/>'
 };
 
 // ── Menu keyword matching ──
@@ -88,24 +92,29 @@ export var ICONS={
 // Order matters: earlier patterns win. Fallback: utensils.
 
 var MENU_KEYWORDS=[
-  {i:'coffee',w:['coffee','cafe','café','espresso','latte','cappuccino','mocha','roast','barista']},
+  // Compound matches that must beat any single-word fallback below.
+  {i:'beef',w:['korean bbq','korean barbecue','k-bbq','kbbq']},
+  {i:'rocket',w:['rocket']},
+  {i:'coffee',w:['coffee','cafe','café','espresso','latte','cappuccino','mocha','roast','barista','coffeehouse']},
   {i:'cup-soda',w:['boba','bubble tea','smoothie','juice','soda','drink','milkshake','shake']},
-  {i:'amphora',w:['tea ','chai','matcha','teahouse','tea house']},
+  {i:'amphora',w:['tea ',' tea','chai','matcha','teahouse','tea house','t4','happy lemon']},
   {i:'fish',w:['fish','seafood','sushi','japanese','maki','sashimi','ocean']},
   {i:'pizza',w:['pizza','pizzeria','calzone','focaccia']},
   {i:'hamburger',w:['burger','smash','patty','cheeseburger']},
-  {i:'sandwich',w:['sandwich','sub','deli','panini','wrap','taco','burrito','nacho','quesadilla','mexican','kebab','shawarma','gyro','pita','falafel','hummus','souvlaki','taverna','mediterranean','greek','bao','dumpling','dim sum','gyoza','wonton','bagel']},
+  {i:'sandwich',w:['sandwich','sub','deli','panini','wrap','taco','burrito','nacho','quesadilla','mexican','cantina','iguana','latin','kebab','shawarma','gyro','pita','falafel','hummus','souvlaki','taverna','mediterranean','greek','bao','dumpling','dim sum','gyoza','wonton','bagel']},
+  {i:'martini',w:['martini','cocktail','speakeasy',' club','mixer']},
   {i:'wine',w:['wine','vineyard','winery','vino','bistro','lounge']},
-  {i:'beer',w:['pub','beer','ale','brewery','tavern','lager','stout',' bar']},
+  {i:'beer',w:['pub','beer','ale','brewery','tavern','lager','stout',' bar','dirty duck']},
   {i:'milk',w:['milk','dairy','creamery','cheese','fromage']},
   {i:'egg-fried',w:['breakfast','brunch','diner','pancake','waffle','crepe','crêpe','creperie','omelette','omelet','frittata']},
+  {i:'cooking-pot',w:['stew','hotpot','hot pot','goulash','chowder','cauldron']},
   {i:'soup',w:['noodle','ramen','pho','udon','soba','pasta','spaghetti','soup','bowl','curry','rice','thai','indian','chinese','asian','wok','acai','poke','bibimbap','bento','korean','buddha','zen','masala','tikka','vindaloo','biryani','paella','risotto','stir fry','stirfry']},
   {i:'shrimp',w:['prawn','shrimp','lobster','crab','scampi']},
   {i:'beef',w:['steak','beef','bbq','barbecue','grill','smokehouse','meat','cow','cattle','brisket','churrasco','asado']},
   {i:'drumstick',w:['chicken','wing','fried chicken','rotisserie','nugget','tender','yardbird','jerk','buffalo']},
   {i:'bird',w:['duck','peking','turkey','goose','quail']},
   {i:'ham',w:['ham','bacon','pork','pig','sausage','hot dog','hotdog','charcuterie','bratwurst']},
-  {i:'croissant',w:['croissant','boulangerie','patisserie','brioche','french','bread','toast','loaf','pretzel','baguette']},
+  {i:'croissant',w:['croissant','croffle','boulangerie','patisserie','brioche','french','bread','toast','loaf','pretzel','baguette']},
   {i:'chef-hat',w:['bakery','bake','kitchen','canteen','cafeteria','food hall','chef','cuisine','eatery','food station']},
   {i:'cake-slice',w:['cake','cupcake','gateau','tart','cheesecake']},
   {i:'dessert',w:['dessert','pudding','mousse','parfait','tiramisu','pie','mochi','flan']},
@@ -124,12 +133,13 @@ var MENU_KEYWORDS=[
   {i:'wheat',w:['wheat','grain','cereal','oat','oats','corn','barley','rye']},
   {i:'nut',w:['nut','almond','walnut','hazelnut','pecan','cashew','peanut','pistachio']},
   {i:'salad',w:['salad','greens','caesar']},
-  {i:'leafy-green',w:['vegan','vegetarian','veggie','plant','organic','herb','spice','spicy']},
+  {i:'flame',w:['spicy','fever','sichuan','szechuan','bashu','chili','chilli','peri-peri','peri peri','blaze','blazing','flame','fiery','hunan']},
+  {i:'leafy-green',w:['vegan','vegetarian','veggie','plant','organic','herb','spice']},
   {i:'sprout',w:['sprout','microgreen','seedling']},
   {i:'leaf',w:['leaf','green','natural','fresh','mint']},
-  {i:'cooking-pot',w:['stew','hotpot','hot pot','goulash','chowder','cauldron']},
   {i:'egg',w:['egg']},
   {i:'utensils-crossed',w:['poutine','fries','chips','tapas','platter','feast','buffet','belly']},
+  {i:'truck',w:['food truck','food cart']},
   {i:'store',w:['street','truck','cart','vendor','stall','market','shop','bazaar']},
   {i:'rabbit',w:['rabbit','bunny','hare']},
   {i:'snail',w:['snail','escargot']}
