@@ -3762,7 +3762,7 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
     var addrCopyText=addrLines.join(', ');
     addressBlock.addEventListener('click',function(){
       var write=(navigator.clipboard&&navigator.clipboard.writeText)?navigator.clipboard.writeText(addrCopyText):_legacyCopy(addrCopyText);
-      Promise.resolve(write).then(function(){_showToast('Copied',null,true)});
+      Promise.resolve(write).then(function(){_showToast('Copied',null,true)}).catch(function(){_showToast('Copy failed')});
     });
     addressPanel.appendChild(addressBlock);
     bar.appendChild(addressPanel);
