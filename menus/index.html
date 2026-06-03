@@ -1278,6 +1278,9 @@ function renderMenu(el,menu,doc,opts){
     el.appendChild(heroImg);
   }
 
+  // App Store download card
+  el.appendChild(makeDlCard());
+
   // About card: venue description + location link pills (crawler-facing text)
   var aboutDescText=resolveLang(menu.description);
   var aboutLinks=(loc&&Array.isArray(loc.links))?loc.links:[];
@@ -1302,9 +1305,6 @@ function renderMenu(el,menu,doc,opts){
     }
     el.appendChild(aboutCard);
   }
-
-  // App Store download card
-  el.appendChild(makeDlCard());
 
   // Get location and build sections
   var locationId=loc?loc.id:null;
