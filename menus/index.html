@@ -506,6 +506,12 @@ body{overflow-x:hidden}
   max-height:0;overflow:hidden;transition:max-height .25s ease,opacity .2s;opacity:0
 }
 .report-panel.open{display:flex;max-height:200px;opacity:1}
+/* Edit panel */
+.edit-panel{
+  display:none;flex-wrap:wrap;gap:8px;padding:10px 0 2px;
+  max-height:0;overflow:hidden;transition:max-height .25s ease,opacity .2s;opacity:0
+}
+.edit-panel.open{display:flex;max-height:340px;opacity:1}
 /* Address panel */
 .address-panel{
   display:none;flex-direction:column;gap:10px;padding:10px 0 2px;
@@ -529,6 +535,7 @@ body{overflow-x:hidden}
   .directions-panel{transition-duration:.01ms!important}
   .address-panel{transition-duration:.01ms!important}
   .report-panel{transition-duration:.01ms!important}
+  .edit-panel{transition-duration:.01ms!important}
 }
 
 /* Basket nav tab */
@@ -681,8 +688,8 @@ import { mkIcon, matchMenuIcon } from '/js/icons.js?v=12';
 var $=function(s){return document.querySelector(s)};
 
 registerStrings({
-  en:{searchMenus:'Search Menus',searchItems:'Search Items',loading:'Loading Menus',error:'Could Not Load Menu',noItems:'No Items Available',notFound:'Menu Not Found',noResults:'No Results',back:'Back',download:'Download on the App Store',retry:'Retry',backToMenus:'Back to Menus',addToBasket:'Add to Basket',decreaseQty:'Decrease quantity of {name}',increaseQty:'Increase quantity of {name}',required:'Required',optional:'Optional',filter:'Filter',mayContain:'May Contain',containsAllergen:'Contains Allergens',noFilterMatch:'No Items Match Your Filters',basket:'Basket',itemDetails:'Item Details',clearAll:'Clear All',confirmClear:'Confirm Clear',total:'Total',basketBannerTitle:'Ready to order?',basketBannerBody:'Show this screen to a member of staff. Direct ordering is coming soon. All menu information, including allergen and dietary preference filters, is for guidance only and may be incomplete or inaccurate. Always inform staff of dietary requirements and confirm details before ordering.',basketDismiss:'Got it',showOther:'Show in Chinese',preview:'Preview',previewDate:'Date',previewTime:'Time',previewLocation:'Location',resetPreview:'Reset',allergens:'Allergens',dietary:'Dietary',resetFilters:'Reset',settings:'Settings',containsYourRestriction:'Contains Your Restriction',containsYourRestrictions:'Contains Your Restrictions',mayContainYourRestriction:'May Contain Your Restriction',mayContainYourRestrictions:'May Contain Your Restrictions',openingHours:'Hours',directions:'Directions',address:'Address',appleMaps:'Apple Maps',googleMaps:'Google Maps',closedDay:'Closed',openNow:'Open',closedNow:'Closed',loadingMenus:'Loading Menus\u2026',loadingMenu:'Loading Menu\u2026',couldNotLoad:'Could Not Load Menus',openGroup:'Open',closedGroup:'Closed',closedToday:'Closed Today',openUntil:'Open Until {time}',opensToday:'Opens Today at {time}',opensDay:'Opens {day} {time}',opensDate:'Opens {date}',closedStatus:'Closed',viewMenu:'View Menu For {name}',offline:'Offline',results:'{n} Results',noResultsLive:'No Results',pleaseNotify:'Please notify',filterDisclaimer:'Menuva is provided as a guide only and must not be relied upon as the sole basis for dietary or allergen decisions. Information may be incomplete or inaccurate. Always confirm directly with restaurant staff before ordering.',recaptchaPrefix:'This site is protected by reCAPTCHA and the Google ',recaptchaMid:' and ',recaptchaPrivacy:'Privacy Policy',recaptchaTerms:'Terms of Service',recaptchaSuffix:' apply.',menuAttribution:'Menu information provided by {name}',lastUpdated:'Last updated',justNow:'just now',minAgo:'{n} min ago',minsAgo:'{n} mins ago',hourAgo:'{n} hour ago',hoursAgo:'{n} hours ago',dayAgo:'{n} day ago',daysAgo:'{n} days ago',opensInNewTab:'(opens in new tab)',sortDistOff:'Sort by Distance: Off',sortDistOn:'Sort by Distance: On',sortDistLoading:'Getting Location\u2026',locDenied:'Location Access Denied',locUnavailable:'Location Unavailable',modeMenu:'Mode: Open Menu',modeGoogle:'Mode: Open Google Maps',modeApple:'Mode: Open Apple Maps',mapUnavailable:'Map location unavailable',alc:'Alc',report:'Report',reportSubject:'Report: {name} Menu',reportBody:'Menu: {link}\nIssue: \nOther Information: \n\n[Keep this line if we may contact you with updates on this issue]'},
-  zh:{searchMenus:'搜索菜单',searchItems:'搜索菜品',loading:'加载菜单中',error:'无法加载菜单',noItems:'暂无菜品',notFound:'未找到菜单',noResults:'无结果',back:'返回',download:'在 App Store 下载',retry:'重试',backToMenus:'返回菜单列表',addToBasket:'加入购物篮',decreaseQty:'减少{name}的数量',increaseQty:'增加{name}的数量',required:'必选',optional:'可选',filter:'筛选',mayContain:'可能含有',containsAllergen:'含有过敏原',noFilterMatch:'没有匹配的菜品',basket:'购物篮',itemDetails:'商品详情',clearAll:'全部清除',confirmClear:'确认清除',total:'合计',basketBannerTitle:'准备好点餐了吗？',basketBannerBody:'请向工作人员出示此屏幕。直接下单功能即将上线。所有菜单信息（包括过敏原和饮食偏好筛选）仅供参考，可能不完整或不准确。请务必告知工作人员您的饮食需求，并在点餐前确认。',basketDismiss:'知道了',showOther:'显示英文',preview:'预览',previewDate:'日期',previewTime:'时间',previewLocation:'位置',resetPreview:'重置',allergens:'过敏原',dietary:'饮食偏好',resetFilters:'重置',settings:'设置',containsYourRestriction:'含有您的限制',containsYourRestrictions:'含有您的限制',mayContainYourRestriction:'可能含有您的限制',mayContainYourRestrictions:'可能含有您的限制',openingHours:'营业时间',directions:'导航',address:'地址',appleMaps:'Apple 地图',googleMaps:'Google 地图',closedDay:'休息',openNow:'营业中',closedNow:'已关闭',loadingMenus:'加载菜单列表中\u2026',loadingMenu:'加载菜单中\u2026',couldNotLoad:'无法加载菜单列表',openGroup:'营业中',closedGroup:'已关闭',closedToday:'今日休息',openUntil:'营业至 {time}',opensToday:'今日{time}开始营业',opensDay:'{day}{time}开始营业',opensDate:'{date}开始营业',closedStatus:'已关闭',viewMenu:'查看{name}的菜单',offline:'离线',results:'{n}个结果',noResultsLive:'无结果',pleaseNotify:'请联系',filterDisclaimer:'Menuva 仅供参考，不得作为饮食或过敏原决策的唯一依据。相关信息可能不完整或不准确，点餐前请务必与餐厅工作人员直接确认。',recaptchaPrefix:'本网站受 reCAPTCHA 保护，适用 Google ',recaptchaMid:'和',recaptchaPrivacy:'隐私政策',recaptchaTerms:'服务条款',recaptchaSuffix:'。',menuAttribution:'菜单信息由{name}提供',lastUpdated:'最后更新',justNow:'刚刚',minAgo:'{n}分钟前',minsAgo:'{n}分钟前',hourAgo:'{n}小时前',hoursAgo:'{n}小时前',dayAgo:'{n}天前',daysAgo:'{n}天前',opensInNewTab:'（在新分页中打开）',sortDistOff:'按距离排序：关',sortDistOn:'按距离排序：开',sortDistLoading:'获取位置中\u2026',locDenied:'位置访问被拒',locUnavailable:'无法获取位置',modeMenu:'模式：打开菜单',modeGoogle:'模式：打开 Google 地图',modeApple:'模式：打开 Apple 地图',mapUnavailable:'暂无地图位置',alc:'酒精度',report:'报告问题',reportSubject:'报告问题：{name} 菜单',reportBody:'菜单：{link}\n问题：\n其他信息：\n\n[如果希望我们就此问题与您联系并告知进展，请保留此行]'}
+  en:{searchMenus:'Search Menus',searchItems:'Search Items',loading:'Loading Menus',error:'Could Not Load Menu',noItems:'No Items Available',notFound:'Menu Not Found',noResults:'No Results',back:'Back',download:'Download on the App Store',retry:'Retry',backToMenus:'Back to Menus',addToBasket:'Add to Basket',decreaseQty:'Decrease quantity of {name}',increaseQty:'Increase quantity of {name}',required:'Required',optional:'Optional',filter:'Filter',mayContain:'May Contain',containsAllergen:'Contains Allergens',noFilterMatch:'No Items Match Your Filters',basket:'Basket',itemDetails:'Item Details',clearAll:'Clear All',confirmClear:'Confirm Clear',total:'Total',basketBannerTitle:'Ready to order?',basketBannerBody:'Show this screen to a member of staff. Direct ordering is coming soon. All menu information, including allergen and dietary preference filters, is for guidance only and may be incomplete or inaccurate. Always inform staff of dietary requirements and confirm details before ordering.',basketDismiss:'Got it',showOther:'Show in Chinese',preview:'Preview',previewDate:'Date',previewTime:'Time',previewLocation:'Location',resetPreview:'Reset',allergens:'Allergens',dietary:'Dietary',resetFilters:'Reset',settings:'Settings',containsYourRestriction:'Contains Your Restriction',containsYourRestrictions:'Contains Your Restrictions',mayContainYourRestriction:'May Contain Your Restriction',mayContainYourRestrictions:'May Contain Your Restrictions',openingHours:'Hours',directions:'Directions',address:'Address',appleMaps:'Apple Maps',googleMaps:'Google Maps',closedDay:'Closed',openNow:'Open',closedNow:'Closed',loadingMenus:'Loading Menus\u2026',loadingMenu:'Loading Menu\u2026',couldNotLoad:'Could Not Load Menus',openGroup:'Open',closedGroup:'Closed',closedToday:'Closed Today',openUntil:'Open Until {time}',opensToday:'Opens Today at {time}',opensDay:'Opens {day} {time}',opensDate:'Opens {date}',closedStatus:'Closed',viewMenu:'View Menu For {name}',offline:'Offline',results:'{n} Results',noResultsLive:'No Results',pleaseNotify:'Please notify',filterDisclaimer:'Menuva is provided as a guide only and must not be relied upon as the sole basis for dietary or allergen decisions. Information may be incomplete or inaccurate. Always confirm directly with restaurant staff before ordering.',recaptchaPrefix:'This site is protected by reCAPTCHA and the Google ',recaptchaMid:' and ',recaptchaPrivacy:'Privacy Policy',recaptchaTerms:'Terms of Service',recaptchaSuffix:' apply.',menuAttribution:'Menu information provided by {name}',lastUpdated:'Last updated',justNow:'just now',minAgo:'{n} min ago',minsAgo:'{n} mins ago',hourAgo:'{n} hour ago',hoursAgo:'{n} hours ago',dayAgo:'{n} day ago',daysAgo:'{n} days ago',opensInNewTab:'(opens in new tab)',sortDistOff:'Sort by Distance: Off',sortDistOn:'Sort by Distance: On',sortDistLoading:'Getting Location\u2026',locDenied:'Location Access Denied',locUnavailable:'Location Unavailable',modeMenu:'Mode: Open Menu',modeGoogle:'Mode: Open Google Maps',modeApple:'Mode: Open Apple Maps',mapUnavailable:'Map location unavailable',alc:'Alc',report:'Report',reportSubject:'Report: {name} Menu',reportBody:'Menu: {link}\nIssue: \nOther Information: \n\n[Keep this line if we may contact you with updates on this issue]',edit:'Edit',editDisclaimer:'Menu changes are made by your organisation\'s admin(s). If you help manage this menu but don\'t have editing access, please reach out to whoever holds admin access in your organisation. If you\'re not sure who that is, get in touch below and we can help you identify your current admin(s), reset access, or add additional admins.',editSubject:'Edit Request: {name} Menu',editBody:'Menu: {link}\nFull Name: \nEmail: \nOther Information: \n\n[Keep this line if we may contact you with updates on this request]'},
+  zh:{searchMenus:'搜索菜单',searchItems:'搜索菜品',loading:'加载菜单中',error:'无法加载菜单',noItems:'暂无菜品',notFound:'未找到菜单',noResults:'无结果',back:'返回',download:'在 App Store 下载',retry:'重试',backToMenus:'返回菜单列表',addToBasket:'加入购物篮',decreaseQty:'减少{name}的数量',increaseQty:'增加{name}的数量',required:'必选',optional:'可选',filter:'筛选',mayContain:'可能含有',containsAllergen:'含有过敏原',noFilterMatch:'没有匹配的菜品',basket:'购物篮',itemDetails:'商品详情',clearAll:'全部清除',confirmClear:'确认清除',total:'合计',basketBannerTitle:'准备好点餐了吗？',basketBannerBody:'请向工作人员出示此屏幕。直接下单功能即将上线。所有菜单信息（包括过敏原和饮食偏好筛选）仅供参考，可能不完整或不准确。请务必告知工作人员您的饮食需求，并在点餐前确认。',basketDismiss:'知道了',showOther:'显示英文',preview:'预览',previewDate:'日期',previewTime:'时间',previewLocation:'位置',resetPreview:'重置',allergens:'过敏原',dietary:'饮食偏好',resetFilters:'重置',settings:'设置',containsYourRestriction:'含有您的限制',containsYourRestrictions:'含有您的限制',mayContainYourRestriction:'可能含有您的限制',mayContainYourRestrictions:'可能含有您的限制',openingHours:'营业时间',directions:'导航',address:'地址',appleMaps:'Apple 地图',googleMaps:'Google 地图',closedDay:'休息',openNow:'营业中',closedNow:'已关闭',loadingMenus:'加载菜单列表中\u2026',loadingMenu:'加载菜单中\u2026',couldNotLoad:'无法加载菜单列表',openGroup:'营业中',closedGroup:'已关闭',closedToday:'今日休息',openUntil:'营业至 {time}',opensToday:'今日{time}开始营业',opensDay:'{day}{time}开始营业',opensDate:'{date}开始营业',closedStatus:'已关闭',viewMenu:'查看{name}的菜单',offline:'离线',results:'{n}个结果',noResultsLive:'无结果',pleaseNotify:'请联系',filterDisclaimer:'Menuva 仅供参考，不得作为饮食或过敏原决策的唯一依据。相关信息可能不完整或不准确，点餐前请务必与餐厅工作人员直接确认。',recaptchaPrefix:'本网站受 reCAPTCHA 保护，适用 Google ',recaptchaMid:'和',recaptchaPrivacy:'隐私政策',recaptchaTerms:'服务条款',recaptchaSuffix:'。',menuAttribution:'菜单信息由{name}提供',lastUpdated:'最后更新',justNow:'刚刚',minAgo:'{n}分钟前',minsAgo:'{n}分钟前',hourAgo:'{n}小时前',hoursAgo:'{n}小时前',dayAgo:'{n}天前',daysAgo:'{n}天前',opensInNewTab:'（在新分页中打开）',sortDistOff:'按距离排序：关',sortDistOn:'按距离排序：开',sortDistLoading:'获取位置中\u2026',locDenied:'位置访问被拒',locUnavailable:'无法获取位置',modeMenu:'模式：打开菜单',modeGoogle:'模式：打开 Google 地图',modeApple:'模式：打开 Apple 地图',mapUnavailable:'暂无地图位置',alc:'酒精度',report:'报告问题',reportSubject:'报告问题：{name} 菜单',reportBody:'菜单：{link}\n问题：\n其他信息：\n\n[如果希望我们就此问题与您联系并告知进展，请保留此行]',edit:'编辑',editDisclaimer:'菜单的修改由贵机构的管理员进行。如果您参与管理此菜单但没有编辑权限，请联系贵机构中拥有管理员权限的人员。如果您不确定该联系谁，请通过下方与我们联系，我们可以帮助您确认当前的管理员、重置访问权限或添加新的管理员。',editSubject:'编辑请求：{name} 菜单',editBody:'菜单：{link}\n全名：\n电子邮箱：\n其他信息：\n\n[如果希望我们就此请求与您联系并告知进展，请保留此行]'}
 });
 
 var DAY_NAMES_ZH={mon:'周一',tue:'周二',wed:'周三',thu:'周四',fri:'周五',sat:'周六',sun:'周日'};
@@ -3482,6 +3489,21 @@ function _makeReportSvg(){
   return svg;
 }
 
+function _makeEditSvg(){
+  var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('fill','none');
+  svg.setAttribute('stroke','currentColor');svg.setAttribute('stroke-width','2');
+  svg.setAttribute('stroke-linecap','round');svg.setAttribute('stroke-linejoin','round');
+  svg.setAttribute('aria-hidden','true');
+  // Lucide square-pen
+  var box=document.createElementNS('http://www.w3.org/2000/svg','path');
+  box.setAttribute('d','M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7');
+  var pen=document.createElementNS('http://www.w3.org/2000/svg','path');
+  pen.setAttribute('d','M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z');
+  svg.appendChild(box);svg.appendChild(pen);
+  return svg;
+}
+
 function _makeMailSvg(){
   var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
   svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('fill','none');
@@ -3674,13 +3696,23 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
   var reportLabel=document.createElement('span');reportLabel.textContent=chrome('report');
   reportToggle.appendChild(reportLabel);
 
-  // Toolbar order: Address, Directions, Filter, Preview, Hours, Report
+  // Edit toggle (always shown)
+  var editToggle=document.createElement('button');editToggle.className='preview-toggle';
+  editToggle.setAttribute('aria-label',chrome('edit'));
+  editToggle.setAttribute('aria-expanded','false');
+  editToggle.setAttribute('aria-controls','tb-edit-panel');
+  editToggle.appendChild(_makeEditSvg());
+  var editLabel=document.createElement('span');editLabel.textContent=chrome('edit');
+  editToggle.appendChild(editLabel);
+
+  // Toolbar order: Address, Directions, Filter, Preview, Hours, Report, Edit
   if(addressToggle)row.appendChild(addressToggle);
   if(directionsToggle)row.appendChild(directionsToggle);
   row.appendChild(filterToggle);
   row.appendChild(previewToggle);
   if(hoursToggle)row.appendChild(hoursToggle);
   row.appendChild(reportToggle);
+  row.appendChild(editToggle);   // new, last
 
   bar.appendChild(row);
 
@@ -3831,6 +3863,23 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
   reportPanel.appendChild(reportLink);
   bar.appendChild(reportPanel);
 
+  // Edit panel (mirrors Report panel): disclaimer + pressable mailto pill.
+  var editPanel=document.createElement('div');editPanel.className='edit-panel';
+  editPanel.id='tb-edit-panel';
+  var editWarn=document.createElement('div');editWarn.className='afilter-warn';
+  editWarn.textContent=chrome('editDisclaimer');
+  editPanel.appendChild(editWarn);
+  var editSubject=statusLabel('editSubject',{name:menuName}).replace(/\s+/g,' ').trim();
+  var editBody=statusLabel('editBody',{link:menuLink});
+  var editHref='mailto:hello@menuva.co.uk?subject='+encodeURIComponent(editSubject)+'&body='+encodeURIComponent(editBody);
+  var editLink=document.createElement('a');editLink.className='afilter-pill dir-link';
+  editLink.href=editHref;
+  editLink.appendChild(_makeMailSvg());
+  var et=document.createElement('span');et.textContent='hello@menuva.co.uk';
+  editLink.appendChild(et);
+  editPanel.appendChild(editLink);
+  bar.appendChild(editPanel);
+
   // --- Event handlers ---
 
   // Filter toggle
@@ -3846,6 +3895,7 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
       if(hasCoords){directionsPanel.classList.remove('open');directionsToggle.classList.remove('active');directionsToggle.setAttribute('aria-expanded','false')}
       if(addrLines.length){addressPanel.classList.remove('open');addressToggle.classList.remove('active');addressToggle.setAttribute('aria-expanded','false')}
       reportPanel.classList.remove('open');reportToggle.classList.remove('active');reportToggle.setAttribute('aria-expanded','false');
+      editPanel.classList.remove('open');editToggle.classList.remove('active');editToggle.setAttribute('aria-expanded','false');
     }
   });
 
@@ -3897,6 +3947,7 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
       if(hasCoords){directionsPanel.classList.remove('open');directionsToggle.classList.remove('active');directionsToggle.setAttribute('aria-expanded','false')}
       if(addrLines.length){addressPanel.classList.remove('open');addressToggle.classList.remove('active');addressToggle.setAttribute('aria-expanded','false')}
       reportPanel.classList.remove('open');reportToggle.classList.remove('active');reportToggle.setAttribute('aria-expanded','false');
+      editPanel.classList.remove('open');editToggle.classList.remove('active');editToggle.setAttribute('aria-expanded','false');
     }
     if(isOpen){
       // Closing: clear preview state and refresh
@@ -3968,6 +4019,7 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
         if(hasCoords){directionsPanel.classList.remove('open');directionsToggle.classList.remove('active');directionsToggle.setAttribute('aria-expanded','false')}
         if(addrLines.length){addressPanel.classList.remove('open');addressToggle.classList.remove('active');addressToggle.setAttribute('aria-expanded','false')}
         reportPanel.classList.remove('open');reportToggle.classList.remove('active');reportToggle.setAttribute('aria-expanded','false');
+        editPanel.classList.remove('open');editToggle.classList.remove('active');editToggle.setAttribute('aria-expanded','false');
       }
     });
   }
@@ -3987,6 +4039,7 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
         if(hoursCal){hoursPanel.classList.remove('open');hoursToggle.classList.remove('active');hoursToggle.setAttribute('aria-expanded','false')}
         if(addrLines.length){addressPanel.classList.remove('open');addressToggle.classList.remove('active');addressToggle.setAttribute('aria-expanded','false')}
         reportPanel.classList.remove('open');reportToggle.classList.remove('active');reportToggle.setAttribute('aria-expanded','false');
+        editPanel.classList.remove('open');editToggle.classList.remove('active');editToggle.setAttribute('aria-expanded','false');
       }
     });
     directionsPanel.addEventListener('click',function(e){
@@ -4011,6 +4064,7 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
         if(hoursCal){hoursPanel.classList.remove('open');hoursToggle.classList.remove('active');hoursToggle.setAttribute('aria-expanded','false')}
         if(hasCoords){directionsPanel.classList.remove('open');directionsToggle.classList.remove('active');directionsToggle.setAttribute('aria-expanded','false')}
         reportPanel.classList.remove('open');reportToggle.classList.remove('active');reportToggle.setAttribute('aria-expanded','false');
+        editPanel.classList.remove('open');editToggle.classList.remove('active');editToggle.setAttribute('aria-expanded','false');
       }
     });
   }
@@ -4029,11 +4083,34 @@ function buildToolbar(secContainer,pillsBar,menu,loc){
       if(hoursCal){hoursPanel.classList.remove('open');hoursToggle.classList.remove('active');hoursToggle.setAttribute('aria-expanded','false')}
       if(hasCoords){directionsPanel.classList.remove('open');directionsToggle.classList.remove('active');directionsToggle.setAttribute('aria-expanded','false')}
       if(addrLines.length){addressPanel.classList.remove('open');addressToggle.classList.remove('active');addressToggle.setAttribute('aria-expanded','false')}
+      editPanel.classList.remove('open');editToggle.classList.remove('active');editToggle.setAttribute('aria-expanded','false');
     }
   });
   reportPanel.addEventListener('click',function(e){
     if(!e.target.closest('.dir-link'))return;
     _ga('report_open',{restaurant_slug:viewerSlug});
+  });
+
+  // Edit toggle (always present)
+  editToggle.addEventListener('click',function(){
+    var isOpen=editPanel.classList.contains('open');
+    editPanel.classList.toggle('open');
+    editToggle.classList.toggle('active',!isOpen);
+    editToggle.setAttribute('aria-expanded',editPanel.classList.contains('open')?'true':'false');
+    if(!isOpen){
+      filterPills.classList.remove('open');filterToggle.classList.remove('active');
+      filterToggle.setAttribute('aria-expanded','false');
+      previewPanel.classList.remove('open');previewToggle.classList.remove('active');
+      previewToggle.setAttribute('aria-expanded','false');
+      if(hoursCal){hoursPanel.classList.remove('open');hoursToggle.classList.remove('active');hoursToggle.setAttribute('aria-expanded','false')}
+      if(hasCoords){directionsPanel.classList.remove('open');directionsToggle.classList.remove('active');directionsToggle.setAttribute('aria-expanded','false')}
+      if(addrLines.length){addressPanel.classList.remove('open');addressToggle.classList.remove('active');addressToggle.setAttribute('aria-expanded','false')}
+      reportPanel.classList.remove('open');reportToggle.classList.remove('active');reportToggle.setAttribute('aria-expanded','false');
+    }
+  });
+  editPanel.addEventListener('click',function(e){
+    if(!e.target.closest('.dir-link'))return;
+    _ga('edit_open',{restaurant_slug:viewerSlug});
   });
 
   return bar;
